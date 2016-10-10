@@ -25,5 +25,13 @@
     <Transaction>2015/02/12 11:17:03.000.267,=C:\Users\RedPacifico\Desktop\GAUSS\GAUSS\Codigo Fuente\Server\lib Factura Electronica\xslprod.pas</Transaction>
     <Transaction>2015/02/20 11:18:11.000.011,=C:\Users\RedPacifico\Desktop\GAUSS\GAUSS\Codigo Fuente\Server\Unit1.pas</Transaction>
     <Transaction>2015/02/20 11:19:48.000.697,C:\Users\RedPacifico\Desktop\GAUSS\GAUSS\Codigo Fuente\Server\lib Factura Electronica\SiteConst.pas=C:\Users\RedPacifico\Desktop\GAUSS\GAUSS\Codigo Fuente\Server\Unit1.pas</Transaction>
+    <Transaction>2016/10/10 16:55:15.333,C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\CistemComun\CodigoFuente\LibXmlParser.pas=</Transaction>
+    <Transaction>2016/10/10 16:55:16.510,C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\CistemComun\CodigoFuente\ufrmPassword.pas=</Transaction>
+    <Transaction>2016/10/10 16:55:32.838,C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\CistemComun\CodigoFuente\UtileriasComun.pas=</Transaction>
+    <Transaction>2016/10/10 16:56:04.127,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\CistemComun\CodigoFuente\LibXmlParser.pas</Transaction>
+    <Transaction>2016/10/10 16:56:04.314,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\CistemComun\CodigoFuente\ufrmPassword.pas</Transaction>
+    <Transaction>2016/10/10 16:56:04.376,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\CistemComun\CodigoFuente\UtileriasComun.pas</Transaction>
+    <Transaction>2016/10/10 16:57:20.028,C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\CistemComun\CodigoFuente\ufrmServerForm.pas=</Transaction>
+    <Transaction>2016/10/10 16:57:34.795,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\CistemComun\CodigoFuente\ufrmServerForm.pas</Transaction>
   </Transactions>
 </BorlandProject>

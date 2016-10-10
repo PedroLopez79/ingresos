@@ -1,0 +1,25 @@
+unit uUtilerias;
+
+interface
+
+const
+  Cadena = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+function GeneraPassword(Longitud: Byte): String;
+
+implementation
+
+function GeneraPassword(Longitud: Byte): String;
+var
+  S: String;
+  X: Integer;
+begin
+  for X := 1 to Longitud do
+  begin
+    S := S + Random(Length(Cadena));
+  end;
+
+  Result := S;
+end;
+
+end.

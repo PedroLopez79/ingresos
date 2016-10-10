@@ -91,7 +91,7 @@
                     <VersionInfo Name="MajorVer">1</VersionInfo>
                     <VersionInfo Name="MinorVer">0</VersionInfo>
                     <VersionInfo Name="Release">70</VersionInfo>
-                    <VersionInfo Name="Build">238</VersionInfo>
+                    <VersionInfo Name="Build">239</VersionInfo>
                     <VersionInfo Name="Debug">False</VersionInfo>
                     <VersionInfo Name="PreRelease">False</VersionInfo>
                     <VersionInfo Name="Special">False</VersionInfo>
@@ -103,7 +103,7 @@
                 <VersionInfoKeys>
                     <VersionInfoKeys Name="CompanyName"/>
                     <VersionInfoKeys Name="FileDescription">Server Ingresos</VersionInfoKeys>
-                    <VersionInfoKeys Name="FileVersion">1.0.70.238</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileVersion">1.0.70.239</VersionInfoKeys>
                     <VersionInfoKeys Name="InternalName"/>
                     <VersionInfoKeys Name="LegalCopyright"/>
                     <VersionInfoKeys Name="LegalTrademarks"/>
@@ -152,18 +152,20 @@
             <Form>ServiceIngresos</Form>
             <DesignClass>TDataAbstractService</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\CistemComun\CodigoFuente\LibXmlParser.pas"/>
-        <DCCReference Include="..\CistemComun\CodigoFuente\ufrmPassword.pas">
-            <Form>frmPassword</Form>
-        </DCCReference>
-        <DCCReference Include="..\CistemComun\CodigoFuente\ufrmServerForm.pas">
-            <Form>frmServerForm</Form>
-        </DCCReference>
-        <DCCReference Include="..\CistemComun\CodigoFuente\UtileriasComun.pas"/>
         <DCCReference Include="CFD\cfdv22.pas"/>
         <DCCReference Include="CFD\uCFD.pas"/>
         <DCCReference Include="lib Factura Electronica\xslprod.pas"/>
         <DCCReference Include="lib Factura Electronica\SiteConst.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\LibXmlParser.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\ufrmPassword.pas">
+            <Form>frmPassword</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\UtileriasComun.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\ufrmServerForm.pas">
+            <Form>frmServerForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -16,14 +16,14 @@ uses
   LibraryIngresos_Intf in 'LibraryIngresos_Intf.pas',
   LibraryIngresos_Invk in 'LibraryIngresos_Invk.pas',
   ServiceIngresos_Impl in 'ServiceIngresos_Impl.pas' {ServiceIngresos: TDataAbstractService},
-  LibXmlParser in '..\CistemComun\CodigoFuente\LibXmlParser.pas',
-  ufrmPassword in '..\CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
-  ufrmServerForm in '..\CistemComun\CodigoFuente\ufrmServerForm.pas' {frmServerForm},
-  UtileriasComun in '..\CistemComun\CodigoFuente\UtileriasComun.pas',
   cfdv22 in 'CFD\cfdv22.pas',
   uCFD in 'CFD\uCFD.pas',
   xslprod in 'lib Factura Electronica\xslprod.pas',
-  SiteConst in 'lib Factura Electronica\SiteConst.pas';
+  SiteConst in 'lib Factura Electronica\SiteConst.pas',
+  LibXmlParser in 'CistemComun\CodigoFuente\LibXmlParser.pas',
+  ufrmPassword in 'CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
+  UtileriasComun in 'CistemComun\CodigoFuente\UtileriasComun.pas',
+  ufrmServerForm in 'CistemComun\CodigoFuente\ufrmServerForm.pas' {frmServerForm};
 
 {$R *.res}
 {$R RODLFile.res}
@@ -46,6 +46,7 @@ begin
     Application.Title := 'Server Ingresos';
   Application.CreateForm(TServerDataModule, ServerDataModule);
   Application.CreateForm(TServerForm, ServerForm);
+  Application.CreateForm(TfrmServerForm, frmServerForm);
   Application.Run;
   //end;
 end.

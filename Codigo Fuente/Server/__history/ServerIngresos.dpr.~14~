@@ -9,20 +9,21 @@ uses
   Windows,
   fServerForm in 'fServerForm.pas' {ServerForm},
   fServerDataModule in 'fServerDataModule.pas' {ServerDataModule: TDataModule},
-  UtileriasComun in '..\..\..\CistemComun\CodigoFuente\UtileriasComun.pas',
-  ufrmServerForm in '..\..\..\CistemComun\CodigoFuente\ufrmServerForm.pas' {frmServerForm},
-  ufrmPassword in '..\..\..\CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
-  LibXmlParser in '..\..\..\CistemComun\CodigoFuente\LibXmlParser.pas',
   libeay32 in 'libeay32.pas',
   OpenSSLUtils in 'OpenSSLUtils.pas',
   LibEay32Plus in 'LibEay32Plus.pas',
   FCTELECT in 'FCTELECT.pas',
-  LibraryGauss_Intf in 'LibraryGauss_Intf.pas',
-  LibraryGauss_Invk in 'LibraryGauss_Invk.pas',
-  ServiceGauss_Impl in 'ServiceGauss_Impl.pas' {ServiceGauss: TDataAbstractService},
   LibraryIngresos_Intf in 'LibraryIngresos_Intf.pas',
   LibraryIngresos_Invk in 'LibraryIngresos_Invk.pas',
-  ServiceIngresos_Impl in 'ServiceIngresos_Impl.pas' {ServiceIngresos: TDataAbstractService};
+  ServiceIngresos_Impl in 'ServiceIngresos_Impl.pas' {ServiceIngresos: TDataAbstractService},
+  ufrmServerForm in '..\CistemComun\CodigoFuente\ufrmServerForm.pas' {frmServerForm},
+  cfdv22 in 'CFD\cfdv22.pas',
+  uCFD in 'CFD\uCFD.pas',
+  xslprod in 'lib Factura Electronica\xslprod.pas',
+  SiteConst in 'lib Factura Electronica\SiteConst.pas',
+  LibXmlParser in 'CistemComun\CodigoFuente\LibXmlParser.pas',
+  ufrmPassword in 'CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
+  UtileriasComun in 'CistemComun\CodigoFuente\UtileriasComun.pas';
 
 {$R *.res}
 {$R RODLFile.res}
@@ -34,7 +35,7 @@ begin
   Mutex := CreateMutex(nil, True, 'ServerGauss');
   //if (Mutex <> 0) and (GetLastError = 0) then
   //begin
-    if ROStartService('ServerGauss', 'ServerGauss') then
+    if ROStartService('ServerIngresos', 'ServerIngresos') then
     begin
       ROService.CreateForm(TServerDataModule, ServerDataModule);
       ROService.Run;

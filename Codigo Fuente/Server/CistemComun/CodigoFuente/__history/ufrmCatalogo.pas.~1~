@@ -1,0 +1,243 @@
+unit ufrmCatalogo;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CustomModule, cxPC, cxControls, cxStyles, cxCustomData, cxGraphics,
+  cxFilter, cxData, cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, uDADataTable, uDAScriptingProvider, uDACDSDataTable,
+  uDARemoteDataAdapter, dxmdaset, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, uDAInterfaces, uDAMemDataTable, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinSilver, dxSkinStardust,
+  dxSkinValentine, dxSkinXmas2008Blue, dxSkinSummer2008;
+
+type
+  TfrmCatalogo = class(TfrmCustomModule)
+    pgcCatalogo: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    cdsCatalogo: TDAMemDataTable;
+    dsCatalogo: TDADataSource;
+    dbgCatalogoDBTableView1: TcxGridDBTableView;
+    dbgCatalogoLevel1: TcxGridLevel;
+    dbgCatalogo: TcxGrid;
+    tblCatalogo: TdxMemData;
+    procedure dbgCatalogoDBTableView1DblClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure dbgCatalogoDBTableView1KeyPress(Sender: TObject; var Key: Char);
+    procedure dbgCatalogoEnter(Sender: TObject);
+    procedure dbgCatalogoExit(Sender: TObject);
+    procedure cdsCatalogoAfterPost(DataTable: TDADataTable);
+    procedure dbgCatalogoDBTableView1EditKeyPress(
+      Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+      AEdit: TcxCustomEdit; var Key: Char);
+    procedure dsCatalogoStateChange(Sender: TObject);
+  private
+    { Private declarations }
+    procedure ActionNuevo(Action: TBasicAction);
+    procedure ActionPrimer(Action: TBasicAction);
+    procedure ActionSiguiente(Action: TBasicAction);
+    procedure ActionAnterior(Action: TBasicAction);
+    procedure ActionUltimo(Action: TBasicAction);
+    procedure ActionBuscar(Action: TBasicAction);
+  protected
+    procedure RegisterActions; override;
+  public
+    { Public declarations }
+    Campo: String;
+    Actualiza : Boolean;
+    procedure ActionActualizar(Action: TBasicAction); virtual;
+    procedure ActionGuardar(Action: TBasicAction); virtual;
+    procedure ActionImprimir(Action: TBasicAction); virtual;
+    procedure ActionCancelar(Action: TBasicAction); virtual;
+    procedure UpdateActionsState; override;
+    procedure CopiaDataSet;
+  end;
+
+var
+  frmCatalogo: TfrmCatalogo;
+
+implementation
+
+uses dmActions, dmImagenes, UtileriasComun;
+
+{$R *.dfm}
+
+procedure TfrmCatalogo.ActionActualizar(Action: TBasicAction);
+begin
+  Actualiza:=False;
+  cdsCatalogo.Close;
+  cdsCatalogo.Open;
+  Actualiza:=True;
+end;
+
+procedure TfrmCatalogo.ActionAnterior(Action: TBasicAction);
+begin
+  dbgCatalogoDBTableView1.DataController.GotoPrev;
+end;
+
+procedure TfrmCatalogo.ActionBuscar(Action: TBasicAction);
+begin
+  pgcCatalogo.ActivePageIndex:=0;
+  dbgCatalogo.SetFocus;
+end;
+
+procedure TfrmCatalogo.ActionCancelar(Action: TBasicAction);
+begin
+  cdsCatalogo.Cancel;
+end;
+
+procedure TfrmCatalogo.ActionGuardar(Action: TBasicAction);
+begin
+  cdsCatalogo.Post;
+end;
+
+procedure TfrmCatalogo.ActionImprimir(Action: TBasicAction);
+begin
+
+end;
+
+procedure TfrmCatalogo.ActionNuevo(Action: TBasicAction);
+begin
+  pgcCatalogo.ActivePageIndex:=1;
+  cdsCatalogo.Append;
+end;
+
+procedure TfrmCatalogo.ActionPrimer(Action: TBasicAction);
+begin
+  dbgCatalogoDBTableView1.DataController.GotoFirst;
+end;
+
+procedure TfrmCatalogo.ActionSiguiente(Action: TBasicAction);
+begin
+  dbgCatalogoDBTableView1.DataController.GotoNext;
+end;
+
+procedure TfrmCatalogo.ActionUltimo(Action: TBasicAction);
+begin
+  dbgCatalogoDBTableView1.DataController.GotoLast;
+end;
+
+procedure TfrmCatalogo.cdsCatalogoAfterPost(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsCatalogo.ApplyUpdates();
+end;
+
+procedure TfrmCatalogo.CopiaDataSet;
+var
+  I, Aux, Lugar: Integer;
+begin
+  if Campo <> '' then
+  begin
+    tblCatalogo.Close;
+    tblCatalogo.Open;
+    Lugar:=dbgCatalogoDBTableView1.DataController.RecNo;
+    dbgCatalogoDBTableView1.DataController.GotoFirst;
+    Aux:=-1;
+    while Aux <> dbgCatalogoDBTableView1.DataController.RecNo do
+    begin
+      Aux:=dbgCatalogoDBTableView1.DataController.RecNo;
+      tblCatalogo.Append;
+      for i := 1 to tblCatalogo.Fields.Count - 1 do    // Iterate
+        tblCatalogo.Fields[i].Value:=CdsCatalogo.FieldByName(tblCatalogo.Fields[i].FieldName).Value;
+      tblCatalogo.Post;
+      dbgCatalogoDBTableView1.DataController.GotoNext;
+    end;    // while
+    dbgCatalogoDBTableView1.DataController.RecNo:=Lugar;
+  end;
+end;
+
+procedure TfrmCatalogo.dbgCatalogoDBTableView1DblClick(Sender: TObject);
+begin
+  inherited;
+  pgcCatalogo.ActivePageIndex:=1;
+end;
+
+procedure TfrmCatalogo.dbgCatalogoDBTableView1EditKeyPress(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit; var Key: Char);
+begin
+  inherited;
+  Key:=Upcase(Key);
+end;
+
+procedure TfrmCatalogo.dbgCatalogoDBTableView1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  inherited;
+  if key = #13 then
+    dbgCatalogoDBTableView1DblClick(Nil);
+end;
+
+procedure TfrmCatalogo.dbgCatalogoEnter(Sender: TObject);
+begin
+  inherited;
+  OkEnter:=False;
+end;
+
+procedure TfrmCatalogo.dbgCatalogoExit(Sender: TObject);
+begin
+  inherited;
+  OkEnter:=True;
+end;
+
+procedure TfrmCatalogo.dsCatalogoStateChange(Sender: TObject);
+begin
+  inherited;
+  UpdateActionsState;
+end;
+
+procedure TfrmCatalogo.FormCreate(Sender: TObject);
+begin
+  inherited;
+  try
+    cdsCatalogo.RemoteDataAdapter:=RemoteDataAdapter;
+    Actualiza:=False;
+    cdsCatalogo.Open;
+    Actualiza:=True;
+    pgcCatalogo.ActivePageIndex:=0;
+    Campo:='';
+    tblCatalogo.CreateFieldsFromDataSet(cdsCatalogo.Dataset);
+  except
+  end;
+end;
+
+procedure TfrmCatalogo.RegisterActions;
+begin
+  inherited RegisterActions;
+  RegisterAction(AppActions.actNuevo, ActionNuevo);
+  RegisterAction(AppActions.actGuardar, ActionGuardar);
+  RegisterAction(AppActions.actCancelar, ActionCancelar);
+  RegisterAction(AppActions.actActualizar, ActionActualizar);
+  RegisterAction(AppActions.actImprimir, ActionImprimir);
+
+  RegisterAction(AppActions.actPrimer, ActionPrimer);
+  RegisterAction(AppActions.actSiguiente, ActionSiguiente);
+  RegisterAction(AppActions.actAnterior, ActionAnterior);
+  RegisterAction(AppActions.actUltimo, ActionUltimo);
+  RegisterAction(AppActions.actBuscar, ActionBuscar);  
+end;
+
+procedure TfrmCatalogo.UpdateActionsState;
+begin
+  inherited UpdateActionsState;
+  AppActions.actNuevo.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actGuardar.Enabled:=cdsCatalogo.State in dsEditModes;
+  AppActions.actCancelar.Enabled:=cdsCatalogo.State in dsEditModes;
+  AppActions.actActualizar.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actPrimer.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actSiguiente.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actAnterior.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actUltimo.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actImprimir.Enabled:=cdsCatalogo.State = dsBrowse;
+  AppActions.actBuscar.Enabled:=cdsCatalogo.State = dsBrowse;
+  Closing:=cdsCatalogo.State = dsBrowse;
+end;
+
+end.
