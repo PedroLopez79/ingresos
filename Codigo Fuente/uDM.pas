@@ -18,15 +18,16 @@ uses
   {QExportDialog,} Forms, dxSkinDarkSide, dxSkinPumpkin, dxSkinSpringTime,
   ppBands, ppCache, dxSkinDarkRoom, dxSkinFoggy, dxSkinSeven, dxSkinSharp, LibraryIngresos_Intf,
   uDAScriptingProvider, uDAMemDataTable, TB2ToolWindow, ppParameter, ppJPEG,
-  LibraryFlotillas_Intf, cxStyles, uDACDSDataTable, dxBar, ClaseGenera,
-  cxClasses, uDADataAdapter, uROBaseHTTPClient, dxSkinBlueprint,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
-  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
-  uDAFields, uROChannelAwareComponent, uROMessage, uROComponent,
-  uROBaseConnection, uROTransportChannel, ppModule, raCodMod, ppDesignLayer;
+  dxSkinBlueprint, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
+  dxSkinWhiteprint, uDACDSDataTable, cxStyles, cxClasses, ppDesignLayer,
+  uDAFields, uDADataAdapter, uROChannelAwareComponent, uROMessage, uROComponent,
+  uROBaseConnection, uROTransportChannel, uROBaseHTTPClient,
+  LibraryFlotillas_Intf, dxBar, ClaseGenera,
+  ppModule, raCodMod;
 
 type
   Monedas = (Pesos, Dolares);

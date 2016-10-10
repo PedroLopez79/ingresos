@@ -154,7 +154,6 @@
             <Form>DMFlotillas</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\Flotillas\LibraryFlotillas_Intf.pas"/>
         <DCCReference Include="ufrmCatalogoUsuarios.pas">
             <Form>frmCatalogoUsuarios</Form>
         </DCCReference>
@@ -303,7 +302,6 @@
             <Form>DMCistemGas</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\CistemGas\LibraryCistemGas_Intf.pas"/>
         <DCCReference Include="ufrmDenominacion.pas">
             <Form>frmDenominacion</Form>
         </DCCReference>
@@ -406,7 +404,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="CistemComun\CodigoFuente\ESBDates.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\ExportaDataSet.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\ImpresionTickets.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\LibXmlParser.pas"/>
@@ -432,6 +429,8 @@
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\uPSI_ExportaDataSet.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\UtileriasComun.pas"/>
+        <DCCReference Include="CistemGas\LibraryCistemGas_Intf.pas"/>
+        <DCCReference Include="Flotillas\LibraryFlotillas_Intf.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

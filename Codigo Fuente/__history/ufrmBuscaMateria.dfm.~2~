@@ -1,8 +1,0 @@
-inherited frmBuscaMateria: TfrmBuscaMateria
-  Caption = 'frmBuscaMateria'
-  PixelsPerInch = 96
-  TextHeight = 13
-  inherited dsBuscar: TDADataSource
-    DataSet = cdsBuscar.Dataset
-  end
-end

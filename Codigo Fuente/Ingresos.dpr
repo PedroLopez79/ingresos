@@ -9,7 +9,6 @@ uses
   ufrmSplashScreen in 'ufrmSplashScreen.pas' {frmSplashScreen},
   ufrmBuscar in 'ufrmBuscar.pas' {frmBuscar},
   uDMFlotillas in 'uDMFlotillas.pas' {DMFlotillas: TDataModule},
-  LibraryFlotillas_Intf in '..\Flotillas\LibraryFlotillas_Intf.pas',
   ufrmCatalogoUsuarios in 'ufrmCatalogoUsuarios.pas' {frmCatalogoUsuarios},
   ufrmBancos in 'ufrmBancos.pas' {frmBancos},
   ufrmBuscaMateria in 'ufrmBuscaMateria.pas' {frmBuscaMateria},
@@ -59,7 +58,6 @@ uses
   ufrmAltasConsumos in 'ufrmAltasConsumos.pas' {frmAltasConsumos},
   ufrmGenerarDispositivo in 'ufrmGenerarDispositivo.pas' {frmGenerarDispositivo},
   uDMCistemGas in 'uDMCistemGas.pas' {DMCistemGas: TDataModule},
-  LibraryCistemGas_Intf in '..\CistemGas\LibraryCistemGas_Intf.pas',
   ufrmDenominacion in 'ufrmDenominacion.pas' {frmDenominacion},
   ufrmDepositos in 'ufrmDepositos.pas' {frmDepositos},
   ufrmCompras in 'ufrmCompras.pas' {FrmCompra},
@@ -96,7 +94,6 @@ uses
   CustomModule in 'CistemComun\CodigoFuente\CustomModule.pas' {frmCustomModule},
   dmActions in 'CistemComun\CodigoFuente\dmActions.pas' {dmAppActions: TDataModule},
   dmImagenes in 'CistemComun\CodigoFuente\dmImagenes.pas' {dmImages: TDataModule},
-  ESBDates in 'CistemComun\CodigoFuente\ESBDates.pas',
   ExportaDataSet in 'CistemComun\CodigoFuente\ExportaDataSet.pas',
   ImpresionTickets in 'CistemComun\CodigoFuente\ImpresionTickets.pas',
   LibXmlParser in 'CistemComun\CodigoFuente\LibXmlParser.pas',
@@ -109,7 +106,9 @@ uses
   ufrmPassword in 'CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
   ufrmSplash in 'CistemComun\CodigoFuente\ufrmSplash.pas' {frmSplash},
   uPSI_ExportaDataSet in 'CistemComun\CodigoFuente\uPSI_ExportaDataSet.pas',
-  UtileriasComun in 'CistemComun\CodigoFuente\UtileriasComun.pas';
+  UtileriasComun in 'CistemComun\CodigoFuente\UtileriasComun.pas',
+  LibraryCistemGas_Intf in 'CistemGas\LibraryCistemGas_Intf.pas',
+  LibraryFlotillas_Intf in 'Flotillas\LibraryFlotillas_Intf.pas';
 
 {$R *.res}
 
