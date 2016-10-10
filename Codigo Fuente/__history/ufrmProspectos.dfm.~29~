@@ -1,0 +1,432 @@
+inherited frmProspectos: TfrmProspectos
+  Caption = 'frmProspectos'
+  ClientHeight = 403
+  ClientWidth = 489
+  ExplicitWidth = 489
+  ExplicitHeight = 403
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcCatalogo: TcxPageControl
+    Width = 489
+    Height = 403
+    ActivePage = cxTabSheet2
+    TabStop = False
+    ExplicitWidth = 489
+    ExplicitHeight = 403
+    ClientRectBottom = 373
+    ClientRectRight = 483
+    inherited cxTabSheet1: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 480
+      ExplicitHeight = 370
+      inherited dbgCatalogo: TcxGrid
+        Width = 480
+        Height = 370
+        ExplicitWidth = 480
+        ExplicitHeight = 370
+        inherited dbgCatalogoDBTableView1: TcxGridDBTableView
+          object dbgCatalogoDBTableView1RecID: TcxGridDBColumn
+            DataBinding.FieldName = 'RecID'
+            Visible = False
+          end
+          object dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBRE'
+            Width = 151
+          end
+          object dbgCatalogoDBTableView1FECHANACIMIENTO: TcxGridDBColumn
+            DataBinding.FieldName = 'FECHANACIMIENTO'
+            Width = 115
+          end
+          object dbgCatalogoDBTableView1SEXO: TcxGridDBColumn
+            DataBinding.FieldName = 'SEXO'
+            Width = 42
+          end
+          object dbgCatalogoDBTableView1CIUDADNACIMIENTO: TcxGridDBColumn
+            DataBinding.FieldName = 'CIUDADNACIMIENTO'
+          end
+          object dbgCatalogoDBTableView1DIRECCION: TcxGridDBColumn
+            DataBinding.FieldName = 'DIRECCION'
+            Width = 219
+          end
+          object dbgCatalogoDBTableView1PADRE: TcxGridDBColumn
+            DataBinding.FieldName = 'PADRE'
+            Width = 216
+          end
+          object dbgCatalogoDBTableView1MADRE: TcxGridDBColumn
+            DataBinding.FieldName = 'MADRE'
+            Width = 246
+          end
+          object dbgCatalogoDBTableView1TELEFONOCASA: TcxGridDBColumn
+            DataBinding.FieldName = 'TELEFONOCASA'
+          end
+          object dbgCatalogoDBTableView1EMAIL: TcxGridDBColumn
+            DataBinding.FieldName = 'EMAIL'
+          end
+          object dbgCatalogoDBTableView1EMAILPADRE: TcxGridDBColumn
+            DataBinding.FieldName = 'EMAILPADRE'
+          end
+          object dbgCatalogoDBTableView1EMAILMADRE: TcxGridDBColumn
+            DataBinding.FieldName = 'EMAILMADRE'
+          end
+          object dbgCatalogoDBTableView1APATERNO: TcxGridDBColumn
+            DataBinding.FieldName = 'APATERNO'
+          end
+          object dbgCatalogoDBTableView1AMATERNO: TcxGridDBColumn
+            DataBinding.FieldName = 'AMATERNO'
+          end
+          object dbgCatalogoDBTableView1NOMBRES: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBRES'
+            Width = 147
+          end
+          object dbgCatalogoDBTableView1ESCUELAPROCEDENCIA: TcxGridDBColumn
+            DataBinding.FieldName = 'ESCUELAPROCEDENCIA'
+          end
+        end
+      end
+    end
+    inherited cxTabSheet2: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 480
+      ExplicitHeight = 370
+      object cxPageControl1: TcxPageControl
+        Left = 0
+        Top = 32
+        Width = 480
+        Height = 338
+        ActivePage = cxTabSheet3
+        Align = alClient
+        Images = dmImages.Imagenes2
+        TabOrder = 0
+        TabStop = False
+        ClientRectBottom = 332
+        ClientRectLeft = 3
+        ClientRectRight = 474
+        ClientRectTop = 27
+        object cxTabSheet3: TcxTabSheet
+          Caption = 'Datos Generales'
+          ImageIndex = 50
+          object cxDBTextEdit2: TcxDBTextEdit
+            Left = 6
+            Top = 65
+            DataBinding.DataField = 'APATERNO'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 0
+            Width = 134
+          end
+          object cxDBTextEdit3: TcxDBTextEdit
+            Left = 146
+            Top = 65
+            DataBinding.DataField = 'AMATERNO'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 1
+            Width = 130
+          end
+          object cxDBTextEdit4: TcxDBTextEdit
+            Left = 282
+            Top = 65
+            DataBinding.DataField = 'NOMBRE'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 2
+            Width = 163
+          end
+          object cxDBTextEdit6: TcxDBTextEdit
+            Left = 6
+            Top = 106
+            DataBinding.DataField = 'CIUDADNACIMIENTO'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 3
+            Width = 270
+          end
+          object cxDBTextEdit7: TcxDBTextEdit
+            Left = 3
+            Top = 148
+            DataBinding.DataField = 'DIRECCION'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 4
+            Width = 439
+          end
+          object cxDBTextEdit8: TcxDBTextEdit
+            Left = 6
+            Top = 190
+            DataBinding.DataField = 'TELEFONOCASA'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 5
+            Width = 142
+          end
+          object cxDBTextEdit9: TcxDBTextEdit
+            Left = 154
+            Top = 190
+            DataBinding.DataField = 'EMAIL'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 6
+            Width = 291
+          end
+          object cxDBDateEdit1: TcxDBDateEdit
+            Left = 6
+            Top = 24
+            DataBinding.DataField = 'FECHANACIMIENTO'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 8
+            Width = 121
+          end
+          object cxLabel2: TcxLabel
+            Left = 6
+            Top = 9
+            Caption = 'Fecha Nacimiento'
+          end
+          object cxDBRadioGroup1: TcxDBRadioGroup
+            Left = 260
+            Top = 9
+            Caption = 'Sexo'
+            DataBinding.DataField = 'SEXO'
+            DataBinding.DataSource = dsCatalogo
+            Properties.Columns = 2
+            Properties.Items = <
+              item
+                Caption = 'Masculino'
+                Value = 'M'
+              end
+              item
+                Caption = 'Femenino'
+                Value = 'F'
+              end>
+            TabOrder = 10
+            Height = 36
+            Width = 185
+          end
+          object cxLabel3: TcxLabel
+            Left = 6
+            Top = 51
+            Caption = 'Apellido Paterno'
+          end
+          object cxLabel4: TcxLabel
+            Left = 146
+            Top = 51
+            Caption = 'Apellido Materno'
+          end
+          object cxLabel5: TcxLabel
+            Left = 282
+            Top = 51
+            Caption = 'Nombre(s)'
+          end
+          object cxLabel8: TcxLabel
+            Left = 6
+            Top = 91
+            Caption = 'Lugar de Nacimiento'
+          end
+          object cxLabel10: TcxLabel
+            Left = 6
+            Top = 133
+            Caption = 'Direccion'
+          end
+          object cxLabel11: TcxLabel
+            Left = 6
+            Top = 175
+            Caption = 'Telefono Casa'
+          end
+          object cxLabel12: TcxLabel
+            Left = 154
+            Top = 175
+            Caption = 'E-mail'
+          end
+          object cxLabel1: TcxLabel
+            Left = 6
+            Top = 217
+            Caption = 'Escuela de Procedencia'
+          end
+          object cxDBTextEdit1: TcxDBTextEdit
+            Left = 6
+            Top = 236
+            DataBinding.DataField = 'ESCUELAPROCEDENCIA'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 7
+            Width = 439
+          end
+        end
+        object cxTabSheet4: TcxTabSheet
+          Caption = 'Datos de los Padres'
+          ImageIndex = 51
+          object cxDBTextEdit10: TcxDBTextEdit
+            Left = 6
+            Top = 24
+            DataBinding.DataField = 'PADRE'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 0
+            Width = 363
+          end
+          object cxLabel13: TcxLabel
+            Left = 6
+            Top = 9
+            Caption = 'Nombre del Padre'
+          end
+          object cxDBTextEdit12: TcxDBTextEdit
+            Left = 6
+            Top = 66
+            DataBinding.DataField = 'EMAILPADRE'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 2
+            Width = 187
+          end
+          object cxLabel15: TcxLabel
+            Left = 6
+            Top = 51
+            Caption = 'E-mail del Padre'
+          end
+          object cxDBTextEdit15: TcxDBTextEdit
+            Left = 6
+            Top = 109
+            DataBinding.DataField = 'MADRE'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 4
+            Width = 363
+          end
+          object cxLabel18: TcxLabel
+            Left = 6
+            Top = 93
+            Caption = 'Nombre de la Madre'
+          end
+          object cxDBTextEdit17: TcxDBTextEdit
+            Left = 6
+            Top = 158
+            DataBinding.DataField = 'EMAILMADRE'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 6
+            Width = 187
+          end
+          object cxLabel20: TcxLabel
+            Left = 6
+            Top = 143
+            Caption = 'E-mail de la Madre'
+          end
+        end
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 480
+        Height = 30
+        Align = alTop
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Caption = ' Informacion acerca del Prospecto'
+        Color = clBtnShadow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 30
+        Width = 480
+        Height = 2
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clNone
+        ParentBackground = False
+        TabOrder = 2
+      end
+    end
+  end
+  inherited cdsCatalogo: TDAMemDataTable
+    Fields = <
+      item
+        Name = 'IDPROSPECTO'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'FECHANACIMIENTO'
+        DataType = datDateTime
+      end
+      item
+        Name = 'SEXO'
+        DataType = datString
+        Size = 1
+      end
+      item
+        Name = 'CIUDADNACIMIENTO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'DIRECCION'
+        DataType = datString
+        Size = 75
+      end
+      item
+        Name = 'PADRE'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'MADRE'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'TELEFONOCASA'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'EMAIL'
+        DataType = datString
+        Size = 40
+      end
+      item
+        Name = 'EMAILPADRE'
+        DataType = datString
+        Size = 40
+      end
+      item
+        Name = 'EMAILMADRE'
+        DataType = datString
+        Size = 40
+      end
+      item
+        Name = 'APATERNO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'AMATERNO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'NOMBRES'
+        DataType = datString
+        Size = 25
+      end
+      item
+        Name = 'ESCUELAPROCEDENCIA'
+        DataType = datString
+        Size = 200
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnNewRecord = cdsCatalogoNewRecord
+    LogicalName = 'dbo PROSPECTO'
+    Left = 176
+    Top = 336
+  end
+  inherited dsCatalogo: TDADataSource
+    DataSet = cdsCatalogo.Dataset
+    Left = 208
+    Top = 336
+  end
+  inherited tblCatalogo: TdxMemData
+    Left = 280
+    Top = 336
+  end
+end

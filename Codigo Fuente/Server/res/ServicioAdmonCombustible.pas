@@ -1,0 +1,88 @@
+unit ServicioAdmonCombustible;
+
+interface
+
+uses InvokeRegistry, SOAPHTTPClient, Types, XSBuiltIns;
+
+const
+  IS_OPTN = $0001;
+  IS_UNBD = $0002;
+  IS_NLBL = $0004;
+  IS_REF  = $0080;
+
+
+type
+
+  // !:string          - "http://www.w3.org/2001/XMLSchema"[Gbl]
+  // !:decimal         - "http://www.w3.org/2001/XMLSchema"[Gbl]
+  // !:int             - "http://www.w3.org/2001/XMLSchema"[Gbl]
+  // !:dateTime        - "http://www.w3.org/2001/XMLSchema"[Gbl]
+
+
+  ArrayOfString = array of WideString;          { "http://bajacalifornia.gob.mx/OM/SIG/"[GblCplx] }
+
+  ServicioAdmonCombustibleSoap = interface(IInvokable)
+  ['{2E463F17-38FD-3D62-6FB1-D39EC4941F4A}']
+    function  ObtenerSaldoDisponible(const Id: WideString; const usuario: WideString; const contrasena: WideString): TXSDecimal; stdcall;
+    function  ObtenerChipsActivos(const usuario: WideString; const contrasena: WideString): ArrayOfString; stdcall;
+    function  ObtenerInformacion(const Id: WideString; const usuario: WideString; const contrasena: WideString): ArrayOfString; stdcall;
+    function  PerteneceA(const Id: WideString; const usuario: WideString; const contrasena: WideString): Integer; stdcall;
+    function  Cargo(const Id: WideString; const Kms: Integer; const Lts: TXSDecimal; const Producto: Integer; const Importe: TXSDecimal; const usuario: WideString; 
+                    const contrasena: WideString): Integer; stdcall;
+    function  CargoVE(const Id: WideString; const Lts: TXSDecimal; const Producto: Integer; const Importe: TXSDecimal; const usuario: WideString; const contrasena: WideString
+                      ): Integer; stdcall;
+    function  CancelarCargo(const Id: WideString; const Importe: TXSDecimal; const usuario: WideString; const contrasena: WideString): Integer; stdcall;
+    function  EnviarDatosFactura(const Factura: WideString; const Fecha: TXSDateTime; const Subtotal: TXSDecimal; const Iva: TXSDecimal; const Detalle: WideString; const usuario: WideString; 
+                                 const contrasena: WideString): Integer; stdcall;
+  end;
+
+function GetServicioAdmonCombustibleSoap(UseWSDL: Boolean=System.False; Addr: string=''; HTTPRIO: THTTPRIO = nil): ServicioAdmonCombustibleSoap;
+
+
+implementation
+  uses SysUtils;
+
+function GetServicioAdmonCombustibleSoap(UseWSDL: Boolean; Addr: string; HTTPRIO: THTTPRIO): ServicioAdmonCombustibleSoap;
+const
+  defWSDL = 'http://om.bajacalifornia.gob.mx/ws_sig_dev/ServicioAdmonCombustible.asmx?WSDL';
+  defURL  = 'http://om.bajacalifornia.gob.mx/ws_sig_dev/ServicioAdmonCombustible.asmx';
+  defSvc  = 'ServicioAdmonCombustible';
+  defPrt  = 'ServicioAdmonCombustibleSoap';
+var
+  RIO: THTTPRIO;
+begin
+  Result := nil;
+  if (Addr = '') then
+  begin
+    if UseWSDL then
+      Addr := defWSDL
+    else
+      Addr := defURL;
+  end;
+  if HTTPRIO = nil then
+    RIO := THTTPRIO.Create(nil)
+  else
+    RIO := HTTPRIO;
+  try
+    Result := (RIO as ServicioAdmonCombustibleSoap);
+    if UseWSDL then
+    begin
+      RIO.WSDLLocation := Addr;
+      RIO.Service := defSvc;
+      RIO.Port := defPrt;
+    end else
+      RIO.URL := Addr;
+  finally
+    if (Result = nil) and (HTTPRIO = nil) then
+      RIO.Free;
+  end;
+end;
+
+
+initialization
+  InvRegistry.RegisterInterface(TypeInfo(ServicioAdmonCombustibleSoap), 'http://bajacalifornia.gob.mx/OM/SIG/', 'utf-8');
+  InvRegistry.RegisterDefaultSOAPAction(TypeInfo(ServicioAdmonCombustibleSoap), 'http://bajacalifornia.gob.mx/OM/SIG/%operationName%');
+  InvRegistry.RegisterInvokeOptions(TypeInfo(ServicioAdmonCombustibleSoap), ioDocument);
+  RemClassRegistry.RegisterXSInfo(TypeInfo(ArrayOfString), 'http://bajacalifornia.gob.mx/OM/SIG/', 'ArrayOfString');
+
+end.

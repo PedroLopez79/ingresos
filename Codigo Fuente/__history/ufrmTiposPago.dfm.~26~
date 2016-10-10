@@ -1,0 +1,480 @@
+inherited frmTiposPago: TfrmTiposPago
+  Caption = 'frmTiposPago'
+  ClientWidth = 768
+  ExplicitTop = -9
+  ExplicitWidth = 768
+  ExplicitHeight = 449
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 768
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Informacion acerca de los Niveles Escolares'
+    Color = clBtnShadow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+    ExplicitWidth = 664
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 30
+    Width = 768
+    Height = 2
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clNone
+    ParentBackground = False
+    TabOrder = 1
+    ExplicitWidth = 664
+  end
+  object dbtNivel: TcxDBTreeList
+    Left = 0
+    Top = 32
+    Width = 265
+    Height = 417
+    Align = alLeft
+    Bands = <
+      item
+      end>
+    BufferedPaint = False
+    DataController.DataSource = dsAux
+    DataController.ImageIndexFieldName = 'ImageIndex'
+    DataController.ParentField = 'IDPadre'
+    DataController.KeyField = 'ID'
+    DragCursor = crDrag
+    DragMode = dmAutomatic
+    Images = dmImages.Imagenes2
+    OptionsBehavior.DragFocusing = True
+    RootValue = -1
+    TabOrder = 2
+    OnDragDrop = dbtNivelDragDrop
+    OnDragOver = dbtNivelDragOver
+    OnMouseUp = dbtNivelMouseUp
+    OnNodeChanged = dbtNivelNodeChanged
+    OnStartDrag = dbtNivelStartDrag
+    ExplicitLeft = 3
+    ExplicitTop = 36
+    object dbtNivelNombre: TcxDBTreeListColumn
+      DataBinding.FieldName = 'Nombre'
+      Width = 263
+      Position.ColIndex = 0
+      Position.RowIndex = 0
+      Position.BandIndex = 0
+    end
+  end
+  object pgcTiposPago: TcxPageControl
+    Left = 265
+    Top = 32
+    Width = 503
+    Height = 417
+    ActivePage = cxTabSheet4
+    Align = alClient
+    Images = dmImages.Imagenes2
+    TabOrder = 3
+    TabPosition = tpBottom
+    TabStop = False
+    ExplicitWidth = 399
+    ExplicitHeight = 384
+    ClientRectBottom = 387
+    ClientRectLeft = 3
+    ClientRectRight = 497
+    ClientRectTop = 3
+    object cxTabSheet4: TcxTabSheet
+      Caption = 'Tipos de Pago'
+      ImageIndex = 42
+      object Label1: TLabel
+        Left = 6
+        Top = 15
+        Width = 33
+        Height = 13
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label3: TLabel
+        Left = 6
+        Top = 52
+        Width = 37
+        Height = 13
+        Caption = 'Nombre'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 6
+        Top = 28
+        DataBinding.DataField = 'Codigo'
+        DataBinding.DataSource = dsTiposPago
+        TabOrder = 0
+        Width = 121
+      end
+      object cxDBTextEdit2: TcxDBTextEdit
+        Left = 6
+        Top = 65
+        DataBinding.DataField = 'NOMBRE'
+        DataBinding.DataSource = dsTiposPago
+        TabOrder = 1
+        Width = 355
+      end
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 6
+        Top = 105
+        Caption = 'Aplica Beca ?'
+        DataBinding.DataField = 'APLICABECA'
+        DataBinding.DataSource = dsTiposPago
+        TabOrder = 2
+        Transparent = True
+        Width = 91
+      end
+      object cxDBCheckBox2: TcxDBCheckBox
+        Left = 6
+        Top = 137
+        Caption = 'Aplica Descuento ?'
+        DataBinding.DataField = 'APLICADESCUENTO'
+        DataBinding.DataSource = dsTiposPago
+        TabOrder = 3
+        Transparent = True
+        Width = 121
+      end
+    end
+    object cxTabSheet5: TcxTabSheet
+      Caption = 'Subtipos de Pago'
+      ImageIndex = 56
+      ExplicitLeft = 6
+      ExplicitTop = 4
+      object Label2: TLabel
+        Left = 6
+        Top = 15
+        Width = 33
+        Height = 13
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label4: TLabel
+        Left = 6
+        Top = 51
+        Width = 37
+        Height = 13
+        Caption = 'Nombre'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label5: TLabel
+        Left = 6
+        Top = 85
+        Width = 35
+        Height = 13
+        Caption = 'Importe'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label6: TLabel
+        Left = 6
+        Top = 123
+        Width = 50
+        Height = 13
+        Caption = 'No. Pagos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label7: TLabel
+        Left = 148
+        Top = 85
+        Width = 30
+        Height = 13
+        Caption = 'Fecha'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label8: TLabel
+        Left = 148
+        Top = 123
+        Width = 26
+        Height = 13
+        Caption = 'Plazo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxDBTextEdit3: TcxDBTextEdit
+        Left = 6
+        Top = 28
+        DataBinding.DataField = 'Codigo'
+        DataBinding.DataSource = dsSubtipoPago
+        TabOrder = 0
+        Width = 121
+      end
+      object cxDBTextEdit4: TcxDBTextEdit
+        Left = 6
+        Top = 62
+        DataBinding.DataField = 'NOMBRE'
+        DataBinding.DataSource = dsSubtipoPago
+        TabOrder = 1
+        Width = 355
+      end
+      object cxDBCurrencyEdit1: TcxDBCurrencyEdit
+        Left = 6
+        Top = 98
+        DataBinding.DataField = 'IMPORTE'
+        DataBinding.DataSource = dsSubtipoPago
+        TabOrder = 2
+        Width = 121
+      end
+      object cxDBTextEdit5: TcxDBTextEdit
+        Left = 6
+        Top = 137
+        DataBinding.DataField = 'NUMPAGOS'
+        DataBinding.DataSource = dsSubtipoPago
+        TabOrder = 3
+        Width = 121
+      end
+      object cxDBDateEdit1: TcxDBDateEdit
+        Left = 148
+        Top = 98
+        DataBinding.DataField = 'FECHA'
+        DataBinding.DataSource = dsSubtipoPago
+        TabOrder = 4
+        Width = 149
+      end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 148
+        Top = 137
+        DataBinding.DataField = 'PLAZO'
+        DataBinding.DataSource = dsSubtipoPago
+        Properties.KeyFieldNames = 'idPlazo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Plazo'
+          end>
+        Properties.ListSource = dsPlazos
+        TabOrder = 5
+        Width = 145
+      end
+    end
+  end
+  object spAux: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'ID'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDPadre'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDCampo'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDCampoPadre'
+        DataType = datInteger
+      end
+      item
+        Name = 'Tipo'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'ImageIndex'
+        DataType = datInteger
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spTiposPago'
+    IndexDefs = <>
+    Left = 280
+    Top = 296
+  end
+  object dsAux: TDADataSource
+    DataSet = spAux.Dataset
+    DataTable = spAux
+    Left = 312
+    Top = 296
+  end
+  object cdsTiposPago: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDTIPOPAGO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'APLICABECA'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'APLICADESCUENTO'
+        DataType = datInteger
+        Required = True
+      end>
+    Params = <
+      item
+        Name = 'IDCAMPO'
+        Value = ''
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo TIPOSPAGO'
+    IndexDefs = <>
+    Left = 688
+    Top = 40
+  end
+  object dsTiposPago: TDADataSource
+    DataSet = cdsTiposPago.Dataset
+    DataTable = cdsTiposPago
+    Left = 720
+    Top = 40
+  end
+  object cdsSubtipoPago: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'IDTIPOPAGO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+        Required = True
+      end
+      item
+        Name = 'NUMPAGOS'
+        DataType = datInteger
+      end
+      item
+        Name = 'PLAZO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+      end>
+    Params = <
+      item
+        Name = 'IDCAMPO'
+        Value = '18'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo SUBTIPOPAGO1'
+    IndexDefs = <>
+    Left = 688
+    Top = 72
+  end
+  object dsSubtipoPago: TDADataSource
+    DataSet = cdsSubtipoPago.Dataset
+    DataTable = cdsSubtipoPago
+    Left = 720
+    Top = 72
+  end
+  object tblPlazo: TdxMemData
+    Indexes = <>
+    SortOptions = []
+    Left = 688
+    Top = 104
+    object tblPlazoidPlazo: TIntegerField
+      FieldName = 'idPlazo'
+    end
+    object tblPlazoPlazo: TStringField
+      FieldName = 'Plazo'
+    end
+  end
+  object dsPlazos: TDataSource
+    DataSet = tblPlazo
+    Left = 720
+    Top = 104
+  end
+end

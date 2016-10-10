@@ -1,0 +1,46 @@
+program ServerFlotillas;
+
+{#ROGEN:LibraryFlotillas.RODL} // RemObjects SDK: Careful, do not remove!
+
+uses
+  uROComInit,
+  uROComboService,
+  Forms,
+  Windows,
+  fServerForm in 'fServerForm.pas' {ServerForm},
+  ServiceFlotillas_Impl in 'ServiceFlotillas_Impl.pas' {ServiceFlotillas: TDARemoteService},
+  fServerDataModule in 'fServerDataModule.pas' {ServerDataModule: TDataModule},
+  LibraryFlotillas_Intf in 'LibraryFlotillas_Intf.pas',
+  LibraryFlotillas_Invk in 'LibraryFlotillas_Invk.pas',
+  UtileriasComun in '..\..\..\CistemComun\CodigoFuente\UtileriasComun.pas',
+  ufrmServerForm in '..\..\..\CistemComun\CodigoFuente\ufrmServerForm.pas' {frmServerForm},
+  uAutorizacion in 'uAutorizacion.pas',
+  ufrmPassword in '..\..\..\CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
+  LibXmlParser in '..\..\..\CistemComun\CodigoFuente\LibXmlParser.pas',
+  OpenSSLUtils in 'OpenSSLUtils.pas',
+  libeay32 in 'libeay32.pas';
+
+{$R *.res}
+{$R RODLFile.res}
+
+var
+  Mutex : THandle;
+
+begin
+  Mutex := CreateMutex(nil, True, 'ServerFlotillas');
+  //if (Mutex <> 0) and (GetLastError = 0) then
+  //begin
+    if ROStartService('ServerFlotillas', 'ServerFlotillas') then
+    begin
+      ROService.CreateForm(TServerDataModule, ServerDataModule);
+      ROService.Run;
+      Exit;
+    end;
+
+    Application.Initialize;
+    Application.Title := 'Server Flotillas';
+    Application.CreateForm(TServerDataModule, ServerDataModule);
+  Application.CreateForm(TServerForm, ServerForm);
+  Application.Run;
+  //end;
+end.

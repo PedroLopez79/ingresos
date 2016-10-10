@@ -1,0 +1,215 @@
+inherited frmTipoCalificacion: TfrmTipoCalificacion
+  Caption = 'frmTipoCalificacion'
+  ExplicitWidth = 625
+  ExplicitHeight = 449
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcCatalogo: TcxPageControl
+    ActivePage = cxTabSheet2
+    inherited cxTabSheet1: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 416
+      inherited dbgCatalogo: TcxGrid
+        inherited dbgCatalogoDBTableView1: TcxGridDBTableView
+          object dbgCatalogoDBTableView1RecID: TcxGridDBColumn
+            DataBinding.FieldName = 'RecID'
+            Visible = False
+          end
+          object dbgCatalogoDBTableView1IDTIPOCALIFICACION: TcxGridDBColumn
+            DataBinding.FieldName = 'IDTIPOCALIFICACION'
+            Width = 120
+          end
+          object dbgCatalogoDBTableView1CODIGO: TcxGridDBColumn
+            DataBinding.FieldName = 'CODIGO'
+          end
+          object dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBRE'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX1: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX1'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX2: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX2'
+          end
+        end
+      end
+    end
+    inherited cxTabSheet2: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 416
+      object Label1: TLabel
+        Left = 14
+        Top = 43
+        Width = 33
+        Height = 13
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label2: TLabel
+        Left = 14
+        Top = 83
+        Width = 37
+        Height = 13
+        Caption = 'Nombre'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label3: TLabel
+        Left = 14
+        Top = 128
+        Width = 64
+        Height = 13
+        Caption = 'Nombre Aux I'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label4: TLabel
+        Left = 14
+        Top = 179
+        Width = 67
+        Height = 13
+        Caption = 'Nombre Aux II'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 14
+        Top = 56
+        DataBinding.DataField = 'CODIGO'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 0
+        Width = 121
+      end
+      object cxDBTextEdit2: TcxDBTextEdit
+        Left = 14
+        Top = 96
+        DataBinding.DataField = 'NOMBRE'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 1
+        Width = 290
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 616
+        Height = 30
+        Align = alTop
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Caption = ' Informacion de los tipos de Calificaciones'
+        Color = clBtnShadow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 30
+        Width = 616
+        Height = 2
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clNone
+        ParentBackground = False
+        TabOrder = 3
+      end
+      object cxDBTextEdit3: TcxDBTextEdit
+        Left = 14
+        Top = 142
+        DataBinding.DataField = 'NOMBREAUX1'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 4
+        Width = 290
+      end
+      object cxDBTextEdit4: TcxDBTextEdit
+        Left = 14
+        Top = 192
+        DataBinding.DataField = 'NOMBREAUX2'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 5
+        Width = 290
+      end
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 14
+        Top = 232
+        Caption = 'Calificacion Capturable?'
+        DataBinding.DataField = 'CAPTURAR'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 6
+        Transparent = True
+        Width = 139
+      end
+    end
+  end
+  inherited cdsCatalogo: TDAMemDataTable
+    Fields = <
+      item
+        Name = 'IDTIPOCALIFICACION'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CAPTURAR'
+        DataType = datBoolean
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnNewRecord = cdsCatalogoNewRecord
+    LogicalName = 'dbo TIPOCALIFICACION'
+  end
+  inherited dsCatalogo: TDADataSource
+    DataSet = cdsCatalogo.Dataset
+  end
+end

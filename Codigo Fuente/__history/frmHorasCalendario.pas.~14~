@@ -1,0 +1,65 @@
+unit frmHorasCalendario;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmOKCancelar, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, Menus, StdCtrls,
+  cxButtons, cxGroupBox, ExtCtrls, cxTextEdit, cxMemo, cxCurrencyEdit, ComCtrls;
+
+type
+  TfrmHorCalendario = class(TfrmOKCancelar)
+    cxMemo1: TcxMemo;
+    Label1: TLabel;
+    Label2: TLabel;
+    UpDown1: TUpDown;
+    cxCurrencyEdit1: TcxCurrencyEdit;
+    procedure UpDown1ChangingEx(Sender: TObject; var AllowChange: Boolean;
+      NewValue: Smallint; Direction: TUpDownDirection);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    horas: integer;
+    Texto: String;
+  end;
+
+var
+  frmHorCalendario: TfrmHorCalendario;
+
+implementation
+
+
+{$R *.dfm}
+
+procedure TfrmHorCalendario.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  horas:= cxCurrencyEdit1.EditValue;
+  Texto:= cxMemo1.Text;
+end;
+
+procedure TfrmHorCalendario.UpDown1ChangingEx(Sender: TObject;
+  var AllowChange: Boolean; NewValue: Smallint; Direction: TUpDownDirection);
+begin
+  inherited;
+  if Direction = updUp then
+     cxCurrencyEdit1.Value:= cxCurrencyEdit1.Value + 1;
+
+  if Direction = updDown then
+     if cxCurrencyEdit1.Value = 0 then
+        cxCurrencyEdit1.Value:= 0
+     else cxCurrencyEdit1.Value := cxCurrencyEdit1.Value - 1;
+
+end;
+
+end.

@@ -1,0 +1,318 @@
+unit ufrmAlumnos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmCatalogo, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, cxContainer, cxDropDownEdit,
+  cxCalendar, cxDBEdit, cxCheckBox, cxImageComboBox, cxMaskEdit, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, cxTextEdit, cxGroupBox, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
+  cxGridCustomView, cxGrid, StdCtrls, cxPC, CustomModule, dxmdaset,
+  uDAInterfaces, uDADataTable, uDAScriptingProvider, uDAMemDataTable,
+  cxRadioGroup, cxLabel, DBCtrls, Menus, cxButtons, ExtCtrls, WPCTRRich, WPTbar,
+  WPRuler, WPRTEDefs, WPCTRMemo, JPeg, ExtDlgs, Modules, cxImage, dmActions, LibraryGauss_Intf,
+  uDARemoteDataAdapter;
+
+type
+  TfrmAlumnos = class(TfrmCatalogo)
+    cxPageControl1: TcxPageControl;
+    cxTabSheet3: TcxTabSheet;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxDBTextEdit6: TcxDBTextEdit;
+    cxDBTextEdit7: TcxDBTextEdit;
+    cxDBTextEdit8: TcxDBTextEdit;
+    cxDBTextEdit9: TcxDBTextEdit;
+    cxDBDateEdit1: TcxDBDateEdit;
+    cxDBDateEdit2: TcxDBDateEdit;
+    cxTabSheet4: TcxTabSheet;
+    cxTabSheet5: TcxTabSheet;
+    cxTabSheet7: TcxTabSheet;
+    cxTabSheet8: TcxTabSheet;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxDBRadioGroup1: TcxDBRadioGroup;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
+    cxLabel11: TcxLabel;
+    cxLabel12: TcxLabel;
+    btnFoto: TcxButton;
+    Panel1: TPanel;
+    cxDBTextEdit10: TcxDBTextEdit;
+    cxLabel13: TcxLabel;
+    cxLabel14: TcxLabel;
+    cxDBTextEdit11: TcxDBTextEdit;
+    cxDBTextEdit12: TcxDBTextEdit;
+    cxLabel15: TcxLabel;
+    cxDBTextEdit13: TcxDBTextEdit;
+    cxLabel16: TcxLabel;
+    cxDBTextEdit14: TcxDBTextEdit;
+    cxLabel17: TcxLabel;
+    cxDBTextEdit15: TcxDBTextEdit;
+    cxLabel18: TcxLabel;
+    cxDBTextEdit16: TcxDBTextEdit;
+    cxLabel19: TcxLabel;
+    cxDBTextEdit17: TcxDBTextEdit;
+    cxLabel20: TcxLabel;
+    cxDBTextEdit18: TcxDBTextEdit;
+    cxLabel21: TcxLabel;
+    cxDBTextEdit19: TcxDBTextEdit;
+    cxLabel22: TcxLabel;
+    cxLabel23: TcxLabel;
+    cxDBTextEdit20: TcxDBTextEdit;
+    cxLabel24: TcxLabel;
+    cxDBTextEdit21: TcxDBTextEdit;
+    cxLabel25: TcxLabel;
+    cxDBTextEdit22: TcxDBTextEdit;
+    cxLabel26: TcxLabel;
+    cxDBTextEdit23: TcxDBTextEdit;
+    cxLabel27: TcxLabel;
+    cxDBTextEdit24: TcxDBTextEdit;
+    cxLabel28: TcxLabel;
+    cxDBTextEdit25: TcxDBTextEdit;
+    cxLabel29: TcxLabel;
+    cxDBTextEdit26: TcxDBTextEdit;
+    cxDBTextEdit27: TcxDBTextEdit;
+    cxLabel30: TcxLabel;
+    cxDBTextEdit28: TcxDBTextEdit;
+    cxLabel31: TcxLabel;
+    cxDBTextEdit29: TcxDBTextEdit;
+    cxLabel32: TcxLabel;
+    cxLabel33: TcxLabel;
+    cxDBTextEdit30: TcxDBTextEdit;
+    memObservaciones: TWPRichText;
+    WPRuler1: TWPRuler;
+    WPToolBar1: TWPToolBar;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cdsStatus: TDAMemDataTable;
+    dsStatus: TDADataSource;
+    OpenPictureDialog: TOpenPictureDialog;
+    dbgCatalogoDBTableView1RecID: TcxGridDBColumn;
+    dbgCatalogoDBTableView1IDALUMNO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NUMCONTROL: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1FECHANACIMIENTO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1CURP: TcxGridDBColumn;
+    dbgCatalogoDBTableView1SEXO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1CIUDADNACIMIENTO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1DIRECCION: TcxGridDBColumn;
+    dbgCatalogoDBTableView1PADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1MADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1TELEFONOCASA: TcxGridDBColumn;
+    dbgCatalogoDBTableView1TELEFONOPADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1TELEFONOMADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1FECHAINICIO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1EMAIL: TcxGridDBColumn;
+    dbgCatalogoDBTableView1EMAILPADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1EMAILMADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1OBSERVACIONES: TcxGridDBColumn;
+    dbgCatalogoDBTableView1IDSTATUS: TcxGridDBColumn;
+    dbgCatalogoDBTableView1FOTO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1FACTURADOMICILIO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1FACTURANOMBRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1FACTURATELEFONO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1RFC: TcxGridDBColumn;
+    dbgCatalogoDBTableView1EMPRESAPADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1EMPRESAMADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1PUESTOMADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1PUESTOPADRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1APATERNO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1AMATERNO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBRES: TcxGridDBColumn;
+    cxDBImage1: TcxDBImage;
+    Panel2: TPanel;
+    cxLabel34: TcxLabel;
+    cxDBTextEdit31: TcxDBTextEdit;
+    cxLabel35: TcxLabel;
+    cxDBTextEdit32: TcxDBTextEdit;
+    cxLabel36: TcxLabel;
+    cxDBTextEdit33: TcxDBTextEdit;
+    cxLabel37: TcxLabel;
+    cxDBTextEdit34: TcxDBTextEdit;
+    cxLabel38: TcxLabel;
+    cxDBTextEdit35: TcxDBTextEdit;
+    cxDBTextEdit36: TcxDBTextEdit;
+    cxLabel39: TcxLabel;
+    cxLabel40: TcxLabel;
+    cxDBTextEdit37: TcxDBTextEdit;
+    cxDBCheckBox1: TcxDBCheckBox;
+    btnGeneraNumControl: TcxButton;
+    cdsActualizaNumeroControl: TDAMemDataTable;
+    rdaActualizaNumeroControl: TDARemoteDataAdapter;
+    cdsConfiguracion: TDAMemDataTable;
+    procedure btnFotoClick(Sender: TObject);
+    procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
+    procedure FormCreate(Sender: TObject);
+    procedure cdsCatalogoBeforePost(DataTable: TDADataTable);
+    procedure memObservacionesKeyPress(Sender: TObject; var Key: Char);
+    procedure cdsCatalogoAfterScroll(DataTable: TDADataTable);
+    procedure btnGeneraNumControlClick(Sender: TObject);
+  protected
+    procedure RegisterActions; override;
+  private
+    { Private declarations }
+    procedure ActionImprimir(Action: TBasicAction); override;
+  public
+    { Public declarations }
+    procedure UpdateActionsState; override;
+  end;
+
+var
+  frmAlumnos: TfrmAlumnos;
+
+implementation
+
+uses
+  uDM, dmImagenes;
+
+{$R *.dfm}
+
+procedure TfrmAlumnos.ActionImprimir(Action: TBasicAction);
+var
+    Rep: LibraryGauss_Intf.TReporteF;
+begin
+  //-- envio del reporte--//
+    Rep:=DM.Servidor.BuscarReporte('Directorio de Alumnos');
+    DM.Parametros.Factura:=0;
+    try
+     DM.Imprimir(Rep.SQL1, Rep.SQL2, Rep.Template, 'IMPRIMIENDO...', Rep.CampoJoin, False)
+    finally
+     Rep.Free;
+    end;
+end;
+
+procedure TfrmAlumnos.btnFotoClick(Sender: TObject);
+var
+  foto: String;
+begin
+  inherited;
+
+  OpenPictureDialog.Execute();
+  foto:= OpenPictureDialog.FileName;
+
+  if foto <> '' then
+  begin
+     cxDBImage1.DoEditing;
+     cxDBImage1.Picture.LoadFromFile(foto);
+  end;
+
+end;
+
+procedure TfrmAlumnos.btnGeneraNumControlClick(Sender: TObject);
+var
+  P: TParametrosF;
+  S: String;
+begin
+  ////////actualiza numero de control del alumno//////////////////////////////////
+           P:=TParametrosF.Create;
+           try
+           cdsConfiguracion.Close;
+           cdsConfiguracion.Open;
+           cdsActualizaNumeroControl.Close;
+           P.Alumno:=DM.idAlumnoEncontrado;
+
+           S:=cdsConfiguracion.FieldByName('FORMATOCONTROL').AsString;
+           rdaActualizaNumeroControl.GetDataCall.ParamByName('SQL').AsString:=S;
+           rdaActualizaNumeroControl.GetDataCall.ParamByName('Parametros').AsComplexType:=P;
+           cdsActualizaNumeroControl.Open;
+           finally FreeAndNil(P); end;
+////////////////////////////////////////////////////////////////////////////////
+  cdsCatalogo.Refresh;
+end;
+
+procedure TfrmAlumnos.cdsCatalogoAfterScroll(DataTable: TDADataTable);
+var
+  Aux: TStringStream;
+begin
+  memObservaciones.Clear;
+
+  if (cdsCatalogo.State = dsBrowse) then
+  begin
+    Aux:= TStringStream.Create(cdsCatalogo.FieldByName('OBSERVACIONES').AsString);
+    memObservaciones.LoadFromStream(Aux);
+  end;
+end;
+
+procedure TfrmAlumnos.cdsCatalogoBeforePost(DataTable: TDADataTable);
+var
+  Stream: TMemoryStream;
+begin
+  inherited;
+  Stream:= TMemoryStream.Create;
+  memObservaciones.SaveToStream(Stream);
+  if cdsCatalogo.State = dsEdit then
+  begin
+     cdsCatalogo.FieldByName('OBSERVACIONES').LoadFromStream(Stream);
+  end;
+  Stream.Free;
+end;
+
+procedure TfrmAlumnos.cdsCatalogoNewRecord(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsStatus.Close;
+  cdsStatus.Open;
+
+  cdsCatalogo.FieldByName('IDALUMNO').AsInteger:= DM.Servidor.Folio('IDALUMNO','');
+  cxTabSheet3.Enabled:= True;
+end;
+
+procedure TfrmAlumnos.FormCreate(Sender: TObject);
+var
+  Aux: TStringStream;
+begin
+  Campo:='IDALUMNO';
+  inherited;
+  cdsStatus.Close;
+  cdsStatus.Open;
+
+  if (cdsCatalogo.State = dsBrowse) then
+  begin
+    Aux:= TStringStream.Create(cdsCatalogo.FieldByName('OBSERVACIONES').AsString);
+    memObservaciones.LoadFromStream(Aux);
+  end;
+  pgcCatalogo.ActivePageIndex:=0;
+  cxPageControl1.ActivePageIndex:=0;
+end;
+
+procedure TfrmAlumnos.memObservacionesKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  cdsCatalogo.Edit;
+end;
+
+procedure TfrmAlumnos.RegisterActions;
+begin
+  inherited;
+  RegisterAction(AppActions.actImprimir, ActionImprimir);
+end;
+
+procedure TfrmAlumnos.UpdateActionsState;
+begin
+  inherited;
+
+end;
+
+initialization
+  ModuleInfoManager.RegisterModule('Alumnos', TfrmAlumnos);
+
+end.

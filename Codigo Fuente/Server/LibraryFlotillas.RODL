@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Library Name="LibraryIngresos" UID="{694D764B-832D-480C-893A-6E8B6B0FD1FC}" DontCodeGen="1" Version="3.0">
+<Services>
+<Service Name="ServiceIngresos" UID="{6A04A600-CA69-4FF9-9A98-B2FDA4B1D3C8}" Ancestor="DataAbstractService">
+<Interfaces>
+<Interface Name="Default" UID="{DB8D9395-4150-4DC0-85B8-CEDDC697105D}">
+<Operations>
+<Operation Name="AbreDataSetReportes" UID="{9AFAA76E-49DA-4A5B-B97E-F82208959F1A}">
+<Parameters>
+<Parameter Name="Result" DataType="Binary" Flag="Result">
+</Parameter>
+<Parameter Name="SQL" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="Parametros" DataType="TParametrosBI" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="AbreTurno" UID="{CFD6CFDA-6827-4D94-9222-00B3B66CD03B}">
+<Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
+<Parameter Name="IDTURNO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDESTACION" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="ObtenTurnosdeFecha" UID="{8EDC414D-4E02-4EED-B2BE-EDE216F14123}">
+<Parameters>
+<Parameter Name="Result" DataType="ATTurnoxFecha" Flag="Result">
+</Parameter>
+<Parameter Name="Fecha" DataType="DateTime" Flag="In" >
+</Parameter>
+<Parameter Name="Estacion" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="BuscarReporte" UID="{98950A8B-3CFF-4A32-9C00-9A42DD4491A7}">
+<Parameters>
+<Parameter Name="Result" DataType="TReporteBI" Flag="Result">
+</Parameter>
+<Parameter Name="Nombre" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="DragPagoMateria" UID="{8BF34831-5626-428E-ABC8-10AAED785E53}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="PAGOMATERIA" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDGRUPOTARGET" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDGRUPOSOURCE" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="ActualizaSubTipoPago" UID="{C6BF211D-8406-4264-A147-DFAC9550654C}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDTIPOPAGO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDSUBTIPOPAGO" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="DatosFacturaElectronica" UID="{39577A1F-AF08-4992-8CF9-9817DB300769}">
+<Parameters>
+<Parameter Name="Result" DataType="TFacturaElectronicaBI" Flag="Result">
+</Parameter>
+<Parameter Name="FacturaID" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="NumeroEstacion" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="DatosFactura" UID="{EC3F78A5-0908-4239-B785-D50DA409B3C0}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="Folio" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="Serie" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="Fecha" UID="{B8E6A356-A790-47B0-B794-EA142307FB23}">
+<Parameters>
+<Parameter Name="Result" DataType="DateTime" Flag="Result">
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="Folio" UID="{BEE3719F-A773-4611-BFF1-12A9BEA6B9B8}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+<Parameter Name="Campo" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="Serie" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="GuardaDatosFactura" UID="{A03C560F-D0D5-446A-8DD2-71C599813280}">
+<Parameters>
+<Parameter Name="DatosFactura" DataType="TDatosFactura" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="Login" UID="{E3CA3422-1DDA-4E81-BECA-65A492154835}">
+<Parameters>
+<Parameter Name="Result" DataType="TLoginInfoBI" Flag="Result">
+</Parameter>
+<Parameter Name="Usuario" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="Clave" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="IniciaCiclo" UID="{75D43C7E-F7B1-46B5-AD0C-D162EE76C19F}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDCICLO" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="ModificarFolioActual" UID="{06459A4C-645C-40E1-8DF4-274C58982AF3}">
+<Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
+<Parameter Name="Campo" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="Serie" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="FolioNew" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="InsertaFacturaElectronica" UID="{AC1BD167-6C45-406E-8377-45415EF06A79}">
+<Parameters>
+<Parameter Name="FacturaElectronicaID" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="CadenaOriginal" DataType="Widestring" Flag="In" >
+</Parameter>
+<Parameter Name="SelloDigital" DataType="Widestring" Flag="In" >
+</Parameter>
+<Parameter Name="FacturaID" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="Vigencia" DataType="Boolean" Flag="In" >
+</Parameter>
+<Parameter Name="Enviado" DataType="Boolean" Flag="In" >
+</Parameter>
+<Parameter Name="NoCertificado" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="NoAprobacion" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="FechaAprobacion" DataType="DateTime" Flag="In" >
+</Parameter>
+<Parameter Name="XMLCFD" DataType="Widestring" Flag="In" >
+</Parameter>
+<Parameter Name="XMLCFDI" DataType="Widestring" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="FolioActual2" UID="{A23C3AA2-B406-4C78-A85B-D6280A1054BC}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+<Parameter Name="Serie" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="folio" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="GuardaAccesos" UID="{A07C6F34-5DC7-40F6-87F6-FD96647B9930}">
+<Parameters>
+<Parameter Name="UsuarioID" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="Lista" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="EliminaMaestroDisponibilidad" UID="{4F79A34B-3F7D-4E6B-8AB4-2CD838973272}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDMAESTRODISPONIBILIDAD" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="EliminaMateriaMaestro" UID="{BA6F20D7-1C89-45C9-9883-D2FC3AC5663D}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDMAESTRO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDMATERIA" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="EliminaPago" UID="{979A127C-A353-4E60-AF4D-AA297C0B97C8}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="idSubtipoPago" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="status" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="idCiclos" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="idGrupo" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="EliminaPagoCaja" UID="{116544AA-A44C-4F38-BC49-7542C5D8DC75}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="idSubtipoPago" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="status" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="idCiclos" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="idGrupo" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="InsertaCaja" UID="{7EBEA38D-B4A0-401E-A551-034C871DBFDD}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+<Parameter Name="Observaciones" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="TipoPago" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="idEmpleado" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="LiquidaPago" UID="{6EF55EF4-F373-4EF2-9ABF-0E8D8B9CCB89}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="INTERES" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="IDEMPLEADO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDPAGO" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="DividePago" UID="{9413A79E-943D-4D5A-8522-0C75A87E1666}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+<Parameter Name="idPago" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="idEmpleado" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="Importes" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="Interes" DataType="Double" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="InsertaPagoCaja" UID="{AB1D2C33-898B-4DD3-8763-2B3980240C13}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDPAGO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDCAJA" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="AplicaCalificacion" UID="{1FAC5381-073F-4793-A8A1-A6B2C4E7DDC1}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="Calificacion" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="Faltas" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="idmaterias" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="idhistorialalumno" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="idhistorialgrupo" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="fecha" DataType="DateTime" Flag="In" >
+</Parameter>
+<Parameter Name="idtipocalificacion" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="califAux2" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="califAux1" DataType="Double" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="HistorialAlumnoDEL" UID="{5A247978-DCB0-43EE-8596-3956954F45CA}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDHISTORIALALUMNO" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="BecaDescuento" UID="{B838AD93-6AE2-43D4-91C5-D24FDACA8D62}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDHISTORIALALUMNO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="BECA" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="DESCUENTO" DataType="Double" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="InsertaHistorialAlumno" UID="{61ECD6F0-A297-4FDC-AAE5-FBED628CF2ED}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDHISTORIALALUMNO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDHISTORIALGRUPO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDALUMNO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="DOCUMENTOSFALTANTES" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="BECA" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="DESCUENTO" DataType="Double" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="CambioGrupo" UID="{D932637B-BE40-4ADC-83C7-861C14304485}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="IDHISTORIALALUMNO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDHISTORIALGRUPO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="DOCUMENTOSFALTANTES" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="BECA" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="DESCUENTO" DataType="Double" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="TipoCalificacion" UID="{ECD50991-EB65-49F3-9D50-C4C144EE9E81}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="DatosAlumno" UID="{454600EF-8E67-4D5E-AB2F-92C3320C023C}">
+<Parameters>
+<Parameter Name="Result" DataType="TDatos" Flag="Result">
+</Parameter>
+<Parameter Name="AlumnoID" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="DatosMaestro" UID="{F7FF564D-321D-415F-AE33-D1C954D5CCFD}">
+<Parameters>
+<Parameter Name="Result" DataType="TDatos" Flag="Result">
+</Parameter>
+<Parameter Name="MaestroID" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="PagoBanco" UID="{E7B8EE8D-09EA-4077-B962-28427EB0A5BE}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+<Parameter Name="FECHAPAGO" DataType="DateTime" Flag="In" >
+</Parameter>
+<Parameter Name="IDEMPLEADO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="IDPAGO" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="MONTO" DataType="Double" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="PrecioProducto" UID="{C3F37F4B-2D96-4EAA-A783-2641ADE94652}">
+<Parameters>
+<Parameter Name="Result" DataType="Double" Flag="Result">
+</Parameter>
+<Parameter Name="ProductoID" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="FolioActual" UID="{8CCD6B3A-88C6-4B2A-AA84-E514352CC71F}">
+<Parameters>
+<Parameter Name="Result" DataType="Integer" Flag="Result">
+</Parameter>
+<Parameter Name="Campo" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="Serie" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="ValidaFolioFactura" UID="{BB0F725A-F45E-49DE-BED3-25DE1E72DDD7}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="Campo" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="Folio" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="GuardarDatosFactura" UID="{EB8F71F6-E70D-479A-968F-ED84CDF9C63F}">
+<Parameters>
+<Parameter Name="DatosFactura" DataType="TDatosFactura" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="ActualizaTipoCampio" UID="{1B173D21-60BB-4B88-831D-C942E6FCEFF4}">
+<Parameters>
+<Parameter Name="Result" DataType="Boolean" Flag="Result">
+</Parameter>
+<Parameter Name="NUMEROESTACION" DataType="Int64" Flag="In" >
+</Parameter>
+<Parameter Name="FECHA" DataType="DateTime" Flag="In" >
+</Parameter>
+<Parameter Name="VALOR" DataType="Double" Flag="In" >
+</Parameter>
+<Parameter Name="IDMONEDA" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="ObtenTipoValores" UID="{18823857-91DE-4A28-838A-EEAFD01D2B6B}">
+<Parameters>
+<Parameter Name="Result" DataType="ATTipoValores" Flag="Result">
+</Parameter>
+<Parameter Name="NUMEROESTACION" DataType="Integer" Flag="In" >
+</Parameter>
+<Parameter Name="FECHA" DataType="DateTime" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="CostoProducto" UID="{0142E95F-5A15-4846-BE8B-6BC5A42A8D7F}">
+<Parameters>
+<Parameter Name="Result" DataType="Double" Flag="Result">
+</Parameter>
+<Parameter Name="IDPRODUCTO" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="Exporta" UID="{9C5986DB-29D1-4ED6-8F35-43AA1C15C0A1}">
+<Parameters>
+<Parameter Name="Result" DataType="TExporta" Flag="Result">
+</Parameter>
+<Parameter Name="ExportarID" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+</Operations>
+</Interface>
+</Interfaces>
+</Service>
+</Services>
+<EventSinks>
+</EventSinks>
+<Structs>
+<Struct Name="TLoginInfoBI" UID="{C135D80A-ED4E-4B18-A9B5-E6CD795B4232}" AutoCreateParams="1">
+<Elements>
+<Element Name="Valida" DataType="Boolean">
+</Element>
+<Element Name="EmpleadoID" DataType="Integer">
+</Element>
+<Element Name="NombreEmpleado" DataType="AnsiString">
+</Element>
+<Element Name="Accesos" DataType="ArrayOpcionBI">
+</Element>
+<Element Name="NumeroEstacion" DataType="Integer">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TOpcionBI" UID="{E828CE1C-A724-4B13-A7AB-251DD2DDABA6}" AutoCreateParams="1">
+<Elements>
+<Element Name="OpcionID" DataType="Integer">
+</Element>
+<Element Name="Nombre" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TDatosFactura" UID="{7B628C2D-03B5-4586-8980-A7C4D8682A0B}" AutoCreateParams="1">
+<Elements>
+<Element Name="Factura" DataType="TFactura">
+</Element>
+<Element Name="Detalles" DataType="ATDetalleFactura">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TFactura" UID="{97445B5F-20F1-484F-A53D-9574DAE27798}" AutoCreateParams="1">
+<Elements>
+<Element Name="ClienteID" DataType="Integer">
+</Element>
+<Element Name="Ejercicio" DataType="Integer">
+</Element>
+<Element Name="FacturaID" DataType="Integer">
+</Element>
+<Element Name="Fecha" DataType="DateTime">
+</Element>
+<Element Name="FechaImpresion" DataType="DateTime">
+</Element>
+<Element Name="FechaVencimiento" DataType="DateTime">
+</Element>
+<Element Name="Folio" DataType="Integer">
+</Element>
+<Element Name="Impuesto" DataType="Double">
+</Element>
+<Element Name="MovimientoID" DataType="Integer">
+</Element>
+<Element Name="Saldo" DataType="Double">
+</Element>
+<Element Name="Serie" DataType="AnsiString">
+</Element>
+<Element Name="Subtotal" DataType="Double">
+</Element>
+<Element Name="Tickets" DataType="AnsiString">
+</Element>
+<Element Name="Total" DataType="Double">
+</Element>
+<Element Name="UsuarioID" DataType="Integer">
+</Element>
+<Element Name="Periodo" DataType="Integer">
+</Element>
+<Element Name="ImpuestoPorcentaje" DataType="Double">
+</Element>
+<Element Name="FormaPagoID" DataType="Integer">
+</Element>
+<Element Name="NumeroEstacion" DataType="Integer">
+</Element>
+<Element Name="IDCondicionPago" DataType="Integer">
+</Element>
+<Element Name="MetodoPago" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TDetalleFactura" UID="{17F64C98-AFDD-4625-A000-6344F5A4ADAC}" AutoCreateParams="1">
+<Elements>
+<Element Name="DetalleFacturaID" DataType="Integer">
+</Element>
+<Element Name="FacturaID" DataType="Integer">
+</Element>
+<Element Name="Cantidad" DataType="Double">
+</Element>
+<Element Name="Precio" DataType="Double">
+</Element>
+<Element Name="Importe" DataType="Double">
+</Element>
+<Element Name="ProductoID" DataType="Integer">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TParametrosBI" UID="{5D8AE8C4-BDBF-4836-9619-DD3BFEA298FE}" AutoCreateParams="1">
+<Elements>
+<Element Name="FechaIni" DataType="DateTime">
+</Element>
+<Element Name="FechaFin" DataType="DateTime">
+</Element>
+<Element Name="Alumno" DataType="Integer">
+</Element>
+<Element Name="AlumnoIni" DataType="Integer">
+</Element>
+<Element Name="AlumnoFin" DataType="Integer">
+</Element>
+<Element Name="Grupo" DataType="Integer">
+</Element>
+<Element Name="Ciclo" DataType="Integer">
+</Element>
+<Element Name="Maestro" DataType="Integer">
+</Element>
+<Element Name="MaestroIni" DataType="Integer">
+</Element>
+<Element Name="MaestroFin" DataType="Integer">
+</Element>
+<Element Name="Nivel" DataType="Integer">
+</Element>
+<Element Name="TipoPago" DataType="Integer">
+</Element>
+<Element Name="TipoCalificacion" DataType="Integer">
+</Element>
+<Element Name="Usuario" DataType="Integer">
+</Element>
+<Element Name="Familia" DataType="Integer">
+</Element>
+<Element Name="Valor1" DataType="Integer">
+</Element>
+<Element Name="Status" DataType="Integer">
+</Element>
+<Element Name="Serie" DataType="AnsiString">
+</Element>
+<Element Name="Factura" DataType="Integer">
+</Element>
+<Element Name="IDTurno" DataType="Integer">
+</Element>
+<Element Name="FacturasCompras" DataType="Integer">
+</Element>
+<Element Name="TurnoInicio" DataType="Integer">
+</Element>
+<Element Name="TurnoFin" DataType="Integer">
+</Element>
+<Element Name="NumeroEstacion" DataType="Integer">
+</Element>
+<Element Name="HorarioIni" DataType="Integer">
+</Element>
+<Element Name="HorarioFin" DataType="Integer">
+</Element>
+<Element Name="NumeroEstacionIni" DataType="Integer">
+</Element>
+<Element Name="NumeroEstacionFin" DataType="Integer">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TReporteBI" UID="{840FE4EB-19A1-4A81-B571-222CBB15F87A}" AutoCreateParams="1">
+<Elements>
+<Element Name="SQL1" DataType="AnsiString">
+</Element>
+<Element Name="SQL2" DataType="AnsiString">
+</Element>
+<Element Name="Template" DataType="AnsiString">
+</Element>
+<Element Name="CampoJoin" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TFacturaElectronicaBI" UID="{DE871D13-47BB-450E-BAA0-B48738C3E28F}" AutoCreateParams="1">
+<Elements>
+<Element Name="Serie" DataType="AnsiString">
+</Element>
+<Element Name="Folio" DataType="AnsiString">
+</Element>
+<Element Name="Fecha" DataType="AnsiString">
+</Element>
+<Element Name="noAprobacion" DataType="AnsiString">
+</Element>
+<Element Name="anoAprobacion" DataType="AnsiString">
+</Element>
+<Element Name="tipoComprobante" DataType="AnsiString">
+</Element>
+<Element Name="formadePago" DataType="AnsiString">
+</Element>
+<Element Name="SubTotal" DataType="AnsiString">
+</Element>
+<Element Name="Total" DataType="AnsiString">
+</Element>
+<Element Name="RFCEmisor" DataType="AnsiString">
+</Element>
+<Element Name="NomEmpEmisor" DataType="AnsiString">
+</Element>
+<Element Name="DireccionEm" DataType="AnsiString">
+</Element>
+<Element Name="NoExteriorEM" DataType="AnsiString">
+</Element>
+<Element Name="ColoniaEmisor" DataType="AnsiString">
+</Element>
+<Element Name="MunicipioEmisor" DataType="AnsiString">
+</Element>
+<Element Name="EstadoEmisor" DataType="AnsiString">
+</Element>
+<Element Name="PaisEmisor" DataType="AnsiString">
+</Element>
+<Element Name="CodigoPostalEmisor" DataType="AnsiString">
+</Element>
+<Element Name="RFCReceptor" DataType="AnsiString">
+</Element>
+<Element Name="NombreReceptor" DataType="AnsiString">
+</Element>
+<Element Name="DomicilioReceptor" DataType="AnsiString">
+</Element>
+<Element Name="NoExteriorReceptor" DataType="AnsiString">
+</Element>
+<Element Name="ColoniaReceptor" DataType="AnsiString">
+</Element>
+<Element Name="LocalidadReceptor" DataType="AnsiString">
+</Element>
+<Element Name="MunicipioReceptor" DataType="AnsiString">
+</Element>
+<Element Name="EstadoReceptor" DataType="AnsiString">
+</Element>
+<Element Name="PaisReceptor" DataType="AnsiString">
+</Element>
+<Element Name="CodigoPostalReceptor" DataType="AnsiString">
+</Element>
+<Element Name="FacturaElectronicaDetalleImportes" DataType="ATFacturaElectronicaDetalleImportes">
+</Element>
+<Element Name="FacturaElectronicaDetalleImpuestos" DataType="ATFacturaElectronicaDetalleImpuestos">
+</Element>
+<Element Name="TotalImpuesto" DataType="AnsiString">
+</Element>
+<Element Name="CalleExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="NoExterioExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="ColoniaExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="CodigoPostalExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="LocalidadExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="MunicipioExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="EstadoExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="PaisExpedidoEn" DataType="AnsiString">
+</Element>
+<Element Name="Sucursal" DataType="Boolean">
+</Element>
+<Element Name="email" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TFacturaElectronicaDetalleImporteBI" UID="{FBD267C3-B6F1-4C16-A019-A6221A87B2E2}" AutoCreateParams="1">
+<Elements>
+<Element Name="CantidadReceptor" DataType="AnsiString">
+</Element>
+<Element Name="UnidadReceptor" DataType="AnsiString">
+</Element>
+<Element Name="DescripcionReceptor" DataType="AnsiString">
+</Element>
+<Element Name="ValorUnitarioReceptor" DataType="AnsiString">
+</Element>
+<Element Name="ImporteReceptor" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TFacturaElectronicaDetalleImpuestosBI" UID="{CD5F54A2-5CC5-4003-A111-3D09478893BF}" AutoCreateParams="1">
+<Elements>
+<Element Name="ImpuestoReceptor" DataType="AnsiString">
+</Element>
+<Element Name="TasaReceptor" DataType="AnsiString">
+</Element>
+<Element Name="ImporteImpReceptor" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TDataFacturaElectronicaBI" UID="{D05F0D74-6FA3-4DB7-881C-84624ECF54FA}" AutoCreateParams="1">
+<Elements>
+<Element Name="FacturaElectronicaBI" DataType="TFacturaElectronicaBI">
+</Element>
+<Element Name="CadenaOriginal" DataType="Widestring">
+</Element>
+<Element Name="SelloDigital" DataType="AnsiString">
+</Element>
+<Element Name="NumCertificado" DataType="AnsiString">
+</Element>
+<Element Name="Certificado" DataType="Widestring">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TDatos" UID="{4DE2E682-9AD3-458A-A66E-36D0E9E443BE}" AutoCreateParams="1">
+<Elements>
+<Element Name="Nombre" DataType="AnsiString">
+</Element>
+<Element Name="CODIGO" DataType="AnsiString">
+</Element>
+<Element Name="DIRECCION" DataType="AnsiString">
+</Element>
+<Element Name="IMSS" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TTipoValores" UID="{200C88A2-69BB-45EF-82B8-DEB5D8A517B4}" AutoCreateParams="1">
+<Elements>
+<Element Name="IDMONEDA" DataType="Integer">
+</Element>
+<Element Name="VALOR" DataType="Double">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TCampo" UID="{F2A7D801-7E67-4528-A5F0-60DBD78EC050}" AutoCreateParams="1">
+<Elements>
+<Element Name="Nombre" DataType="AnsiString">
+</Element>
+<Element Name="Size" DataType="Integer">
+</Element>
+<Element Name="Formato" DataType="AnsiString">
+</Element>
+<Element Name="Tipo" DataType="Integer">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TExporta" UID="{33317F60-185B-4A17-B8E7-A41B38F1F72D}" AutoCreateParams="1">
+<Elements>
+<Element Name="Nombre" DataType="AnsiString">
+</Element>
+<Element Name="Campos" DataType="ACampos">
+</Element>
+<Element Name="Pasos" DataType="APasos">
+</Element>
+<Element Name="Template" DataType="AnsiString">
+</Element>
+<Element Name="ScriptExporta" DataType="AnsiString">
+</Element>
+<Element Name="ScriptDatos" DataType="AnsiString">
+</Element>
+<Element Name="Parametros" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TParametrosExporta" UID="{16B672E9-8823-43D4-97E4-144B2DC8FD87}" AutoCreateParams="1">
+<Elements>
+<Element Name="Poliza" DataType="Integer">
+</Element>
+<Element Name="EstacionIni" DataType="Integer">
+</Element>
+<Element Name="EstacionFin" DataType="Integer">
+</Element>
+<Element Name="TurnoIni" DataType="Integer">
+</Element>
+<Element Name="TurnoFin" DataType="Integer">
+</Element>
+<Element Name="FechaIni" DataType="DateTime">
+</Element>
+<Element Name="FechaFin" DataType="DateTime">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TPasos" UID="{038D01B4-48AB-4B4B-BB01-E4386ACB6EBA}" AutoCreateParams="1">
+<Elements>
+<Element Name="Server" DataType="TServer">
+</Element>
+<Element Name="SQL" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TServer" UID="{6415BEF3-8EF8-41E7-9365-B3C1393E4F33}" AutoCreateParams="1">
+<Elements>
+<Element Name="ServidorID" DataType="Integer">
+</Element>
+<Element Name="Host" DataType="AnsiString">
+</Element>
+<Element Name="Estaciones" DataType="AEstaciones">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TEstacion" UID="{3A3925D4-A188-4511-BECB-930F0B8D2063}" AutoCreateParams="1">
+<Elements>
+<Element Name="EstacionID" DataType="Integer">
+</Element>
+<Element Name="Host" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TTurnoxFecha" UID="{031E3F01-10B4-43A0-80BF-2A3AAB29DD55}" AutoCreateParams="1">
+<Elements>
+<Element Name="IDTURNO" DataType="Integer">
+</Element>
+<Element Name="FECHA" DataType="DateTime">
+</Element>
+<Element Name="IDHORARIO" DataType="Integer">
+</Element>
+</Elements>
+</Struct>
+</Structs>
+<Enums>
+</Enums>
+<Arrays>
+<Array Name="ArrayOpcionBI" UID="{2A412024-E317-45B3-99A3-947F71F2F055}">
+<ElementType DataType="TOpcionBI" />
+</Array>
+<Array Name="ATDetalleFactura" UID="{E721BCA9-9319-4643-95E8-073110A04489}">
+<ElementType DataType="TDetalleFactura" />
+</Array>
+<Array Name="ATFacturaElectronicaDetalleImportes" UID="{8FB15C0A-1B8F-4197-A085-C754E410DFB0}">
+<ElementType DataType="TFacturaElectronicaDetalleImporteBI" />
+</Array>
+<Array Name="ATFacturaElectronicaDetalleImpuestos" UID="{9A654DC7-3F33-4FB1-BDCB-2F2E7AF2CE8D}">
+<ElementType DataType="TFacturaElectronicaDetalleImpuestosBI" />
+</Array>
+<Array Name="ATTipoValores" UID="{7F303A38-834D-4619-AAE5-8F4DE968CD53}">
+<ElementType DataType="TTipoValores" />
+</Array>
+<Array Name="ACampos" UID="{99003D56-DC02-4D54-85C8-2A2FE72E7D27}">
+<ElementType DataType="TCampo" />
+</Array>
+<Array Name="AEstaciones" UID="{A27127B9-0867-4374-BE36-3FCABF20BED6}">
+<ElementType DataType="TEstacion" />
+</Array>
+<Array Name="APasos" UID="{BA3B226A-C2C4-44EA-AF2B-6552023973F0}">
+<ElementType DataType="TPasos" />
+</Array>
+<Array Name="ATTurnoxFecha" UID="{D8C3627D-DDD6-4C24-94D1-90E15EEA78BB}">
+<ElementType DataType="TTurnoxFecha" />
+</Array>
+</Arrays>
+<Uses>
+<Use Name="DataAbstract" UID="{42E74701-061F-4124-93C1-ABD6CD345491}" Rodl="$(Data Abstract for Delphi)\Source\DataAbstract4.RODL" AbsoluteRodl="C:\Program Files (x86)\RemObjects Software\Data Abstract for Delphi\Source\DataAbstract4.RODL" UsedRodlUID="{DC8B7BE2-14AF-402D-B1F8-E1008B6FA4F6}" DontCodeGen="1">
+<Includes UID="{ECE5910F-040B-4BDF-9502-EDF7F95642CF}" Delphi="DataAbstract4" DotNet="RemObjects.DataAbstract.Server" ObjC="DataAbstract/DataAbstract4_Intf" Java="com.remobjects.dataabstract" Nougat="DataAbstract"/>
+</Use>
+</Uses>
+<Exceptions>
+</Exceptions>
+</Library>

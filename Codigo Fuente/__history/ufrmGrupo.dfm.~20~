@@ -1,0 +1,253 @@
+inherited frmGrupos: TfrmGrupos
+  Caption = 'frmGrupos'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcCatalogo: TcxPageControl
+    inherited cxTabSheet1: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 416
+      inherited dbgCatalogo: TcxGrid
+        Width = 616
+        Height = 416
+        ExplicitWidth = 616
+        ExplicitHeight = 416
+        inherited dbgCatalogoDBTableView1: TcxGridDBTableView
+          object dbgCatalogoDBTableView1IDGRUPO: TcxGridDBColumn
+            DataBinding.FieldName = 'IDGRUPO'
+          end
+          object dbgCatalogoDBTableView1CODIGO: TcxGridDBColumn
+            DataBinding.FieldName = 'CODIGO'
+          end
+          object dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBRE'
+          end
+          object dbgCatalogoDBTableView1IDNIVEL: TcxGridDBColumn
+            DataBinding.FieldName = 'IDNIVEL'
+          end
+          object dbgCatalogoDBTableView1CUPO: TcxGridDBColumn
+            DataBinding.FieldName = 'CUPO'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX1: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX1'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX2: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX2'
+          end
+        end
+      end
+    end
+    inherited cxTabSheet2: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 416
+      object Label1: TLabel
+        Left = 14
+        Top = 43
+        Width = 33
+        Height = 13
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label2: TLabel
+        Left = 14
+        Top = 83
+        Width = 29
+        Height = 13
+        Caption = 'Grupo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label3: TLabel
+        Left = 14
+        Top = 128
+        Width = 24
+        Height = 13
+        Caption = 'Nivel'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 14
+        Top = 56
+        DataBinding.DataField = 'CODIGO'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 0
+        Width = 121
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 616
+        Height = 30
+        Align = alTop
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Caption = ' Informacion acerca de Grupo'
+        Color = clBtnShadow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 30
+        Width = 616
+        Height = 2
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clNone
+        ParentBackground = False
+        TabOrder = 2
+      end
+      object cxDBLookupComboBox2: TcxDBLookupComboBox
+        Left = 14
+        Top = 141
+        DataBinding.DataField = 'IDNIVEL'
+        DataBinding.DataSource = dsCatalogo
+        Properties.KeyFieldNames = 'IDNIVEL'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NOMBRE'
+          end
+          item
+            FieldName = 'IDNIVEL'
+          end>
+        Properties.ListSource = dsNiveles
+        TabOrder = 3
+        Width = 290
+      end
+      object cxDBTextEdit2: TcxDBTextEdit
+        Left = 14
+        Top = 96
+        DataBinding.DataField = 'NOMBRE'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 4
+        Width = 290
+      end
+    end
+  end
+  inherited cdsCatalogo: TDAMemDataTable
+    Fields = <
+      item
+        Name = 'IDGRUPO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'IDNIVEL'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'CUPO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo GRUPO'
+    Top = 320
+  end
+  inherited dsCatalogo: TDADataSource
+    DataSet = cdsCatalogo.Dataset
+    Top = 352
+  end
+  inherited tblCatalogo: TdxMemData
+    Left = 536
+    Top = 320
+  end
+  object cdsNiveles: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDNIVEL'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    AfterPost = cdsCatalogoAfterPost
+    AfterDelete = cdsCatalogoAfterPost
+    LogicalName = 'dbo NIVEL'
+    IndexDefs = <>
+    Left = 496
+    Top = 216
+  end
+  object dsNiveles: TDADataSource
+    DataSet = cdsNiveles.Dataset
+    OnStateChange = dsCatalogoStateChange
+    DataTable = cdsNiveles
+    Left = 496
+    Top = 256
+  end
+end

@@ -1,0 +1,89 @@
+unit ufrmTipoCalificacion;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmCatalogo, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, dxmdaset, uDAInterfaces,
+  uDADataTable, uDAScriptingProvider, uDAMemDataTable, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, cxPC, cxContainer, ExtCtrls, cxTextEdit, cxDBEdit, StdCtrls, Modules,
+  dmActions, LibraryGauss_Intf, cxCheckBox;
+
+type
+  TfrmTipoCalificacion = class(TfrmCatalogo)
+    dbgCatalogoDBTableView1RecID: TcxGridDBColumn;
+    dbgCatalogoDBTableView1IDTIPOCALIFICACION: TcxGridDBColumn;
+    dbgCatalogoDBTableView1CODIGO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBREAUX1: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBREAUX2: TcxGridDBColumn;
+    Label1: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Label2: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label3: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    Label4: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBCheckBox1: TcxDBCheckBox;
+    procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
+  protected
+    procedure RegisterActions; override;
+  private
+    { Private declarations }
+    procedure ActionImprimir(Action: TBasicAction); override;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmTipoCalificacion: TfrmTipoCalificacion;
+
+implementation
+
+Uses uDM;
+
+{$R *.dfm}
+
+procedure TfrmTipoCalificacion.ActionImprimir(Action: TBasicAction);
+var
+    Rep: LibraryGauss_Intf.TReporteF;
+begin
+  //-- envio del reporte--//
+    Rep:=DM.Servidor.BuscarReporte('Catalogo de Tipo Calificacion');
+    DM.Parametros.Factura:=0;
+    try
+     DM.Imprimir(Rep.SQL1, Rep.SQL2, Rep.Template, 'IMPRIMIENDO...', Rep.CampoJoin, False)
+    finally
+     Rep.Free;
+    end;
+end;
+
+procedure TfrmTipoCalificacion.cdsCatalogoNewRecord(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsCatalogo.FieldByName('IDTIPOCALIFICACION').AsInteger:= DM.Servidor.TipoCalificacion;
+end;
+
+procedure TfrmTipoCalificacion.RegisterActions;
+begin
+  inherited;
+  RegisterAction(AppActions.actImprimir, ActionImprimir);
+end;
+
+initialization
+  ModuleInfoManager.RegisterModule('TipoCalificacion', TfrmTipoCalificacion);
+
+end.

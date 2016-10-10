@@ -1,0 +1,82 @@
+unit frmHorasCalendario;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmOKCancelar, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, Menus, StdCtrls,
+  cxButtons, cxGroupBox, ExtCtrls, cxTextEdit, cxMemo, cxCurrencyEdit, ComCtrls;
+
+type
+  TDatosHor = record
+    horas:Integer;
+    texto: String;
+  end;
+
+  TfrmHorCalendario = class(TfrmOKCancelar)
+    cxMemo1: TcxMemo;
+    Label1: TLabel;
+    Label2: TLabel;
+    UpDown1: TUpDown;
+    cxCurrencyEdit1: TcxCurrencyEdit;
+    procedure UpDown1ChangingEx(Sender: TObject; var AllowChange: Boolean;
+      NewValue: Smallint; Direction: TUpDownDirection);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    DatosHor: TDatosHor;
+  end;
+
+  TBuscaClass = class of TfrmHorCalendario;
+  function Pantalla(Clase: TBuscaClass): TDatosHor;
+
+var
+  frmHorCalendario: TfrmHorCalendario;
+
+implementation
+
+
+{$R *.dfm}
+
+function PantallaBusqueda(Clase: TBuscaClass): TDatosHor;
+var
+  Pantalla: TfrmHorCalendario;
+begin
+  Pantalla:=Clase.Create(nil);
+  Pantalla.ShowModal;
+  Result:=Pantalla.DatosHor;
+  FreeAndNil(Pantalla);
+end;
+
+procedure TfrmHorCalendario.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  DatosHor.horas:= cxCurrencyEdit1.EditValue;
+  DatosHor.texto:= cxMemo1.Text;
+end;
+
+procedure TfrmHorCalendario.UpDown1ChangingEx(Sender: TObject;
+  var AllowChange: Boolean; NewValue: Smallint; Direction: TUpDownDirection);
+begin
+  inherited;
+  if Direction = updUp then
+     cxCurrencyEdit1.Value:= cxCurrencyEdit1.Value + 1;
+
+  if Direction = updDown then
+     if cxCurrencyEdit1.Value = 0 then
+        cxCurrencyEdit1.Value:= 0
+     else cxCurrencyEdit1.Value := cxCurrencyEdit1.Value - 1;
+
+end;
+
+end.

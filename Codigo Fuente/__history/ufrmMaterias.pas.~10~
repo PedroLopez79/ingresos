@@ -1,0 +1,123 @@
+unit ufrmMaterias;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmCatalogo, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, dxmdaset, uDAInterfaces,
+  uDADataTable, uDAScriptingProvider, uDAMemDataTable, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, cxPC, Modules, cxContainer, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, ExtCtrls, cxTextEdit, cxDBEdit, StdCtrls,
+  cxGroupBox, cxRadioGroup, dmActions, LibraryGauss_Intf;
+
+type
+  TfrmMaterias = class(TfrmCatalogo)
+    dbgCatalogoDBTableView1IDMATERIA: TcxGridDBColumn;
+    dbgCatalogoDBTableView1CODIGO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn;
+    dbgCatalogoDBTableView1CREDITOS: TcxGridDBColumn;
+    dbgCatalogoDBTableView1MINIMOAPRO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1MAXIMOFALTAS: TcxGridDBColumn;
+    dbgCatalogoDBTableView1SERIADACON: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBREAUX1: TcxGridDBColumn;
+    dbgCatalogoDBTableView1NOMBREAUX2: TcxGridDBColumn;
+    dbgCatalogoDBTableView1HORASXSEMANA: TcxGridDBColumn;
+    dbgCatalogoDBTableView1PROMEDIO: TcxGridDBColumn;
+    dbgCatalogoDBTableView1ORDENOFICIAL: TcxGridDBColumn;
+    dbgCatalogoDBTableView1ORDENINTERNO: TcxGridDBColumn;
+    Label1: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Panel2: TPanel;
+    Panel1: TPanel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBTextEdit4: TcxDBTextEdit;
+    Label4: TLabel;
+    cxDBTextEdit5: TcxDBTextEdit;
+    Label5: TLabel;
+    cxDBTextEdit6: TcxDBTextEdit;
+    Label6: TLabel;
+    cxDBTextEdit7: TcxDBTextEdit;
+    Label7: TLabel;
+    cxDBTextEdit8: TcxDBTextEdit;
+    Label8: TLabel;
+    Label9: TLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBTextEdit9: TcxDBTextEdit;
+    Label10: TLabel;
+    cxDBTextEdit10: TcxDBTextEdit;
+    Label11: TLabel;
+    cxDBRadioGroup1: TcxDBRadioGroup;
+    cdsMaterias: TDAMemDataTable;
+    dsMaterias: TDADataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
+  protected
+    procedure RegisterActions; override;
+  private
+    { Private declarations }
+    procedure ActionImprimir(Action: TBasicAction); override;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmMaterias: TfrmMaterias;
+
+implementation
+
+USES uDM;
+
+{$R *.dfm}
+
+procedure TfrmMaterias.ActionImprimir(Action: TBasicAction);
+var
+    Rep: LibraryGauss_Intf.TReporteF;
+begin
+  //-- envio del reporte--//
+    Rep:=DM.Servidor.BuscarReporte('Catalogo de Materias');
+    DM.Parametros.Factura:=0;
+    try
+     DM.Imprimir(Rep.SQL1, Rep.SQL2, Rep.Template, 'IMPRIMIENDO...', Rep.CampoJoin, False)
+    finally
+     Rep.Free;
+    end;
+end;
+procedure TfrmMaterias.cdsCatalogoNewRecord(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsCatalogo.FieldByName('IDMATERIA').AsInteger:= DM.Servidor.Folio('IDMATERIA','');
+end;
+
+procedure TfrmMaterias.FormCreate(Sender: TObject);
+begin
+  inherited;
+  cdsMaterias.Close;
+  cdsMaterias.Open;
+
+  cdsCatalogo.Close;
+  cdsCatalogo.Open;
+end;
+
+procedure TfrmMaterias.RegisterActions;
+begin
+  inherited;
+  RegisterAction(AppActions.actImprimir, ActionImprimir);
+end;
+
+initialization
+  ModuleInfoManager.RegisterModule('Materias', TfrmMaterias);
+
+end.

@@ -1,0 +1,174 @@
+inherited frmCustomModule1: TfrmCustomModule1
+  Caption = 'frmTaspaso'
+  ClientHeight = 389
+  ClientWidth = 555
+  ExplicitWidth = 555
+  ExplicitHeight = 389
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 555
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Traspasos de Referencias Bancarias'
+    Color = clBtnShadow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+    ExplicitTop = -13
+    ExplicitWidth = 640
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 87
+    Width = 555
+    Height = 2
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clNone
+    ParentBackground = False
+    TabOrder = 1
+    ExplicitLeft = 32
+    ExplicitTop = 83
+    ExplicitWidth = 640
+  end
+  object ListView1: TListView
+    Left = 0
+    Top = 89
+    Width = 555
+    Height = 300
+    Align = alClient
+    Columns = <
+      item
+        Caption = 'Referencia'
+        Width = 150
+      end
+      item
+        Caption = 'Status'
+        Width = 100
+      end
+      item
+        Caption = 'Fecha'
+        Width = 80
+      end
+      item
+        Caption = 'Importe'
+        Width = 80
+      end
+      item
+        Caption = 'Dia'
+        Width = 80
+      end>
+    TabOrder = 2
+    ViewStyle = vsReport
+    ExplicitLeft = 144
+    ExplicitTop = 275
+    ExplicitWidth = 250
+    ExplicitHeight = 150
+  end
+  object cxGroupBox1: TcxGroupBox
+    Left = 0
+    Top = 30
+    Align = alTop
+    TabOrder = 3
+    ExplicitTop = 26
+    ExplicitWidth = 498
+    Height = 57
+    Width = 555
+    object Label1: TLabel
+      Left = 11
+      Top = 6
+      Width = 36
+      Height = 13
+      Caption = 'Bancos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object dbcCiclo: TcxLookupComboBox
+      Left = 11
+      Top = 25
+      Properties.KeyFieldNames = 'idciclo'
+      Properties.ListColumns = <
+        item
+          FieldName = 'nombre'
+        end>
+      TabOrder = 0
+      Width = 221
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 240
+    Top = 56
+  end
+  object PSScript: TPasScript
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Courier new'
+    Font.Style = []
+    Align = True
+    Left = 272
+    Top = 56
+  end
+  object cdsBancos: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDBANCO'
+        DataType = datInteger
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CUENTA'
+        DataType = datString
+        Size = 25
+      end
+      item
+        Name = 'FORMATO'
+        DataType = datMemo
+      end
+      item
+        Name = 'IDEMPLEADO'
+        DataType = datInteger
+      end>
+    Params = <>
+    MasterMappingMode = mmWhere
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    MasterFields = 'IDFAMILIA'
+    DetailFields = 'IDFAMILIA'
+    LogicalName = 'dbo BANCO'
+    IndexDefs = <>
+    Left = 320
+    Top = 56
+  end
+  object dsBancos: TDADataSource
+    DataSet = cdsBancos.Dataset
+    DataTable = cdsBancos
+    Left = 352
+    Top = 56
+  end
+end

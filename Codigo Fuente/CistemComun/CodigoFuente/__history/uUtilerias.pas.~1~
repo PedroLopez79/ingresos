@@ -1,0 +1,15 @@
+unit uUtilerias;
+
+interface
+
+function GeneraPassword(Longitud: Byte): String;
+
+implementation
+
+function GeneraPassword(Longitud: Byte): String;
+begin
+
+
+end;
+
+end.

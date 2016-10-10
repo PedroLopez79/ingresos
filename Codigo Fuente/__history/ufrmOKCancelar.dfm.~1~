@@ -1,0 +1,5 @@
+inherited frmOKCancelar: TfrmOKCancelar
+  Caption = 'frmOKCancelar'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

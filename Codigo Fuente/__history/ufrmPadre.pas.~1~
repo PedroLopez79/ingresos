@@ -1,0 +1,24 @@
+unit ufrmPadre;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TfrmPadre = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPadre: TfrmPadre;
+
+implementation
+
+{$R *.dfm}
+
+end.

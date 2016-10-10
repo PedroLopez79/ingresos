@@ -1,0 +1,26 @@
+unit ufrmOKCancelar;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmPadre, ExtCtrls;
+
+type
+  TfrmOKCancelar = class(TfrmPadre)
+    Panel1: TPanel;
+    Panel2: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmOKCancelar: TfrmOKCancelar;
+
+implementation
+
+{$R *.dfm}
+
+end.

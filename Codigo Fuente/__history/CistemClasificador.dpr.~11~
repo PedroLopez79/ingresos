@@ -1,0 +1,58 @@
+program CistemClasificador;
+
+uses
+  uROComInit,
+  Windows,
+  Forms,
+  MidasLib,
+  ufrmPrincipal in 'ufrmPrincipal.pas' {frmPrincipal},
+  uDM in 'uDM.pas' {DM: TDAClientDataModule},
+  Modules in '..\..\CistemComun\CodigoFuente\Modules.pas',
+  ufrmCatalogo in '..\..\CistemComun\CodigoFuente\ufrmCatalogo.pas' {frmCatalogo},
+  ufrmSplash in '..\..\CistemComun\CodigoFuente\ufrmSplash.pas' {frmSplash},
+  CustomModule in '..\..\CistemComun\CodigoFuente\CustomModule.pas' {frmCustomModule},
+  dmActions in '..\..\CistemComun\CodigoFuente\dmActions.pas' {dmAppActions: TDataModule},
+  dmImagenes in '..\..\CistemComun\CodigoFuente\dmImagenes.pas' {dmImages: TDataModule},
+  ufrmPassword in '..\..\CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
+  Seguridad in '..\..\CistemComun\CodigoFuente\Seguridad.pas',
+  ufrmSplashScreen in 'ufrmSplashScreen.pas' {frmSplashScreen},
+  LibXmlParser in '..\..\CistemComun\CodigoFuente\LibXmlParser.pas',
+  LoginComun in '..\..\CistemComun\CodigoFuente\LoginComun.pas',
+  UtileriasComun in '..\..\CistemComun\CodigoFuente\UtileriasComun.pas',
+  ufrmCatalogoReportes in 'ufrmCatalogoReportes.pas' {frmCatalogoReportes},
+  ufrmPantallaParametros in 'ufrmPantallaParametros.pas' {frmPantallaParametros},
+  ufrmBuscar in 'ufrmBuscar.pas' {frmBuscar},
+  ufrmBuscarCliente in 'ufrmBuscarCliente.pas' {frmBuscarCliente},
+  uDMFlotillas in 'uDMFlotillas.pas' {DMFlotillas: TDataModule},
+  LibraryFlotillas_Intf in '..\Flotillas\LibraryFlotillas_Intf.pas',
+  ufrmBuscarTarjeta in 'ufrmBuscarTarjeta.pas' {frmBuscarTarjeta},
+  ufrmPantallaReportes in 'ufrmPantallaReportes.pas' {frmPantallaReportes},
+  ufrmReportesConsumo in 'ufrmReportesConsumo.pas' {frmReposteConsumo},
+  LibraryGauss_Intf in 'Server\LibraryGauss_Intf.pas',
+  ufrmAlumnos in 'ufrmAlumnos.pas' {frmAlumnos};
+
+{$R *.res}
+
+var
+  Mutex : THandle;
+
+begin
+  Mutex := CreateMutex(nil, True, 'CistemClasificador');
+  if (Mutex <> 0) and (GetLastError = 0) then
+  begin
+    frmSplashScreen:=TfrmSplashScreen.Create(Application);
+    frmSplashScreen.Show;
+    Application.Initialize;
+    Application.Title := 'CistemClasificador 1.0';
+    Application.CreateForm(TDM, DM);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmAppActions, dmAppActions);
+  Application.CreateForm(TdmImages, dmImages);
+  Application.CreateForm(TDMFlotillas, DMFlotillas);
+  Application.CreateForm(TfrmAlumnos, frmAlumnos);
+  Sleep(3000);
+    frmSplashScreen.Hide;
+    frmSplashScreen.Free;
+    Application.Run;
+  end;
+end.

@@ -1,0 +1,98 @@
+unit ufrmEmpresas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmCatalogo, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, dxmdaset, uDAInterfaces,
+  uDADataTable, uDAScriptingProvider, uDAMemDataTable, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, cxPC, cxContainer, StdCtrls, cxTextEdit, cxDBEdit, ExtCtrls, Menus,
+  cxButtons, Modules, cxDBLookupComboBox, cxGroupBox;
+
+type
+  TfrmEmpresas = class(TfrmCatalogo)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet4: TcxTabSheet;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxTabSheet7: TcxTabSheet;
+    cxDBTextEdit11: TcxDBTextEdit;
+    cxDBTextEdit12: TcxDBTextEdit;
+    cxDBTextEdit13: TcxDBTextEdit;
+    cxDBTextEdit14: TcxDBTextEdit;
+    Label1: TLabel;
+    cxDBTextEdit6: TcxDBTextEdit;
+    cxDBTextEdit7: TcxDBTextEdit;
+    cxDBTextEdit8: TcxDBTextEdit;
+    cdsFamilia: TDAMemDataTable;
+    dsFamilia: TDADataSource;
+    cdsAlumnos: TDAMemDataTable;
+    dsAlumnos: TDADataSource;
+    cxGroupBox1: TcxGroupBox;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1DBTableView1NOCONTROL: TcxGridDBColumn;
+    cxGrid1DBTableView1NOMBRE: TcxGridDBColumn;
+    cxGrid1Level1: TcxGridLevel;
+    btnAgregar: TcxButton;
+    btnEliminar: TcxButton;
+    Label13: TLabel;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label10: TLabel;
+    Label3: TLabel;
+    Label9: TLabel;
+    Label11: TLabel;
+    procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
+    procedure btnAgregarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmEmpresas: TfrmEmpresas;
+
+implementation
+uses uDM;
+
+{$R *.dfm}
+
+procedure TfrmEmpresas.btnAgregarClick(Sender: TObject);
+begin
+  inherited;
+  cdsFamilia.Insert;
+  cdsFamilia.FieldByName('IDFAMILIAALUMNO').AsInteger:= DM.Servidor.Folio('IDFAMILIAALUMNO','');
+end;
+
+procedure TfrmEmpresas.cdsCatalogoNewRecord(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsCatalogo.FieldByName('IDFAMILIA').AsInteger:= DM.Servidor.Folio('IDFAMILIA','');
+
+end;
+
+initialization
+  ModuleInfoManager.RegisterModule('Empresas', TfrmEmpresas);
+
+end.

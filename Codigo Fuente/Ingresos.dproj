@@ -1,0 +1,456 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{f44cebcc-a6e3-47fb-8458-c76784558ccf}</ProjectGuid>
+        <MainSource>Ingresos.dpr</MainSource>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+        <DCC_DependencyCheckOutputName>..\OutPut\Ingresos.exe</DCC_DependencyCheckOutputName>
+        <FrameworkType>VCL</FrameworkType>
+        <ProjectVersion>15.1</ProjectVersion>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;Data.Win;System.Win;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Build>200</VerInfo_Build>
+        <VerInfo_Release>67</VerInfo_Release>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.67.200;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.67.5;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Icon_MainIcon>Ingresos_Icon16.ico</Icon_MainIcon>
+        <DCC_Namespace>Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <Icon_MainIcon>Ingresos_Icon16.ico</Icon_MainIcon>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <Version>7.0</Version>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+        <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <Version>7.0</Version>
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_ExeOutput>..\OutPut</DCC_ExeOutput>
+        <DCC_DcuOutput>..\..\Units</DCC_DcuOutput>
+        <DCC_ObjOutput>..\..\Units</DCC_ObjOutput>
+        <DCC_HppOutput>..\..\Units</DCC_HppOutput>
+    </PropertyGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Parameters>
+                    <Parameters Name="UseLauncher">False</Parameters>
+                    <Parameters Name="LoadAllSymbols">True</Parameters>
+                    <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+                </Parameters>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">True</VersionInfo>
+                    <VersionInfo Name="MajorVer">1</VersionInfo>
+                    <VersionInfo Name="MinorVer">0</VersionInfo>
+                    <VersionInfo Name="Release">67</VersionInfo>
+                    <VersionInfo Name="Build">200</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1033</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName"/>
+                    <VersionInfoKeys Name="FileDescription"/>
+                    <VersionInfoKeys Name="FileVersion">1.0.67.200</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName"/>
+                    <VersionInfoKeys Name="LegalCopyright"/>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename"/>
+                    <VersionInfoKeys Name="ProductName"/>
+                    <VersionInfoKeys Name="ProductVersion">1.0.67.5</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                </VersionInfoKeys>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\Steema Software\TeeChart 7.12 for Delphi 2007\Delphi11\Bin\DclTeePro711.bpl">TeeChart Pro 7 Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\Steema Software\TeeChart 7.12 for Delphi 2007\Delphi11\Bin\DclTree2D11Tee7.bpl">TeeTree 2 Components</Excluded_Packages>
+                </Excluded_Packages>
+                <Source>
+                    <Source Name="MainSource">Ingresos.dpr</Source>
+                </Source>
+            </Delphi.Personality>
+            <ModelSupport>False</ModelSupport>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="ufrmPrincipal.pas">
+            <Form>frmPrincipal</Form>
+        </DCCReference>
+        <DCCReference Include="uDMExcel.pas">
+            <Form>DMExcel</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uDM.pas">
+            <Form>DM</Form>
+            <DesignClass>TDAClientDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ufrmSplashScreen.pas">
+            <Form>frmSplashScreen</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscar.pas">
+            <Form>frmBuscar</Form>
+        </DCCReference>
+        <DCCReference Include="uDMFlotillas.pas">
+            <Form>DMFlotillas</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Flotillas\LibraryFlotillas_Intf.pas"/>
+        <DCCReference Include="ufrmCatalogoUsuarios.pas">
+            <Form>frmCatalogoUsuarios</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBancos.pas">
+            <Form>frmBancos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscaMateria.pas">
+            <Form>frmBuscaMateria</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmPadre.pas">
+            <Form>frmPadre</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmOKCancelar.pas">
+            <Form>frmOKCancelar</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarAlumno.pas">
+            <Form>frmBuscarAlumno</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmFacturacionDePiso.pas">
+            <Form>FrmFacturacionDePiso</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarProducto.pas">
+            <Form>frmBuscarProducto</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarMaestro.pas">
+            <Form>frmBuscarMaestro</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmConfiguracion.pas">
+            <Form>frmConfiguracion</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmCatalogoProductos.pas">
+            <Form>frmCatalogoProducto</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmAgregarAlumno.pas">
+            <Form>frmAgregarAlumno</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarPago.pas">
+            <Form>frmBuscarPago</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmDialogo.pas">
+            <Form>frmDialogo</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmHorarios.pas">
+            <Form>frmHorarios</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmEmpleado.pas">
+            <Form>frmEmpleado</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmProveedor.pas">
+            <Form>frmProveedor</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmClienteEfectivo.pas">
+            <Form>frmClienteEfectivo</Form>
+        </DCCReference>
+        <DCCReference Include="ufmAlmacen.pas">
+            <Form>frmAlmacen</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmTanque.pas">
+            <Form>frmTanque</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmTipodePago.pas">
+            <Form>frmTipodePago</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmStatus.pas">
+            <Form>frmStatus</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmTipoComprobacion.pas">
+            <Form>frmTipoComprobacion</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmCuentasContables.pas">
+            <Form>frmCuentasContables</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmChequera.pas">
+            <Form>frmChequera</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmLinea.pas">
+            <Form>frmLinea</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmMarca.pas">
+            <Form>frmMarca</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmUnidadesMedida.pas">
+            <Form>frmUnidadesMedida</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmConceptosMovimientosBancarios.pas">
+            <Form>frmConceptosMovimientosBancarios</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmClienteCredito.pas">
+            <Form>frmClienteCredito</Form>
+        </DCCReference>
+        <DCCReference Include="uAgregaLinea.pas">
+            <Form>frmAgregaLinea</Form>
+        </DCCReference>
+        <DCCReference Include="uAgregaUnidadMedida.pas">
+            <Form>frmAgregaUnidadMedida</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmVehiculo.pas">
+            <Form>frmVehiculo</Form>
+        </DCCReference>
+        <DCCReference Include="uCurp.pas">
+            <Form>Fo_AyudaCurp</Form>
+        </DCCReference>
+        <DCCReference Include="uTurnoxFecha.pas">
+            <Form>Fo_TurnoxFecha</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarCliente.pas">
+            <Form>frmBuscarCliente</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarClienteCredito.pas">
+            <Form>frmBuscarClienteCredito</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmCredito.pas">
+            <Form>frmCredito</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmDebito.pas">
+            <Form>frmDebito</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmAutorizaciones.pas">
+            <Form>frmAutorizaciones</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmIngreso.pas">
+            <Form>frmIngresos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmFacturacionXCliente.pas">
+            <Form>frmFacturacionXCliente</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmReenviaCorreoSATCreditos.pas">
+            <Form>frmReenviaCorreoSATCreditos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmReporteSATCreditos.pas">
+            <Form>frmReporteSatCreditos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmReporteSATEfectivos.pas">
+            <Form>frmReporteSatEfectivos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmReenviaCorreoSATEfectivos.pas">
+            <Form>frmReenviaCorreoSATEfectivos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmAltasConsumos.pas">
+            <Form>frmAltasConsumos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmGenerarDispositivo.pas">
+            <Form>frmGenerarDispositivo</Form>
+        </DCCReference>
+        <DCCReference Include="uDMCistemGas.pas">
+            <Form>DMCistemGas</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\CistemGas\LibraryCistemGas_Intf.pas"/>
+        <DCCReference Include="ufrmDenominacion.pas">
+            <Form>frmDenominacion</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmDepositos.pas">
+            <Form>frmDepositos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmCompras.pas">
+            <Form>FrmCompra</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarProveedor.pas">
+            <Form>frmBuscarProveedor</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Flotillas\ufrmPantallaParametrosFlotillas.pas">
+            <Form>frmPantallaParametrosFlotillas</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Flotillas\ufrmPantallaReportesFlotillas.pas">
+            <Form>frmPantallaReportesFlotillas</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Flotillas\ufrmReportesConsumoFlotillas.pas">
+            <Form>frmReportesConsumoFlotillas</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmCatalogoReportes.pas">
+            <Form>frmCatalogoReportes</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmPantallaParametros.pas">
+            <Form>frmPantallaParametros</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmPantallaReportes.pas">
+            <Form>frmPantallaReportes</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesConsumo.pas">
+            <Form>frmReposteConsumo</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesExportar.pas">
+            <Form>frmReportesExportar</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesGenerales.pas">
+            <Form>frmReportesGenerales</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesPago.pas">
+            <Form>frmReportePago</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmIngresoXfecha.pas">
+            <Form>frmIngresosXfecha</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarTarjetasAditivos.pas">
+            <Form>frmBuscarTarjetasAdivitos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarTarjetasGastos.pas">
+            <Form>frmBuscarTarjetasGastos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmDepositosxFecha.pas">
+            <Form>frmDepositosxFecha</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmDatosIngresos.pas">
+            <Form>frmDatosIngresos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmDatosIngresosxFecha.pas">
+            <Form>frmDatosIngresosxFecha</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmVales.pas">
+            <Form>frmVales</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Exporta\ClaseGenera.pas"/>
+        <DCCReference Include="SRV Exporta\ufrmCatalogoReportesExporta.pas">
+            <Form>frmCatalogoReportesExporta</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Exporta\ufrmExportar.pas">
+            <Form>frmExportar</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Exporta\ufrmPantallaParametrosExporta.pas">
+            <Form>frmPantallaParametrosExporta</Form>
+        </DCCReference>
+        <DCCReference Include="SRV Exporta\uPSI_ClaseGenera.pas"/>
+        <DCCReference Include="Server\LibraryIngresos_Intf.pas"/>
+        <DCCReference Include="ufrmSaldosClientes.pas">
+            <Form>frmSaldosClientes</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmSaldosPageDown.pas">
+            <Form>DatosFacturaCliente</Form>
+        </DCCReference>
+        <DCCReference Include="Server\lib Factura Electronica\xslprod.pas"/>
+        <DCCReference Include="Server\lib Factura Electronica\SiteConst.pas"/>
+        <DCCReference Include="uRapFunctions.pas"/>
+        <DCCReference Include="uRFC.pas">
+            <Form>Fo_AyudaRFC</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\CustomModule.pas">
+            <Form>frmCustomModule</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\dmActions.pas">
+            <Form>dmAppActions</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\dmImagenes.pas">
+            <Form>dmImages</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\ESBDates.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\ExportaDataSet.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\ImpresionTickets.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\LibXmlParser.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\LoginComun.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\Modules.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\rbPrvDlg.pas">
+            <Form>rbPrintPreview</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\Seguridad.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\SynchedThreads.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\ufrmCatalogo.pas">
+            <Form>frmCatalogo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\ufrmPassword.pas">
+            <Form>frmPassword</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\ufrmSplash.pas">
+            <Form>frmSplash</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CistemComun\CodigoFuente\uPSI_ExportaDataSet.pas"/>
+        <DCCReference Include="CistemComun\CodigoFuente\UtileriasComun.pas"/>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+</Project>
+
+<!-- EurekaLog First Line
+[Exception Log]
+EurekaLog Version=7007
+Activate=0
+DeleteMapAfterCompile=1
+Encrypt Password=""
+EurekaLog Last Line -->

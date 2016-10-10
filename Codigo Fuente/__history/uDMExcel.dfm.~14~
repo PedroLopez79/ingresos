@@ -1,0 +1,17 @@
+object DMExcel: TDMExcel
+  OldCreateOrder = False
+  Height = 350
+  Width = 414
+  object ADOExcel: TADOConnection
+    CursorLocation = clUseServer
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 40
+    Top = 28
+  end
+  object tblExcel: TADOTable
+    Left = 40
+    Top = 80
+  end
+end

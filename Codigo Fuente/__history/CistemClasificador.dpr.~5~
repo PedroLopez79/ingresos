@@ -1,0 +1,49 @@
+program CistemClasificador;
+
+uses
+  uROComInit,
+  Windows,
+  Forms,
+  MidasLib,
+  ufrmPrincipal in 'ufrmPrincipal.pas' {frmPrincipal},
+  uDM in 'uDM.pas' {DM: TDAClientDataModule},
+  Modules in '..\..\CistemComun\CodigoFuente\Modules.pas',
+  ufrmCatalogo in '..\..\CistemComun\CodigoFuente\ufrmCatalogo.pas' {frmCatalogo},
+  ufrmSplash in '..\..\CistemComun\CodigoFuente\ufrmSplash.pas' {frmSplash},
+  CustomModule in '..\..\CistemComun\CodigoFuente\CustomModule.pas' {frmCustomModule},
+  dmActions in '..\..\CistemComun\CodigoFuente\dmActions.pas' {dmAppActions: TDataModule},
+  dmImagenes in '..\..\CistemComun\CodigoFuente\dmImagenes.pas' {dmImages: TDataModule},
+  ufrmPassword in '..\..\CistemComun\CodigoFuente\ufrmPassword.pas' {frmPassword},
+  Seguridad in '..\..\CistemComun\CodigoFuente\Seguridad.pas',
+  uPSI_ClaseGenera in 'uPSI_ClaseGenera.pas',
+  ufrmSplashScreen in 'ufrmSplashScreen.pas' {frmSplashScreen},
+  rbPrvDlg in '..\..\CistemComun\CodigoFuente\rbPrvDlg.pas' {rbPrintPreview},
+  uRapFunctions in 'uRapFunctions.pas',
+  LibXmlParser in '..\..\CistemComun\CodigoFuente\LibXmlParser.pas',
+  LoginComun in '..\..\CistemComun\CodigoFuente\LoginComun.pas',
+  UtileriasComun in '..\..\CistemComun\CodigoFuente\UtileriasComun.pas',
+  ClasificadorLibrary_Intf in 'Server\ClasificadorLibrary_Intf.pas';
+
+{$R *.res}
+
+var
+  Mutex : THandle;
+
+begin
+  Mutex := CreateMutex(nil, True, 'CistemExporta');
+  if (Mutex <> 0) and (GetLastError = 0) then
+  begin
+    frmSplashScreen:=TfrmSplashScreen.Create(Application);
+    frmSplashScreen.Show;
+    Application.Initialize;
+    Application.Title := 'CistemExporta 1.0';
+    Application.CreateForm(TDM, DM);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmAppActions, dmAppActions);
+  Application.CreateForm(TdmImages, dmImages);
+  Sleep(3000);
+    frmSplashScreen.Hide;
+    frmSplashScreen.Free;
+    Application.Run;
+  end;
+end.

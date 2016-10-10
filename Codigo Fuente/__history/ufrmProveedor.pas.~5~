@@ -1,0 +1,62 @@
+unit ufrmProveedor;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmCatalogo, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, dxmdaset, uDAInterfaces,
+  uDADataTable, uDAScriptingProvider, uDAMemDataTable, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, cxPC, cxContainer, cxTextEdit, cxDBEdit, cxLabel, ExtCtrls;
+
+type
+  TfrmProveedor = class(TfrmCatalogo)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    LblNoProducto: TcxLabel;
+    TxtNoProducto: TcxDBTextEdit;
+    LblNombre: TcxLabel;
+    TxtNombre: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxLabel4: TcxLabel;
+    cxDBTextEdit9: TcxDBTextEdit;
+    cxLabel9: TcxLabel;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxLabel5: TcxLabel;
+    cxDBTextEdit6: TcxDBTextEdit;
+    cxLabel6: TcxLabel;
+    cxDBTextEdit7: TcxDBTextEdit;
+    cxLabel7: TcxLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmProveedor: TfrmProveedor;
+
+implementation
+uses uDM, Modules;
+
+{$R *.dfm}
+
+initialization
+   ModuleInfoManager.RegisterModule('Proveedor', TfrmProveedor);
+
+end.

@@ -1,0 +1,326 @@
+object DMExcel: TDMExcel
+  OldCreateOrder = False
+  Height = 350
+  Width = 414
+  object tblExcel: TADOTable
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=C:\Us' +
+      'ers\Peter\Desktop\ESCRITORIO\Gauss\Datos\00696.xls;Mode=Share De' +
+      'ny None;Jet OLEDB:System database="";Jet OLEDB:Registry Path="";' +
+      'Jet OLEDB:Database Password="";Jet OLEDB:Engine Type=35;Jet OLED' +
+      'B:Database Locking Mode=0;Jet OLEDB:Global Partial Bulk Ops=2;Je' +
+      't OLEDB:Global Bulk Transactions=1;Jet OLEDB:New Database Passwo' +
+      'rd="";Jet OLEDB:Create System Database=False;Jet OLEDB:Encrypt D' +
+      'atabase=False;Jet OLEDB:Don'#39't Copy Locale on Compact=False;Jet O' +
+      'LEDB:Compact Without Replica Repair=False;Jet OLEDB:SFP=False;'
+    CursorType = ctStatic
+    TableDirect = True
+    TableName = 'Calificaciones$'
+    Left = 40
+    Top = 72
+    object tblExcelNum: TFloatField
+      FieldName = 'Num'
+    end
+    object tblExcelMATERIACODIGO: TWideStringField
+      FieldName = 'MATERIACODIGO'
+      Size = 255
+    end
+    object tblExcelPROMEDIO: TFloatField
+      FieldName = 'PROMEDIO'
+    end
+    object tblExcelMATERIA: TWideStringField
+      FieldName = 'MATERIA'
+      Size = 255
+    end
+    object tblExcelCalif01: TFloatField
+      FieldName = 'Calif01'
+    end
+    object tblExcelAuxA01: TFloatField
+      FieldName = 'AuxA01'
+    end
+    object tblExcelAuxB01: TFloatField
+      FieldName = 'AuxB01'
+    end
+    object tblExcelProm01: TFloatField
+      FieldName = 'Prom01'
+    end
+    object tblExcelFaltas01: TFloatField
+      FieldName = 'Faltas01'
+    end
+    object tblExcelCalif02: TFloatField
+      FieldName = 'Calif02'
+    end
+    object tblExcelAuxA02: TFloatField
+      FieldName = 'AuxA02'
+    end
+    object tblExcelAuxB02: TFloatField
+      FieldName = 'AuxB02'
+    end
+    object tblExcelProm02: TFloatField
+      FieldName = 'Prom02'
+    end
+    object tblExcelFaltas02: TFloatField
+      FieldName = 'Faltas02'
+    end
+    object tblExcelCalif03: TFloatField
+      FieldName = 'Calif03'
+    end
+    object tblExcelAuxA03: TFloatField
+      FieldName = 'AuxA03'
+    end
+    object tblExcelAuxB03: TFloatField
+      FieldName = 'AuxB03'
+    end
+    object tblExcelProm03: TFloatField
+      FieldName = 'Prom03'
+    end
+    object tblExcelFaltas03: TFloatField
+      FieldName = 'Faltas03'
+    end
+    object tblExcelCalif04: TFloatField
+      FieldName = 'Calif04'
+    end
+    object tblExcelAuxA04: TFloatField
+      FieldName = 'AuxA04'
+    end
+    object tblExcelAuxB04: TFloatField
+      FieldName = 'AuxB04'
+    end
+    object tblExcelProm04: TFloatField
+      FieldName = 'Prom04'
+    end
+    object tblExcelFaltas04: TFloatField
+      FieldName = 'Faltas04'
+    end
+    object tblExcelCalif05: TFloatField
+      FieldName = 'Calif05'
+    end
+    object tblExcelAuxA05: TFloatField
+      FieldName = 'AuxA05'
+    end
+    object tblExcelAuxB05: TFloatField
+      FieldName = 'AuxB05'
+    end
+    object tblExcelProm05: TFloatField
+      FieldName = 'Prom05'
+    end
+    object tblExcelFaltas05: TFloatField
+      FieldName = 'Faltas05'
+    end
+    object tblExcelCalif06: TFloatField
+      FieldName = 'Calif06'
+    end
+    object tblExcelAuxA06: TFloatField
+      FieldName = 'AuxA06'
+    end
+    object tblExcelAuxB06: TFloatField
+      FieldName = 'AuxB06'
+    end
+    object tblExcelProm06: TFloatField
+      FieldName = 'Prom06'
+    end
+    object tblExcelFaltas06: TFloatField
+      FieldName = 'Faltas06'
+    end
+    object tblExcelCalif07: TFloatField
+      FieldName = 'Calif07'
+    end
+    object tblExcelAuxA07: TFloatField
+      FieldName = 'AuxA07'
+    end
+    object tblExcelAuxB07: TFloatField
+      FieldName = 'AuxB07'
+    end
+    object tblExcelProm07: TFloatField
+      FieldName = 'Prom07'
+    end
+    object tblExcelFaltas07: TFloatField
+      FieldName = 'Faltas07'
+    end
+    object tblExcelCalif08: TFloatField
+      FieldName = 'Calif08'
+    end
+    object tblExcelAuxA08: TFloatField
+      FieldName = 'AuxA08'
+    end
+    object tblExcelAuxB08: TFloatField
+      FieldName = 'AuxB08'
+    end
+    object tblExcelProm08: TFloatField
+      FieldName = 'Prom08'
+    end
+    object tblExcelFaltas08: TFloatField
+      FieldName = 'Faltas08'
+    end
+    object tblExcelCalif09: TFloatField
+      FieldName = 'Calif09'
+    end
+    object tblExcelAuxA09: TFloatField
+      FieldName = 'AuxA09'
+    end
+    object tblExcelAuxB09: TFloatField
+      FieldName = 'AuxB09'
+    end
+    object tblExcelProm09: TFloatField
+      FieldName = 'Prom09'
+    end
+    object tblExcelFaltas09: TFloatField
+      FieldName = 'Faltas09'
+    end
+    object tblExcelCalif10: TFloatField
+      FieldName = 'Calif10'
+    end
+    object tblExcelAuxA10: TFloatField
+      FieldName = 'AuxA10'
+    end
+    object tblExcelAuxB10: TFloatField
+      FieldName = 'AuxB10'
+    end
+    object tblExcelProm10: TFloatField
+      FieldName = 'Prom10'
+    end
+    object tblExcelFaltas10: TFloatField
+      FieldName = 'Faltas10'
+    end
+    object tblExcelCalif11: TFloatField
+      FieldName = 'Calif11'
+    end
+    object tblExcelAuxA11: TFloatField
+      FieldName = 'AuxA11'
+    end
+    object tblExcelAuxB11: TFloatField
+      FieldName = 'AuxB11'
+    end
+    object tblExcelProm11: TFloatField
+      FieldName = 'Prom11'
+    end
+    object tblExcelFaltas11: TFloatField
+      FieldName = 'Faltas11'
+    end
+    object tblExcelCalif12: TFloatField
+      FieldName = 'Calif12'
+    end
+    object tblExcelAuxA12: TFloatField
+      FieldName = 'AuxA12'
+    end
+    object tblExcelAuxB12: TFloatField
+      FieldName = 'AuxB12'
+    end
+    object tblExcelProm12: TFloatField
+      FieldName = 'Prom12'
+    end
+    object tblExcelFaltas12: TFloatField
+      FieldName = 'Faltas12'
+    end
+    object tblExcelCalif13: TFloatField
+      FieldName = 'Calif13'
+    end
+    object tblExcelAuxA13: TFloatField
+      FieldName = 'AuxA13'
+    end
+    object tblExcelAuxB13: TFloatField
+      FieldName = 'AuxB13'
+    end
+    object tblExcelProm13: TFloatField
+      FieldName = 'Prom13'
+    end
+    object tblExcelFaltas13: TFloatField
+      FieldName = 'Faltas13'
+    end
+    object tblExcelCalif14: TFloatField
+      FieldName = 'Calif14'
+    end
+    object tblExcelAuxA14: TFloatField
+      FieldName = 'AuxA14'
+    end
+    object tblExcelAuxB14: TFloatField
+      FieldName = 'AuxB14'
+    end
+    object tblExcelProm14: TFloatField
+      FieldName = 'Prom14'
+    end
+    object tblExcelFaltas14: TFloatField
+      FieldName = 'Faltas14'
+    end
+    object tblExcelCalif15: TFloatField
+      FieldName = 'Calif15'
+    end
+    object tblExcelAuxA15: TFloatField
+      FieldName = 'AuxA15'
+    end
+    object tblExcelAuxB15: TFloatField
+      FieldName = 'AuxB15'
+    end
+    object tblExcelProm15: TFloatField
+      FieldName = 'Prom15'
+    end
+    object tblExcelFaltas15: TFloatField
+      FieldName = 'Faltas15'
+    end
+    object tblExcelCalif16: TFloatField
+      FieldName = 'Calif16'
+    end
+    object tblExcelAuxA16: TFloatField
+      FieldName = 'AuxA16'
+    end
+    object tblExcelAuxB16: TFloatField
+      FieldName = 'AuxB16'
+    end
+    object tblExcelProm16: TFloatField
+      FieldName = 'Prom16'
+    end
+    object tblExcelFaltas16: TFloatField
+      FieldName = 'Faltas16'
+    end
+    object tblExcelEER1: TFloatField
+      FieldName = 'EER1'
+    end
+    object tblExcelEER2: TFloatField
+      FieldName = 'EER2'
+    end
+    object tblExcelEER3: TFloatField
+      FieldName = 'EER3'
+    end
+    object tblExcelEER4: TFloatField
+      FieldName = 'EER4'
+    end
+    object tblExcelEER5: TFloatField
+      FieldName = 'EER5'
+    end
+    object tblExcelCalifFin: TFloatField
+      FieldName = 'CalifFin'
+    end
+    object tblExcelAuxAFin: TFloatField
+      FieldName = 'AuxAFin'
+    end
+    object tblExcelAuxBFin: TFloatField
+      FieldName = 'AuxBFin'
+    end
+    object tblExcelProm161: TFloatField
+      FieldName = 'Prom161'
+    end
+    object tblExcelFaltasFin: TFloatField
+      FieldName = 'FaltasFin'
+    end
+    object tblExcelAlumno: TWideStringField
+      FieldName = 'Alumno'
+      Size = 255
+    end
+    object tblExcelNumControl: TWideStringField
+      FieldName = 'NumControl'
+      Size = 255
+    end
+    object tblExcelGrupoCodigo: TWideStringField
+      FieldName = 'GrupoCodigo'
+      Size = 255
+    end
+    object tblExcelGrupo: TWideStringField
+      FieldName = 'Grupo'
+      Size = 255
+    end
+    object tblExcelCiclo: TWideStringField
+      FieldName = 'Ciclo'
+      Size = 255
+    end
+  end
+end

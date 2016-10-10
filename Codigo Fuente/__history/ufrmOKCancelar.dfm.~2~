@@ -1,0 +1,39 @@
+inherited frmOKCancelar: TfrmOKCancelar
+  Caption = ''
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 350
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Dialogo'
+    Color = clBtnShadow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+    ExplicitLeft = -442
+    ExplicitWidth = 792
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 30
+    Width = 350
+    Height = 2
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clNone
+    ParentBackground = False
+    TabOrder = 1
+    ExplicitLeft = -442
+    ExplicitWidth = 792
+  end
+end

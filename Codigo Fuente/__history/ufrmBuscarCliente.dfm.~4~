@@ -1,0 +1,39 @@
+inherited frmBuscarCliente: TfrmBuscarCliente
+  Caption = 'Buscar Cliente'
+  ExplicitWidth = 625
+  ExplicitHeight = 445
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dbgAgrupacion: TcxGrid
+    inherited cxGridDBTableView1: TcxGridDBTableView
+      OnKeyDown = cxGridDBTableView1KeyDown
+      object cxGridDBTableView1Column1: TcxGridDBColumn
+        DataBinding.FieldName = 'ClienteID'
+      end
+      object cxGridDBTableView1Column2: TcxGridDBColumn
+        DataBinding.FieldName = 'Nombre'
+        Width = 153
+      end
+      object cxGridDBTableView1Column3: TcxGridDBColumn
+        DataBinding.FieldName = 'Ciudad'
+        Width = 106
+      end
+      object cxGridDBTableView1Column4: TcxGridDBColumn
+        DataBinding.FieldName = 'Colonia'
+        Width = 110
+      end
+      object cxGridDBTableView1Column5: TcxGridDBColumn
+        DataBinding.FieldName = 'Domicilio'
+      end
+    end
+  end
+  inherited cdsBuscar: TDACDSDataTable
+    OnFilterRecord = cdsBuscarFilterRecord
+    LogicalName = 'dbo Cliente'
+    Left = 511
+    Top = 272
+  end
+  inherited dsBuscar: TDADataSource
+    DataSet = cdsBuscar.Dataset
+  end
+end

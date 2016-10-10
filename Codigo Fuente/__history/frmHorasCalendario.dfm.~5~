@@ -1,0 +1,56 @@
+inherited frmOKCancelar1: TfrmOKCancelar1
+  Caption = 'Calendario Horas y Texto'
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel [0]
+    Left = 8
+    Top = 33
+    Width = 35
+    Height = 13
+    Caption = '#Horas'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label2: TLabel [1]
+    Left = 8
+    Top = 77
+    Width = 23
+    Height = 13
+    Caption = 'Nota'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object cxMemo1: TcxMemo
+    Left = 8
+    Top = 96
+    TabOrder = 3
+    Height = 82
+    Width = 334
+  end
+  object UpDown1: TUpDown
+    Left = 131
+    Top = 50
+    Width = 17
+    Height = 25
+    TabOrder = 4
+    OnChangingEx = UpDown1ChangingEx
+  end
+  object cxCurrencyEdit1: TcxCurrencyEdit
+    Left = 8
+    Top = 52
+    EditValue = 0
+    Properties.DisplayFormat = '0'
+    TabOrder = 5
+    Width = 121
+  end
+end

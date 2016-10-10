@@ -1,0 +1,78 @@
+unit ufrmBuscarProspecto;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmBuscar, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  cxDataStorage, cxEdit, DB, cxDBData, uDADataTable, uDAScriptingProvider,
+  uDACDSDataTable, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  Menus, cxLookAndFeelPainters, dxRibbon, StdCtrls, cxButtons, ExtCtrls,
+  dxStatusBar, dxRibbonStatusBar, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, dxSkinsdxRibbonPainter, uDAInterfaces, cxContainer,
+  cxGroupBox, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinSilver, dxSkinStardust, dxSkinSummer2008,
+  dxSkinValentine, dxSkinXmas2008Blue, cxLookAndFeels,
+  dxSkinDarkSide, dxSkinPumpkin, 
+  dxSkinSpringTime, dxSkinDarkRoom, dxSkinFoggy, dxSkinSeven, dxSkinSharp;
+
+type
+  TfrmBuscarProspecto = class(TfrmBuscar)
+    cxGridDBTableView1RecID: TcxGridDBColumn;
+    cxGridDBTableView1NOMBRE: TcxGridDBColumn;
+    cxGridDBTableView1FECHANACIMIENTO: TcxGridDBColumn;
+    cxGridDBTableView1SEXO: TcxGridDBColumn;
+    cxGridDBTableView1CIUDADNACIMIENTO: TcxGridDBColumn;
+    cxGridDBTableView1DIRECCION: TcxGridDBColumn;
+    cxGridDBTableView1PADRE: TcxGridDBColumn;
+    cxGridDBTableView1MADRE: TcxGridDBColumn;
+    cxGridDBTableView1TELEFONOCASA: TcxGridDBColumn;
+    cxGridDBTableView1EMAIL: TcxGridDBColumn;
+    cxGridDBTableView1EMAILPADRE: TcxGridDBColumn;
+    cxGridDBTableView1EMAILMADRE: TcxGridDBColumn;
+    cxGridDBTableView1APATERNO: TcxGridDBColumn;
+    cxGridDBTableView1AMATERNO: TcxGridDBColumn;
+    cxGridDBTableView1NOMBRES: TcxGridDBColumn;
+    cxGridDBTableView1ESCUELAPROCEDENCIA: TcxGridDBColumn;
+    procedure cdsBuscarFilterRecord(DataTable: TDADataTable;
+      var Accept: Boolean);
+    procedure cxGridDBTableView1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBuscarProspecto: TfrmBuscarProspecto;
+
+implementation
+
+uses uDM;
+
+{$R *.dfm}
+
+procedure TfrmBuscarProspecto.cdsBuscarFilterRecord(DataTable: TDADataTable;
+  var Accept: Boolean);
+begin
+  inherited;
+  Accept:= Pos(DataTable.FieldByName('FormaCompraID').AsString + ',', CRITERIO) > 0;
+end;
+
+procedure TfrmBuscarProspecto.cxGridDBTableView1DblClick(Sender: TObject);
+begin
+  Datos.Clave:=cdsBuscar.FieldByName('IDPROSPECTO').AsInteger;
+  Datos.Nombre:= cdsBuscar.FieldByName('Nombre').AsString;
+  Datos.RFC := cdsBuscar.FieldByName('DIRECCION').AsString;
+  Datos.Cuenta:= cdsBuscar.FieldByName('NUMCONTROL').AsString;
+
+  Datos.OK:=True;
+  inherited;
+
+end;
+
+end.

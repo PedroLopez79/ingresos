@@ -1,0 +1,487 @@
+unit ufrmPantallaParametrosFlotillas;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CustomModule, cxGraphics, Menus, cxLookAndFeelPainters, DB,
+  uDADataTable, uDAScriptingProvider, uDACDSDataTable, cxSpinEdit,
+  cxDropDownEdit, cxCalendar, cxImageComboBox, StdCtrls, cxButtons,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCurrencyEdit, cxTextEdit,
+  cxMaskEdit, cxTimeEdit, cxGroupBox, cxControls, cxContainer, cxEdit,
+  cxRadioGroup, ExtCtrls, jpeg, LibraryFlotillas_Intf, dxRibbonForm, cxClasses,
+  dxRibbon, dxSkinsCore, dxSkinsDefaultPainters, uDAMemDataTable, uDAInterfaces,
+  dxSkinsdxRibbonPainter, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinSilver, dxSkinStardust, dxSkinSummer2008,
+  dxSkinValentine, dxSkinXmas2008Blue, cxLookAndFeels, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinFoggy, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
+  dxSkinSpringTime;
+
+type
+  TfrmPantallaParametrosFlotillas = class(TdxcustomRibbonForm)
+    rbImporteLitros: TcxRadioGroup;
+    rbMovimientos: TcxRadioGroup;
+    gbHora: TcxGroupBox;
+    Label39: TLabel;
+    Label40: TLabel;
+    edtHoraIni: TcxTimeEdit;
+    edtHoraFin: TcxTimeEdit;
+    gbAgentes: TcxGroupBox;
+    Label32: TLabel;
+    Label33: TLabel;
+    edtNombreAgenteIni: TcxTextEdit;
+    edtNombreAgenteFin: TcxTextEdit;
+    edtAgenteIni: TcxCurrencyEdit;
+    edtAgenteFin: TcxCurrencyEdit;
+    gbAnioComparar: TcxGroupBox;
+    Label26: TLabel;
+    edtAnioComparar: TcxCurrencyEdit;
+    gbGrupo: TcxGroupBox;
+    Label7: TLabel;
+    dbcGrupo: TcxLookupComboBox;
+    gbClientes: TcxGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    edtClienteIni: TcxCurrencyEdit;
+    edtClienteFin: TcxCurrencyEdit;
+    edtNombreClienteIni: TcxTextEdit;
+    edtNombreClienteFin: TcxTextEdit;
+    edtBuscaClienteIni: TcxButton;
+    edtBuscaClienteFin: TcxButton;
+    edtFormaDeCompra: TcxImageComboBox;
+    edtDiaFacturar: TcxImageComboBox;
+    gbCliente: TcxGroupBox;
+    Label8: TLabel;
+    edtCliente: TcxCurrencyEdit;
+    edtNombreCliente: TcxTextEdit;
+    cxButton1: TcxButton;
+    gbRangoFechas: TcxGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    dtpInicial: TcxDateEdit;
+    dtpFinal: TcxDateEdit;
+    gbFactura: TcxGroupBox;
+    Label12: TLabel;
+    Label10: TLabel;
+    edtFactura: TcxCurrencyEdit;
+    gbEstaciones: TcxGroupBox;
+    Label5: TLabel;
+    Label6: TLabel;
+    gbTipoMov: TcxGroupBox;
+    Label24: TLabel;
+    edtTipoMov: TcxTextEdit;
+    gbTarjetas: TcxGroupBox;
+    Label14: TLabel;
+    Label15: TLabel;
+    edtTarjetaIni: TcxCurrencyEdit;
+    edtTarjetaFin: TcxCurrencyEdit;
+    edtVehiculoIni: TcxTextEdit;
+    edtVehiculoFin: TcxTextEdit;
+    gbRangoDeFacturas: TcxGroupBox;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label9: TLabel;
+    edtRangoFacturaIni: TcxCurrencyEdit;
+    edtRangoFacturaFin: TcxCurrencyEdit;
+    s: TcxButton;
+    btnCancelar: TcxButton;
+    rgEstatusTarjetas: TcxRadioGroup;
+    rgEstatusClientes: TcxRadioGroup;
+    pnlAntiguedad: TcxGroupBox;
+    GroupBox1: TcxGroupBox;
+    lblRangoInicial: TLabel;
+    lblRangoFinal: TLabel;
+    edtCodRangoInicial: TcxCurrencyEdit;
+    edtDesRangoInicial: TcxTextEdit;
+    btnBuscaRangoIni: TcxButton;
+    edtCodRangoFinal: TcxCurrencyEdit;
+    edtDesRangoFinal: TcxTextEdit;
+    btnBuscaRangoFin: TcxButton;
+    GroupBox2: TcxGroupBox;
+    dtpFechaCorte: TcxDateEdit;
+    gbGrupoAntiguedad: TcxGroupBox;
+    dbcGrupoAntiguedad: TcxLookupComboBox;
+    GroupBox3: TcxGroupBox;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label43: TLabel;
+    edtVenc0: TcxCurrencyEdit;
+    edtVenc1: TcxCurrencyEdit;
+    edtVenc2: TcxCurrencyEdit;
+    edtVenc3: TcxCurrencyEdit;
+    edtVenc4: TcxCurrencyEdit;
+    rgSeleccion: TcxRadioGroup;
+    rgEstatus: TcxRadioGroup;
+    rgOrden: TcxRadioGroup;
+    gbTipoFecha: TcxRadioGroup;
+    gbPeriodos: TcxGroupBox;
+    Label11: TLabel;
+    Label13: TLabel;
+    Label20: TLabel;
+    edtEjercicio: TcxSpinEdit;
+    cbPeriodoIni: TcxImageComboBox;
+    cbPeriodoFin: TcxImageComboBox;
+    cdsDiaFacturar: TDACDSDataTable;
+    cdsGrupo: TDACDSDataTable;
+    dsGrupo: TDADataSource;
+    dxRibbon1: TdxRibbon;
+    dxRibbon1Tab1: TdxRibbonTab;
+    cdsTipoTarjeta: TDACDSDataTable;
+    cdsSerie: TDACDSDataTable;
+    dsSerie: TDADataSource;
+    edtSerie3: TcxImageComboBox;
+    cdsEstaciones: TDACDSDataTable;
+    dsEstaciones: TDADataSource;
+    cxEstacionIni: TcxLookupComboBox;
+    cxEstacionFin: TcxLookupComboBox;
+    gbSecuencias: TcxGroupBox;
+    Label21: TLabel;
+    Label22: TLabel;
+    edtSecueciaIni: TcxCurrencyEdit;
+    edtSecuenciaFin: TcxCurrencyEdit;
+    edtSerie: TcxImageComboBox;
+    gbRecibo: TcxGroupBox;
+    Label23: TLabel;
+    cxReciboID: TcxTextEdit;
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure edtBuscaClienteIniClick(Sender: TObject);
+    procedure sClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure edtClienteIniExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure edtClienteExit(Sender: TObject);
+  private
+    { Private declarations }
+    procedure DatosCliente(Cliente: TcxCurrencyEdit; Nombre: TcxTextEdit);
+    function ControlCliente(Cual: Integer): TcxCurrencyEdit;
+    function ControlClienteNombre(Cual: Integer): TcxTextEdit;
+  public
+    { Public declarations }
+    Parametros: TParametrosF;
+    procedure PrenderParametros(Cad : String);
+  end;
+
+function ObtenParametros(Parametros, Titulo: String): TParametrosF;
+
+var
+  frmPantallaParametrosFlotillas: TfrmPantallaParametrosFlotillas;
+
+implementation
+
+uses uDMFlotillas, ufrmBuscarClienteCredito, ufrmBuscar, UtileriasComun;
+
+{$R *.dfm}
+
+{ TfrmPantallaParametros }
+
+function ObtenParametros(Parametros, Titulo: String): TParametrosF;
+var
+  Aux: TfrmPantallaParametrosFlotillas;
+begin
+  Result:=nil;
+  Aux:=TfrmPantallaParametrosFlotillas.Create(nil);
+  Aux.Caption:=Titulo;
+  Aux.PrenderParametros(Parametros);
+  if Aux.ShowModal = mrOK then
+    Result:=Aux.Parametros;
+  Aux.Free;
+end;
+
+procedure TfrmPantallaParametrosFlotillas.sClick(Sender: TObject);
+begin
+  inherited;
+  Parametros.TipoFecha:=gbTipoFecha.ItemIndex;
+  Parametros.ClienteIni:=edtClienteIni.EditValue;
+  Parametros.ClienteFin:=edtClienteFin.EditValue;
+  Parametros.TarjetaIni:=edtTarjetaIni.EditValue;
+  Parametros.TarjetaFin:=edtTarjetaFin.EditValue;
+  Parametros.FechaIni:=0;
+  Parametros.FechaFin:=65000;
+  Parametros.EstacionIni:=0;
+  Parametros.EstacionFin:=9999;
+
+  if gbRecibo.Visible then
+  begin
+    Parametros.Seleccion:=cxReciboID.EditValue;
+  end;
+  if gbCliente.Visible then
+  begin
+    Parametros.ClienteIni:=edtCliente.EditValue;
+    Parametros.ClienteFin:=edtCliente.EditValue;
+  end;
+  if gbRangoFechas.Visible then
+  begin
+    Parametros.FechaIni:=Trunc(dtpInicial.Date);
+    Parametros.FechaFin:=Trunc(dtpFinal.Date) + MinSeg_59;
+  end;
+  if gbHora.Visible then
+  begin
+    Parametros.FechaIni:=Trunc(dtpInicial.Date) + edtHoraIni.EditValue;
+    Parametros.FechaFin:=Trunc(dtpFinal.Date) + edtHoraFin.EditValue;
+  end;
+  if gbEstaciones.Visible then
+  begin
+    Parametros.EstacionIni:=cxEstacionIni.EditValue;//edtEstacionIni.EditValue;
+    Parametros.EstacionFin:=cxEstacionFin.EditValue;//edtEstacionFin.EditValue;
+  end;
+  Parametros.TipoMov:=edtTipoMov.Text;
+  if gbRangoDeFacturas.Visible = True then
+  begin
+  Parametros.FacturaIni:=edtRangoFacturaIni.EditValue;
+  Parametros.FacturaFin:=edtRangoFacturaFin.EditValue;
+  end;
+  Parametros.Serie:=edtSerie.Text;
+  if gbFactura.Visible then
+  begin
+    Parametros.FacturaIni:=edtFactura.EditValue;
+    Parametros.FacturaFin:=edtFactura.EditValue;
+    Parametros.Serie:=edtSerie3.Text;
+  end;
+  Parametros.FormaCompraID:=edtFormaDeCompra.EditValue;
+  Parametros.DiaFacturarID:=edtDiaFacturar.EditValue;
+  Parametros.Grupo:=dbcGrupo.EditValue;
+  Parametros.AgenteIni:=edtAgenteIni.EditValue;
+  Parametros.AgenteFin:=edtAgenteFin.EditValue;
+  Parametros.Ejercicio:=edtAnioComparar.EditValue;
+  Parametros.Movimientos:=rbMovimientos.EditValue;
+  Parametros.ImporteLitros:=rbImporteLitros.EditValue;
+  if gbAnioComparar.Visible then
+  begin
+    Parametros.FechaIni:=EncodeDate(edtAnioComparar.EditValue, 1, 1);
+    Parametros.FechaFin:=EncodeDate(edtAnioComparar.EditValue, 12, 31) + MinSeg_59;
+  end;
+  if pnlAntiguedad.Visible then
+  begin
+    Parametros.ClienteIni:=edtCodRangoInicial.EditValue;
+    Parametros.ClienteFin:=edtCodRangoFinal.EditValue;
+    Parametros.Seleccion:=rgSeleccion.ItemIndex;
+    Parametros.Status:=rgEstatus.ItemIndex;
+    Parametros.FechaCorte:=dtpFechaCorte.Date;
+    Parametros.Venc0:=edtVenc0.EditValue;
+    Parametros.Venc1:=edtVenc1.EditValue;
+    Parametros.Venc2:=edtVenc2.EditValue;
+    Parametros.Venc3:=edtVenc3.EditValue;
+    Parametros.Venc4:=edtVenc4.EditValue;
+    Parametros.Orden:=rgOrden.ItemIndex;
+    Parametros.Grupo:=dbcGrupoAntiguedad.EditText;
+  end;
+  if gbSecuencias.Visible then
+  begin
+    Parametros.Venc1:=edtSecueciaIni.EditValue;
+    Parametros.Venc2:=edtSecuenciaFin.EditValue;
+  end;
+  if gbPeriodos.Visible then
+  begin
+    Parametros.Ejercicio:=edtEjercicio.EditingValue;
+    Parametros.PeriodoIni:=cbPeriodoIni.EditValue;
+    Parametros.PeriodoFin:=cbPeriodoFin.EditValue;
+  end;
+  ModalResult:=mrOK;
+end;
+
+procedure TfrmPantallaParametrosFlotillas.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  ModalResult:=mrCancel;
+end;
+
+function TfrmPantallaParametrosFlotillas.ControlCliente(Cual: Integer): TcxCurrencyEdit;
+begin
+  case Cual of    //
+   1: Result:=edtClienteIni;
+   2: Result:=edtClienteFin;
+   3: Result:=edtCliente;
+   4: Result:=edtCodRangoInicial;
+   5: Result:=edtCodRangoFinal;
+ else
+   Result:=nil;
+ end;    // case
+end;
+
+function TfrmPantallaParametrosFlotillas.ControlClienteNombre(
+  Cual: Integer): TcxTextEdit;
+begin
+  case Cual of    //
+   1: Result:=edtNombreClienteIni;
+   2: Result:=edtNombreClienteFin;
+   3: Result:=edtNombreCliente;
+   4: Result:=edtDesRangoInicial;
+   5: Result:=edtDesRangoFinal;
+ else
+   Result:=nil;
+ end;    // case
+end;
+
+procedure TfrmPantallaParametrosFlotillas.DatosCliente(Cliente: TcxCurrencyEdit;
+  Nombre: TcxTextEdit);
+var
+  Aux: TCliente;
+begin
+  if Cliente.EditValue <> null then
+  begin
+    Aux:= DMFlotillas.Server.DatosCliente(Cliente.EditValue);
+    if Aux <> nil then
+    begin
+      Nombre.Text:=Aux.Nombre;
+      Aux.Free;
+    end
+    else
+      MessageDlg('El Cliente que selecciono no existe.', mtError, [mbOK], 0);
+  end
+end;
+
+procedure TfrmPantallaParametrosFlotillas.edtBuscaClienteIniClick(Sender: TObject);
+var
+  Datos : TDatosBusqueda;
+begin
+  inherited;
+  Datos:= PantallaBusqueda(TfrmBuscarClienteCredito,'');
+  if Datos.OK then
+  begin
+    ControlCliente((Sender As TControl).Tag).Value:=Datos.Clave;
+    DatosCliente(ControlCliente((Sender As TControl).Tag), ControlClienteNombre((Sender As TControl).Tag));
+  end;
+end;
+
+procedure TfrmPantallaParametrosFlotillas.edtClienteExit(Sender: TObject);
+begin
+  DatosCliente(ControlCliente((Sender As TControl).Tag), ControlClienteNombre((Sender As TControl).Tag));
+end;
+
+procedure TfrmPantallaParametrosFlotillas.edtClienteIniExit(Sender: TObject);
+begin
+  inherited;
+  DatosCliente(ControlCliente((Sender As TControl).Tag), ControlClienteNombre((Sender As TControl).Tag));
+end;
+
+procedure TfrmPantallaParametrosFlotillas.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dxRibbon1.ColorSchemeName:=RibbonSchema[ColorRibbonSchema];
+  Parametros:=TParametrosF.Create;
+
+  Parametros.Identificador:=DMFlotillas.Identificador;
+
+  dtpInicial.Date:=Trunc(Now);
+  dtpFinal.Date:=Trunc(Now);
+  dtpFechaCorte.Date:=Trunc(Now);
+
+  edtAnioComparar.EditValue:=FormatDateTime('yyyy', Now);
+
+  rbMovimientos.EditValue:='AC';
+
+  rbImporteLitros.EditValue:=0;
+
+  cdsGrupo.Open;
+
+  cdsEstaciones.Open;
+  cxEstacionIni.EditValue:=cdsEstaciones.FieldByName('EstacionID').AsInteger;
+  cdsEstaciones.Last;
+  cxEstacionFin.EditValue:=cdsEstaciones.FieldByName('EstacionID').AsInteger;
+
+  DMFlotillas.AgregarOpcionCombo(edtDiaFacturar.Properties.Items, 'TODOS', -1);
+ // cdsDiaFacturar.ParamByName('Identificador').AsInteger:=DM.Identificador;
+  cdsDiaFacturar.Open;
+  while not cdsDiaFacturar.EOF do
+  begin
+    DMFlotillas.AgregarOpcionCombo(edtDiaFacturar.Properties.Items, cdsDiaFacturar.FieldByName('Nombre').AsString, cdsDiaFacturar.FieldByName('GrupoFacturarID').Value);
+    cdsDiaFacturar.Next;
+  end;    // while
+  cdsDiaFacturar.Close;
+  edtDiaFacturar.EditValue:=-1;
+
+  DMFlotillas.AgregarOpcionCombo(edtFormaDeCompra.Properties.Items, 'TODAS', -1);
+  cdsTipoTarjeta.Open;
+  while not cdsTipoTarjeta.EOF do
+  begin
+    DMFlotillas.AgregarOpcionCombo(edtFormaDeCompra.Properties.Items, cdsTipoTarjeta.FieldByName('Nombre').AsString, cdsTipoTarjeta.FieldByName('FormaCompraID').Value);
+    cdsTipoTarjeta.Next;
+  end;    // while
+  cdsTipoTarjeta.Close;
+  edtFormaDeCompra.EditValue:=-1;
+  //edtSerie.Properties.Items.Text:=DM.Servidor.Series('FacturaID');
+  //edtSerie2.Properties.Items.Text:=edtSerie.Properties.Items.Text;
+
+
+
+  edtEjercicio.Value:=DMFlotillas.Ejercicio;
+  cbPeriodoIni.EditValue:=DMFlotillas.Periodo;
+  cbPeriodoFin.EditValue:=DMFlotillas.Periodo;
+
+  cdsSerie.Open;
+  while not cdsSerie.EOF do
+  begin
+    DMFlotillas.AgregarSerieCombo(edtSerie3.Properties.Items, cdsSerie.FieldByName('Serie').AsString, cdsSerie.FieldByName('Serie').AsString);
+    DMFlotillas.AgregarSerieCombo(edtSerie.Properties.Items, cdsSerie.FieldByName('Serie').AsString, cdsSerie.FieldByName('Serie').AsString);
+    cdsSerie.Next;
+  end;
+  cdsSerie.Close;
+end;
+
+procedure TfrmPantallaParametrosFlotillas.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if Key = #13 then
+  begin
+    Key:=#0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+  end;
+end;
+
+procedure TfrmPantallaParametrosFlotillas.FormShow(Sender: TObject);
+begin
+  Width:=630;
+  Height:=530;
+end;
+
+procedure TfrmPantallaParametrosFlotillas.PrenderParametros(Cad: String);
+var
+  i, j : Integer;
+procedure PrenderControl(AControl: TCustomControl; AVisible: Boolean);
+begin
+  AControl.Visible:=AVisible;
+  if (AVisible) and (AControl.Tag <> 888) then
+  begin
+    AControl.Left := 8;
+    AControl.Top := j;
+    AControl.TabOrder := i;
+    j:=j + 8 + AControl.Height;
+    Inc(i);
+  end;
+end;
+begin
+  i:=0;
+  J:=48;
+  PrenderControl(gbTipoFecha, Pos('A', Cad) > 0);
+  PrenderControl(gbRangoFechas, Pos('B', Cad) > 0);
+  PrenderControl(gbHora, Pos('C', Cad) > 0);
+  PrenderControl(gbCliente, Pos('D', Cad) > 0);
+  PrenderControl(gbClientes, Pos('E', Cad) > 0);
+  PrenderControl(gbTarjetas, Pos('F', Cad) > 0);
+  PrenderControl(gbGrupo, Pos('G', Cad) > 0);
+  PrenderControl(gbEstaciones, Pos('H', Cad) > 0);
+  PrenderControl(gbAgentes, Pos('I', Cad) > 0);
+  PrenderControl(rbMovimientos, Pos('J', Cad) > 0);
+  PrenderControl(gbTipoMov, Pos('K', Cad) > 0);
+  PrenderControl(rgEstatusClientes, Pos('L', Cad) > 0);
+  PrenderControl(rgEstatusTarjetas, Pos('M', Cad) > 0);
+  PrenderControl(gbRangoDeFacturas, Pos('N', Cad) > 0);
+  PrenderControl(gbFactura, Pos('O', Cad) > 0);
+  PrenderControl(rbImporteLitros, Pos('P', Cad) > 0);
+  PrenderControl(gbAnioComparar, Pos('Q', Cad) > 0);
+  PrenderControl(pnlAntiguedad, Pos('R', Cad) > 0);
+  PrenderControl(gbGrupoAntiguedad, Pos('S', Cad) > 0);
+  PrenderControl(gbPeriodos, Pos('T', Cad) > 0);
+  PrenderControl(gbSecuencias, Pos('U', Cad) > 0);
+  PrenderControl(gbRecibo, Pos('V', Cad) > 0);
+end;
+
+end.

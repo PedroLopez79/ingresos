@@ -1,0 +1,235 @@
+inherited frmCiclos: TfrmCiclos
+  Caption = 'frmCiclos'
+  ClientHeight = 473
+  ClientWidth = 670
+  ExplicitTop = -33
+  ExplicitWidth = 670
+  ExplicitHeight = 473
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcCatalogo: TcxPageControl
+    Width = 670
+    Height = 473
+    ExplicitHeight = 308
+    ClientRectBottom = 443
+    ClientRectRight = 664
+    inherited cxTabSheet1: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 275
+      inherited dbgCatalogo: TcxGrid
+        Width = 661
+        Height = 440
+        ExplicitHeight = 275
+        inherited dbgCatalogoDBTableView1: TcxGridDBTableView
+          object dbgCatalogoDBTableView1RecID: TcxGridDBColumn
+            DataBinding.FieldName = 'RecID'
+            Visible = False
+          end
+          object dbgCatalogoDBTableView1IDCICLO: TcxGridDBColumn
+            DataBinding.FieldName = 'IDCICLO'
+          end
+          object dbgCatalogoDBTableView1CODIGO: TcxGridDBColumn
+            DataBinding.FieldName = 'CODIGO'
+          end
+          object dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBRE'
+          end
+          object dbgCatalogoDBTableView1FECHAINICIO: TcxGridDBColumn
+            DataBinding.FieldName = 'FECHAINICIO'
+          end
+          object dbgCatalogoDBTableView1FECHAFINAL: TcxGridDBColumn
+            DataBinding.FieldName = 'FECHAFINAL'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX1: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX1'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX2: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX2'
+          end
+        end
+      end
+    end
+    inherited cxTabSheet2: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 275
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 661
+        Height = 30
+        Align = alTop
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Caption = ' Informacion acerca de los Ciclos Escolares'
+        Color = clBtnShadow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        ExplicitWidth = 616
+      end
+      object cxLabel1: TcxLabel
+        Left = 14
+        Top = 41
+        Caption = 'Codigo'
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 14
+        Top = 56
+        DataBinding.DataField = 'CODIGO'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 2
+        Width = 121
+      end
+      object cxLabel3: TcxLabel
+        Left = 14
+        Top = 81
+        Caption = 'Nombre'
+      end
+      object cxDBTextEdit3: TcxDBTextEdit
+        Left = 14
+        Top = 96
+        DataBinding.DataField = 'NOMBRE'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 4
+        Width = 290
+      end
+      object cxLabel2: TcxLabel
+        Left = 14
+        Top = 121
+        Caption = 'Nombre Auxiliar I'
+      end
+      object cxDBTextEdit2: TcxDBTextEdit
+        Left = 14
+        Top = 136
+        DataBinding.DataField = 'NOMBREAUX1'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 6
+        Width = 290
+      end
+      object cxLabel9: TcxLabel
+        Left = 14
+        Top = 205
+        Caption = 'Fecha Inicial'
+      end
+      object cxDBDateEdit1: TcxDBDateEdit
+        Left = 14
+        Top = 220
+        DataBinding.DataField = 'FECHAINICIO'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 8
+        Width = 142
+      end
+      object cxLabel5: TcxLabel
+        Left = 162
+        Top = 205
+        Caption = 'Fecha Final'
+      end
+      object cxDBDateEdit2: TcxDBDateEdit
+        Left = 162
+        Top = 220
+        DataBinding.DataField = 'FECHAFINAL'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 10
+        Width = 142
+      end
+      object btnInciarCiclo: TcxButton
+        Left = 320
+        Top = 218
+        Width = 89
+        Height = 25
+        Caption = 'Iniciar Ciclo'
+        TabOrder = 11
+        OnClick = btnInciarCicloClick
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00337F3F7F3333
+          3F373F737773333373F777337F333337377733F773F33333773337773733333F
+          7F3737F373333377737F7733FFF3337FFF7F3F3777F33F777F7373F7F7FF73F3
+          7FF737773777F73377FF7733FFF77F3737777F37773F7FFF7337737F3F7F777F
+          33373F7F737F3F7F33337F73FF73777333337337773373333333}
+      end
+      object cxLabel4: TcxLabel
+        Left = 14
+        Top = 161
+        Caption = 'Nombre Auxiliar II'
+      end
+      object cxDBTextEdit4: TcxDBTextEdit
+        Left = 14
+        Top = 176
+        DataBinding.DataField = 'NOMBREAUX2'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 13
+        Width = 290
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 30
+        Width = 661
+        Height = 2
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clNone
+        ParentBackground = False
+        TabOrder = 14
+        ExplicitWidth = 616
+      end
+    end
+  end
+  inherited cdsCatalogo: TDAMemDataTable
+    Fields = <
+      item
+        Name = 'IDCICLO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'FECHAINICIO'
+        DataType = datDateTime
+        Required = True
+      end
+      item
+        Name = 'FECHAFINAL'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnNewRecord = cdsCatalogoNewRecord
+    LogicalName = 'dbo CICLO'
+  end
+  inherited dsCatalogo: TDADataSource
+    DataSet = cdsCatalogo.Dataset
+  end
+end

@@ -1,0 +1,39 @@
+unit ufrmBuscaMateria;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmBuscar, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxEdit, DB, cxDBData, dxSkinsdxRibbonPainter,
+  cxContainer, Menus, uDAInterfaces, uDADataTable, uDAScriptingProvider,
+  uDACDSDataTable, StdCtrls, cxButtons, cxGroupBox, dxRibbon, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGrid;
+
+type
+  TfrmBuscaMateria = class(TfrmBuscar)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBuscaMateria: TfrmBuscaMateria;
+
+implementation
+
+uses uDM;
+
+{$R *.dfm}
+
+end.

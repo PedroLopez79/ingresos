@@ -1,0 +1,168 @@
+unit ufrmCalculoPromedio;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CustomModule, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, Gauges,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, StdCtrls, ExtCtrls, Menus, cxButtons, uPSComponent, DB,
+  uDAInterfaces, uDADataTable, uDAScriptingProvider, uDAMemDataTable, Modules,
+  KDaoDataBase, passcr;
+
+type
+  TfrmCalculoPromedio = class(TfrmCustomModule)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label10: TLabel;
+    Label11: TLabel;
+    dbcCiclo: TcxLookupComboBox;
+    dbcNivel: TcxLookupComboBox;
+    Gauge1: TGauge;
+    btnInciarCiclo: TcxButton;
+    cdsCiclo: TDAMemDataTable;
+    dsCiclo: TDADataSource;
+    cdsDatos: TDAMemDataTable;
+    dsDatos: TDADataSource;
+    dsAlumnos: TDADataSource;
+    cdsAlumnos: TDAMemDataTable;
+    dsCalificaciones: TDADataSource;
+    cdsCalificaciones: TDAMemDataTable;
+    PSScript: TPasScript;
+    procedure btnInciarCicloClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+    idNivel : Integer;
+    procedure CalculaParcial;
+    procedure Sincroniza;
+  end;
+
+var
+  frmCalculoPromedio: TfrmCalculoPromedio;
+  
+  Califs : Array[1..16] of String;
+  Aux1 : Array[1..16] of String;
+  Aux2 : Array[1..16] of String;
+  Faltas : Array[1..16] of String;
+  FCalif, FAux1, FAux2, FFaltas : String;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCalculoPromedio.btnInciarCicloClick(Sender: TObject);
+begin
+  inherited;
+  Gauge1.Progress:=0;
+  Gauge1.Visible:=True;
+  Application.ProcessMessages;
+  CalculaParcial;
+  Gauge1.Visible:=False;
+end;
+
+procedure TfrmCalculoPromedio.CalculaParcial;
+var
+  i, Valor : Integer;
+begin
+  cdsAlumnos.ParamByName('idNivel').AsInteger:=idNivel;
+  cdsAlumnos.ParamByName('idCiclo').AsInteger:=dbcCiclo.EditValue;
+  cdsAlumnos.Open;
+  Valor:=0;
+  Gauge1.Progress:=0;
+  while not cdsAlumnos.Eof do
+  begin
+    cdsCalificaciones.ParamByName('idCalificacion').AsInteger:=cdsAlumnos.FieldByName('IDCALIFICACION').AsInteger;
+    cdsCalificaciones.Open;
+    for i:=1 to 16 do
+    begin
+      Califs[i]:=cdsCalificaciones.FieldByName('Calif' + FormatFloat('00', i)).AsString;
+      Aux1[i]:=cdsCalificaciones.FieldByName('CalifA' + FormatFloat('00', i)).AsString;
+      Aux2[i]:=cdsCalificaciones.FieldByName('CalifB' + FormatFloat('00', i)).AsString;
+      Faltas[i]:=cdsCalificaciones.FieldByName('Faltas' + FormatFloat('00', i)).AsString;
+    end;
+    FCalif:=cdsCalificaciones.FieldByName('Calificacion').AsString;
+    FAux1:=cdsCalificaciones.FieldByName('CalifAux1').AsString;
+    FAux2:=cdsCalificaciones.FieldByName('CalifAux2').AsString;
+    FFaltas:=cdsCalificaciones.FieldByName('Faltas').AsString;
+
+    psScript.Run;
+
+    cdsCalificaciones.Edit;
+    for i:=1 to 16 do
+    begin
+      cdsCalificaciones.FieldByName('Calif' + FormatFloat('00', i)).AsString:=Califs[i];
+      cdsCalificaciones.FieldByName('CalifA' + FormatFloat('00', i)).AsString:=Aux1[i];
+      cdsCalificaciones.FieldByName('CalifB' + FormatFloat('00', i)).AsString:=Aux2[i];
+      cdsCalificaciones.FieldByName('Faltas' + FormatFloat('00', i)).AsString:=Faltas[i];
+    end;
+    cdsCalificaciones.FieldByName('Calificacion').AsString:=FCalif;
+    cdsCalificaciones.FieldByName('CalifAux1').AsString:=FAux1;
+    cdsCalificaciones.FieldByName('CalifAux2').AsString:=FAux2;
+    cdsCalificaciones.FieldByName('Faltas').AsString:=FFaltas;
+    cdsCalificaciones.Post;
+    cdsCalificaciones.Close;
+    cdsAlumnos.Next;
+    Inc(Valor);
+    Gauge1.Progress:=Trunc(Valor*100/cdsAlumnos.RecordCount);
+  end;
+end;
+
+procedure TfrmCalculoPromedio.FormCreate(Sender: TObject);
+begin
+  inherited;
+  cdsCiclo.Close;
+  cdsCiclo.Open;
+
+  cdsDatos.Close;
+  cdsDatos.Open;
+end;
+
+procedure TfrmCalculoPromedio.Sincroniza;
+var
+  Pas : TStringList;
+begin
+  idNivel:=0;
+  Pas:=TStringList.Create;
+  Pas.Text:=cdsDatos.FieldByName('CODIGO').AsString;
+  Pas.SaveToFile('123.Pas');
+  psScript.Script.Text:='';
+  psScript.ScriptFileName:='123.Pas';
+  Gauge1.Visible:=False;
+
+  cdsDatos.Locate('NOMBRE', dbcNivel.EditValue, [])
+  idNivel:= cdsDatos.FieldByName('IDNIVEL').AsInteger;
+end;
+
+var  i : Integer;
+
+initialization
+
+  ModuleInfoManager.RegisterModule('CalculaPromedios', TfrmCalculoPromedio);
+
+  RegisterVariable('FCalif', 'String', @FCalif);
+  RegisterVariable('FAuxA', 'String', @FAux1);
+  RegisterVariable('FAuxB', 'String', @FAux2);
+  RegisterVariable('FFaltas', 'String', @FFaltas);
+  for i:=1 to 16 do
+  begin
+    RegisterVariable(Format('Calif%d', [i]), 'String', @Califs[i]);
+    RegisterVariable(Format('AuxA%d', [i]), 'String', @Aux1[i]);
+    RegisterVariable(Format('AuxB%d', [i]), 'String', @Aux2[i]);
+    RegisterVariable(Format('Faltas%d', [i]), 'String', @Faltas[i]);
+  end;
+
+
+
+end.

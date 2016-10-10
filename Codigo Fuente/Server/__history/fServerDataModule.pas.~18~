@@ -1,0 +1,98 @@
+unit fServerDataModule;
+
+interface
+
+uses
+  SysUtils, Classes, Windows,
+  uROClient, uROPoweredByRemObjectsButton, uROClientIntf, uROServer,
+  uROBinMessage, uROIndyHTTPServer,
+  uDAEngine, uDADriverManager, uDAClasses, uROSessions,
+  uDAIBXDriver, uDAADODriver, uROIndyTCPServer, Registry, uDASDACDriver,
+  uROSOAPMessage, Forms;
+
+type
+  TServerDataModule = class(TDataModule)
+    Server: TROIndyHTTPServer;
+    Message: TROBinMessage;
+    ConnectionManager: TDAConnectionManager;
+    DriverManager: TDADriverManager;
+    SessionManager: TROInMemorySessionManager;
+    ROSOAP: TROSOAPMessage;
+    DASDACDriver1: TDASDACDriver;
+    DataDictionary: TDADataDictionary;
+    
+    procedure DataModuleCreate(Sender: TObject);
+    procedure ROSOAPReadFromStream(aStream: TStream);
+  private
+    { Private declarations }
+    RutaXML: String;
+  public
+    { Public declarations }
+    GasolineroID: Integer;
+    ClienteBancaria: Integer;
+    ComisionCashBack: Double;
+    Clasificacion: Integer;
+    DebitoEmpresa: String;
+    ENCRIPTAJE: STRING;
+    MONEDERO: STRING;
+    AUTORIZAGOB: STRING;
+    GOBUSUARIO: STRING;
+    GOBPASSWORD: STRING;
+    GOBHOST: STRING;
+  end;
+
+var
+  ServerDataModule: TServerDataModule;
+
+implementation
+
+uses UtileriasComun;
+
+{$R *.dfm}
+
+procedure TServerDataModule.DataModuleCreate(Sender: TObject);
+const
+  Cadena = 'SDAC?Server=%s;Database=%s;UserID=%s;Password=%s;';
+begin
+  RutaRegistro:='Server Flotillas';
+  try
+    RutaXMl:=LeerRegistro('RutaXML', '');
+    GasolineroID:=StrToInt(LeerRegistro('GasolineroID', '9000'));
+    ClienteBancaria:=StrToInt(LeerRegistro('ClienteBancaria', '1'));
+    ComisionCashBack:=StrToFloat(LeerRegistro('ComisionCashBack', '25'));
+    Clasificacion:=StrToInt(LeerRegistro('Clasificacion', '7'));
+    DebitoEmpresa := LeerRegistro('DebitoEmpresa', '');
+    ENCRIPTAJE:= LeerRegistro('CODIGO DE ENCRIPTAJE','SHA1');
+    MONEDERO:= LeerRegistro('MONEDEROELECTRONICO','N');
+    AUTORIZAGOB:=LeerRegistro('AUTORIZAGOB','N');
+    GOBUSUARIO:= LeerRegistro('GOBUSUARIO','');
+    GOBPASSWORD:=LeerRegistro('GOBPASSWORD','');
+    GOBHOST:= LeerRegistro('GOBHOST','http://om.bajacalifornia.gob.mx/ws_sig_dev/ServicioAdmonCombustible.asmx?WSDL');
+    CargarCaracteres(ExtractFilePath(ParamStr(0)) + 'Cupones.DAT', CaracteresCupones);
+    ConnectionManager.Connections[0].ConnectionString:=Format(Cadena, [LeerRegistro('Server','127.0.0.1'),
+                                                                       LeerRegistro('Database','Flotillas'),
+                                                                       LeerRegistro('User','sa'),
+                                                                       LeerRegistro('Password','')]);
+  finally
+     Server.Port := StrToInt(LeerRegistro('Puerto', '9002'));
+     Server.Active := true;
+  end;
+end;
+
+procedure TServerDataModule.ROSOAPReadFromStream(aStream: TStream);
+var
+  Aux: TStrings;
+begin
+  if RutaXML <> '' then
+  begin
+    Aux:=TStringList.Create;
+    try
+      Aux.LoadFromStream(aStream);
+      Aux.SaveToFile(RutaXML);
+    finally
+      Aux.Free;
+    end;
+  end;
+end;
+
+end.

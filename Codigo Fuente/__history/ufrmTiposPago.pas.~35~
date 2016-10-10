@@ -1,0 +1,270 @@
+unit ufrmTiposPago;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CustomModule, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxCustomData, cxStyles, cxTL, cxMaskEdit, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue,
+  dxSkinscxPCPainter, DB, uDAInterfaces, uDADataTable, uDAScriptingProvider,
+  uDAMemDataTable, cxPC, cxInplaceContainer, cxDBTL, cxTLData, ExtCtrls,
+  cxContainer, cxEdit, cxCheckBox, cxDBEdit, cxTextEdit, StdCtrls,
+  uDACDSDataTable, cxDropDownEdit, cxCalendar, cxCurrencyEdit, dxmdaset,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Modules;
+
+type
+  TfrmTiposPago = class(TfrmCustomModule)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    dbtNivel: TcxDBTreeList;
+    dbtNivelNombre: TcxDBTreeListColumn;
+    pgcTiposPago: TcxPageControl;
+    cxTabSheet4: TcxTabSheet;
+    cxTabSheet5: TcxTabSheet;
+    spAux: TDAMemDataTable;
+    dsAux: TDADataSource;
+    cdsTiposPago: TDACDSDataTable;
+    dsTiposPago: TDADataSource;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Label1: TLabel;
+    Label3: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxDBCheckBox2: TcxDBCheckBox;
+    cdsSubtipoPago: TDACDSDataTable;
+    dsSubtipoPago: TDADataSource;
+    Label2: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    Label4: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBCurrencyEdit1: TcxDBCurrencyEdit;
+    Label5: TLabel;
+    cxDBTextEdit5: TcxDBTextEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    cxDBDateEdit1: TcxDBDateEdit;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    Label8: TLabel;
+    tblPlazo: TdxMemData;
+    tblPlazoidPlazo: TIntegerField;
+    dsPlazos: TDataSource;
+    tblPlazoPlazo: TStringField;
+    procedure FormCreate(Sender: TObject);
+    procedure dbtNivelDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure dbtNivelStartDrag(Sender: TObject; var DragObject: TDragObject);
+    procedure dbtNivelDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure dbtNivelMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure dbtNivelNodeChanged(Sender: TObject; ANode: TcxTreeListNode;
+      AColumn: TcxTreeListColumn);
+    procedure cdsTiposPagoAfterEdit(DataTable: TDADataTable);
+  private
+    { Private declarations }
+    procedure ActionActualiza(Action: TBasicAction);
+    procedure ActionNuevo(Action: TBasicAction);
+    procedure ActionGuardar(Action: TBasicAction);
+    procedure ActionEliminar(Action: TBasicAction);
+  protected
+    { ------------------- }
+    procedure UpdateActionsState; override;
+    procedure RegisterActions; override;
+  public
+    { Public declarations }
+    PuedeCambiar : Boolean;
+    Dragging : Boolean;
+    CanDrag : Boolean;
+    IDDrag : Integer;
+    idCampoPadre: Integer;
+    procedure Actualiza(QRY : TDACDSDataTable; Valor1: Integer);
+  end;
+
+var
+  frmTiposPago: TfrmTiposPago;
+
+implementation
+
+Uses uDM, dmActions;
+
+{$R *.dfm}
+
+procedure TfrmTiposPago.ActionActualiza(Action: TBasicAction);
+var
+  ID, Tipo: Integer;
+begin
+  ID:= spAux.FieldByName('IDCAMPO').AsInteger;
+  Tipo:= spAux.FieldByName('TIPO').AsInteger;
+  spAux.Close;
+  spAux.Open;
+  spAux.Locate('IDCampo;Tipo', VarArrayOF([ID, Tipo]),[]);
+end;
+
+procedure TfrmTiposPago.ActionEliminar(Action: TBasicAction);
+begin
+ 
+end;
+
+procedure TfrmTiposPago.ActionGuardar(Action: TBasicAction);
+begin
+  if (cdsTiposPago.State = dsEdit) or (cdsTiposPago.State = dsInsert) then
+     begin cdsTiposPago.Post; cdsTiposPago.ApplyUpdates(); end;
+  if (cdsSubTipoPago.State = dsEdit) or (cdsSubTipoPago.State = dsInsert) then
+     begin cdsSubTipoPago.Post; cdsSubTipoPago.ApplyUpdates(); end;
+
+  ActionActualiza(nil);
+end;
+
+procedure TfrmTiposPago.ActionNuevo(Action: TBasicAction);
+procedure Nuevo(QRY : TDACDSDataTable; Valor1: Integer);
+var
+    ID: Integer;
+begin
+    ID:= spAux.FieldByName('IDCAMPO').AsInteger;
+    Actualiza(QRY, Valor1);
+    QRY.Append;
+end;
+begin
+    if spAux.FieldByName('TIPO').AsInteger <= 0 then
+    begin
+       PuedeCambiar:= True;
+       pgcTiposPago.ActivePageIndex:= Abs(spAux.FieldByName('TIPO').AsInteger);
+       PuedeCambiar:= False;
+       case pgcTiposPago.ActivePageIndex of
+         0:Nuevo(cdsTiposPago, 0);
+         1:Nuevo(cdsSubtipoPago, 0);
+       end;
+    end;
+    UpdateActionsState;
+end;
+
+procedure TfrmTiposPago.Actualiza(QRY: TDACDSDataTable; Valor1: Integer);
+begin
+  QRY.DisableControls;
+  QRY.Close;
+  QRY.ParamByName('idCampo').AsInteger:= Valor1;
+  QRY.Open;
+  QRY.EnableControls;
+end;
+
+procedure TfrmTiposPago.cdsTiposPagoAfterEdit(DataTable: TDADataTable);
+begin
+  inherited;
+  UpdateActionsState;
+end;
+
+procedure TfrmTiposPago.dbtNivelDragDrop(Sender, Source: TObject; X,
+  Y: Integer);
+begin
+  inherited;
+  Dragging:=False;
+  DM.Servidor.ActualizaSubTipoPago(spAux.FieldByName('IDCAMPOPADRE').AsInteger, IDDrag);
+
+  spAux.Close;
+  spAux.Open;
+  spAux.Locate('IDCAMPO;TIPO',VarArrayOf([IDDrag,1]),[]);
+end;
+
+procedure TfrmTiposPago.dbtNivelDragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+  inherited;
+  Accept:= (CanDrag)and(spAux.FieldByName('TIPO').AsInteger = 1)and(spAux.FieldByName('IDCAMPO').AsInteger <> IDDrag);
+end;
+
+procedure TfrmTiposPago.dbtNivelMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  inherited;
+  if Dragging then
+  begin
+    Dragging:= False;
+  end;
+  CanDrag:= False;
+  dbtNivelNodeChanged(Nil,Nil,Nil);
+end;
+
+procedure TfrmTiposPago.dbtNivelNodeChanged(Sender: TObject;
+  ANode: TcxTreeListNode; AColumn: TcxTreeListColumn);
+begin
+  inherited;
+  PuedeCambiar:= True;
+  if not Dragging then
+  begin
+    if spAux.FieldByName('TIPO').AsInteger >= 0 then
+    begin
+      pgcTiposPago.ActivePageIndex:= spAux.FieldByName('TIPO').AsInteger;
+      case pgcTiposPago.ActivePageIndex of
+       0:Actualiza(cdsTiposPago, spAux.FieldByName('IDCAMPO').AsInteger);
+       1:Actualiza(cdsSubTipoPago, spAux.FieldByName('IDCAMPO').AsInteger);
+      end;
+    end;
+  end;
+end;
+
+procedure TfrmTiposPago.dbtNivelStartDrag(Sender: TObject;
+  var DragObject: TDragObject);
+begin
+  inherited;
+  Dragging:= True;
+  CanDrag:= spAux.FieldByName('TIPO').AsInteger < -2;
+  IDDrag:= spAux.FieldByName('IDCAMPOPADRE').AsInteger;
+end;
+
+procedure TfrmTiposPago.FormCreate(Sender: TObject);
+var
+  i: Integer;
+const
+  Plazos : Array[1..9] of String[20] = ('Semanal',
+                                        'Catorcenal',
+                                        'Quincenal',
+                                        'Mensual',
+                                        'Bimestral',
+                                        'Trimestral',
+                                        'Cuatrimestral',
+                                        'Semestral',
+                                        'Anual');
+begin
+  inherited;
+  tblPlazo.Open;
+  spAux.Open;
+  for i := 1 to 9 do
+    begin
+      tblPlazo.Append;
+      tblPlazoidPlazo.AsInteger:= i;
+      tblPlazoPlazo.AsString:= Plazos[i];
+      tblPlazo.Post;
+    end;
+  PuedeCambiar:= True;
+  pgcTiposPago.ActivePageIndex:= -1;
+  PuedeCambiar:= False;
+end;
+
+procedure TfrmTiposPago.RegisterActions;
+begin
+  inherited;
+  RegisterAction(AppActions.actActualizar, ActionActualiza);
+  RegisterAction(AppActions.actNuevo, ActionNuevo);
+  RegisterAction(AppActions.actGuardar, ActionGuardar);
+  //RegisterAction(AppActions.actEliminar, ActionEliminar);
+end;
+
+procedure TfrmTiposPago.UpdateActionsState;
+begin
+  inherited;
+  dmAppActions.actGuardar.Enabled:= ((cdsTiposPago.State = dsEdit) or (cdsTiposPago.State = dsInsert)) or
+                                    ((cdsSubTipoPago.State = dsEdit) or (cdsSubTipoPago.State = dsInsert));
+  dmAppActions.actEliminar.Enabled:=(cdsTiposPago.State = dsBrowse) or
+                                    (cdsSubTipoPago.State = dsBrowse);
+end;
+
+initialization
+  ModuleInfoManager.RegisterModule('TiposPago', TfrmTiposPago);
+
+end.

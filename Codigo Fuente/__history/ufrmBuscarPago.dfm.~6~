@@ -1,0 +1,122 @@
+inherited frmBuscarPago: TfrmBuscarPago
+  Caption = 'Buscar Pagos'
+  OnCreate = FormCreate
+  ExplicitWidth = 625
+  ExplicitHeight = 445
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dbgAgrupacion: TcxGrid
+    inherited cxGridDBTableView1: TcxGridDBTableView
+      object cxGridDBTableView1RecID: TcxGridDBColumn
+        DataBinding.FieldName = 'RecID'
+        Visible = False
+      end
+      object cxGridDBTableView1ReciboID: TcxGridDBColumn
+        DataBinding.FieldName = 'ReciboID'
+      end
+      object cxGridDBTableView1Folio: TcxGridDBColumn
+        DataBinding.FieldName = 'Folio'
+      end
+      object cxGridDBTableView1Referencia: TcxGridDBColumn
+        DataBinding.FieldName = 'Referencia'
+      end
+      object cxGridDBTableView1Importe: TcxGridDBColumn
+        DataBinding.FieldName = 'Importe'
+      end
+      object cxGridDBTableView1FechaCaptura: TcxGridDBColumn
+        DataBinding.FieldName = 'FechaCaptura'
+      end
+      object cxGridDBTableView1FechaMovimiento: TcxGridDBColumn
+        DataBinding.FieldName = 'FechaMovimiento'
+      end
+      object cxGridDBTableView1FechaAplicacion: TcxGridDBColumn
+        DataBinding.FieldName = 'FechaAplicacion'
+      end
+      object cxGridDBTableView1ClienteID: TcxGridDBColumn
+        DataBinding.FieldName = 'ClienteID'
+      end
+    end
+  end
+  inherited cdsBuscar: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'ReciboID'
+        DataType = datInteger
+        InPrimaryKey = True
+      end
+      item
+        Name = 'Folio'
+        DataType = datInteger
+      end
+      item
+        Name = 'FechaMovimiento'
+        DataType = datDateTime
+      end
+      item
+        Name = 'Ejercicio'
+        DataType = datInteger
+      end
+      item
+        Name = 'Periodo'
+        DataType = datInteger
+      end
+      item
+        Name = 'Cheque'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Referencia'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Importe'
+        DataType = datFloat
+      end
+      item
+        Name = 'CuentaContableCliente'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'FechaCaptura'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FechaAplicacion'
+        DataType = datDateTime
+      end
+      item
+        Name = 'UsuarioID'
+        DataType = datInteger
+      end
+      item
+        Name = 'ClienteID'
+        DataType = datInteger
+      end
+      item
+        Name = 'MovimientoID'
+        DataType = datInteger
+      end
+      item
+        Name = 'BancoID'
+        DataType = datInteger
+      end
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'Recibo'
+        Value = '1'
+      end>
+    LogicalName = 'dbo Recibo'
+    Left = 511
+    Top = 272
+  end
+  inherited dsBuscar: TDADataSource
+    DataSet = cdsBuscar.Dataset
+  end
+end

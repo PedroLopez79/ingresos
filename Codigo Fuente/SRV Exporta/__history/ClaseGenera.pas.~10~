@@ -1,0 +1,433 @@
+unit ClaseGenera;
+
+interface
+
+uses
+  Classes, SysUtils, DB, Variants{, ExportaLibrary_Intf};
+
+type
+  TMisParametros = class
+    SN: String;
+    NombreEstacion: String;
+    Fecha: TDateTime;
+    Poliza: Integer;
+    EstacionINI: Integer;
+    EstacionFIN: Integer;
+    TurnoINI: Integer;
+    TurnoFIN: Integer;
+    FechaINI: TDateTime;
+    FechaFIN: TDateTime;
+  end;
+
+  TGenera = class
+  private
+    FLista: TStrings;
+    FNombreArchivo: String;
+    FParametros: TMisParametros;
+    procedure SetNombreArchivo(const Value: String);
+    procedure SetParametros(const Value: TMisParametros);
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property NombreArchivo: String read FNombreArchivo write SetNombreArchivo;
+    property Parametros: TMisParametros read FParametros write SetParametros;
+    procedure Guardar;
+    procedure Abrir;
+    procedure Next;
+    procedure First;
+    procedure Last;
+    procedure Prior;
+    function Campo(Campo: String): Variant;
+    function EOF: Boolean;
+    function RecordCount: Integer;
+    function LinesCount: Integer;
+    function Formato(Cad: String; Valor: Variant): String;
+    function FormatoFecha(Cad: String; Valor: Variant): String;
+    procedure Agregar(Cad: String);
+    procedure Reemplazar(AIndex: Integer; Cad: String);
+    procedure Limpiar;
+    function Locate(Campo: String; Valor: Variant): Boolean;
+    procedure AsignaValorCampo(Campo: String; Valor: Variant);
+    procedure Deletes;
+    function Alinear(Cad: String; cpi, Direccion: Integer): String;
+    function LLenar(Cad, Caracter: String; Cuantos: Integer; Inicio: Boolean): String;
+    function ReemplazaStr(Cad, Busca, Nuevo: String): String;
+    function Nivel(Cad: String): Integer;
+    function NumATexto(Num : Real; Moneda : Integer) : String;
+  end;
+
+implementation
+
+uses
+  uDM, UtileriasComun;
+
+{ TGenera }
+
+procedure TGenera.Abrir;
+begin
+  if FileExists(NombreArchivo) then
+  begin
+    FLista.Clear;
+    FLista.LoadFromFile(NombreArchivo);
+  end;
+end;
+
+procedure TGenera.Agregar(Cad: String);
+begin
+  FLista.Add(Cad);
+end;
+
+procedure TGenera.Reemplazar(AIndex: Integer; Cad: String);
+begin
+  if FLista.Count > AIndex then
+    FLista[AIndex]:=Cad;
+end;
+
+function TGenera.ReemplazaStr(Cad, Busca, Nuevo: String): String;
+begin
+  Result:=UtileriasComun.ReemplazaStr(Cad, Busca, Nuevo);
+end;
+
+function TGenera.Alinear(Cad: String; cpi, Direccion: Integer): String;
+begin
+  Result:=Alinea(Cad, cpi, Direccion);
+end;
+
+procedure TGenera.AsignaValorCampo(Campo: String; Valor: Variant);
+begin
+  if Valor <> Null then
+  begin
+    DM.tblDatos.Edit;
+    DM.tblDatos.FieldByName(Campo).Value:=Valor;
+    DM.tblDatos.Post;
+  end;
+end;
+
+function TGenera.Campo(Campo: String): Variant;
+begin
+  Result:=DM.tblDatos.FieldByName(Campo).Value;
+end;
+
+constructor TGenera.Create;
+begin
+  FLista:=TStringList.Create;
+  FParametros:=TMisParametros.Create;
+end;
+
+procedure TGenera.Deletes;
+begin
+  if DM.tblDatos.RecordCount > 0 then
+    DM.tblDatos.Deletes;
+end;
+
+destructor TGenera.Destroy;
+begin
+  FLista.Free;
+  inherited;
+end;
+
+function TGenera.EOF: Boolean;
+begin
+  Result:=DM.tblDatos.EOF;
+end;
+
+procedure TGenera.First;
+begin
+  DM.tblDatos.First;
+end;
+
+function TGenera.Formato(Cad: String; Valor: Variant): String;
+begin
+  Result:=FormatFloat(Cad, Valor);
+end;
+
+function TGenera.FormatoFecha(Cad: String; Valor: Variant): String;
+begin
+  Result:=FormatDateTime(Cad, Valor);
+end;
+
+procedure TGenera.Guardar;
+begin
+  FLista.SaveToFile(NombreArchivo);
+end;
+
+procedure TGenera.Last;
+begin
+  DM.tblDatos.Last;
+end;
+
+procedure TGenera.Limpiar;
+begin
+  FLista.Clear;
+end;
+
+function TGenera.LinesCount: Integer;
+begin
+  Result:=FLista.Count;
+end;
+
+function TGenera.LLenar(Cad, Caracter: String; Cuantos: Integer; Inicio: Boolean): String;
+var
+  I: Integer;
+begin
+  if length(Caracter) > 1 then
+    Caracter:=Caracter[1];
+  if Length(Cad) > Cuantos then
+    Result:=Copy(Cad, 1, Cuantos)
+  else
+  begin
+    Result:='';
+    for I := Length(Cad) + 1 to Cuantos do
+      Result:=Result + Caracter;
+    if Inicio then
+      Result:=Result + Cad
+    else
+      Result:=Cad + Result;
+  end;
+end;
+
+function TGenera.Locate(Campo: String; Valor: Variant): Boolean;
+begin
+  Result:=False;
+  if Valor <> Null then
+    Result:=DM.tblDatos.Locate(Campo, Valor, [loCaseInsensitive]);
+end;
+
+procedure TGenera.Next;
+begin
+  DM.tblDatos.Next;
+end;
+
+function TGenera.Nivel(Cad: String): Integer;
+var
+  I, J: Integer;
+  OK: Boolean;
+  S: String;
+begin
+  Result:=1;
+  I:=1;
+  if Cad = '' then
+    Exit;
+  while GetParsedItem(Cad, '-', I) <> '' do
+  begin
+    OK:=True;
+    S:=GetParsedItem(Cad, '-', I);
+    for J := 1 to Length(S) do
+    begin
+      if S[J] <> '0' then
+        OK:=False;
+    end;
+    if OK then
+    begin
+      Result:=I;
+      Exit;
+    end;
+    I:=I+1;
+  end;
+  Result:=I;
+end;
+
+function TGenera.NumATexto(Num: Real; Moneda: Integer): String;
+Const
+  CMonedas : Array [1..2, 1..3] of String = (('Peso', 'Pesos', 'M.N.'),('Dólar','Dólares','M.A.'));
+     Function longitud(numero:Int64):integer;
+     var
+       S : String;
+     begin
+       S:=IntToStr(Numero);
+       Result:=Length(S);
+     end;
+
+     Function Unidades(numero:Byte):String;
+     begin
+        case numero of
+          0: Unidades:='';
+          1: Unidades:='un';
+          2: Unidades:='dos';
+          3: Unidades:='tres';
+          4: Unidades:='cuatro';
+          5: Unidades:='cinco';
+          6: Unidades:='seis';
+          7: Unidades:='siete';
+          8: Unidades:='ocho';
+          9: Unidades:='nueve';
+        end;
+     end;
+
+     Function Decenas (numero:Byte):String;
+     begin
+          Case numero of
+          0:Decenas:='';
+          1..9:Decenas:=Unidades(numero);
+          10: Decenas:='diez';
+          11: Decenas:='once';
+          12: Decenas:='doce';
+          13: Decenas:='trece';
+          14: Decenas:='catorce';
+          15: Decenas:='quince';
+          16: Decenas:='dieciseis';
+          17: Decenas:='diecisiete';
+          18: Decenas:='dieciocho';
+          19: Decenas:='diecinueve';
+          20: Decenas:='veinte';
+          21: Decenas:='veintiun';
+          22: Decenas:='veintidos';
+          23..29: Decenas:='veinti'+Unidades(numero mod 10);
+          30: Decenas:='treinta';
+          40: Decenas:='cuarenta';
+          50: Decenas:='cincuenta';
+          60: Decenas:='sesenta';
+          70: Decenas:='setenta';
+          80: Decenas:='ochenta';
+          90: Decenas:='noventa';
+          else
+               Decenas:=Decenas(numero - numero mod 10)+' y '+ unidades(numero mod 10);
+          end;
+     end;
+     Function centenas(numero:integer):String;
+     begin
+          case numero of
+          0: centenas:='';
+          1..99:centenas:=decenas(numero);
+          100: centenas:='cien';
+          101..199: centenas:='ciento '+decenas(numero mod 100);
+          200: centenas:='doscientos';
+          500: centenas:='quinientos';
+          501..599: centenas:='quinientos '+decenas(numero mod 100);
+          700: centenas:='setecientos';
+          701..799: centenas:='setecientos '+decenas(numero mod 100);
+          900..999: centenas:='novecientos '+decenas(numero mod 100);
+          else
+              centenas:=unidades(numero div 100)+'cientos'+' '+decenas(numero mod 100);
+          end;
+     end;
+
+     Function UnidadesDeMillar(numero:Integer):String;
+     begin
+     if numero > 999 then begin
+          if numero > 1999 then
+               UnidadesDeMillar:=Unidades(numero div 1000) +' mil '+ centenas(numero mod 1000)
+          else
+              UnidadesDeMillar:='mil '+ centenas(numero mod 1000);
+     end
+     else
+         UnidadesDeMillar:=Centenas(numero);
+     end;
+
+     Function DecenasDeMillar(Numero:LongInt):String;
+     begin
+     If numero > 9999 then
+         DecenasDeMillar:=Decenas(Numero div 1000) +' mil '+Centenas(Numero mod 1000)
+     else
+         DecenasDeMillar:=UnidadesDeMillar(Numero);
+     end;
+
+     Function CentenasDeMillar(Numero:LongInt):String;
+     begin
+          If Numero > 99999 then
+               CentenasDeMillar:=Centenas(Numero div 1000) +' mil '+Centenas(numero mod 1000)
+          else
+               CentenasDeMillar:=DecenasDeMillar(numero);
+     end;
+
+     Function UnidadesDeMillon(Numero:LongInt):String;
+     begin
+       if numero > 999999 then
+       begin
+          if numero > 1999999 then
+          UnidadesDeMillon:=Unidades(Numero div 1000000)+' millones '+CentenasDeMillar(Numero mod 1000000)
+          else
+          UnidadesDeMillon:= 'un millon '+CentenasDeMillar(Numero mod 1000000)
+       end
+       else
+         UnidadesDeMillon:=CentenasDeMillar(Numero);
+     end;
+
+     Function DecenasDeMillon(Numero:LongInt):String;
+     begin
+        if numero > 9999999 then
+          DecenasDeMillon:=Decenas(Numero div 1000000)+ ' millones '+CentenasDeMillar(Numero mod 1000000)
+        else
+          DecenasDeMillon:=UnidadesDeMillon(Numero);
+     end;
+
+     Function CentenasDeMillon(Numero:Int64):String;
+     begin
+        if numero > 99999999 then
+         CentenasDeMillon:=Centenas(Numero div 1000000)+' millones '+CentenasDeMillar(Numero mod 1000000)
+        else
+          CentenasDeMillon:=DecenasDeMillon(Numero);
+     end;
+
+     Function UnidadesDeBillon(Numero:LongInt):String;
+     begin
+          if numero > 1999999999 then
+          UnidadesDeBillon:=Unidades(Numero div 1000000000)+' millones '+CentenasDeMillon(Numero mod 1000000000)
+          else
+          UnidadesDeBillon:= 'un billon '+CentenasDeMillon(Numero mod 1000000000)
+     end;
+
+var
+  i : Integer;
+  Fraccion : Real;
+  Numero : Int64;
+  Aux, R : String;
+begin
+  Fraccion:=Frac(Num);
+  Str(Fraccion:0:2,Aux);
+  Delete(Aux,1,2);
+  Numero:=Abs(Trunc(Num));
+  if Numero = 1 then
+    Aux:=Format(' %s %s/100 %s',[CMonedas[Moneda,1],Aux,CMonedas[Moneda,3]])
+  else
+    Aux:=Format(' %s %s/100 %s',[CMonedas[Moneda,2],Aux,CMonedas[Moneda,3]]);
+  case Longitud(numero) of
+     1: R:=Unidades(numero);
+     2: R:=Decenas(numero);
+     3: R:=Centenas(numero);
+     4: R:=UnidadesDeMillar(numero);
+     5: R:=DecenasDeMillar(numero);
+     6: R:=CentenasDeMillar(numero);
+     7: R:=UnidadesDeMillon(numero);
+     8: R:=DecenasdeMillon(numero);
+     9: R:=CentenasDeMillon(numero);
+     10: R:=UnidadesDeBillon(numero);
+     else
+         R:='Demasiado grande';
+     end;
+  If numero=0 Then
+    R:='cero';
+  i:=length(r);
+  while R[i] = ' ' do
+  begin
+    delete(r, i, 1);
+    dec(i);
+  end;
+  if longitud(Numero) <= 6 then
+    Result:= R + Aux
+  else
+    Result:= R + ' de ' + Aux;
+  Result[1]:=UpCase(Result[1]);
+end;
+
+procedure TGenera.Prior;
+begin
+  DM.tblDatos.Prior;
+end;
+
+function TGenera.RecordCount: Integer;
+begin
+  Result:=DM.tblDatos.RecordCount;
+end;
+
+procedure TGenera.SetNombreArchivo(const Value: String);
+begin
+  FNombreArchivo := Value;
+end;
+
+procedure TGenera.SetParametros(const Value: TMisParametros);
+begin
+  FParametros := Value;
+end;
+
+end.

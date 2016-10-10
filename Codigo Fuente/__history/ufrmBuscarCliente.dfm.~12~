@@ -1,0 +1,150 @@
+inherited frmBuscarCliente: TfrmBuscarCliente
+  Caption = 'Buscar Cliente'
+  ExplicitWidth = 625
+  ExplicitHeight = 445
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dbgAgrupacion: TcxGrid
+    inherited cxGridDBTableView1: TcxGridDBTableView
+      OnKeyDown = cxGridDBTableView1KeyDown
+      object cxGridDBTableView1Column1: TcxGridDBColumn
+        DataBinding.FieldName = 'IDCLIENTE'
+        Width = 68
+      end
+      object cxGridDBTableView1Column2: TcxGridDBColumn
+        DataBinding.FieldName = 'NOMBRE'
+        Width = 153
+      end
+      object cxGridDBTableView1Column3: TcxGridDBColumn
+        DataBinding.FieldName = 'CIUDAD'
+        Width = 106
+      end
+      object cxGridDBTableView1Column4: TcxGridDBColumn
+        DataBinding.FieldName = 'COLONIA'
+        Width = 110
+      end
+      object cxGridDBTableView1Column5: TcxGridDBColumn
+        DataBinding.FieldName = 'CALLE'
+      end
+    end
+  end
+  inherited cdsBuscar: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDCLIENTE'
+        DataType = datInteger
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 80
+      end
+      item
+        Name = 'GRUPO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'COLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CIUDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'TELEFONO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'CODIGOPOSTAL'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'CURP'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'STATUS'
+        DataType = datInteger
+      end
+      item
+        Name = 'CCA'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'CCC'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'LOCALIDAD'
+        DataType = datString
+        Size = 25
+      end
+      item
+        Name = 'DIRECCION'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'NOEXTERIOR'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOINTERIOR'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'ESTADO'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'PAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EMAIL'
+        DataType = datString
+        Size = 150
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnFilterRecord = cdsBuscarFilterRecord
+    LogicalName = 'dbo CLIENTE EFECTIVO'
+    Left = 511
+    Top = 272
+  end
+  inherited dsBuscar: TDADataSource
+    DataSet = cdsBuscar.Dataset
+  end
+end

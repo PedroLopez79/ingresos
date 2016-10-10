@@ -1,0 +1,85 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Facturas Cliente'
+  ClientHeight = 379
+  ClientWidth = 649
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object cxGrid2: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 649
+    Height = 379
+    Align = alClient
+    TabOrder = 0
+    LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
+    ExplicitLeft = -102
+    ExplicitTop = -176
+    ExplicitWidth = 673
+    ExplicitHeight = 520
+    object cxGridDBTableView1: TcxGridDBTableView
+      NavigatorButtons.ConfirmDelete = False
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = '$#,#0.00'
+          Kind = skSum
+          Column = cxGrid1DBTableView1Cargo
+        end
+        item
+          Format = '$#,#0.00'
+          Kind = skSum
+          Column = cxGrid1DBTableView1Abono
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnFiltering = False
+      OptionsCustomize.ColumnSorting = False
+      OptionsData.Editing = False
+      OptionsSelection.MultiSelect = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      object cxGrid1DBTableView1CargoAbonoID: TcxGridDBColumn
+        Caption = 'Mvto.'
+        DataBinding.FieldName = 'DOCUMENTOID'
+        Width = 66
+      end
+      object cxGrid1DBTableView1FechaMovimiento: TcxGridDBColumn
+        Caption = 'Fecha'
+        DataBinding.FieldName = 'FECHA'
+        Width = 70
+      end
+      object cxGrid1DBTableView1Referencia: TcxGridDBColumn
+        DataBinding.FieldName = 'Referencia'
+        Width = 175
+      end
+      object cxGrid1DBTableView1Cargo: TcxGridDBColumn
+        Caption = 'Cargos'
+        DataBinding.FieldName = 'Cargo'
+        Width = 85
+      end
+      object cxGrid1DBTableView1Abono: TcxGridDBColumn
+        Caption = 'Abonos'
+        DataBinding.FieldName = 'Abono'
+        Width = 85
+      end
+      object cxGrid1DBTableView1Column1: TcxGridDBColumn
+        Caption = 'Saldo'
+        DataBinding.FieldName = 'SALDOPARCIAL'
+        Width = 85
+      end
+    end
+    object cxGridLevel1: TcxGridLevel
+      GridView = cxGridDBTableView1
+    end
+  end
+end

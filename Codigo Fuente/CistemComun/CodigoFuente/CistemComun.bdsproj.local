@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2006/12/30 16:19:18.593.pas,C:\Documents and Settings\Marco\My Documents\Borland Studio Projects\Unit2.pas=C:\Proyectos\Cistem\CistemComun\CodigoFuente\ufrmPrincipal.pas</Transaction>
+    <Transaction>2006/12/30 16:19:18.593.dfm,C:\Documents and Settings\Marco\My Documents\Borland Studio Projects\Unit2.dfm=C:\Proyectos\Cistem\CistemComun\CodigoFuente\ufrmPrincipal.dfm</Transaction>
+    <Transaction>2006/12/30 16:19:28.687.bdsproj,C:\Documents and Settings\Marco\My Documents\Borland Studio Projects\Project2.bdsproj=C:\Proyectos\Cistem\CistemComun\CodigoFuente\CistemComun.bdsproj</Transaction>
+    <Transaction>2006/12/30 16:22:14.578.pas,C:\Proyectos\Cistem\CistemComun\CodigoFuente\Unit1.pas=C:\Proyectos\Cistem\CistemComun\CodigoFuente\UtileriasComun.pas</Transaction>
+    <Transaction>2006/12/30 17:06:29.343.pas,C:\Proyectos\Cistem\CistemComun\CodigoFuente\Unit1.pas=C:\Proyectos\Cistem\CistemComun\CodigoFuente\dmImagenes.pas</Transaction>
+    <Transaction>2006/12/30 17:06:29.343.dfm,C:\Proyectos\Cistem\CistemComun\CodigoFuente\Unit1.dfm=C:\Proyectos\Cistem\CistemComun\CodigoFuente\dmImagenes.dfm</Transaction>
+    <Transaction>2007/01/29 16:35:11.622.pas,C:\Proyectos\Cistem\CistemComun\CodigoFuente\Unit3.pas=C:\Proyectos\Cistem\CistemComun\CodigoFuente\ImpresionTickets.pas</Transaction>
+    <Transaction>2007/07/24 13:29:48.703.pas,C:\Proyectos\Cistem\CistemComun\CodigoFuente\ufrmReportesPadre.pas=</Transaction>
+    <Transaction>2007/07/24 13:29:48.703.dfm,C:\Proyectos\Cistem\CistemComun\CodigoFuente\ufrmReportesPadre.dfm=</Transaction>
+    <Transaction>2008/10/02 15:18:14.031.pas,E:\Proyectos\Cistem\CistemComun\CodigoFuente\Unit1.pas=E:\Proyectos\Cistem\CistemComun\CodigoFuente\ufrmSplash.pas</Transaction>
+    <Transaction>2008/10/02 15:18:14.078.dfm,E:\Proyectos\Cistem\CistemComun\CodigoFuente\Unit1.dfm=E:\Proyectos\Cistem\CistemComun\CodigoFuente\ufrmSplash.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

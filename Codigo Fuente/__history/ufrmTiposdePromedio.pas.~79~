@@ -1,0 +1,314 @@
+unit ufrmTiposdePromedio;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmCatalogo, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, DB, cxDBData, dxmdaset, uDAInterfaces,
+  uDADataTable, uDAScriptingProvider, uDAMemDataTable, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, cxPC, cxContainer, cxTextEdit, cxDBEdit, StdCtrls, ExtCtrls,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxGroupBox, AdvMemo, AdvmPS, Menus, cxButtons, Modules, TB2Dock,
+  TB2ToolWindow, TBX, Buttons;
+
+type
+  TfrmTiposdePromedio = class(TfrmCatalogo)
+    dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    AdvPascalMemoStyler1: TAdvPascalMemoStyler;
+    cxGroupBox1: TcxGroupBox;
+    Label2: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Label10: TLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    pgcTipo: TcxPageControl;
+    cxTabSheet4: TcxTabSheet;
+    cxTabSheet5: TcxTabSheet;
+    Label1: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    btnEliminar: TcxButton;
+    btnAgregar: TcxButton;
+    btnCancelar: TcxButton;
+    Label3: TLabel;
+    lbTipo: TListBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    Label4: TLabel;
+    cxDBLookupComboBox5: TcxDBLookupComboBox;
+    Label5: TLabel;
+    cbCalifi1: TcxComboBox;
+    cbCalifi2: TcxComboBox;
+    cbCalificacion: TcxComboBox;
+    cbCual: TcxComboBox;
+    cdsConfiguracion: TDAMemDataTable;
+    cdsNivel: TDAMemDataTable;
+    cdsTipo: TDAMemDataTable;
+    cdsTipoCalificacion: TDAMemDataTable;
+    dsNivel: TDADataSource;
+    dsTipoCalificacion: TDADataSource;
+    dsTipo: TDADataSource;
+    twTipos: TTBXToolWindow;
+    admCodigo: TAdvMemo;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1NOMBRE: TcxGridDBColumn;
+    btnCodigo: TcxButton;
+    procedure FormCreate(Sender: TObject);
+    procedure cdsCatalogoAfterScroll(DataTable: TDADataTable);
+    procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
+    procedure cdsCatalogoBeforePost(DataTable: TDADataTable);
+    procedure btnAgregarClick(Sender: TObject);
+    procedure btnEliminarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure pgcTipoChange(Sender: TObject);
+    procedure admCodigoChange(Sender: TObject);
+    procedure pgcCatalogoChange(Sender: TObject);
+    procedure admCodigoEnter(Sender: TObject);
+    procedure admCodigoExit(Sender: TObject);
+    procedure cxButton1Click(Sender: TObject);
+    procedure cxButton2Click(Sender: TObject);
+    procedure btnCodigoClick(Sender: TObject);
+  protected
+    { -------------------- }
+    procedure RegisterActions; override;
+  private
+    { Private declarations }
+    procedure ActionGuardar(Action: TBasicAction); Override;
+  public
+    { Public declarations }
+    Mover: Boolean;
+    procedure Sincroniza;
+    procedure MueveLista(Cuantos: Integer);
+  end;
+
+var
+  frmTiposdePromedio: TfrmTiposdePromedio;
+
+implementation
+
+Uses uDM, dmActions, UtileriasComun;
+
+{$R *.dfm}
+
+procedure TfrmTiposdePromedio.ActionGuardar(Action: TBasicAction);
+var
+  s: String;
+  i: Integer;
+begin
+  twTipos.Visible:= False;
+  if pgcTipo.ActivePageIndex = 0 then
+  begin
+    s:=Format('%d,%d,%d,', [cbCalifi1.ItemIndex, cbCalifi2.ItemIndex, cbCalificacion.ItemIndex]);
+    cdsCatalogo.FieldByName('PROMEDIO').AsInteger:= 0;
+    cdsCatalogo.FieldByName('CUAL').AsInteger:= 0;
+  end else
+  begin
+    s:='';
+    for i := 0 to lbTipo.Items.Count - 1 do
+    begin
+      cdsTipo.Locate('Nombre',lbTipo.Items[i], []);
+      s:=s+cdsTipo.FieldByName('IDTIPOCALIFICACION').AsString+',';
+    end;
+    cdsCatalogo.FieldByName('CUAL').AsInteger:= cbCual.ItemIndex + 1;
+  end;
+  cdsCatalogo.FieldByName('CALIFICACIONES').AsString:=s;
+  cdsCatalogo.FieldByName('TIPOPROMEDIO').AsInteger:=pgcTipo.ActivePageIndex;
+
+  inherited;
+end;
+
+procedure TfrmTiposdePromedio.admCodigoChange(Sender: TObject);
+begin
+  inherited;
+  if (Mover) and (cdsCatalogo.State = dsBrowse) and (twTipos.Visible = True) then
+  begin
+    cdsCatalogo.Edit;
+  end;
+end;
+
+procedure TfrmTiposdePromedio.admCodigoEnter(Sender: TObject);
+begin
+  inherited;
+  OkEnter:= False;
+end;
+
+procedure TfrmTiposdePromedio.admCodigoExit(Sender: TObject);
+begin
+  inherited;
+  OkEnter:= True;
+  twTipos.Visible:= False;
+end;
+
+procedure TfrmTiposdePromedio.btnAgregarClick(Sender: TObject);
+begin
+  inherited;
+  if (lbTipo.Items.IndexOf(cdsTipo.FieldByName('NOMBRE').AsString) < 0) then
+     lbTipo.Items.Add(cdsTipo.FieldByName('NOMBRE').AsString);
+end;
+
+procedure TfrmTiposdePromedio.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  lbTipo.Items.Clear;
+end;
+
+procedure TfrmTiposdePromedio.btnCodigoClick(Sender: TObject);
+begin
+  inherited;
+  twTipos.Visible:= True;
+  admCodigo.SetFocus;
+end;
+
+procedure TfrmTiposdePromedio.btnEliminarClick(Sender: TObject);
+begin
+  inherited;
+  if lbTipo.ItemIndex >= 0 then
+     lbTipo.Items.Delete(lbTipo.ItemIndex);
+end;
+
+procedure TfrmTiposdePromedio.cdsCatalogoAfterScroll(DataTable: TDADataTable);
+begin
+  inherited;
+  if (cdsCatalogo.State = dsBrowse) and (pgcCatalogo.ActivePageIndex = 1) then
+     Sincroniza;
+
+end;
+
+procedure TfrmTiposdePromedio.cdsCatalogoBeforePost(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsCatalogo.FieldByName('CODIGO').AsString:= admCodigo.Lines.Text;
+end;
+
+procedure TfrmTiposdePromedio.cdsCatalogoNewRecord(DataTable: TDADataTable);
+begin
+  inherited;
+  cdsCatalogo.FieldByName('IDDATOPROMEDIO').AsInteger:= DM.Servidor.Folio('IDDATOPROMEDIO','');
+  cdsCatalogo.FieldByName('TIPOPROMEDIO').AsInteger:= -1;
+end;
+
+procedure TfrmTiposdePromedio.cxButton1Click(Sender: TObject);
+begin
+  inherited;
+  if lbTipo.ItemIndex > 0 then
+     MueveLista(-1);
+end;
+
+procedure TfrmTiposdePromedio.cxButton2Click(Sender: TObject);
+begin
+  inherited;
+  if lbTipo.ItemIndex in [0..lbTipo.items.Count-2] then
+     MueveLista(1);
+end;
+
+procedure TfrmTiposdePromedio.FormCreate(Sender: TObject);
+procedure Llenado(Aux: TcxComboBox);
+begin
+  Aux.Properties.Items.Insert(0,cdsConfiguracion.FieldByName('CALIFICACION2').AsString);
+  Aux.Properties.Items.Insert(0,cdsConfiguracion.FieldByName('CALIFICACION1').AsString);
+end;
+begin
+  inherited;
+  Mover:= True;
+  DM.IniciaVenta(twTipos);
+  cdsConfiguracion.Close;
+  cdsConfiguracion.Open;
+  Llenado(cbCalifi1);
+  Llenado(cbCalifi2);
+  Llenado(cbCalificacion);
+  cbCual.Properties.Items.Add(cdsConfiguracion.FieldByName('CALIFICACION2').AsString);
+  cbCual.Properties.Items.Add(cdsConfiguracion.FieldByName('CALIFICACION1').AsString);
+  cbCual.Properties.Items.Add('Faltas');
+  cdsTipo.Close;
+  cdsTipo.Open;
+  cdsNivel.Close;
+  cdsNivel.Open;
+  cdsTipoCalificacion.Close;
+  cdsTipoCalificacion.Open;
+  cdsCatalogo.Close;
+  cdsCatalogo.Open;
+end;
+
+procedure TfrmTiposdePromedio.MueveLista(Cuantos: Integer);
+var
+  i:Integer;
+begin
+  i:=lbTipo.ItemIndex;
+  lbTipo.Items.Move(lbTipo.ItemIndex, lbTipo.ItemIndex+Cuantos);
+  lbTipo.ItemIndex:= i+Cuantos;
+end;
+
+procedure TfrmTiposdePromedio.pgcCatalogoChange(Sender: TObject);
+begin
+  inherited;
+  Sincroniza;
+end;
+
+procedure TfrmTiposdePromedio.pgcTipoChange(Sender: TObject);
+begin
+  inherited;
+  Sincroniza;
+end;
+
+procedure TfrmTiposdePromedio.RegisterActions;
+begin
+  inherited RegisterActions;
+  RegisterAction(AppActions.actGuardar, ActionGuardar);
+end;
+
+procedure TfrmTiposdePromedio.Sincroniza;
+var
+  s: String;
+function Cual(var Cad: String):Integer;
+begin
+  Result:= -1;
+  if Cad <> '' then
+  begin
+    Result:= StrToInt(Copy(S, 1, Pos(',', Cad) - 1));
+    Delete(Cad, 1, Pos(',', Cad));
+  end;
+end;
+begin
+  admCodigo.lines.Text:= cdsCatalogo.FieldByName('CODIGO').AsString;
+
+
+
+  if cdsCatalogo.FieldByName('TIPOPROMEDIO').AsInteger >= 0 then 
+     pgcTipo.ActivePageIndex:= cdsCatalogo.FieldByName('TIPOPROMEDIO').AsInteger;
+  s:=cdsCatalogo.FieldByName('CALIFICACIONES').AsString;
+  lbTipo.Items.Clear;
+  if pgcTipo.ActivePageIndex = 0 then
+  begin
+     cbCalifi1.ItemIndex:= Cual(s);
+     cbCalifi2.ItemIndex:= Cual(s);
+     cbCalificacion.ItemIndex:= Cual(s);
+  end else
+  begin
+     cbCual.ItemIndex:= cdsCatalogo.FieldByName('CUAL').AsInteger - 1;
+     while s <> '' do
+     begin
+       cdsTipo.Locate('idTipoCalificacion', Cual(s), []);
+       Mover:= False;
+       lbTipo.items.Add(cdsTipo.FieldByName('NOMBRE').AsString);
+       Mover:= True;
+     end;
+  end;
+end;
+
+initialization
+  ModuleInfoManager.RegisterModule('TipoPromedios', TfrmTiposdePromedio);
+
+end.

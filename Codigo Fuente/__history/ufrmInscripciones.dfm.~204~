@@ -1,0 +1,2874 @@
+inherited frmInscripciones: TfrmInscripciones
+  Caption = 'frmInscripciones'
+  ClientWidth = 746
+  ExplicitWidth = 746
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcCatalogo: TcxPageControl
+    Top = 26
+    Width = 746
+    Height = 423
+    ExplicitTop = 26
+    ExplicitWidth = 746
+    ExplicitHeight = 423
+    ClientRectBottom = 393
+    ClientRectRight = 740
+    inherited cxTabSheet1: TcxTabSheet
+      ExplicitWidth = 737
+      ExplicitHeight = 390
+      inherited dbgCatalogo: TcxGrid
+        Width = 737
+        Height = 390
+        ExplicitWidth = 737
+        ExplicitHeight = 390
+        inherited dbgCatalogoDBTableView1: TcxGridDBTableView
+          object dbgCatalogoDBTableView1alumnonumcontrol: TcxGridDBColumn
+            Caption = 'No.Control'
+            DataBinding.FieldName = 'alumnonumcontrol'
+            Width = 66
+          end
+          object dbgCatalogoDBTableView1alumnonombre: TcxGridDBColumn
+            Caption = 'Nombre del Alumno'
+            DataBinding.FieldName = 'alumnonombre'
+            Width = 249
+          end
+          object dbgCatalogoDBTableView1grupocodigo: TcxGridDBColumn
+            Caption = 'Grupo'
+            DataBinding.FieldName = 'grupocodigo'
+            Width = 165
+          end
+          object dbgCatalogoDBTableView1BECA: TcxGridDBColumn
+            DataBinding.FieldName = 'BECA'
+            Width = 123
+          end
+          object dbgCatalogoDBTableView1DESCUENTO: TcxGridDBColumn
+            DataBinding.FieldName = 'DESCUENTO'
+            Width = 116
+          end
+        end
+      end
+    end
+    inherited cxTabSheet2: TcxTabSheet
+      ExplicitWidth = 737
+      ExplicitHeight = 390
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 737
+        Height = 30
+        Align = alTop
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Caption = ' Alumno[]'
+        Color = clBtnShadow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 30
+        Width = 737
+        Height = 2
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clNone
+        ParentBackground = False
+        TabOrder = 1
+      end
+      object pgcInscripcion: TcxPageControl
+        Left = 0
+        Top = 32
+        Width = 737
+        Height = 358
+        ActivePage = cxTabSheet3
+        Align = alClient
+        Images = dmImages.Imagenes2
+        TabOrder = 2
+        TabStop = False
+        ClientRectBottom = 352
+        ClientRectLeft = 3
+        ClientRectRight = 731
+        ClientRectTop = 27
+        object cxTabSheet3: TcxTabSheet
+          Caption = 'Datos Generales'
+          ImageIndex = 50
+          object cxDBTextEdit1: TcxDBTextEdit
+            Left = 6
+            Top = 24
+            DataBinding.DataField = 'alumnonumcontrol'
+            DataBinding.DataSource = dsCatalogo
+            Enabled = False
+            TabOrder = 0
+            Width = 121
+          end
+          object cxDBTextEdit2: TcxDBTextEdit
+            Left = 6
+            Top = 65
+            DataBinding.DataField = 'alumnonombre'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 1
+            Width = 439
+          end
+          object cxDBTextEdit3: TcxDBTextEdit
+            Left = 6
+            Top = 150
+            DataBinding.DataField = 'documentosfaltantes'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 2
+            Width = 253
+          end
+          object cxLabel1: TcxLabel
+            Left = 6
+            Top = 9
+            Caption = 'No. Control'
+            Transparent = True
+          end
+          object cxLabel5: TcxLabel
+            Left = 6
+            Top = 49
+            Caption = 'Nombre del Alumno'
+            Transparent = True
+          end
+          object cxLabel6: TcxLabel
+            Left = 6
+            Top = 92
+            Caption = 'Grupo'
+            Transparent = True
+          end
+          object cxLabel7: TcxLabel
+            Left = 6
+            Top = 174
+            Caption = 'STATUS'
+            Transparent = True
+          end
+          object cxLabel8: TcxLabel
+            Left = 6
+            Top = 133
+            Caption = 'Documentos Faltantes'
+            Transparent = True
+          end
+          object cxLabel11: TcxLabel
+            Left = 162
+            Top = 175
+            Caption = 'Beca'
+            Transparent = True
+          end
+          object cxLabel12: TcxLabel
+            Left = 285
+            Top = 174
+            Caption = 'Descuento'
+            Transparent = True
+          end
+          object cxDBLookupComboBox1: TcxDBLookupComboBox
+            Left = 6
+            Top = 190
+            DataBinding.DataField = 'idstatus'
+            DataBinding.DataSource = dsCatalogo
+            Properties.KeyFieldNames = 'IDSTATUS'
+            Properties.ListColumns = <
+              item
+                FieldName = 'nombre'
+              end>
+            Properties.ListSource = dsStatus
+            TabOrder = 10
+            Width = 150
+          end
+          object cxDBCurrencyEdit1: TcxDBCurrencyEdit
+            Left = 162
+            Top = 190
+            DataBinding.DataField = 'BECA'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 11
+            Width = 117
+          end
+          object cxDBCurrencyEdit2: TcxDBCurrencyEdit
+            Left = 285
+            Top = 190
+            DataBinding.DataField = 'DESCUENTO'
+            DataBinding.DataSource = dsCatalogo
+            TabOrder = 12
+            Width = 160
+          end
+          object dbcGrupo: TcxDBLookupComboBox
+            Left = 6
+            Top = 108
+            DataBinding.DataField = 'idhistorialgrupo'
+            DataBinding.DataSource = dsCatalogo
+            Properties.KeyFieldNames = 'IDHISTORIALGRUPO'
+            Properties.ListColumns = <
+              item
+                FieldName = 'GRUPOCODIGO'
+              end
+              item
+                FieldName = 'GRUPONOMBRE'
+              end>
+            Properties.ListSource = dsGrupo
+            Properties.OnValidate = dbcGrupoPropertiesValidate
+            TabOrder = 13
+            Width = 336
+          end
+        end
+        object cxTabSheet8: TcxTabSheet
+          Caption = 'Pagos'
+          ImageIndex = 42
+          object TcxGroupBox
+            Left = 0
+            Top = 270
+            Align = alBottom
+            TabOrder = 0
+            Height = 55
+            Width = 728
+            object btnAgregar: TcxButton
+              Left = 10
+              Top = 17
+              Width = 89
+              Height = 25
+              Caption = 'Agregar'
+              TabOrder = 0
+              OnClick = btnAgregarClick
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                1800000000000003000000000000000000000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000FF0000FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF00FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FF0000FF0000FF0000FF0000FF0000FF0000FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000FF
+                0000FF0000FF0000FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FF000000000000FF00FFFF00FFFF00FF0000FF0000FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000FF00FFFF00FF
+                FF00FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF0000FF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FF000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                0000FF0000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF0000
+                FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF00FF0000
+                FF0000FFFF00FFFF00FFFF00FFFF0000FF0000FF0000FF0000FF0000FF0000FF
+                0000FF0000FF0000FF0000FF00FF0000FF0000FFFF00FFFF00FFFF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF0000FF0000FF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                0000FF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+            end
+            object btnSerie: TcxButton
+              Left = 200
+              Top = 17
+              Width = 89
+              Height = 25
+              Caption = 'Serie'
+              TabOrder = 1
+              OnClick = btnSerieClick
+              Glyph.Data = {
+                36040000424D3604000000000000360000002800000010000000100000000100
+                2000000000000004000000000000000000000000000000000000FF00FF00FF00
+                FF00FF00FF00F7F7F700A4A4A4007777770076747400737274006D656A007373
+                74007574740076757500A5A5A500F7F7F700FF00FF00FF00FF00FF00FF00FF00
+                FF00F2F2F200969494008F8B8B00A49E9E00C8BBB6005C6D89000B68A3005B6C
+                8800C7BBB500AEACAC008984840092929200F2F3F300FF00FF00FF00FF00FEFE
+                FE00A5A5A5008C868600C7C6C500E0DDDC0096AEC0000B84B80000C7F8000C7F
+                B3009DB3C500DAD7D600BAB4B400847E7E00A4A5A500FEFEFE00FF00FF00EEEF
+                EF0077767600B0ABAB00D7D7D600E0DFE8000A7BAF000072AA0000ABDD000095
+                CC000D8EC200D7CFD400CBCAC900A9A2A30078777700EEEFEF00FF00FF00EDEE
+                EE0075747400AEA8A800DADADA00EDF3F9003B5A870000306B0000BBED0000BB
+                E9001C95C500E1DDE500D3D2D100AEA8A70076757500EDEEEE00FF00FF00ECED
+                ED0072717100B4B0B000DBDBDA00E1E1E9001B6FA10000BDEB0000CBFA000075
+                AC003C699700E9ECF100D1CFCE00ADA7A70073727200ECEDED00FF00FF00F6F7
+                F700888888009A949400CDCBC900DED7DF000E92C50000A2D60000AEDF00006A
+                A2000977AB00D4CFD400C2BEBC009591910088888800F6F7F700FF00FF00FF00
+                FF00CACBCB0076747400B9B4B400E4E1E000A3B9CC000B7DB10000C6F8000D86
+                BA009CB4C400D2CDCB00AFA9A90075747400CBCBCB00FF00FF00FF00FF00FF00
+                FF00FAFAFA008A8B8B0089858500B8B3B300DBD0CA006A7B98000D649F00697A
+                9700E1D8D200AFA9A900817E7E008B8C8C00FAFAFA00FF00FF00FF00FF00FF00
+                FF00FF00FF00F8F8F800A4A4A400777575008E8A8900928E90008A7D8200918E
+                8F00918D8C007C7A7A00A3A4A400F8F8F800FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00FF00FF00ECEDED007F8080005C5C5C005C5C5B005353
+                520081828200ECECEC00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00FF00FF00FF00FF0093939300767373008E8D8E007876
+                76008F8F8F00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00FEFEFE00C4C4C40087838300C6C7C900B4BABF00C5C6
+                C8007C797900CACBCB00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00EEEEEE006F6E6E0089878700B2B2B400A7A7AA00A8A6
+                A7007776760083838300F5F5F500FF00FF00FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00F7F7F70090909000BFC0C00098989700949393009999
+                9900C1C2C2008D8D8D00F6F6F600FF00FF00FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+                FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
+            end
+            object btnDescuentaBeca: TcxButton
+              Left = 295
+              Top = 17
+              Width = 130
+              Height = 25
+              Caption = 'Beca-Descuento'
+              TabOrder = 2
+              OnClick = btnDescuentaBecaClick
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                08000000000000010000130B0000130B00000001000000000000005A00000084
+                000000C6000042424200008484008484840084FF840000C6C600C6C6C600C6FF
+                C600FF00FF0084FFFF00C6FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+                FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000A0A0A0A0A0A
+                0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A05040404050A0A0A0A0A0A05040404
+                05040C0B0B040A0A0A0A0A0A040C0B0B04050404040504050A0A0A0A05040404
+                050A0A04080808040A0A0A0A0A0A0A0A0A0A0A04070707040A0A0A0000000000
+                000000040808080400000A0001010202020202040707070401000A0001020606
+                060303040D0B0B0401000A0002090906030808040404040602000A0002090909
+                030C08080306060602000A0001020909090303030606060201000A0001010209
+                090909060606020101000A0000000000000000000000000000000A0A0A0A0A0A
+                0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A}
+            end
+            object btnEliminar: TcxButton
+              Left = 105
+              Top = 17
+              Width = 89
+              Height = 25
+              Caption = 'Eliminar'
+              TabOrder = 3
+              OnClick = btnEliminarClick
+              Glyph.Data = {
+                D6020000424DD60200000000000036000000280000000F0000000E0000000100
+                180000000000A002000000000000000000000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000
+                00000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FF0000000000000000000000000000FF0000FF
+                0000FF0000FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FF0000000000FF0000FF0000FF0000FF0000FF0000FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FFFF00FFFF00FFFF0000FF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF0000FF0000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FF000000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF
+                0000FF0000FF0000FF00FF0000FF0000FFFF00FFFF00FF000000FF0000FF0000
+                FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF00FF0000FF0000
+                FFFF00FFFF00FF000000FF00FFFF00FFFF0000FF0000FF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000FF00FFFF00FF
+                FF00FFFF0000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000
+                00000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FF000000000000000000000000}
+            end
+          end
+          object cxGrid1: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 728
+            Height = 270
+            Align = alClient
+            TabOrder = 1
+            object cxGrid1DBTableView1: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              OnCellDblClick = cxGrid1DBTableView1CellDblClick
+              DataController.DataSource = dsPagos
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.ColumnAutoWidth = True
+              OptionsView.Footer = True
+              OptionsView.GroupByBox = False
+              OptionsView.Indicator = True
+              object cxGrid1DBTableView1IDSUBTIPOPAGO: TcxGridDBColumn
+                Caption = 'Concepto'
+                DataBinding.FieldName = 'IDSUBTIPOPAGO'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'IDSUBTIPOPAGO'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'SUBTIPONOMBRE'
+                  end>
+                Properties.ListSource = dsSubTipo
+                Width = 240
+              end
+              object cxGrid1DBTableView1NUMPAGO: TcxGridDBColumn
+                Caption = 'Serie'
+                DataBinding.FieldName = 'NUMPAGO'
+                Width = 126
+              end
+              object cxGrid1DBTableView1IMPORTE: TcxGridDBColumn
+                Caption = 'Importe'
+                DataBinding.FieldName = 'IMPORTE'
+                Width = 124
+              end
+              object cxGrid1DBTableView1FECHA: TcxGridDBColumn
+                DataBinding.FieldName = 'FECHA'
+              end
+              object cxGrid1DBTableView1STATUS: TcxGridDBColumn
+                DataBinding.FieldName = 'STATUS'
+              end
+            end
+            object cxGrid1Level1: TcxGridLevel
+              GridView = cxGrid1DBTableView1
+            end
+          end
+        end
+        object cxTabSheet7: TcxTabSheet
+          Caption = 'Materias'
+          ImageIndex = 39
+          object cxGrid2: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 728
+            Height = 270
+            Align = alClient
+            TabOrder = 0
+            object cxGridDBTableView1: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              OnCellDblClick = cxGridDBTableView1CellDblClick
+              DataController.DataSource = dsCalificaciones
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.ColumnAutoWidth = True
+              OptionsView.GroupByBox = False
+              OptionsView.Indicator = True
+              object cxGridDBTableView1Column1: TcxGridDBColumn
+                Caption = 'Codigo'
+                DataBinding.FieldName = 'IDMATERIA'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'IDMATERIA'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'CODIGO'
+                  end>
+                Properties.ListSource = dsMaterias
+              end
+              object cxGridDBTableView1Column2: TcxGridDBColumn
+                Caption = 'Nombre'
+                DataBinding.FieldName = 'IDMATERIA'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'IDMATERIA'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'NOMBRE'
+                  end>
+                Properties.ListSource = dsMaterias
+                Width = 180
+              end
+              object cxGridDBTableView1IDMATERIA: TcxGridDBColumn
+                Caption = 'Grupo'
+                DataBinding.FieldName = 'IDHISTORIALGRUPO'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'IDHISTORIALGRUPO'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'GRUPONOMBRE'
+                  end>
+                Properties.ListSource = dsGrupo
+                Width = 95
+              end
+              object cxGridDBTableView1Column3: TcxGridDBColumn
+                DataBinding.FieldName = 'CALIFICACION'
+              end
+              object cxGridDBTableView1STATUS: TcxGridDBColumn
+                DataBinding.FieldName = 'STATUS'
+                Width = 71
+              end
+              object cxGridDBTableView1FALTAS: TcxGridDBColumn
+                DataBinding.FieldName = 'FALTAS'
+                Width = 84
+              end
+            end
+            object cxGridLevel1: TcxGridLevel
+              GridView = cxGridDBTableView1
+            end
+          end
+          object TcxGroupBox
+            Left = 0
+            Top = 270
+            Align = alBottom
+            TabOrder = 1
+            Height = 55
+            Width = 728
+            object cxButton1: TcxButton
+              Left = 105
+              Top = 17
+              Width = 89
+              Height = 25
+              Caption = 'Eliminar'
+              TabOrder = 0
+              OnClick = cxButton1Click
+              Glyph.Data = {
+                D6020000424DD60200000000000036000000280000000F0000000E0000000100
+                180000000000A002000000000000000000000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000
+                00000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FF0000000000000000000000000000FF0000FF
+                0000FF0000FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FF0000000000FF0000FF0000FF0000FF0000FF0000FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FFFF00FFFF00FFFF0000FF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF0000FF0000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FF000000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF
+                0000FF0000FF0000FF00FF0000FF0000FFFF00FFFF00FF000000FF0000FF0000
+                FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF00FF0000FF0000
+                FFFF00FFFF00FF000000FF00FFFF00FFFF0000FF0000FF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000FF00FFFF00FF
+                FF00FFFF0000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000
+                00000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FF000000000000000000000000}
+            end
+            object cxButton2: TcxButton
+              Left = 10
+              Top = 17
+              Width = 89
+              Height = 25
+              Caption = 'Agregar'
+              TabOrder = 1
+              OnClick = cxButton2Click
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                1800000000000003000000000000000000000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000FF0000FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF00FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FF0000FF0000FF0000FF0000FF0000FF0000FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000FF
+                0000FF0000FF0000FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FF000000000000FF00FFFF00FFFF00FF0000FF0000FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000FF00FFFF00FF
+                FF00FF0000FF0000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF0000FF00FFFF00FFFF00FFFF00FFFF00
+                FFFF00FF000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                0000FF0000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF0000
+                FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF00FF0000
+                FF0000FFFF00FFFF00FFFF00FFFF0000FF0000FF0000FF0000FF0000FF0000FF
+                0000FF0000FF0000FF0000FF00FF0000FF0000FFFF00FFFF00FFFF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF0000FF0000FF00FFFF00FFFF00FFFF00
+                FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                0000FF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF00FFFF00FF
+                FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                FF000000000000000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+            end
+          end
+        end
+      end
+    end
+  end
+  object TBDock1: TTBDock [1]
+    Left = 0
+    Top = 0
+    Width = 746
+    Height = 26
+    object TBXToolbar2: TTBXToolbar
+      Left = 0
+      Top = 0
+      Caption = 'TBXToolbar2'
+      DockPos = 0
+      TabOrder = 0
+      object TBXLabelItem2: TTBXLabelItem
+        Caption = 'Ciclo'
+      end
+      object TBControlItem1: TTBControlItem
+        Control = dbcCiclo
+      end
+      object dbcCiclo: TcxLookupComboBox
+        Left = 28
+        Top = 0
+        Properties.KeyFieldNames = 'idciclo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'nombre'
+          end>
+        Properties.ListSource = dsCiclo
+        Properties.OnChange = dbcCicloPropertiesChange
+        TabOrder = 0
+        Width = 221
+      end
+    end
+    object TBXToolbar1: TTBXToolbar
+      Left = 259
+      Top = 0
+      Align = alTop
+      Caption = 'TBXToolbar1'
+      DockPos = 258
+      Images = dmImages.Imagenes2
+      TabOrder = 1
+      object TBXItem1: TTBXItem
+        Caption = 'Agregar Prospecto a catalodo de Alumnos'
+        DisplayMode = nbdmImageAndText
+        ImageIndex = 23
+        OnClick = TBXItem1Click
+      end
+      object TBXSeparatorItem1: TTBXSeparatorItem
+      end
+      object btnInscribir: TTBXItem
+        Caption = 'Inscribir'
+        DisplayMode = nbdmImageAndText
+        ImageIndex = 38
+        OnClick = btnInscribirClick
+      end
+      object TBSeparatorItem1: TTBSeparatorItem
+      end
+      object TBXItem2: TTBXItem
+        Caption = 'Preinscripcion'
+        DisplayMode = nbdmImageAndText
+        ImageIndex = 27
+        OnClick = TBXItem2Click
+      end
+    end
+  end
+  object twPreinscripcion: TTBXToolWindow [2]
+    Left = 236
+    Top = 134
+    Width = 284
+    Height = 253
+    Caption = 'twPreinscripcion'
+    ClientAreaHeight = 253
+    ClientAreaWidth = 284
+    TabOrder = 2
+    Visible = False
+    OnVisibleChanged = twPreinscripcionVisibleChanged
+    object cxGroupBox4: TcxGroupBox
+      Left = 0
+      Top = 0
+      Align = alClient
+      TabOrder = 0
+      Height = 253
+      Width = 284
+      object Label8: TLabel
+        Left = 22
+        Top = 10
+        Width = 103
+        Height = 13
+        Caption = 'Inscripcion Actual'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = True
+      end
+      object Label1: TLabel
+        Left = 22
+        Top = 41
+        Width = 23
+        Height = 13
+        Caption = 'Ciclo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label2: TLabel
+        Left = 22
+        Top = 79
+        Width = 29
+        Height = 13
+        Caption = 'Grupo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label3: TLabel
+        Left = 22
+        Top = 110
+        Width = 81
+        Height = 13
+        Caption = 'Preinscripcion'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = True
+      end
+      object Label4: TLabel
+        Left = 22
+        Top = 139
+        Width = 23
+        Height = 13
+        Caption = 'Ciclo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label5: TLabel
+        Left = 22
+        Top = 177
+        Width = 29
+        Height = 13
+        Caption = 'Grupo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object btnAceptar: TcxButton
+        Left = 99
+        Top = 216
+        Width = 122
+        Height = 25
+        Caption = 'Aceptar'
+        TabOrder = 0
+        OnClick = btnAceptarClick
+        Glyph.Data = {
+          36050000424D3605000000000000360400002800000010000000100000000100
+          0800000000000001000000000000000000000001000000000000FF00FF00004B
+          0000098611000A8615000D931A000C9518000C9C19000F991C000E9D1D001392
+          240011A0210011A422001CA134001CB1350024BC430029B548002EC6520035CA
+          5E0039D465000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000001
+          0100000000000000000000000000010808010000000000000000000000010D0B
+          080B0100000000000000000001100E0901040801000000000000000111120C01
+          000103080100000000000000010F010000000001040100000000000000010000
+          0000000001030100000000000000000000000000000001010000000000000000
+          0000000000000001010000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+      end
+      object dbcViejoCiclo: TcxLookupComboBox
+        Left = 58
+        Top = 37
+        Properties.KeyFieldNames = 'idCiclo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nombre'
+          end>
+        Properties.ListSource = dsViejoCiclo
+        TabOrder = 1
+        Width = 198
+      end
+      object dbcViejoGrupo: TcxLookupComboBox
+        Left = 58
+        Top = 76
+        Properties.KeyFieldNames = 'idgrupo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nombre'
+          end>
+        Properties.ListSource = dsViejoGrupo
+        TabOrder = 2
+        Width = 198
+      end
+      object dbcNuevoCiclo: TcxLookupComboBox
+        Left = 58
+        Top = 135
+        Properties.KeyFieldNames = 'idCiclo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nombre'
+          end>
+        Properties.ListSource = dsNuevoCiclo
+        TabOrder = 3
+        Width = 198
+      end
+      object dbcNuevoGrupo: TcxLookupComboBox
+        Left = 58
+        Top = 174
+        Properties.KeyFieldNames = 'idgrupo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nombre'
+          end>
+        Properties.ListSource = dsNuevoGrupo
+        TabOrder = 4
+        Width = 198
+      end
+    end
+  end
+  object twPagos: TTBXToolWindow [3]
+    Left = 236
+    Top = 134
+    Width = 284
+    Height = 183
+    Caption = 'twPreinscripcion'
+    ClientAreaHeight = 183
+    ClientAreaWidth = 284
+    TabOrder = 3
+    Visible = False
+    OnCloseQuery = twPagosCloseQuery
+    OnVisibleChanged = twPagosVisibleChanged
+    object cxGroupBox3: TcxGroupBox
+      Left = 0
+      Top = 0
+      Align = alClient
+      TabOrder = 0
+      Height = 183
+      Width = 284
+      object Label11: TLabel
+        Left = 22
+        Top = 26
+        Width = 24
+        Height = 13
+        Caption = 'Serie'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label12: TLabel
+        Left = 150
+        Top = 26
+        Width = 35
+        Height = 13
+        Caption = 'Importe'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label14: TLabel
+        Left = 24
+        Top = 72
+        Width = 46
+        Height = 13
+        Caption = 'Concepto'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label13: TLabel
+        Left = 150
+        Top = 72
+        Width = 58
+        Height = 13
+        Caption = 'Vencimiento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxButton5: TcxButton
+        Left = 79
+        Top = 126
+        Width = 122
+        Height = 25
+        Caption = 'Aceptar'
+        TabOrder = 0
+        OnClick = cxButton5Click
+        Glyph.Data = {
+          36050000424D3605000000000000360400002800000010000000100000000100
+          0800000000000001000000000000000000000001000000000000FF00FF00004B
+          0000098611000A8615000D931A000C9518000C9C19000F991C000E9D1D001392
+          240011A0210011A422001CA134001CB1350024BC430029B548002EC6520035CA
+          5E0039D465000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000001
+          0100000000000000000000000000010808010000000000000000000000010D0B
+          080B0100000000000000000001100E0901040801000000000000000111120C01
+          000103080100000000000000010F010000000001040100000000000000010000
+          0000000001030100000000000000000000000000000001010000000000000000
+          0000000000000001010000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+      end
+      object cxDBTextEdit5: TcxDBTextEdit
+        Left = 22
+        Top = 45
+        DataBinding.DataField = 'NUMPAGO'
+        DataBinding.DataSource = dsPagos
+        TabOrder = 1
+        Width = 103
+      end
+      object cxDBTextEdit6: TcxDBTextEdit
+        Left = 150
+        Top = 45
+        DataBinding.DataField = 'IMPORTE'
+        DataBinding.DataSource = dsPagos
+        TabOrder = 2
+        Width = 106
+      end
+      object cxDBDateEdit1: TcxDBDateEdit
+        Left = 150
+        Top = 91
+        DataBinding.DataField = 'FECHA'
+        DataBinding.DataSource = dsPagos
+        TabOrder = 3
+        Width = 108
+      end
+      object cxDBLookupComboBox2: TcxDBLookupComboBox
+        Left = 22
+        Top = 91
+        DataBinding.DataField = 'IDSUBTIPOPAGO'
+        DataBinding.DataSource = dsPagos
+        Properties.KeyFieldNames = 'IDSUBTIPOPAGO'
+        Properties.ListColumns = <
+          item
+            FieldName = 'SUBTIPOCODIGO'
+          end
+          item
+            FieldName = 'SUBTIPONOMBRE'
+          end>
+        Properties.ListSource = dsSubTipo
+        TabOrder = 4
+        Width = 103
+      end
+    end
+  end
+  object twMaterias: TTBXToolWindow [4]
+    Left = 236
+    Top = 134
+    Width = 251
+    Height = 149
+    Caption = '`'
+    ClientAreaHeight = 149
+    ClientAreaWidth = 251
+    TabOrder = 4
+    Visible = False
+    OnCloseQuery = twMateriasCloseQuery
+    object cxGroupBox2: TcxGroupBox
+      Left = 0
+      Top = 0
+      Align = alClient
+      TabOrder = 0
+      Height = 149
+      Width = 251
+      object Label9: TLabel
+        Left = 22
+        Top = 10
+        Width = 35
+        Height = 13
+        Caption = 'Materia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label10: TLabel
+        Left = 23
+        Top = 57
+        Width = 29
+        Height = 13
+        Caption = 'Grupo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxButton4: TcxButton
+        Left = 67
+        Top = 103
+        Width = 122
+        Height = 25
+        Caption = 'Aceptar'
+        TabOrder = 0
+        OnClick = cxButton4Click
+        Glyph.Data = {
+          36050000424D3605000000000000360400002800000010000000100000000100
+          0800000000000001000000000000000000000001000000000000FF00FF00004B
+          0000098611000A8615000D931A000C9518000C9C19000F991C000E9D1D001392
+          240011A0210011A422001CA134001CB1350024BC430029B548002EC6520035CA
+          5E0039D465000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000001
+          0100000000000000000000000000010808010000000000000000000000010D0B
+          080B0100000000000000000001100E0901040801000000000000000111120C01
+          000103080100000000000000010F010000000001040100000000000000010000
+          0000000001030100000000000000000000000000000001010000000000000000
+          0000000000000001010000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+      end
+      object dbcCodigoMateria: TcxLookupComboBox
+        Left = 23
+        Top = 29
+        Properties.KeyFieldNames = 'IDMATERIA'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NOMBRE'
+          end>
+        Properties.ListSource = dsMaterias
+        TabOrder = 1
+        Width = 198
+      end
+      object dbcCodigoGrupo: TcxLookupComboBox
+        Left = 23
+        Top = 76
+        Properties.KeyFieldNames = 'IDHISTORIALGRUPO'
+        Properties.ListColumns = <
+          item
+            FieldName = 'GRUPONOMBRE'
+          end>
+        Properties.ListSource = dsGrupo
+        TabOrder = 2
+        Width = 198
+      end
+    end
+  end
+  object twSerie: TTBXToolWindow [5]
+    Left = 236
+    Top = 134
+    Width = 284
+    Height = 108
+    Caption = 'twSerie'
+    ClientAreaHeight = 108
+    ClientAreaWidth = 284
+    TabOrder = 5
+    Visible = False
+    OnVisibleChanged = twSerieVisibleChanged
+    object cxGroupBox1: TcxGroupBox
+      Left = 0
+      Top = 0
+      Align = alClient
+      TabOrder = 0
+      Height = 108
+      Width = 284
+      object Label7: TLabel
+        Left = 29
+        Top = 18
+        Width = 95
+        Height = 13
+        Caption = 'Subtipo de Pago'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = True
+      end
+      object cxButton3: TcxButton
+        Left = 83
+        Top = 64
+        Width = 122
+        Height = 25
+        Caption = 'Aceptar'
+        TabOrder = 0
+        OnClick = cxButton3Click
+        Glyph.Data = {
+          36050000424D3605000000000000360400002800000010000000100000000100
+          0800000000000001000000000000000000000001000000000000FF00FF00004B
+          0000098611000A8615000D931A000C9518000C9C19000F991C000E9D1D001392
+          240011A0210011A422001CA134001CB1350024BC430029B548002EC6520035CA
+          5E0039D465000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000001
+          0100000000000000000000000000010808010000000000000000000000010D0B
+          080B0100000000000000000001100E0901040801000000000000000111120C01
+          000103080100000000000000010F010000000001040100000000000000010000
+          0000000001030100000000000000000000000000000001010000000000000000
+          0000000000000001010000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+      end
+      object dbcSubTipoPago: TcxLookupComboBox
+        Left = 29
+        Top = 37
+        Properties.KeyFieldNames = 'IDSUBTIPOPAGO'
+        Properties.ListColumns = <
+          item
+            FieldName = 'SUBTIPONOMBRE'
+          end>
+        Properties.ListSource = dsSerie
+        TabOrder = 1
+        Width = 225
+      end
+    end
+  end
+  inherited cdsCatalogo: TDAMemDataTable
+    Fields = <
+      item
+        Name = 'idhistorialalumno'
+        DataType = datInteger
+        InPrimaryKey = True
+      end
+      item
+        Name = 'idstatus'
+        DataType = datInteger
+      end
+      item
+        Name = 'documentosfaltantes'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'idhistorialgrupo'
+        DataType = datInteger
+      end
+      item
+        Name = 'idalumno'
+        DataType = datInteger
+      end
+      item
+        Name = 'alumnonumcontrol'
+        DataType = datString
+        Size = 12
+      end
+      item
+        Name = 'alumnonombre'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'grupocodigo'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'BECA'
+        DataType = datFloat
+      end
+      item
+        Name = 'DESCUENTO'
+        DataType = datFloat
+      end>
+    Params = <
+      item
+        Name = 'idciclo'
+        Value = '5'
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    BeforeEdit = cdsCatalogoBeforeEdit
+    AfterEdit = cdsCatalogoAfterEdit
+    AfterScroll = cdsCatalogoAfterScroll
+    OnNewRecord = cdsCatalogoNewRecord
+    LogicalName = 'vwHistorialAlumno'
+  end
+  inherited dsCatalogo: TDADataSource
+    DataSet = cdsCatalogo.Dataset
+  end
+  object dsAlumno: TDADataSource
+    DataSet = cdsAlumno.Dataset
+    DataTable = cdsAlumno
+    Left = 480
+    Top = 8
+  end
+  object cdsAlumno: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idAlumno'
+        DataType = datInteger
+      end
+      item
+        Name = 'NumControl'
+        DataType = datString
+        Size = 12
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 70
+      end>
+    Params = <
+      item
+        Name = 'idAlumno'
+        Value = '1'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spAlumno'
+    IndexDefs = <>
+    Left = 448
+    Top = 8
+  end
+  object cdsGrupo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDHISTORIALGRUPO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDNIVEL'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDCICLO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDGRUPO'
+        DataType = datInteger
+      end
+      item
+        Name = 'GRUPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'GRUPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'GRUPOaux1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'GRUPOaux2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'cupo'
+        DataType = datInteger
+      end
+      item
+        Name = 'NIVELCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NIVELNOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NIVELaux1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NIVELaux2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CICLOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'CICLONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CICLOaux1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CICLOaux2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CICLOFECHAFINAL'
+        DataType = datDateTime
+      end
+      item
+        Name = 'CICLOFECHAINICIO'
+        DataType = datDateTime
+      end>
+    Params = <
+      item
+        Name = 'idciclo'
+        Value = '5'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spGrupoInscripcion'
+    IndexDefs = <>
+    Left = 448
+    Top = 40
+  end
+  object dsGrupo: TDADataSource
+    DataSet = cdsGrupo.Dataset
+    DataTable = cdsGrupo
+    Left = 480
+    Top = 40
+  end
+  object cdsCualesMaterias: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDGRUPO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDMATERIA'
+        DataType = datInteger
+      end
+      item
+        Name = 'GRUPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'GRUPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'MATERIACODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'MATERIANOMBRE'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <
+      item
+        Name = 'idgrupo'
+        Value = '2'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spNivelGrupoMateriaPago'
+    IndexDefs = <>
+    Left = 448
+    Top = 72
+  end
+  object dsCualesMaterias: TDADataSource
+    DataSet = cdsCualesMaterias.Dataset
+    DataTable = cdsCualesMaterias
+    Left = 480
+    Top = 72
+  end
+  object cdsCualesPagos: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDGRUPO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'TIPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'TIPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'aplicabeca'
+        DataType = datInteger
+      end
+      item
+        Name = 'aplicadescuento'
+        DataType = datInteger
+      end
+      item
+        Name = 'SUBTIPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'SUBTIPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NUMPAGOS'
+        DataType = datInteger
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+      end
+      item
+        Name = 'PLAZO'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'idgrupo'
+        Value = '2'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spGrupoPago'
+    IndexDefs = <>
+    Left = 448
+    Top = 104
+  end
+  object dsCualesPagos: TDADataSource
+    DataSet = cdsCualesPagos.Dataset
+    DataTable = cdsCualesPagos
+    Left = 480
+    Top = 104
+  end
+  object cdsCalificaciones: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDCALIFICACION'
+        DataType = datInteger
+        InPrimaryKey = True
+      end
+      item
+        Name = 'IDMATERIA'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDHISTORIALALUMNO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDHISTORIALGRUPO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDTIPOCALIFICACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'CALIFICACION'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFAUX1'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFAUX2'
+        DataType = datFloat
+      end
+      item
+        Name = 'STATUS'
+        DataType = datString
+        Size = 1
+      end
+      item
+        Name = 'FALTAS'
+        DataType = datInteger
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+      end
+      item
+        Name = 'CALIF01'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF02'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF03'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF04'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF05'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF06'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF07'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF08'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF09'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF10'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF11'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF12'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF13'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF14'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF15'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIF16'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA01'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA02'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA03'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA04'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA05'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA06'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA07'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA08'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA09'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA10'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA11'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA12'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA13'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA14'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA15'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFA16'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB01'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB02'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB03'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB04'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB05'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB06'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB07'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB08'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB09'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB10'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB11'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB12'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB13'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB14'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB15'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALIFB16'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS01'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS02'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS03'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS04'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS05'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS06'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS07'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS08'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS09'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS10'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS11'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS12'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS13'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS14'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS15'
+        DataType = datFloat
+      end
+      item
+        Name = 'FALTAS16'
+        DataType = datFloat
+      end
+      item
+        Name = 'REGU01'
+        DataType = datFloat
+      end
+      item
+        Name = 'REGU02'
+        DataType = datFloat
+      end
+      item
+        Name = 'REGU03'
+        DataType = datFloat
+      end
+      item
+        Name = 'REGU04'
+        DataType = datFloat
+      end
+      item
+        Name = 'REGU05'
+        DataType = datFloat
+      end>
+    Params = <
+      item
+        Name = 'idhistorialalumno'
+        Value = '1'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnNewRecord = cdsCalificacionesNewRecord
+    LogicalName = 'spCalificacionesInscripcion'
+    IndexDefs = <>
+    Left = 448
+    Top = 136
+  end
+  object dsCalificaciones: TDADataSource
+    DataSet = cdsCalificaciones.Dataset
+    DataTable = cdsCalificaciones
+    Left = 480
+    Top = 136
+  end
+  object cdsPagos: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'NUMPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FECHAPAGO'
+        DataType = datDateTime
+      end
+      item
+        Name = 'STATUS'
+        DataType = datString
+        Size = 2
+      end
+      item
+        Name = 'INTERES'
+        DataType = datFloat
+      end
+      item
+        Name = 'IDEMPLEADO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDHISTORIALALUMNO'
+        DataType = datInteger
+      end
+      item
+        Name = 'EMITIDO'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'idhistorialalumno'
+        Value = '1'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnNewRecord = cdsPagosNewRecord
+    LogicalName = 'spPagosInscripcion'
+    IndexDefs = <>
+    Left = 448
+    Top = 168
+  end
+  object dsPagos: TDADataSource
+    DataSet = cdsPagos.Dataset
+    DataTable = cdsPagos
+    Left = 480
+    Top = 168
+  end
+  object cdsSubTipo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDTIPOPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'TIPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'TIPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'aplicabeca'
+        DataType = datInteger
+      end
+      item
+        Name = 'aplicadescuento'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'SUBTIPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'SUBTIPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NUMPAGOS'
+        DataType = datInteger
+      end
+      item
+        Name = 'PLAZO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'vwTipoPagoInscripciones'
+    IndexDefs = <>
+    Left = 520
+    Top = 8
+  end
+  object dsSubTipo: TDADataSource
+    DataSet = cdsSubTipo.Dataset
+    DataTable = cdsSubTipo
+    Left = 552
+    Top = 8
+  end
+  object cdsMaterias: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDMATERIA'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'CREDITOS'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'MINIMOAPRO'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'MAXIMOFALTAS'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'SERIADACON'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'HORASXSEMANA'
+        DataType = datInteger
+      end
+      item
+        Name = 'PROMEDIO'
+        DataType = datInteger
+      end
+      item
+        Name = 'ORDENOFICIAL'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'ORDENINTERNO'
+        DataType = datInteger
+        Required = True
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo MATERIA'
+    IndexDefs = <>
+    Left = 520
+    Top = 40
+  end
+  object dsMaterias: TDADataSource
+    DataSet = cdsMaterias.Dataset
+    DataTable = cdsMaterias
+    Left = 552
+    Top = 40
+  end
+  object cdsStatus: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDSTATUS'
+        DataType = datInteger
+      end
+      item
+        Name = 'Codigo'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'nombre'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spStatusInscripcion'
+    IndexDefs = <>
+    Left = 520
+    Top = 72
+  end
+  object dsStatus: TDADataSource
+    DataSet = cdsStatus.Dataset
+    DataTable = cdsStatus
+    Left = 552
+    Top = 72
+  end
+  object dsCiclo: TDADataSource
+    DataSet = cdsCiclo.Dataset
+    DataTable = cdsCiclo
+    Left = 552
+    Top = 104
+  end
+  object cdsCiclo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idciclo'
+        DataType = datInteger
+      end
+      item
+        Name = 'nombre'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spCicloInscripcion'
+    IndexDefs = <>
+    Left = 520
+    Top = 104
+  end
+  object dsNuevoGrupo: TDADataSource
+    DataSet = cdsNuevoGrupo.Dataset
+    DataTable = cdsNuevoGrupo
+    Left = 552
+    Top = 168
+  end
+  object cdsNuevoGrupo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idgrupo'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spGrupoInscripciones'
+    IndexDefs = <>
+    Left = 520
+    Top = 168
+  end
+  object cdsNuevoCiclo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idCiclo'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spCicloInscripciones'
+    IndexDefs = <>
+    Left = 520
+    Top = 200
+  end
+  object dsNuevoCiclo: TDADataSource
+    DataSet = cdsNuevoCiclo.Dataset
+    DataTable = cdsNuevoCiclo
+    Left = 552
+    Top = 200
+  end
+  object cdsViejoGrupo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idgrupo'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spGrupoInscripciones'
+    IndexDefs = <>
+    Left = 520
+    Top = 232
+  end
+  object dsViejoGrupo: TDADataSource
+    DataSet = cdsViejoGrupo.Dataset
+    DataTable = cdsViejoGrupo
+    Left = 552
+    Top = 232
+  end
+  object dsViejoCiclo: TDADataSource
+    DataSet = cdsViejoCiclo.Dataset
+    DataTable = cdsViejoCiclo
+    Left = 552
+    Top = 264
+  end
+  object cdsViejoCiclo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idCiclo'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spCicloInscripciones'
+    IndexDefs = <>
+    Left = 520
+    Top = 264
+  end
+  object cdsHistorialGrupo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idhistorialgrupo'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'idGrupo'
+        Value = '1'
+      end
+      item
+        Name = 'idCiclo'
+        Value = '5'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spHistorialGrupoInscripcion'
+    IndexDefs = <>
+    Left = 592
+    Top = 8
+  end
+  object cdsAlumnosPreinscripcion: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDALUMNO'
+        DataType = datInteger
+      end
+      item
+        Name = 'ALUMNONOMBRE'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'ALUMNONUMCONTROL'
+        DataType = datString
+        Size = 12
+      end>
+    Params = <
+      item
+        Name = 'IDCICLO'
+        Value = '5'
+        ParamType = daptInput
+      end
+      item
+        Name = 'IDGRUPO'
+        Value = '2'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'vwHistorialAlumnoInscripcion'
+    IndexDefs = <>
+    Left = 592
+    Top = 40
+  end
+  object cdsModificaStatus: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDALUMNO'
+        DataType = datInteger
+      end
+      item
+        Name = 'ALUMNONOMBRE'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'ALUMNONUMCONTROL'
+        DataType = datString
+        Size = 12
+      end>
+    Params = <
+      item
+        Name = 'IDCICLO'
+        Value = '5'
+        ParamType = daptInput
+      end
+      item
+        Name = 'IDGRUPO'
+        Value = '2'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'vwHistorialAlumnoInscripcion'
+    IndexDefs = <>
+    Left = 592
+    Top = 264
+  end
+  object cdsSerie: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDTIPOPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'TIPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'TIPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'aplicabeca'
+        DataType = datInteger
+      end
+      item
+        Name = 'aplicadescuento'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+      end
+      item
+        Name = 'SUBTIPOCODIGO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'SUBTIPONOMBRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NUMPAGOS'
+        DataType = datInteger
+      end
+      item
+        Name = 'PLAZO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'vwTipoPago'
+    IndexDefs = <>
+    Left = 360
+    Top = 200
+  end
+  object dsSerie: TDADataSource
+    DataSet = cdsSerie.Dataset
+    DataTable = cdsSerie
+    Left = 392
+    Top = 200
+  end
+  object cdsConfiguracion: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'TIPOCAMBIO'
+        DataType = datFloat
+      end
+      item
+        Name = 'FORMATOCONTROL'
+        DataType = datMemo
+      end
+      item
+        Name = 'ESCUELA'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'MNIMACAL'
+        DataType = datFloat
+      end
+      item
+        Name = 'MAXIMACAL'
+        DataType = datFloat
+      end
+      item
+        Name = 'LOGO'
+        DataType = datMemo
+      end
+      item
+        Name = 'CICLOACTUAL'
+        DataType = datInteger
+      end
+      item
+        Name = 'DIRECCION'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'TELEFONO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IMAGEN1'
+        DataType = datMemo
+      end
+      item
+        Name = 'IMAGEN2'
+        DataType = datMemo
+      end
+      item
+        Name = 'FAX'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'DIRECTOR'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'MINUTOSXHORA'
+        DataType = datInteger
+      end
+      item
+        Name = 'EMPRESAS'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'CALIFICACION1'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CALIFICACION2'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CALIFICACION3'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CUENTABANCO1'
+        DataType = datString
+        Size = 25
+      end
+      item
+        Name = 'BOLETAS'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'FECHABOLETAOFICIAL'
+        DataType = datDateTime
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NoExterior'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'Localidad'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Municipio'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Estado'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Pais'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'noAprobacion'
+        DataType = datInteger
+      end
+      item
+        Name = 'Colonia'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CodigoPostal'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NoCertificado'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'ArchivoClavePrivada'
+        DataType = datString
+        Size = 200
+      end
+      item
+        Name = 'ArchivoCertificado'
+        DataType = datString
+        Size = 200
+      end
+      item
+        Name = 'ClavePriv'
+        DataType = datString
+        Size = 200
+      end
+      item
+        Name = 'Certificado'
+        DataType = datString
+        Size = 4000
+      end
+      item
+        Name = 'PasswordFCTElect'
+        DataType = datString
+        Size = 200
+      end
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+      end
+      item
+        Name = 'Sucursal'
+        DataType = datBoolean
+      end
+      item
+        Name = 'SucursalDE'
+        DataType = datInteger
+      end
+      item
+        Name = 'Telefono1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Telefono2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'AnoAprobacion'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FolioInicial'
+        DataType = datInteger
+      end
+      item
+        Name = 'FolioFinal'
+        DataType = datInteger
+      end
+      item
+        Name = 'ImpuestoPorcentaje'
+        DataType = datFloat
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo CONFIGURACION'
+    IndexDefs = <>
+    Left = 624
+    Top = 40
+  end
+  object tblAux: TdxMemData
+    Indexes = <>
+    SortOptions = []
+    Left = 592
+    Top = 72
+    object tblAuxidMateria: TIntegerField
+      FieldName = 'idMateria'
+    end
+    object tblAuxidGrupo: TIntegerField
+      FieldName = 'idGrupo'
+    end
+  end
+  object spLimiteInscribe: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'inscribir'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'IDHISTORIALGRUPO'
+        Value = '1'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spLimiteInscribe'
+    IndexDefs = <>
+    Left = 688
+    Top = 8
+  end
+  object spExisteAlumno: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'EXISTE'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'idalumno'
+        Value = '1'
+        ParamType = daptInput
+      end
+      item
+        Name = 'idciclo'
+        Value = '5'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spExisteAlumno'
+    IndexDefs = <>
+    Left = 688
+    Top = 40
+  end
+  object spCupo: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'CUPO'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'idhistorialgrupo'
+        Value = '1'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spCupo'
+    IndexDefs = <>
+    Left = 688
+    Top = 72
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 593
+    Top = 313
+    object Pagar1: TMenuItem
+      Caption = '&Realizar Pago'
+      ImageIndex = 42
+      OnClick = Pagar1Click
+    end
+    object ImprimirRecibo1: TMenuItem
+      Caption = '&Imprimir Recibo'
+      ImageIndex = 25
+      OnClick = ImprimirRecibo1Click
+    end
+  end
+  object rdaActualizaNumeroControl: TDARemoteDataAdapter
+    GetSchemaCall.RemoteService = DM.RemoteService
+    GetDataCall.RemoteService = DM.RemoteService
+    GetDataCall.MethodName = 'AbreDataSetReportes'
+    GetDataCall.Params = <
+      item
+        Name = 'Result'
+        DataType = rtBinary
+        Flag = fResult
+        Value = Null
+      end
+      item
+        Name = 'SQL'
+        DataType = rtString
+        Flag = fIn
+        Value = Null
+      end
+      item
+        Name = 'Parametros'
+        DataType = rtUserDefined
+        Flag = fIn
+        TypeName = 'TParametrosF'
+        Value = Null
+      end>
+    GetDataCall.Default = False
+    GetDataCall.OutgoingTableNamesParameter = 'aTableNameArray'
+    GetDataCall.OutgoingTableRequestInfosParameter = 'aTableRequestInfoArray'
+    GetDataCall.IncomingDataParameter = 'Result'
+    UpdateDataCall.RemoteService = DM.RemoteService
+    GetScriptsCall.RemoteService = DM.RemoteService
+    RemoteService = DM.RemoteService
+    DataStreamer = DM.DataStreamer
+    Left = 8
+    Top = 376
+  end
+  object cdsActualizaNumeroControl: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = rdaActualizaNumeroControl
+    LogicalName = 'Reporte'
+    IndexDefs = <>
+    Left = 40
+    Top = 376
+  end
+  object rdaEliminaProspecto: TDARemoteDataAdapter
+    GetSchemaCall.RemoteService = DM.RemoteService
+    GetDataCall.RemoteService = DM.RemoteService
+    GetDataCall.MethodName = 'AbreDataSetReportes'
+    GetDataCall.Params = <
+      item
+        Name = 'Result'
+        DataType = rtBinary
+        Flag = fResult
+        Value = Null
+      end
+      item
+        Name = 'SQL'
+        DataType = rtString
+        Flag = fIn
+        Value = Null
+      end
+      item
+        Name = 'Parametros'
+        DataType = rtUserDefined
+        Flag = fIn
+        TypeName = 'TParametrosF'
+        Value = Null
+      end>
+    GetDataCall.Default = False
+    GetDataCall.OutgoingTableNamesParameter = 'aTableNameArray'
+    GetDataCall.OutgoingTableRequestInfosParameter = 'aTableRequestInfoArray'
+    GetDataCall.IncomingDataParameter = 'Result'
+    UpdateDataCall.RemoteService = DM.RemoteService
+    GetScriptsCall.RemoteService = DM.RemoteService
+    RemoteService = DM.RemoteService
+    DataStreamer = DM.DataStreamer
+    Left = 8
+    Top = 344
+  end
+  object cdsEliminaProspecto: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = rdaEliminaProspecto
+    LogicalName = 'Reporte'
+    IndexDefs = <>
+    Left = 40
+    Top = 344
+  end
+end

@@ -1,0 +1,106 @@
+unit ufrmTraspasos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CustomModule, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, StdCtrls,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, cxGroupBox, ComCtrls, DB, uDAInterfaces, uDADataTable,
+  uDAScriptingProvider, uDAMemDataTable, passcr, TB2Item, TBX, TB2Dock,
+  TB2Toolbar, TB2ToolWindow;
+
+type
+  TfrmCustomModule1 = class(TfrmCustomModule)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    lvTraspaso: TListView;
+    cxGroupBox1: TcxGroupBox;
+    dbcCiclo: TcxLookupComboBox;
+    Label1: TLabel;
+    PSScript: TPasScript;
+    cdsBancos: TDAMemDataTable;
+    dsBancos: TDADataSource;
+    dckArriba: TTBDock;
+    tlbHerramientas: TTBXToolbar;
+    TBXItem2: TTBXItem;
+    TBXItem1: TTBXItem;
+    TBXSeparatorItem1: TTBXSeparatorItem;
+    TBXItem3: TTBXItem;
+    odTraspaso: TOpenDialog;
+    twLineas: TTBXToolWindow;
+    Aux: TMemo;
+    procedure TBXItem2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCustomModule1: TfrmCustomModule1;
+
+implementation
+
+uses DMImagenes;
+
+{$R *.dfm}
+
+procedure TfrmCustomModule1.TBXItem2Click(Sender: TObject);
+var
+  i, j : Integer;
+  Item : TListItem;
+  Pas : TStringList;
+
+function SinEspacios(Cad : String) : String;
+var
+  x : Integer;
+begin
+  Result:='';
+  for x:=1 to Length(Cad) do
+  begin
+    if not (Cad[x] in [' ', ',']) then
+      Result:=Result+Cad[x];
+  end;
+end;
+
+begin
+  inherited;
+  odTraspaso.Execute;
+  lvTraspaso.Items.Clear;
+  Pas:=TStringList.Create;
+  Pas.Text:=qryBancosFORMATO.AsString;
+  Pas.SaveToFile('123.Pas');
+  psScript.Text:='';
+  psScript.ScriptFileName:='123.Pas';
+  if odTraspaso.FileName <> '' then
+    Aux.Lines.LoadFromFile(odTraspaso.FileName);
+  for i:=0 to Aux.Lines.Count - 1 do
+  begin
+    Linea:=Aux.Lines[i];
+    psScript.Run;
+    if Status = 'SI' then
+    begin
+      Item:=lvTraspaso.Items.Add;
+      Item.Caption:=SinEspacios(Referencia);
+      Item.ImageIndex:=-1;
+      Item.SubItems.Add('');
+      Item.SubItems.Add(SinEspacios(FechaTexto));
+      Item.SubItems.Add(SinEspacios(Importe));
+      j:=Trunc(Fecha);
+      Item.SubItems.Add(InttoStr(j));
+    end;
+    Aux.Lines[i]:=Status + ' | ' + Aux.Lines[i]
+  end;
+  sbTraspaso.Panels[0].Caption:=Format('Total Pagos: %d', [lvTraspaso.Items.Count]);
+end;
+
+end.

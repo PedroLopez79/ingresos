@@ -1,0 +1,1368 @@
+unit UtileriasComun;
+
+interface
+
+{x$DEFINE SINPASS}
+uses
+  Forms, Windows, Classes, Dialogs, ShellAPI, Graphics, Controls, IniFiles, uDARemoteDataAdapter,
+  SysUtils, cxFormats, Messages, LibXmlParser;
+
+type
+  TFuncLogin = function (Usr, Psw, Svr: String): Integer of object;
+
+  TRibbonColor = Record
+    Nombre: String;
+    Color: TColor;
+  end;
+
+  TCaracteres = array[1..5] of String;
+
+var
+  Mutex : THandle;
+  RutaRegistro: String = 'Cistem';
+  ColorRibbonSchema: Integer = 1;
+  OkEnter: Boolean = True;
+  RemoteDataAdapter: TDARemoteDataAdapter;
+  DebugSerialLog: Boolean = False;
+  CaracteresCupones: TCaracteres;
+
+const
+  B64Table= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';  
+
+const
+  WM_CLOSE_MESSAGE = WM_USER + 1978;
+  MinSeg_59 = 0.9999884259;
+  STRCierre = '#CLOSE#';
+  Codes64 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/';
+  RibbonSchema: array[1..20] of String = ('MoneyTwins',
+                                          'Caramel',
+                                          'Lilian',
+                                          'Office2007Blue',
+                                          'Office2007Black',
+                                          'Office2007Silver',
+                                          'Blue',
+                                          'Black',
+                                          'Silver',
+                                          'iMaginary',
+                                          'Coffee',
+                                          'GlassOceans',
+                                          'LiquidSky',
+                                          'LondonLiquidSky',
+                                          'McSkin',
+                                          'Office2007Green',
+                                          'Office2007Pink',
+                                          'Stardust',
+                                          'Valentine',
+                                          'Xmas2008Blue');
+
+procedure EscribirRegistro(Clave, Valor: String);
+function NumeroATexto(Num : Real; Moneda : Integer) : String;
+function LeerRegistro(Clave, Default: String): String;
+function Version : string;
+function IsNumeric(const Cad: String): Boolean;
+function GetParsedItem(TheItemStr, ParseStr : String; ItemNum : Integer): String;
+function Alinea(Cad: String; cpi, Direccion: Integer; Retorno: Boolean = True): String;
+function Centro(Cad: String; cpi: Integer; Retorno: Boolean = True): String;
+function Derecha(Cad: String; cpi: Integer; Retorno: Boolean = True): String;
+function Izquierda(Cad: String; cpi: Integer; Retorno: Boolean = True): String;
+procedure EscribeSerialLog(AArchivo, Cad: String; Forzar: Boolean = False; MiRuta: Boolean = False);
+procedure Formatos;
+function SetFileDate(FileName: string; NewDateTime: TDateTime): Boolean;
+{$IFNDEF SINPASS} function Login(Validador: TFuncLogin): Integer; {$ENDIF}
+procedure AppRestart;
+function IsConnectedToNet(HostIP: string; HostPort, CancelTimeMs: Word; FirstOctet: Byte; PError: PChar): Boolean;
+procedure EjecutaComando(cmd: String);
+function Modulo66(Cad : String) : Integer;
+function Modulo10(Valor : String) : Integer;
+function Occurs(const str: string; const substr: string): integer;
+function BinToInt(Bin: string): integer;
+function IntToBin(Num: cardinal; Length: integer): string;
+function Impuesto(Cantidad, Impuesto: Double): Double;
+function Decimales(Cantidad: Double; Decimales: Integer): Double;
+procedure SeparaTracks(Cad: String; var Track1, Track2: String);
+function GeneraNIP(Longitud: Integer): String;
+procedure CargarCaracteres(Archivo: String; var Caracteres: TCaracteres);
+function IDToClave(ID: Integer): String;
+function ClaveToID(Clave: String): Integer;
+function ValidaTarjeta(Tarjeta: String): Boolean;
+procedure Procesar;
+function ReemplazaCaret(Cad: String): String;
+function VerificaLongitud(Cad: String; Size: Integer): String;
+function GetValidName(AOwner: TComponent; AName: string): string;
+function ReemplazaStr(Cad, Busca, Nuevo: String): String;
+function DecodePWDEx(Data, SecurityString: string): string;
+function EncodePWDEx(Data, SecurityString: string; MinV: Integer = 0; MaxV: Integer = 5): string;
+function LeerXML(Texto: String): TStringList;
+function EncodeDateC(Ejercicio, Periodo, Dia: Integer): TDateTime;
+function EsFechaAnterior(Fecha: TDateTime): Boolean;
+procedure MuestraMensaje(Msg: String);
+procedure FindFiles(FilesList: TStringList; StartDir, FileMask: string);
+function depuraCadena(Cadena: WideString):WideString;
+
+implementation
+
+uses
+{$IFNDEF SINPASS}		ufrmPassword, {$ENDIF} Winsock;
+
+procedure FindFiles(FilesList: TStringList; StartDir, FileMask: string);
+var
+  SR: TSearchRec;
+  DirList: TStringList;
+  IsFound: Boolean;
+  i: integer;
+begin
+  if StartDir[length(StartDir)] <> '\' then
+    StartDir := StartDir + '\';
+
+  { Build a list of the files in directory StartDir
+     (not the directories!)                         }
+
+  IsFound :=
+    FindFirst(StartDir+FileMask, faAnyFile-faDirectory, SR) = 0;
+  while IsFound do begin
+    FilesList.Add(StartDir + SR.Name);
+    IsFound := FindNext(SR) = 0;
+  end;
+  FindClose(SR);
+
+  // Build a list of subdirectories
+  DirList := TStringList.Create;
+  IsFound := FindFirst(StartDir+'*.*', faAnyFile, SR) = 0;
+  while IsFound do begin
+    if ((SR.Attr and faDirectory) <> 0) and
+         (SR.Name[1] <> '.') then
+      DirList.Add(StartDir + SR.Name);
+    IsFound := FindNext(SR) = 0;
+  end;
+  FindClose(SR);
+
+  // Scan the list of subdirectories
+  for i := 0 to DirList.Count - 1 do
+    FindFiles(FilesList, DirList[i], FileMask);
+
+  DirList.Free;
+end;
+
+procedure MuestraMensaje(Msg: String);
+begin
+  MessageDlg(Msg, mtInformation, [mbOK], 0);
+end;
+
+function EsFechaAnterior(Fecha: TDateTime): Boolean;
+begin
+  Result:=Now > Fecha;
+end;
+
+function EncodeDateC(Ejercicio, Periodo, Dia: Integer): TDateTime;
+begin
+  Result:=EncodeDate(Ejercicio, Periodo, Dia);
+end;
+
+function GeneratePWDSecutityString: string;
+var
+  i, x: integer;
+  s1, s2: string;
+begin
+  s1 := Codes64;
+  s2 := '';
+  for i := 0 to 15 do
+  begin
+    x  := Random(Length(s1));
+    x  := Length(s1) - x;
+    s2 := s2 + s1[x];
+    s1 := Copy(s1, 1,x - 1) + Copy(s1, x + 1,Length(s1));
+  end;
+  Result := s2;
+end;
+
+function MakeRNDString(Chars: string; Count: Integer): string;
+var
+  i, x: integer;
+begin
+  Result := '';
+  for i := 0 to Count - 1 do
+  begin
+    x := Length(chars) - Random(Length(chars));
+    Result := Result + chars[x];
+    chars := Copy(chars, 1,x - 1) + Copy(chars, x + 1,Length(chars));
+  end;
+end;
+
+function EncodePWDEx(Data, SecurityString: string; MinV: Integer = 0;
+  MaxV: Integer = 5): string;
+var
+  i, x: integer;
+  s1, s2, ss: string;
+begin
+  if minV > MaxV then
+  begin
+    i := minv;
+    minv := maxv;
+    maxv := i;
+  end;
+  if MinV < 0 then MinV := 0;
+  if MaxV > 100 then MaxV := 100;
+  Result := '';
+  if Length(SecurityString) < 16 then Exit;
+  for i := 1 to Length(SecurityString) do
+  begin
+    s1 := Copy(SecurityString, i + 1,Length(securitystring));
+    if Pos(SecurityString[i], s1) > 0 then Exit;
+    if Pos(SecurityString[i], Codes64) <= 0 then Exit;
+  end;
+  s1 := Codes64;
+  s2 := '';
+  for i := 1 to Length(SecurityString) do
+  begin
+    x := Pos(SecurityString[i], s1);
+    if x > 0 then s1 := Copy(s1, 1,x - 1) + Copy(s1, x + 1,Length(s1));
+  end;
+  ss := securitystring;
+  for i := 1 to Length(Data) do
+  begin
+    s2 := s2 + ss[Ord(Data[i]) mod 16 + 1];
+    ss := Copy(ss, Length(ss), 1) + Copy(ss, 1,Length(ss) - 1);
+    s2 := s2 + ss[Ord(Data[i]) div 16 + 1];
+    ss := Copy(ss, Length(ss), 1) + Copy(ss, 1,Length(ss) - 1);
+  end;
+  Result := MakeRNDString(s1, Random(MaxV - MinV) + minV + 1);
+  for i := 1 to Length(s2) do Result := Result + s2[i] + MakeRNDString(s1,
+      Random(MaxV - MinV) + minV);
+end;
+
+function DecodePWDEx(Data, SecurityString: string): string;
+var
+  i, x, x2: integer;
+  s1, s2, ss: string;
+begin
+  Result := #1;
+  if Length(SecurityString) < 16 then Exit;
+  for i := 1 to Length(SecurityString) do
+  begin
+    s1 := Copy(SecurityString, i + 1,Length(securitystring));
+    if Pos(SecurityString[i], s1) > 0 then Exit;
+    if Pos(SecurityString[i], Codes64) <= 0 then Exit;
+  end;
+  s1 := Codes64;
+  s2 := '';
+  ss := securitystring;
+  for i := 1 to Length(Data) do if Pos(Data[i], ss) > 0 then s2 := s2 + Data[i];
+  Data := s2;
+  s2   := '';
+  if Length(Data) mod 2 <> 0 then Exit;
+  for i := 0 to Length(Data) div 2 - 1 do
+  begin
+    x := Pos(Data[i * 2 + 1], ss) - 1;
+    if x < 0 then Exit;
+    ss := Copy(ss, Length(ss), 1) + Copy(ss, 1,Length(ss) - 1);
+    x2 := Pos(Data[i * 2 + 2], ss) - 1;
+    if x2 < 0 then Exit;
+    x  := x + x2 * 16;
+    s2 := s2 + chr(x);
+    ss := Copy(ss, Length(ss), 1) + Copy(ss, 1,Length(ss) - 1);
+  end;
+  Result := s2;
+end;
+
+function GetValidName(AOwner: TComponent; AName: string): string;
+var
+  I: Integer;
+begin
+  for I := 1 to Length(AName) do
+    if not (AName[I] in ['A'..'z']) or (AName[I] in ['0'..'9']) then
+      AName[I] := '_';
+  if (AName[1] in  ['0'..'9']) then
+    AName := '_' + AName;
+
+  Result := AName;
+
+  I := 0;
+  while AOwner.FindComponent(Result) <> nil do
+  begin
+    Result := AName + IntToStr(I);
+    Inc(I);
+  end
+end;
+
+function ClaveToID(Clave: String): Integer;
+const
+  Valores: array[1..5] of Integer = (1, 25, 625, 15625, 390625);
+  Cadena = '0123456789ACFHJKMNPQRTUXY';
+var
+  I, J: Integer;
+  OK: Boolean;
+begin
+  Result:=0;
+  for I := 1 to Length(Clave) do
+  begin
+    OK:=False;
+    J:=1;
+    while (J <= Length(Cadena)) and (not OK) do
+    begin
+      OK:=Clave[I] = Cadena[J];
+      Inc(J);
+    end;
+    if not OK then
+      Exit;
+  end;
+  for I := 1 to Length(Clave) do
+  begin
+    J:=Length(Clave) + 1 - I;
+    Result:=Result + (Valores[I] * (Pos(Clave[J], CaracteresCupones[I]) - 1 ));
+  end;
+end;
+
+function IDToClave(ID: Integer): String;
+var
+  I: Integer;
+  Indices: array[1..5] of Integer;
+begin
+  for I := 1 to 5 do
+    Indices[I]:=-1;
+  I:=1;
+  while (ID > 0) do
+  begin
+    Indices[I]:=ID mod 25;
+    ID:=ID Div 25;
+    Inc(I);
+  end;
+  Result:='';
+  for I := 5 downto 1 do
+  begin
+    Indices[I]:=Indices[I] + 1;
+    if Indices[I] > 0 then
+      Result:=Result + Copy(CaracteresCupones[I], Indices[I], 1);
+  end;
+end;
+
+function VerificaLongitud(Cad: String; Size: Integer): String;
+begin
+  Result:=Cad;
+  if Length(Cad) > Size then
+    Result:=Copy(Cad, 1, Size);
+end;
+
+procedure CargarCaracteres(Archivo: String; var Caracteres: TCaracteres);
+var
+  I, J: Integer;
+  Aux: TStrings;
+  S, S1: String;
+const
+  Cadena = '0123456789ACFHJKMNPQRTUXY';
+begin
+  for I := 1 to 5 do
+    Caracteres[I]:='';
+  Aux:=TStringList.Create;
+  try
+    if FileExists(Archivo) then
+    begin
+      Aux.LoadFromFile(Archivo);
+      for I := 1 to 5 do
+        Caracteres[I]:=Aux[I - 1];
+    end
+    else
+    begin
+      Randomize;
+      for I := 1 to 5 do
+      begin
+        repeat
+          S:=Cadena;
+          S1:='';
+          while Length(S) > 0 do
+          begin
+            J:=Random(Length(S)) + 1;
+            S1:=S1 + S[J];
+            Delete(S, J, 1);
+          end;
+        until S1[1] <> '0';
+        Aux.Add(S1);
+        Caracteres[I]:=S1;
+      end;
+      Aux.SaveToFile(Archivo);
+    end;
+  finally
+    Aux.Free;
+  end;
+end;
+
+function GeneraNIP(Longitud: Integer): String;
+var
+  s : String;
+  i : Integer;
+begin
+  Randomize;
+  s:='';
+  for i:=1 to 255 do
+    s:=s + IntToStr(Random(10) + 1);
+  i:=Random(253 - Longitud) + 1;
+  Result:=Copy(S, i, Longitud);
+  if Result[1] = '0' then
+    Result[1]:='1';
+end;
+
+function Modulo10(Valor : String) : Integer;
+var
+  S,Cad : String;
+  i : Byte;
+  sum : Integer;
+  Impar : Boolean;
+begin
+  While Pos(' ', Valor) > 0 do
+    Delete(Valor, Pos(' ', Valor), 1);
+  S:=Valor;
+  Cad:='';
+  Impar:=odd(Length(S));
+  for i:=1 to length(S) do
+  begin
+    if ((Impar) And (odd(i))) Or ((Not Impar) And (Not odd(i))) then
+      Cad:=Cad+S[i];
+  end;
+  sum:=StrToInt(Cad)*2;
+  Cad:=IntToStr(sum);
+  Sum:=0;
+  for i:=1 to Length(Cad) do
+    Sum:=Sum+StrToInt(Cad[i]);
+  for i:=1 to Length(S) do
+  begin
+    if ((Impar) And (not odd(i))) Or ((Not Impar) And (odd(i))) then
+      Sum:=Sum+StrToInt(S[i]);
+  end;
+  sum:=10*((sum div 10)+byte(sum mod 10<>0))-sum;
+  Result:=sum;
+end;
+
+
+procedure SeparaTracks(Cad: String; var Track1, Track2: String);
+var
+  I, J: Integer;
+begin
+  Track1:='';
+  Track2:='';
+  if Pos('%', Cad) > 0 then
+  begin
+    I:=Pos('%', Cad);
+    J:=Pos('?', Cad);
+    Track1:=Copy(Cad, I + 1, J - 1 - I);
+    if (Length(Track1) = 40) and (IsNumeric(Track1)) then
+    begin
+      Track2:=Copy(Track1, 21, 20);
+      Track1:=Copy(Track1, 1, 20);
+    end;
+    Delete(Cad, 1, Pos('?', Cad));
+  end;
+
+  if Pos(';', Cad) > 0 then
+  begin
+    I:=Pos(';', Cad);
+    J:=Pos('?', Cad);
+    Track2:=Copy(Cad, I + 1, J - 1 - I);
+  end;
+
+  if Track2 = '' then
+    Track2:=Track1;
+  if Track1 = '' then
+    Track1:=Track2;
+  if (Length(Track1) > 6) and (Copy(Track1, 1, 6) = '124671') then
+  begin
+    Delete(Track1, 1, 6);
+  end;
+  if (Length(Track2) > 6) and (Copy(Track2, 1, 6) = '124671') then
+  begin
+    Delete(Track2, 1, 6);
+  end;
+end;
+
+function ValidaTarjeta(Tarjeta: String): Boolean;
+const
+
+  TB: Array[1..6] of String = ('5256780105538190',
+                               '5442041032941923',
+                               '4915720153022230',
+                               '5482340903952899',
+                               '5579209024436781',
+                               '4059307000948191');
+var
+  I: Integer;
+begin
+  Result:=False;
+  I:=1;
+  while (not Result) and (I <= 6) do
+  begin
+    if Tarjeta = TB[I] then
+      Result:=True;
+    I:=I + 1;
+  end;
+end;
+
+function Decimales(Cantidad: Double; Decimales: Integer): Double;
+var
+  S: String;
+  I: Integer;
+begin
+  S:='';
+  for I := 1 to Decimales do
+    S:=S + '0';
+  S:='#0.' + S;
+  Result:=StrToFloat(FormatFloat(S, Cantidad));
+end;
+
+function Impuesto(Cantidad, Impuesto: Double): Double;
+begin
+  Result:=Cantidad-(Cantidad/(1+(Impuesto/100)));
+end;
+
+function IntToBin(Num: cardinal; Length: integer): string;
+var
+  i: cardinal;
+begin
+  i := 1;
+  Result := '';
+  while (i <= Num) or (system.Length(Result) < Length) do begin
+    if Num and i = i then
+      Result := '1' + Result
+    else
+      Result := '0' + Result;
+    i := i * 2;
+  end;
+end;
+
+function BinToInt(Bin: string): integer;
+var
+  i, j: Integer;
+begin
+  Result := 0;
+  j := 1;
+  for i := Length( Bin ) downto 1 do
+  begin
+    Result := Result + StrToInt(Bin[i]) * j;
+    j := j * 2;
+  end;
+end;
+
+function Occurs(const str: string; const substr: string): integer;
+var
+  p, q: PChar;
+  n: integer;
+begin
+  Result := 0;
+  n := Length(substr);
+  if n = 0 then exit;
+  q := PChar(Pointer(substr));
+  p := PChar(Pointer(str));
+  while p <> nil do begin
+    p := StrPos(p, q);
+    if p <> nil then begin
+      inc(Result);
+      inc(p, n);
+    end;
+  end;
+end;
+
+function Modulo66(Cad : String) : Integer;
+const
+  Secuencia : Array[0..2] of Integer = (8,4,3);
+var
+  Suma, i : Integer;
+function Sumar(x : Integer) : Integer;
+var
+  s : String;
+  j : Integer;
+begin
+  Result:=x;
+  while Result > 9 do
+  begin
+    s:=IntToStr(Result);
+    Result:=0;
+    for j:=1 to length(s) do
+      Result:=Result+StrToInt(s[j]);
+  end;
+end;
+begin
+  Suma:=0;
+  for i:=1 to Length(Cad) do
+  begin
+    Suma:=Suma + Sumar(StrToInt(Cad[i]) * Secuencia[i mod 3]);
+  end;
+  if suma mod 10 = 0 then
+    Result:=0
+  else
+    Result:=(((Suma div 10) + 1) * 10) - Suma;
+end;
+
+procedure EjecutaComando(cmd: String);
+var
+  T: TextFile;
+  StartInfo  : TStartupInfo;
+  ProcInfo   : TProcessInformation;
+  CreateOK   : Boolean;
+begin
+  {$I-}
+  AssignFile(T, 'C:\Encripta.bat');
+  Rewrite(T);
+  Writeln(T, cmd);
+  Close(T);
+  {$I+}
+
+  FillChar(StartInfo,SizeOf(TStartupInfo),#0);
+  FillChar(ProcInfo,SizeOf(TProcessInformation),#0);
+  StartInfo.cb := SizeOf(TStartupInfo);
+  StartInfo.dwFlags := STARTF_USESHOWWINDOW;
+  StartInfo.wShowWindow := SW_HIDE;
+
+  CreateOK := CreateProcess(PChar('C:\Encripta.bat'),nil, nil, nil,False,
+              CREATE_NEW_PROCESS_GROUP+NORMAL_PRIORITY_CLASS,
+              nil, nil, StartInfo, ProcInfo);
+
+  if CreateOK then
+    WaitForSingleObject(ProcInfo.hProcess, INFINITE);
+  DeleteFile('Encripta.bat')
+end;
+
+var
+  WaitTimeMs: WORD;
+  InitialTick, DifTick: DWORD;
+
+  function BlockingHookProc: Boolean; stdcall;
+  begin
+    Result := False;
+
+    if GetTickCount < InitialTick then DifTick := $FFFFFFFF - InitialTick + GetTickCount
+    else
+      DifTick := GetTickCount - InitialTick;
+
+    if (DifTick > WaitTimeMs) and WSAIsBlocking then WSACancelBlockingCall;
+  end;
+
+  function IsConnectedToNet(HostIP: string; HostPort, CancelTimeMs: Word;
+    FirstOctet: Byte; PError: PChar): Boolean;
+  var
+    GInitData: TWSADATA;
+    SockDescript: TSocket;
+    SockAddr: TSockAddr;
+    NameLen: Integer;
+
+    procedure SaveError(Proc: string; const LastError: Integer);
+    begin
+      StrLCopy(PError, PChar(Proc + ' - Error no.' + IntToStr(LastError)), 255);
+    end;
+
+    function GetRandomSimilarIP(InitIP: string): string;
+    var
+      Index: Integer;
+      P1, P2: PChar;
+    begin
+      Result := '';
+
+      InitIP := InitIP + '.';  // Final dot added to simplify algorithm
+
+      P1 := @InitIP[1];
+
+      for Index := 1 to 4 do 
+      begin  // Extracts octets from initial IP address
+        P2 := StrPos(P1, '.');
+
+        if Index < FirstOctet then Result := Result + Copy(P1, 0, P2 - P1)
+        else 
+          Result := Result + IntToStr(1 + Random(254));
+
+        if Index < 4 then Result := Result + '.'
+        else 
+          Break;
+
+        P1 := P2 + 1;
+      end;
+    end;
+  begin
+    Result := False;
+
+    WaitTimeMs := CancelTimeMs;
+
+    if PError <> nil then PError[0] := #0;
+
+    if WSAStartup($101, GInitData) <> 0 then
+    begin
+      if PError <> nil then SaveError('WSAStartup', WSAGetLastError);
+      Exit;
+    end;
+
+    try
+      if WSASetBlockingHook(@BlockingHookProc) = nil then
+      begin
+        if PError <> nil then SaveError('WSASetBlockingHook', WSAGetLastError);
+        Exit;
+      end;
+
+      try
+        SockDescript := Socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+        if SockDescript = INVALID_SOCKET then 
+        begin
+          if PError <> nil then SaveError('Socket', WSAGetLastError);
+          Exit;
+        end;
+
+        try
+          SockAddr.sin_family      := AF_INET;
+          SockAddr.sin_port        := 0;       // System will choose local port from 1024 to 5000
+          SockAddr.sin_addr.S_addr := 0;
+
+          if Bind(SockDescript, SockAddr, SizeOf(SockAddr)) <> 0 then
+          begin
+            if PError <> nil then SaveError('Bind', WSAGetLastError);
+            Exit;
+          end;
+
+          SockAddr.sin_family := AF_INET;
+          SockAddr.sin_port   := htons(HostPort);  // Any port number different from 0
+
+          if FirstOctet in [1..4] then
+            SockAddr.sin_addr := in_addr(inet_addr(PChar(GetRandomSimilarIP(HostIP))))
+          else
+            SockAddr.sin_addr := in_addr(inet_addr(PChar(HostIP)));
+
+          InitialTick := GetTickCount;
+
+          if Connect(SockDescript, SockAddr, SizeOf(SockAddr)) <> 0 then
+          begin
+            Result := (WSAGetLastError = WSAECONNREFUSED) or  // Connection refused (10061)
+              (WSAGetLastError = WSAEINTR) or
+              (WSAGetLastError = WSAETIMEDOUT);
+
+            if PError <> nil then SaveError('Connect', WSAGetLastError);
+          end
+          else
+          begin
+            NameLen := SizeOf(SockAddr);
+
+            Result := (GetPeerName(SockDescript, SockAddr, NameLen) = 0);
+
+            if not Result and (PError <> nil) then
+              SaveError('GetPeerName', WSAGetLastError);
+          end;
+        finally
+          CloseSocket(SockDescript);  // Frees the socket
+        end;
+      finally
+        WSAUnhookBlockingHook;  // Deactivates the blocking hook
+      end;
+    finally
+      WSACleanup;  // Frees Winsock (or decreases use count)
+    end;
+  end;
+
+procedure KillProcess(hWindowHandle: HWND);
+var
+  hprocessID: INTEGER;
+  processHandle: THandle;
+  DWResult: DWORD;
+begin
+  SendMessageTimeout(hWindowHandle, WM_CLOSE, 0, 0,
+    SMTO_ABORTIFHUNG or SMTO_NORMAL, 500, DWResult);
+
+  if isWindow(hWindowHandle) then
+  begin
+    { Get the process identifier for the window}
+    GetWindowThreadProcessID(hWindowHandle, @hprocessID);
+    if hprocessID <> 0 then
+    begin
+      { Get the process handle }
+      processHandle := OpenProcess(PROCESS_TERMINATE or PROCESS_QUERY_INFORMATION,
+        False, hprocessID);
+      if processHandle <> 0 then
+      begin
+        { Terminate the process }
+        TerminateProcess(processHandle, 0);
+        CloseHandle(ProcessHandle);
+      end;
+    end;
+  end;
+end;
+
+
+procedure AppRestart;
+var
+  AppName : PChar;
+begin
+  AppName:=PChar(Application.ExeName);
+  ShellExecute(Application.Handle, 'open', AppName, nil, nil, SW_SHOWNORMAL);
+  KillProcess(Application.Handle);
+end;
+
+function NumeroATexto(Num : Real; Moneda : Integer) : String;
+Const
+  CMonedas : Array [1..2, 1..3] of String = (('Peso', 'Pesos', 'M.N.'),('Dólar','Dólares','M.A.'));
+     Function longitud(numero:Int64):integer;
+     var
+       S : String;
+     begin
+       S:=IntToStr(Numero);
+       Result:=Length(S);
+     end;
+
+     Function Unidades(numero:Byte):String;
+     begin
+        case numero of
+          0: Unidades:='';
+          1: Unidades:='un';
+          2: Unidades:='dos';
+          3: Unidades:='tres';
+          4: Unidades:='cuatro';
+          5: Unidades:='cinco';
+          6: Unidades:='seis';
+          7: Unidades:='siete';
+          8: Unidades:='ocho';
+          9: Unidades:='nueve';
+        end;
+     end;
+
+     Function Decenas (numero:Byte):String;
+     begin
+          Case numero of
+          0:Decenas:='';
+          1..9:Decenas:=Unidades(numero);
+          10: Decenas:='diez';
+          11: Decenas:='once';
+          12: Decenas:='doce';
+          13: Decenas:='trece';
+          14: Decenas:='catorce';
+          15: Decenas:='quince';
+          16: Decenas:='dieciseis';
+          17: Decenas:='diecisiete';
+          18: Decenas:='dieciocho';
+          19: Decenas:='diecinueve';
+          20: Decenas:='veinte';
+          21: Decenas:='veintiun';
+          22: Decenas:='veintidos';
+          23..29: Decenas:='veinti'+Unidades(numero mod 10);
+          30: Decenas:='treinta';
+          40: Decenas:='cuarenta';
+          50: Decenas:='cincuenta';
+          60: Decenas:='sesenta';
+          70: Decenas:='setenta';
+          80: Decenas:='ochenta';
+          90: Decenas:='noventa';
+          else
+               Decenas:=Decenas(numero - numero mod 10)+' y '+ unidades(numero mod 10);
+          end;
+     end;
+     Function centenas(numero:integer):String;
+     begin
+          case numero of
+          0: centenas:='';
+          1..99:centenas:=decenas(numero);
+          100: centenas:='cien';
+          101..199: centenas:='ciento '+decenas(numero mod 100);
+          200: centenas:='doscientos';
+          500: centenas:='quinientos';
+          501..599: centenas:='quinientos '+decenas(numero mod 100);
+          700: centenas:='setecientos';
+          701..799: centenas:='setecientos '+decenas(numero mod 100);
+          900..999: centenas:='novecientos '+decenas(numero mod 100);
+          else
+              centenas:=unidades(numero div 100)+'cientos'+' '+decenas(numero mod 100);
+          end;
+     end;
+
+     Function UnidadesDeMillar(numero:Integer):String;
+     begin
+     if numero > 999 then begin
+          if numero > 1999 then
+               UnidadesDeMillar:=Unidades(numero div 1000) +' mil '+ centenas(numero mod 1000)
+          else
+              UnidadesDeMillar:='mil '+ centenas(numero mod 1000);
+     end
+     else
+         UnidadesDeMillar:=Centenas(numero);
+     end;
+
+     Function DecenasDeMillar(Numero:LongInt):String;
+     begin
+     If numero > 9999 then
+         DecenasDeMillar:=Decenas(Numero div 1000) +' mil '+Centenas(Numero mod 1000)
+     else
+         DecenasDeMillar:=UnidadesDeMillar(Numero);
+     end;
+
+     Function CentenasDeMillar(Numero:LongInt):String;
+     begin
+          If Numero > 99999 then
+               CentenasDeMillar:=Centenas(Numero div 1000) +' mil '+Centenas(numero mod 1000)
+          else
+               CentenasDeMillar:=DecenasDeMillar(numero);
+     end;
+
+     Function UnidadesDeMillon(Numero:LongInt):String;
+     begin
+       if numero > 999999 then
+       begin
+          if numero > 1999999 then
+          UnidadesDeMillon:=Unidades(Numero div 1000000)+' millones '+CentenasDeMillar(Numero mod 1000000)
+          else
+          UnidadesDeMillon:= 'un millon '+CentenasDeMillar(Numero mod 1000000)
+       end
+       else
+         UnidadesDeMillon:=CentenasDeMillar(Numero);
+     end;
+
+     Function DecenasDeMillon(Numero:LongInt):String;
+     begin
+        if numero > 9999999 then
+          DecenasDeMillon:=Decenas(Numero div 1000000)+ ' millones '+CentenasDeMillar(Numero mod 1000000)
+        else
+          DecenasDeMillon:=UnidadesDeMillon(Numero);
+     end;
+
+     Function CentenasDeMillon(Numero:Int64):String;
+     begin
+        if numero > 99999999 then
+         CentenasDeMillon:=Centenas(Numero div 1000000)+' millones '+CentenasDeMillar(Numero mod 1000000)
+        else
+          CentenasDeMillon:=DecenasDeMillon(Numero);
+     end;
+
+     Function UnidadesDeBillon(Numero:LongInt):String;
+     begin
+          if numero > 1999999999 then
+          UnidadesDeBillon:=Unidades(Numero div 1000000000)+' millones '+CentenasDeMillon(Numero mod 1000000000)
+          else
+          UnidadesDeBillon:= 'un billon '+CentenasDeMillon(Numero mod 1000000000)
+     end;
+
+var
+  i : Integer;
+  Fraccion : Real;
+  Numero : Int64;
+  Aux, R : String;
+begin
+  Fraccion:=Frac(Num);
+  Str(Fraccion:0:2,Aux);
+  Delete(Aux,1,2);
+  Numero:=Abs(Trunc(Num));
+  if Numero = 1 then
+    Aux:=Format(' %s %s/100 %s',[CMonedas[Moneda,1],Aux,CMonedas[Moneda,3]])
+  else
+    Aux:=Format(' %s %s/100 %s',[CMonedas[Moneda,2],Aux,CMonedas[Moneda,3]]);
+  case Longitud(numero) of
+     1: R:=Unidades(numero);
+     2: R:=Decenas(numero);
+     3: R:=Centenas(numero);
+     4: R:=UnidadesDeMillar(numero);
+     5: R:=DecenasDeMillar(numero);
+     6: R:=CentenasDeMillar(numero);
+     7: R:=UnidadesDeMillon(numero);
+     8: R:=DecenasdeMillon(numero);
+     9: R:=CentenasDeMillon(numero);
+     10: R:=UnidadesDeBillon(numero);
+     else
+         R:='Demasiado grande';
+     end;
+  If numero=0 Then
+    R:='cero';
+  i:=length(r);
+  while R[i] = ' ' do
+  begin
+    delete(r, i, 1);
+    dec(i);
+  end;
+  if longitud(Numero) <= 6 then
+    Result:= R + Aux
+  else
+    Result:= R + ' de ' + Aux;
+  Result[1]:=UpCase(Result[1]);
+end;
+
+function SetFileDate(FileName: string; NewDateTime: TDateTime): Boolean;
+var
+  FileHandle: Integer;
+  FileTime: TFileTime;
+  LFT: TFileTime;
+  LST: TSystemTime;
+begin
+  Result := False;
+  FileHandle:=0;
+  try
+    DecodeDate(NewDateTime, LST.wYear, LST.wMonth, LST.wDay);
+    DecodeTime(NewDateTime, LST.wHour, LST.wMinute, LST.wSecond, LST.wMilliSeconds);
+    if SystemTimeToFileTime(LST, LFT) then
+    begin
+      if LocalFileTimeToFileTime(LFT, FileTime) then
+      begin
+        FileHandle := FileOpen(FileName, fmOpenReadWrite or
+          fmShareExclusive);
+        if SetFileTime(FileHandle, @FileTime, @FileTime, @FileTime) then
+          Result := True;
+      end;
+    end;
+  finally
+    FileClose(FileHandle);
+  end;
+end;
+
+function GetParsedItem(TheItemStr, ParseStr : String; ItemNum : Integer): String;
+ Var
+  I4 : Integer;
+  S4 : String;
+Begin
+TheItemStr := TheItemStr + ParseStr;
+  S4 := '';
+ I4 := 0;
+ While I4 <= ItemNum Do
+  Begin
+   S4 := Copy(TheItemStr, 1, Pos(ParseStr, TheItemStr) - 1);
+   Delete(TheItemStr, 1, Pos(ParseStr, TheItemStr));
+   Inc(I4);
+  End;
+  Result := S4;
+End;
+
+function IsNumeric(const Cad: String): Boolean;
+var
+ i: integer;
+begin
+ Result := Length(Cad) > 0;
+ for i:=1 to length(cad) do
+   if not (Cad[i] in ['0'..'9']) then
+   begin
+     Result := False;
+     Break;  //Exit ?
+   end;
+end;
+
+function SystemDir: string;
+var
+  dir: array [0..MAX_PATH] of Char;
+begin
+  GetSystemDirectory(dir, MAX_PATH);
+  Result := StrPas(dir);
+end;
+
+function NombreArchivo(AArchivo: string): String;
+var
+  Dir: String;
+begin
+  Dir:=SystemDir + '\Cistem';
+  if not DirectoryExists(Dir) then
+    CreateDir(Dir);
+  Result:=Dir + '\' + AArchivo + FormatDateTime('yyyymmdd', Now) + '.log'
+end;
+
+procedure EscribeSerialLog(AArchivo, Cad: String; Forzar: Boolean = False; MiRuta: Boolean = False);
+var
+  Aux: TextFile;
+  MiArchivo: String;
+begin
+  if DebugSerialLog or Forzar then
+  begin
+    if not MiRuta then
+      MiArchivo:=NombreArchivo(AArchivo)
+    else
+      MiArchivo:=AArchivo;
+    AssignFile(Aux, MiArchivo);
+    if FileExists(MiArchivo) then
+      Append(Aux)
+    else
+      Rewrite(Aux);
+    try
+      Writeln(Aux, Cad);
+    finally
+      CloseFile(Aux);
+    end;
+  end;
+end;
+
+procedure EscribirRegistro(Clave, Valor: String);
+var
+  Registro: TIniFile;
+begin
+  Registro:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Cistem.INI');
+  try
+    Registro.WriteString(RutaRegistro, Clave, Valor);
+    Registro.UpdateFile;
+  finally
+    FreeAndNil(Registro);
+  end;
+end;
+
+function LeerRegistro(Clave, Default: String): String;
+var
+  Registro: TIniFile;
+begin
+  Result:=Default;
+  Registro:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Cistem.INI');
+  try
+    if Registro.ValueExists(Rutaregistro, Clave) then
+      Result:=Registro.ReadString(RutaRegistro, Clave, Default)
+    else
+      EscribirRegistro(Clave, Default);
+  finally
+    FreeAndNil(Registro);
+  end;
+end;
+
+function DWHi(val : DWord) : word assembler;
+asm
+  mov EAX, val;
+  shr EAX,16;
+end;
+
+function DWLo(val : DWord) : word assembler;
+asm
+  mov EAX, val;
+end;
+
+function  GetFileVersion(filename : string; var VerBlk : VS_FIXEDFILEINFO) : boolean;
+var  InfoSize,puLen : DWord;
+     Pt,InfoPtr : Pointer;
+begin
+  InfoSize := GetFileVersionInfoSize(PChar(filename),puLen);
+  fillchar(VerBlk,sizeof(VS_FIXEDFILEINFO),0);
+  if InfoSize > 0 then
+  begin
+    GetMem(Pt,InfoSize);
+    GetFileVersionInfo(PChar(filename),0,InfoSize,Pt);
+    VerQueryValue(Pt,'\',InfoPtr,puLen);
+    move(InfoPtr^,VerBlk,sizeof(VS_FIXEDFILEINFO));
+    FreeMem(Pt);
+    result := true;
+  end
+  else
+    result := false;
+end;
+
+function Version : string;
+var
+  VerBlk : VS_FIXEDFILEINFO;
+begin
+  if GetFileVersion(application.ExeName,VerBlk) then
+    result := Format('%u.%u.%u.%u',
+             [DWHi(VerBlk.dwProductVersionMS),
+              DWLo(VerBlk.dwProductVersionMS),
+              DWHi(VerBlk.dwProductVersionLS),
+              DWLo(VerBlk.dwProductVersionLS)])
+  else
+    Result:='';
+end;
+
+function Alinea(Cad: String; cpi, Direccion: Integer; Retorno: Boolean = True): String;
+begin
+  case Direccion of
+    1: Result:=Izquierda(cad, cpi, Retorno);
+    2: Result:=Centro(cad, cpi, Retorno);
+    3: Result:=Derecha(cad, cpi, Retorno);
+  else
+    Result:=Cad;
+  end;
+end;
+
+function Centro(Cad: String; cpi: Integer; Retorno: Boolean = True): String;
+var
+  S: String;
+  I, Medio: Integer;
+begin
+  S:=Cad;
+  Result:='';
+  if (Length(S) > cpi) and (not Retorno) then
+    Result:=Copy(S, 1, cpi)
+  else
+  begin
+    while Length(S) > cpi do
+    begin
+      Result:=Result + Copy(S, 1, cpi)+#10#13;
+      Delete(S, 1, cpi);
+    end;
+    if Length(S) <= cpi  then
+    begin
+      Medio:=(cpi - Length(S)) div 2;
+      for I := 1 to Medio do
+        S:=' ' + S;
+    end;
+    Result:=Result + S;
+  end;
+end;
+
+function Derecha(Cad: String; cpi: Integer; Retorno: Boolean = True): String;
+var
+  S: String;
+  I, Medio: Integer;
+begin
+  S:=Cad;
+  Result:='';
+  if (Length(S) > cpi) and (not Retorno) then
+    Result:=Copy(S, 1, cpi)
+  else
+  begin
+    while Length(S) > cpi do
+    begin
+      Result:=Result + Copy(S, 1, cpi)+#10#13;
+      Delete(S, 1, cpi);
+    end;
+    if Length(S) <= cpi  then
+    begin
+      Medio:=(cpi - Length(S));
+      for I := 1 to Medio do
+        S:=' ' + S;
+    end;
+    Result:=Result + S;
+  end;
+end;
+
+function Izquierda(Cad: String; cpi: Integer; Retorno: Boolean = True): String;
+var
+  S: String;
+  I, Medio: Integer;
+begin
+  S:=Cad;
+  Result:='';
+  if (Length(S) > cpi) and (not Retorno) then
+    Result:=Copy(S, 1, cpi)
+  else
+  begin
+    while Length(S) > cpi do
+    begin
+      Result:=Result + Copy(S, 1, cpi)+#10#13;
+      Delete(S, 1, cpi);
+    end;
+    if Length(S) <= cpi  then
+    begin
+      Medio:=(cpi - Length(S));
+      for I := 1 to Medio do
+        S:=S + ' ';
+    end;
+    Result:=Result + S;
+  end;
+end;
+
+function ReemplazaCaret(Cad: String): String;
+begin
+  Result:=Trim(Cad);
+  if (Length(Result) >= 1) and (Result[1] = '^') then
+    Delete(Result, 1, 1);
+
+  while Pos('^', Result) > 0 do
+  begin
+    Insert(#10#13, Result, Pos('^', Result));
+    Delete(Result, Pos('^', Result), 1);
+  end;
+end;
+
+procedure Formatos;
+const
+  Dias  : Array[1..7] Of String = ('Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado');
+  Meses : Array[1..12] Of String = ('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
+var
+  i : Byte;
+begin
+  Application.UpdateFormatSettings:=False;
+  for i:=1 to 12 do
+  begin
+    LongMonthNames[i]:=Meses[i];
+    ShortMonthNames[i]:=Copy(Meses[i],1 ,3);
+    if i <= 7 then
+    begin
+      LongDayNames[i]:=Dias[i];
+      ShortDayNames[i]:=Copy(Dias[i],1 ,3);
+    end;
+  end;
+  ShortDateFormat:='dd/mm/yyyy';
+  LongDateFormat:='dddd dd "de" mmmm "de" yyyy';
+  ThousandSeparator:=',';
+  DecimalSeparator:='.';
+  DateSeparator:='/';
+  CurrencyString:='$';
+  CurrencyFormat:=0;
+  NegCurrFormat:=1;
+  CurrencyDecimals:=2;
+  TimeSeparator:=':';
+  TimeAMString:='AM';
+  TimePMString:='PM';
+  cxFormatController.BeginUpdate;
+  cxFormatController.UseDelphiDateTimeFormats := True;
+  // change other settings of the cxFormatController...
+  cxFormatController.EndUpdate;
+  cxFormatController.GetFormats;
+  cxFormatController.NotifyListeners;
+end;
+
+{$IFNDEF SINPASS}
+function Login(Validador: TFuncLogin): Integer;
+var
+  frmPassword: TfrmPassword;
+begin
+  frmPassword:=TfrmPassword.Create(nil);
+  try
+    Screen.Cursor:=crHourGlass;
+    frmPassword.onValidar:=Validador;
+    LockWindowUpdate(Application.Handle);
+    frmPassword.ShowModal;
+    Result:=frmPassword.Valida;
+  finally
+    Screen.Cursor:=crDefault;
+    LockWindowUpdate(0);
+    frmPassword.Free;
+  end;              
+end;
+{$ENDIF}
+
+procedure Procesar;
+begin
+  Application.ProcessMessages;
+end;
+
+function ReemplazaStr(Cad, Busca, Nuevo: String): String;
+var
+  I: Integer;
+begin
+  while Pos(Busca, Cad) > 0 do
+  begin
+    I:=Pos(Busca, Cad);
+    Delete(Cad, I, Length(Busca));
+    Insert(Nuevo, Cad, I);
+  end;
+  Result:=Cad;
+end;
+
+function LeerXML(Texto: String): TStringList;
+var
+  Campo: String;
+  XML: TXmlParser;
+begin
+  Result:=TStringList.Create;
+  XML:=TXmlParser.Create;
+  Campo:='';
+  try
+    XML.LoadFromBuffer(PChar(Texto));
+    XML.StartScan;
+    while XML.Scan do
+    begin
+      case  XML.CurPartType of
+        ptStartTag: Campo:=XML.CurName;
+        ptContent: Result.Values[Campo]:=XML.CurContent;
+      end;
+    end;
+  finally
+    XML.Free;
+  end;
+end;
+
+function depuraCadena(Cadena: WideString): WideString;
+var
+  band:boolean;
+  x: Integer;
+begin
+  band:= false;
+  for x := 1 to length(Cadena) do
+  begin
+      if (Cadena[x] <> ' ') and (band = False) then
+          Result:= Result + Cadena[x]
+      else begin
+           if Cadena[x] <> ' ' then begin Result:= Result + Cadena[x]; band:= false; end;
+           if (Cadena[x] = ' ') and (band = false) then begin
+               if Cadena[x+1] <> '|' then Result:= Result + Cadena[x];
+               band:= True;
+           end;
+      end;
+  end;
+end;
+
+end.
+

@@ -1,0 +1,87 @@
+unit ufrmPantallaReportes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, CustomModule, ComCtrls, uDAScriptingProvider, uDADataTable,
+  uDACDSDataTable, cxControls, cxContainer, cxListView, ImgList, dxSkinsCore,
+  dxSkinsDefaultPainters, uPSComponent, dxSkinsdxRibbonPainter, uDAMemDataTable,
+  dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinSilver, dxSkinStardust, dxSkinSummer2008, dxSkinValentine,
+  dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSpringTime, dxSkinBlueprint, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinHighContrast, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
+  dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, uROComponent, cxEdit;
+
+type
+  TfrmPantallaReportes = class(TfrmCustomModule)
+    cdsReportes: TDAMemDataTable;
+    ImageList1: TImageList;
+    lvReportes: TcxListView;
+    procedure lvReportesDblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure DespliegaReportes(Cual:Integer; Empleado:String);
+  end;
+
+var
+  frmPantallaReportes: TfrmPantallaReportes;
+
+implementation
+
+uses Modules, uDM, uDAInterfaces, ufrmPantallaParametros;
+
+{$R *.dfm}
+
+{ TfrmConsumos }
+
+procedure TfrmPantallaReportes.DespliegaReportes(Cual: Integer; Empleado:String);
+var
+  cont:Integer;
+begin
+  cdsReportes.ParamByName('Tipo').AsInteger:=Cual;
+  cdsReportes.ParamByName('Identificador').AsInteger:= DM.Identificador;
+  cdsReportes.ParamByName('USUARIOS').AsString:= INTTOSTR(DM.EmpleadoID);
+  cdsReportes.Open;
+  cont:= 1;
+  while not cdsReportes.EOF do
+  begin
+    with lvReportes.Items.Add do
+    begin
+      Caption:=cdsReportes.FieldByName('Nombre').AsString;
+      StateIndex:=cdsReportes.FieldByName('ReporteID').AsInteger;
+      ImageIndex:=2
+    end;
+    cdsReportes.Next;
+  end;    // while
+end;
+
+procedure TfrmPantallaReportes.lvReportesDblClick(Sender: TObject);
+begin
+  inherited;
+  if lvReportes.Selected <> nil then
+  begin
+    cdsReportes.Locate('ReporteID', lvReportes.Selected.StateIndex, []);
+    DM.Parametros:=ObtenParametros(cdsReportes.FieldByName('Parametros').AsString, cdsReportes.FieldByName('Nombre').AsString);
+    if DM.Parametros = nil then
+      Exit;
+
+    DM.Imprimir(cdsReportes.FieldByName('SQL1').AsString,
+                cdsReportes.FieldByName('SQL2').AsString,
+                cdsReportes.FieldByName('Template').AsString,
+                lvReportes.Selected.Caption,
+                cdsReportes.FieldByName('CampoJoin').AsString);
+  end;
+end;
+
+end.

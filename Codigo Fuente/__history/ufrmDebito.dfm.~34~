@@ -1,0 +1,934 @@
+inherited frmDebito: TfrmDebito
+  Caption = 'frmDebito'
+  ClientHeight = 458
+  ClientWidth = 742
+  ExplicitWidth = 742
+  ExplicitHeight = 458
+  PixelsPerInch = 96
+  TextHeight = 13
+  object cxGroupBox2: TcxGroupBox
+    Left = 8
+    Top = 8
+    Caption = 'Cliente'
+    TabOrder = 0
+    Height = 170
+    Width = 287
+    object Label1: TLabel
+      Left = 18
+      Top = 35
+      Width = 32
+      Height = 13
+      Caption = 'Cliente'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label2: TLabel
+      Left = 16
+      Top = 72
+      Width = 37
+      Height = 13
+      Caption = 'Nombre'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label3: TLabel
+      Left = 16
+      Top = 106
+      Width = 21
+      Height = 13
+      Caption = 'RFC'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label4: TLabel
+      Left = 16
+      Top = 141
+      Width = 34
+      Height = 13
+      Caption = 'Cuenta'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object edtNombre: TcxTextEdit
+      Left = 67
+      Top = 69
+      TabStop = False
+      Enabled = False
+      Properties.ReadOnly = True
+      Style.LookAndFeel.NativeStyle = True
+      Style.TextColor = clNavy
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 1
+      Width = 198
+    end
+    object edtRFC: TcxTextEdit
+      Left = 67
+      Top = 103
+      TabStop = False
+      Enabled = False
+      Properties.ReadOnly = True
+      Style.LookAndFeel.NativeStyle = True
+      Style.TextColor = clNavy
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 2
+      Width = 198
+    end
+    object edtCuenta: TcxTextEdit
+      Left = 67
+      Top = 138
+      TabStop = False
+      Enabled = False
+      Properties.ReadOnly = True
+      Style.LookAndFeel.NativeStyle = True
+      Style.TextColor = clNavy
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 3
+      Width = 198
+    end
+    object edtCliente: TcxCurrencyEdit
+      Left = 67
+      Top = 32
+      EditValue = 0
+      Properties.DisplayFormat = '#'
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 0
+      OnEnter = edtClienteEnter
+      OnExit = edtClienteExit
+      OnKeyDown = edtClienteKeyDown
+      Width = 97
+    end
+    object btnBuscaRecibo: TcxButton
+      Left = 192
+      Top = 32
+      Width = 25
+      Height = 21
+      Hint = 'Buscar Recibo'
+      TabOrder = 4
+      OnClick = btnBuscaReciboClick
+      Colors.Default = clWhite
+      Colors.Normal = clWhite
+      Colors.Hot = clWhite
+      Colors.Pressed = clWhite
+      Colors.Disabled = clWhite
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000110000
+        001A000000260000003100000037000000380000003800000038000000330000
+        002A00000020000000160000000B0000000300000001000000010000001D724E
+        2A99A97640D1A9753FD4A97540D6A9763FD7A9753FD7A97540D6A9763FD59464
+        33C30F0903450000002500000014000000070000000200000002000000206F4B
+        2996E6A641FFECAE39FFECAE39FFECAE39FFEBAE39FFEBAD3AFFD79744F7C880
+        3AFA6139119F00000028000000190000000B0000000400000003000000196E4B
+        2891E8A63EFFF9BA27FFF9BA27FFF9B927FFF7B828FFE3A13FFCCE8940F99859
+        1CD80704013100000020000000160000000D0000000600000003000000176E4B
+        288FE9A843FFFCBF32FFFCBF32FFFCBF32FFF9BD33FFDA9946F8D79042FF653B
+        129F000000260000001D000000140000000C0000000600000003000000006E4B
+        2980EAAB4BFFFDC546FFFDC546FFFDC546FFFBC345FFF5BC45FFD79849F5CE85
+        3DFC704214990201000300000000000000000000000000000000000000006C4A
+        287DE9AC53FEFDCC5BFFFDCC5BFFFECC5CFFFDCC5BFFFBC959FFF6C254FFD99B
+        4DF5D08840FC864F18B707040109000000000000000000000000000000006142
+        2471E1A757F8F4C564FFD7944FF7E9B05DFEFDD36FFFFDD36FFFFBD06BFFF6C9
+        63FFDB9F51F6CF8943FA93571BC9120A03180000000000000000000000005F41
+        236EDFA557F7D4924DF6BD7227FCCC8C4CEBEAB263FEFED97DFFFFD97EFFFCD5
+        79FFF7CE6FFFDDA355F7D08C45F8A6621FE11A10052400000000000000000302
+        0104C68949E6BA6E23FC54310F72100B0613C78A4BE5EABB6BFEFEED90FFFFEE
+        91FFFCE98BFFF8DF7EFFDFAA5BF8CF8D47F688521BB800000000000000000000
+        0000000000000B06020F0000000000000000100B0613C78A4BE5EABC6FFEFEEF
+        9AFFFFF09CFFFDEB95FFF7DF86FFE2AF60FBAD7840C800000000000000000000
+        00000000000000000000000000000000000000000000100B0613C5884AE2EABD
+        75FEFEF2A7FFFDF0A4FFF7DF8FFFD39753F076512C8900000000000000000000
+        0000000000000000000000000000000000000000000000000000100B0613C588
+        4BE2E9BD79FEF8E59FFFD39A57EF7A542D8D0000000000000000000000000000
+        000000000000000000000000000000000000000000000000000000000000100B
+        0613C5884BE2D39B5AEF825A3196000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000003D2A174700000000000000000000000000000000}
+      LookAndFeel.NativeStyle = False
+    end
+    object btnBuscarCliente: TcxButton
+      Left = 165
+      Top = 32
+      Width = 25
+      Height = 21
+      TabOrder = 5
+      OnClick = btnBuscarClienteClick
+      Colors.Default = clWhite
+      Colors.Normal = clWhite
+      Colors.Hot = clWhite
+      Colors.Pressed = clWhite
+      Colors.Disabled = clWhite
+      Glyph.Data = {
+        36050000424D3605000000000000360400002800000010000000100000000100
+        08000000000000010000120B0000120B0000000100000000000000000000FFFF
+        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
+        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
+        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
+        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
+        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
+        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
+        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
+        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
+        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
+        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
+        9E00046099000454860000518800002A470000243D0002558E0002416A000351
+        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
+        2300000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        02505853020202020202020202020202572205184B0202020202020202020257
+        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
+        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
+        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
+        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        0202020202020202020202020202020202020202020202020202}
+      LookAndFeel.NativeStyle = False
+    end
+  end
+  object cxGroupBox3: TcxGroupBox
+    Left = 8
+    Top = 184
+    Caption = 'Recibido'
+    TabOrder = 1
+    Height = 266
+    Width = 287
+    object Label5: TLabel
+      Left = 16
+      Top = 32
+      Width = 30
+      Height = 13
+      Caption = 'Fecha'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label6: TLabel
+      Left = 16
+      Top = 64
+      Width = 52
+      Height = 13
+      Caption = 'Referencia'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label7: TLabel
+      Left = 16
+      Top = 128
+      Width = 37
+      Height = 13
+      Caption = 'Cheque'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label8: TLabel
+      Left = 16
+      Top = 160
+      Width = 35
+      Height = 13
+      Caption = 'Importe'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label9: TLabel
+      Left = 16
+      Top = 96
+      Width = 31
+      Height = 13
+      Caption = 'Banco'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object lblProducto: TLabel
+      Left = 16
+      Top = 202
+      Width = 43
+      Height = 13
+      Caption = 'Producto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label10: TLabel
+      Left = 16
+      Top = 235
+      Width = 41
+      Height = 13
+      Caption = 'Estacion'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object cxDBTextEdit5: TcxDBTextEdit
+      Left = 80
+      Top = 64
+      DataBinding.DataField = 'Referencia'
+      DataBinding.DataSource = dsRecibo
+      Properties.CharCase = ecUpperCase
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 1
+      Width = 193
+    end
+    object cxDBTextEdit6: TcxDBTextEdit
+      Left = 80
+      Top = 128
+      DataBinding.DataField = 'Cheque'
+      DataBinding.DataSource = dsRecibo
+      Properties.CharCase = ecUpperCase
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 3
+      Width = 193
+    end
+    object cxDBCurrencyEdit1: TcxDBCurrencyEdit
+      Left = 80
+      Top = 160
+      DataBinding.DataField = 'Importe'
+      DataBinding.DataSource = dsRecibo
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 4
+      Width = 105
+    end
+    object dtpFecha: TcxDateEdit
+      Left = 80
+      Top = 32
+      Properties.ButtonGlyph.Data = {
+        46020000424D460200000000000036000000280000000E0000000C0000000100
+        1800000000001002000000000000000000000000000000000000FF00FFFF00FF
+        8080808080808080808080808080808080808080808080808080808080808080
+        80FF00FF0000FF00FF0000000000008000000000008000008000000000008000
+        00000000000000800000808080FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00
+        FFFFFFFF000000000000000000FFFFFF000000000000000000C0C0C0FFFFFF80
+        0000808080FF00FF0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFFC0C0C0FF
+        FFFFC0C0C0000000FFFFFF800000808080FF00FF0000FF00FFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF800000808080FF00FF
+        0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFF000000000000000000C0C0C0
+        FFFFFF800000808080FF00FF0000FF00FFFFFFFF000000000000FFFFFFFFFFFF
+        000000FFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFF
+        FFFFFF000000FFFFFFFFFFFF000000000000000000000000FFFFFF8000008080
+        80FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF800000808080FF00FF0000FF00
+        FF000000000000000000000000000000000000000000000000000000000000FF
+        00FFFF00FFFF00FF0000}
+      Style.BorderColor = clNavy
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      Style.TextColor = clWindowText
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 0
+      Width = 89
+    end
+    object cxDBLookupComboBox1: TcxDBLookupComboBox
+      Left = 80
+      Top = 96
+      DataBinding.DataField = 'BancoID'
+      DataBinding.DataSource = dsRecibo
+      Properties.KeyFieldNames = 'BancoID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Nombre'
+        end>
+      Properties.ListSource = dsBancos
+      TabOrder = 2
+      Width = 184
+    end
+    object cbProducto: TcxLookupComboBox
+      Left = 80
+      Top = 194
+      Properties.DropDownWidth = 350
+      Properties.KeyFieldNames = 'ProductoID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Descripcion'
+        end
+        item
+          FieldName = 'ProductoID'
+        end>
+      Properties.ListSource = dsProductos
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 5
+      Width = 193
+    end
+    object cdEstacion: TcxLookupComboBox
+      Left = 80
+      Top = 232
+      Properties.DropDownWidth = 350
+      Properties.KeyFieldNames = 'EstacionID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Nombre'
+        end
+        item
+          FieldName = 'EstacionID'
+        end>
+      Properties.ListSource = dsEstacion
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 6
+      Width = 193
+    end
+  end
+  object cxGroupBox1: TcxGroupBox
+    Left = 301
+    Top = 8
+    Caption = 'Datos Recibo del Cliente'
+    TabOrder = 2
+    Height = 170
+    Width = 428
+    object Label11: TLabel
+      Left = 11
+      Top = 35
+      Width = 22
+      Height = 13
+      Caption = 'Folio'
+    end
+    object Label12: TLabel
+      Left = 11
+      Top = 141
+      Width = 35
+      Height = 13
+      Caption = 'Importe'
+    end
+    object Label13: TLabel
+      Left = 11
+      Top = 72
+      Width = 52
+      Height = 13
+      Caption = 'Referencia'
+    end
+    object Label14: TLabel
+      Left = 11
+      Top = 106
+      Width = 32
+      Height = 13
+      Caption = 'Cliente'
+    end
+    object Label15: TLabel
+      Left = 75
+      Top = 35
+      Width = 22
+      Height = 13
+      Caption = 'Folio'
+    end
+    object Label16: TLabel
+      Left = 75
+      Top = 72
+      Width = 22
+      Height = 13
+      Caption = 'Folio'
+    end
+    object Label17: TLabel
+      Left = 75
+      Top = 106
+      Width = 22
+      Height = 13
+      Caption = 'Folio'
+    end
+    object Label18: TLabel
+      Left = 75
+      Top = 141
+      Width = 22
+      Height = 13
+      Caption = 'Folio'
+    end
+  end
+  object cdsMovimientos: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'MovimientoID'
+        DataType = datInteger
+        InPrimaryKey = True
+      end
+      item
+        Name = 'FechaMovimiento'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FechaVencimiento'
+        DataType = datDateTime
+      end
+      item
+        Name = 'Referencia'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Ejercicio'
+        DataType = datInteger
+      end
+      item
+        Name = 'Periodo'
+        DataType = datInteger
+      end
+      item
+        Name = 'CargoAbono'
+        DataType = datString
+        Size = 1
+      end
+      item
+        Name = 'Cargo'
+        DataType = datFloat
+      end
+      item
+        Name = 'Abono'
+        DataType = datFloat
+      end
+      item
+        Name = 'FechaRegistro'
+        DataType = datDateTime
+      end
+      item
+        Name = 'Origen'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'AfectaSaldos'
+        DataType = datBoolean
+      end
+      item
+        Name = 'TipoMovimientoID'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'UsuarioID'
+        DataType = datInteger
+      end
+      item
+        Name = 'ClienteID'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'Movimiento'
+        Value = '1'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    LogicalName = 'dbo Movimiento'
+    IndexDefs = <>
+    Left = 553
+    Top = 8
+  end
+  object dsMovimientos: TDADataSource
+    DataSet = cdsMovimientos.Dataset
+    DataTable = cdsMovimientos
+    Left = 553
+    Top = 48
+  end
+  object cdsRecibo: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'ReciboID'
+        DataType = datInteger
+        InPrimaryKey = True
+      end
+      item
+        Name = 'Folio'
+        DataType = datInteger
+      end
+      item
+        Name = 'FechaMovimiento'
+        DataType = datDateTime
+      end
+      item
+        Name = 'Ejercicio'
+        DataType = datInteger
+      end
+      item
+        Name = 'Periodo'
+        DataType = datInteger
+      end
+      item
+        Name = 'Cheque'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Referencia'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'Importe'
+        DataType = datFloat
+      end
+      item
+        Name = 'CuentaContableCliente'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'FechaCaptura'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FechaAplicacion'
+        DataType = datDateTime
+      end
+      item
+        Name = 'UsuarioID'
+        DataType = datInteger
+      end
+      item
+        Name = 'ClienteID'
+        DataType = datInteger
+      end
+      item
+        Name = 'MovimientoID'
+        DataType = datInteger
+      end
+      item
+        Name = 'BancoID'
+        DataType = datInteger
+      end
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+      end>
+    Params = <
+      item
+        Name = 'Recibo'
+        Value = '1'
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    AfterPost = cdsReciboAfterPost
+    LogicalName = 'dbo Recibo'
+    IndexDefs = <>
+    Left = 521
+    Top = 8
+  end
+  object dsRecibo: TDADataSource
+    DataSet = cdsRecibo.Dataset
+    DataTable = cdsRecibo
+    Left = 521
+    Top = 48
+  end
+  object cdsCliente: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'ClienteID'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'Estatus'
+        DataType = datString
+        Size = 1
+      end
+      item
+        Name = 'FormaPagoID'
+        DataType = datInteger
+      end
+      item
+        Name = 'CuentaContable'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'FormaCompraID'
+        DataType = datInteger
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 20
+      end>
+    Params = <
+      item
+        Name = 'Cliente'
+        Value = '1'
+        ParamType = daptInput
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    LogicalName = 'spBuscaCliente'
+    IndexDefs = <>
+    Left = 584
+    Top = 8
+  end
+  object dsCliente: TDADataSource
+    DataSet = cdsCliente.Dataset
+    DataTable = cdsCliente
+    Left = 584
+    Top = 48
+  end
+  object cdsBancos: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'BancoID'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'CuentaContable'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    LogicalName = 'dbo Banco'
+    IndexDefs = <>
+    Left = 616
+    Top = 8
+  end
+  object dsBancos: TDADataSource
+    DataSet = cdsBancos.Dataset
+    DataTable = cdsBancos
+    Left = 616
+    Top = 48
+  end
+  object cdsProductos: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'ProductoID'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'Descripcion'
+        DataType = datString
+        Size = 80
+        Required = True
+      end
+      item
+        Name = 'Precio'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'PorcentajeImpuesto'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'IEPS'
+        DataType = datFloat
+      end>
+    Params = <>
+    MasterMappingMode = mmDataRequest
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    LogicalName = 'dbo Producto'
+    IndexDefs = <>
+    Left = 458
+    Top = 8
+  end
+  object dsProductos: TDADataSource
+    DataSet = cdsProductos.Dataset
+    DataTable = cdsProductos
+    Left = 490
+    Top = 8
+  end
+  object cdsEstacion: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 30
+        Required = True
+      end
+      item
+        Name = 'RazonSocial'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'ClavePemex'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'Estatus'
+        DataType = datString
+        Size = 1
+        Required = True
+      end
+      item
+        Name = 'CuentaContable'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CuentaIVANoCobrado'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CuentaIVACobrado'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CuentaVentas'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'IVA'
+        DataType = datFloat
+      end
+      item
+        Name = 'GasolineroID'
+        DataType = datInteger
+        Required = True
+      end>
+    Params = <>
+    MasterMappingMode = mmDataRequest
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    LogicalName = 'dbo Estacion'
+    IndexDefs = <>
+    Left = 458
+    Top = 48
+  end
+  object dsEstacion: TDADataSource
+    DataSet = cdsEstacion.Dataset
+    DataTable = cdsEstacion
+    Left = 546
+    Top = 96
+  end
+end

@@ -1,0 +1,208 @@
+unit ufrmAgregarAlumno;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinSilver, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue,
+  dxSkinscxPCPainter, cxLookAndFeelPainters, cxCheckBox, cxDBEdit, cxTextEdit,
+  cxLabel, cxContainer, cxEdit, cxGroupBox, cxPC, cxControls, DB, uDAInterfaces,
+  uDADataTable, uDAScriptingProvider, uDAMemDataTable, Menus, StdCtrls,
+  cxButtons, cxGraphics, cxLookAndFeels, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSpringTime,
+  WPCTRRich, WPTbar, WPRuler, WPRTEDefs, WPCTRMemo, cxImage, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxRadioGroup, cxMaskEdit,
+  cxCalendar, uDARemoteDataAdapter;
+
+type
+  TfrmAgregarAlumno = class(TForm)
+    cdsCatalogo: TDAMemDataTable;
+    dsCatalogo: TDADataSource;
+    cdsStatus: TDAMemDataTable;
+    dsStatus: TDADataSource;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet3: TcxTabSheet;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxDBTextEdit6: TcxDBTextEdit;
+    cxDBTextEdit7: TcxDBTextEdit;
+    cxDBTextEdit8: TcxDBTextEdit;
+    cxDBTextEdit9: TcxDBTextEdit;
+    cxDBDateEdit1: TcxDBDateEdit;
+    cxDBDateEdit2: TcxDBDateEdit;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxDBRadioGroup1: TcxDBRadioGroup;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
+    cxLabel11: TcxLabel;
+    cxLabel12: TcxLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxTabSheet4: TcxTabSheet;
+    cxDBTextEdit10: TcxDBTextEdit;
+    cxLabel13: TcxLabel;
+    cxLabel14: TcxLabel;
+    cxDBTextEdit11: TcxDBTextEdit;
+    cxDBTextEdit12: TcxDBTextEdit;
+    cxLabel15: TcxLabel;
+    cxDBTextEdit13: TcxDBTextEdit;
+    cxLabel16: TcxLabel;
+    cxDBTextEdit14: TcxDBTextEdit;
+    cxLabel17: TcxLabel;
+    cxDBTextEdit15: TcxDBTextEdit;
+    cxLabel18: TcxLabel;
+    cxDBTextEdit16: TcxDBTextEdit;
+    cxLabel19: TcxLabel;
+    cxDBTextEdit17: TcxDBTextEdit;
+    cxLabel20: TcxLabel;
+    cxDBTextEdit18: TcxDBTextEdit;
+    cxLabel21: TcxLabel;
+    cxDBTextEdit19: TcxDBTextEdit;
+    cxLabel22: TcxLabel;
+    cxTabSheet5: TcxTabSheet;
+    cxLabel23: TcxLabel;
+    cxDBTextEdit20: TcxDBTextEdit;
+    cxLabel24: TcxLabel;
+    cxDBTextEdit21: TcxDBTextEdit;
+    cxLabel25: TcxLabel;
+    cxDBTextEdit22: TcxDBTextEdit;
+    cxLabel26: TcxLabel;
+    cxDBTextEdit23: TcxDBTextEdit;
+    cxLabel27: TcxLabel;
+    cxDBTextEdit24: TcxDBTextEdit;
+    cxLabel28: TcxLabel;
+    cxDBTextEdit25: TcxDBTextEdit;
+    cxLabel29: TcxLabel;
+    cxDBTextEdit26: TcxDBTextEdit;
+    cxTabSheet7: TcxTabSheet;
+    cxDBTextEdit27: TcxDBTextEdit;
+    cxLabel30: TcxLabel;
+    cxDBTextEdit28: TcxDBTextEdit;
+    cxLabel31: TcxLabel;
+    cxDBTextEdit29: TcxDBTextEdit;
+    cxLabel32: TcxLabel;
+    cxLabel33: TcxLabel;
+    cxDBTextEdit30: TcxDBTextEdit;
+    cxLabel34: TcxLabel;
+    cxDBTextEdit31: TcxDBTextEdit;
+    cxLabel35: TcxLabel;
+    cxDBTextEdit32: TcxDBTextEdit;
+    cxLabel36: TcxLabel;
+    cxDBTextEdit33: TcxDBTextEdit;
+    cxLabel37: TcxLabel;
+    cxDBTextEdit34: TcxDBTextEdit;
+    cxLabel38: TcxLabel;
+    cxDBTextEdit35: TcxDBTextEdit;
+    cxDBTextEdit36: TcxDBTextEdit;
+    cxLabel39: TcxLabel;
+    cxLabel40: TcxLabel;
+    cxDBTextEdit37: TcxDBTextEdit;
+    cdsProspecto: TDAMemDataTable;
+    btnCancelar: TcxButton;
+    btnAceptar: TcxButton;
+    procedure btnAceptarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Abrir(IDPROSPECTO: Integer);
+  end;
+
+  function AgregarAlumno(IDPROSPECTO: Integer): Boolean;
+
+implementation
+
+uses uDM;
+
+{$R *.dfm}
+
+
+function AgregarAlumno(IDPROSPECTO: Integer): Boolean;
+var
+  frmAgregarAlumno: TfrmAgregarAlumno;
+begin
+  frmAgregarAlumno:=TfrmAgregarAlumno.Create(nil);
+  frmAgregarAlumno.Abrir(IDPROSPECTO);
+  Result:=frmAgregarAlumno.ShowModal = mrOk;
+  frmAgregarAlumno.Free;
+end;
+
+procedure TfrmAgregarAlumno.Abrir(IDPROSPECTO: Integer);
+begin
+  cdsProspecto.Close;
+  cdsProspecto.ParamByName('IDPROSPECTO').AsInteger:=IDPROSPECTO;
+  cdsProspecto.Open;
+
+  cdsCatalogo.Append;
+end;
+
+procedure TfrmAgregarAlumno.btnAceptarClick(Sender: TObject);
+begin
+  if cdsCatalogo.State in dsEditModes then
+  begin
+    cdsCatalogo.Post;
+    ModalResult:=mrOk;
+  end
+  else
+    ModalResult:=mrCancel;
+end;
+
+procedure TfrmAgregarAlumno.btnCancelarClick(Sender: TObject);
+begin
+  ModalResult:=mrCancel;
+end;
+
+procedure TfrmAgregarAlumno.cdsCatalogoNewRecord(DataTable: TDADataTable);
+begin
+  cdsCatalogo.FieldByName('IDALUMNO').AsInteger:= DM.Servidor.Folio('IDALUMNO','');
+  cdsCatalogo.FieldByName('FECHANACIMIENTO').AsDateTime:= cdsProspecto.FieldByName('FECHANACIMIENTO').AsDateTime;
+  cdsCatalogo.FieldByName('FECHAINICIO').AsDateTime:= now;
+  cdsCatalogo.FieldByName('SEXO').AsString:= cdsProspecto.FieldByName('SEXO').AsString;
+  cdsCatalogo.FieldByName('NOMBRE').AsString:= cdsProspecto.FieldByName('NOMBRE').AsString;
+  cdsCatalogo.FieldByName('AMATERNO').AsString:= cdsProspecto.FieldByName('AMATERNO').AsString;
+  cdsCatalogo.FieldByName('APATERNO').AsString:= cdsProspecto.FieldByName('APATERNO').AsString;
+  cdsCatalogo.FieldByName('CIUDADNACIMIENTO').AsString:= cdsProspecto.FieldByName('CIUDADNACIMIENTO').AsString;
+  cdsCatalogo.FieldByName('DIRECCION').AsString:= cdsProspecto.FieldByName('DIRECCION').AsString;
+  cdsCatalogo.FieldByName('TELEFONOCASA').AsString:= cdsProspecto.FieldByName('TELEFONOCASA').AsString;
+  cdsCatalogo.FieldByName('EMAIL').AsString:= cdsProspecto.FieldByName('EMAIL').AsString;
+  cdsCatalogo.FieldByName('PADRE').AsString:= cdsProspecto.FieldByName('PADRE').AsString;
+  cdsCatalogo.FieldByName('EMAILPADRE').AsString:= cdsProspecto.FieldByName('EMAILPADRE').AsString;
+  cdsCatalogo.FieldByName('MADRE').AsString:= cdsProspecto.FieldByName('PADRE').AsString;
+  cdsCatalogo.FieldByName('EMAILMADRE').AsString:= cdsProspecto.FieldByName('EMAILPADRE').AsString;
+  cdsCatalogo.FieldByName('IDSTATUS').AsInteger:= 1;
+end;
+
+procedure TfrmAgregarAlumno.FormCreate(Sender: TObject);
+begin
+  cdsCatalogo.Close;
+  cdsCatalogo.Open;
+
+  cdsStatus.Close;
+  cdsStatus.Open;
+end;
+
+procedure TfrmAgregarAlumno.FormShow(Sender: TObject);
+begin
+   cxDBDateEdit1.SetFocus;
+end;
+
+end.

@@ -1,0 +1,543 @@
+inherited frmAsignarPago: TfrmAsignarPago
+  Caption = 'frmAsignarPago'
+  ClientHeight = 349
+  ClientWidth = 589
+  ExplicitWidth = 589
+  ExplicitHeight = 349
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label10: TLabel
+    Left = 159
+    Top = 84
+    Width = 23
+    Height = 13
+    Caption = 'Ciclo'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label11: TLabel
+    Left = 159
+    Top = 141
+    Width = 29
+    Height = 13
+    Caption = 'Grupo'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label12: TLabel
+    Left = 159
+    Top = 200
+    Width = 49
+    Height = 13
+    Caption = 'Tipo Pago'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 589
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Asignar Pagos a un Grupo'
+    Color = clBtnShadow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 30
+    Width = 589
+    Height = 2
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = ' Asignar Pagos a un Grupo'
+    Color = clNone
+    ParentBackground = False
+    TabOrder = 1
+  end
+  object TBXDockablePanel1: TTBXDockablePanel
+    Left = 0
+    Top = 32
+    Align = alLeft
+    Caption = 'TBXDockablePanel1'
+    FloatingWidth = 128
+    FloatingHeight = 128
+    SupportedDocks = [dkStandardDock, dkMultiDock]
+    TabOrder = 2
+    ExplicitTop = 24
+    object rbAsignarPago: TRadioButton
+      Left = 24
+      Top = 40
+      Width = 103
+      Height = 17
+      Caption = 'Asingar Pagos'
+      Checked = True
+      TabOrder = 0
+      TabStop = True
+      OnClick = rbAsignarPagoClick
+    end
+    object rbEliminar: TRadioButton
+      Left = 25
+      Top = 88
+      Width = 103
+      Height = 17
+      Caption = 'Eliminar Pagos'
+      TabOrder = 1
+      OnClick = rbEliminarClick
+    end
+    object Eliminar: TcxRadioGroup
+      Left = 4
+      Top = 111
+      Caption = 'Eliminar'
+      Properties.Items = <
+        item
+          Caption = 'Solo Pagados'
+          Value = '0'
+        end
+        item
+          Caption = 'Todos'
+          Value = '1'
+        end>
+      TabOrder = 2
+      Visible = False
+      Height = 90
+      Width = 120
+    end
+  end
+  object btnAsignar: TcxButton
+    Left = 159
+    Top = 36
+    Width = 82
+    Height = 33
+    Caption = 'Asignar'
+    TabOrder = 3
+    TabStop = False
+    Glyph.Data = {
+      AA030000424DAA03000000000000360000002800000011000000110000000100
+      1800000000007403000000000000000000000000000000000000FF00FFFF00FF
+      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+      FFFF00FFFF00FFFF00FFFF00FF00FF00FF000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000FF00
+      FF00FF00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF00FF00FF00FF000000FFFFFF00
+      7B00007B00FFFFFF007B00007B00FFFFFF007B00007B00FFFFFFFFFFFFFFFFFF
+      FFFFFF000000FF00FF00FF00FF000000FFFFFF007B00007B00FFFFFF007B0000
+      7B00FFFFFF007B00007B00FFFFFFFFFFFFFFFFFFFFFFFF000000FF00FF00FF00
+      FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF000000FF00FF00FF00FF000000FFFFFFFFFFFFFFFF
+      FFFFFFFF00007B00007B00007BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      0000FF00FF00FF00FF000000FFFFFFFFFFFFFFFFFFFFFFFF00007B00007BFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF00FF00FF00FF000000
+      FFFFFFFFFFFFFFFFFFFFFFFF00007BFFFFFF00007BFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFF000000FF00FF00FF00FF000000FFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFF00007BFFFFFFFFFFFF007B00007B00FFFFFF000000FF00
+      FF00FF00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      00007BFFFFFF007B00007B00FFFFFF000000FF00FF00FF00FF000000FFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF007B00007B00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FF00FF00FF00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      7B00007B00FFFFFFFFFFFF007B00007B00FFFFFFFFFFFF000000FF00FF00FF00
+      FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      7B00007B00FFFFFFFFFFFF000000FF00FF00FF00FF000000FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      0000FF00FF00FF00FF0000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000FF00FF00FF00FFFF00FF
+      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+      FFFF00FFFF00FFFF00FFFF00FF00}
+    LookAndFeel.Kind = lfOffice11
+  end
+  object dbcCiclo: TcxLookupComboBox
+    Left = 159
+    Top = 103
+    Properties.KeyFieldNames = 'IDCICLO'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NOMBRE'
+      end>
+    Properties.ListSource = dsCiclo
+    TabOrder = 4
+    Width = 194
+  end
+  object dbcGrupo: TcxLookupComboBox
+    Left = 159
+    Top = 160
+    Properties.KeyFieldNames = 'IDGRUPO'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NOMBRE'
+      end>
+    Properties.ListSource = dsGrupo
+    TabOrder = 5
+    Width = 194
+  end
+  object dbcSubTipoPago: TcxLookupComboBox
+    Left = 159
+    Top = 219
+    Properties.KeyFieldNames = 'IDSUBTIPOPAGO'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NOMBRE'
+      end
+      item
+        Fixed = True
+        Width = 85
+        FieldName = 'NumPagos'
+      end
+      item
+        Fixed = True
+        Width = 85
+        FieldName = 'Importe'
+      end
+      item
+        FieldName = 'Fecha'
+      end>
+    Properties.ListSource = dsSubTipoPago
+    TabOrder = 6
+    Width = 386
+  end
+  object dsAlumnos: TDADataSource
+    DataSet = cdsAlumnos.Dataset
+    DataTable = cdsAlumnos
+    Left = 192
+    Top = 248
+  end
+  object cdsAlumnos: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'idalumno'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDHISTORIALALUMNO'
+        DataType = datInteger
+      end
+      item
+        Name = 'NUMCONTROL'
+        DataType = datString
+        Size = 12
+      end
+      item
+        Name = 'NOMBREALUMNO'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'idstatus'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDGRUPO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDCICLO'
+        DataType = datInteger
+      end
+      item
+        Name = 'CODIGOCICLO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOMBRECICLO'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CODIGOGRUPO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOMBREGRUPO'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'FECHAINICIO'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FECHAFINAL'
+        DataType = datDateTime
+      end>
+    Params = <
+      item
+        Name = 'IDCICLO'
+        Value = ''
+      end
+      item
+        Name = 'IDGRUPO'
+        Value = ''
+      end>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'spListas'
+    IndexDefs = <>
+    Left = 160
+    Top = 248
+  end
+  object cdsSubTipoPago: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'IDTIPOPAGO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+        Required = True
+      end
+      item
+        Name = 'NUMPAGOS'
+        DataType = datInteger
+      end
+      item
+        Name = 'PLAZO'
+        DataType = datInteger
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo SUBTIPOPAGO'
+    IndexDefs = <>
+    Left = 504
+    Top = 104
+  end
+  object cdsCiclo: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDCICLO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'FECHAINICIO'
+        DataType = datDateTime
+        Required = True
+      end
+      item
+        Name = 'FECHAFINAL'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo CICLO'
+    IndexDefs = <>
+    Left = 504
+    Top = 40
+  end
+  object dsGrupo: TDADataSource
+    DataSet = cdsGrupo.Dataset
+    DataTable = cdsGrupo
+    Left = 536
+    Top = 72
+  end
+  object dsCiclo: TDADataSource
+    DataSet = cdsCiclo.Dataset
+    DataTable = cdsCiclo
+    Left = 536
+    Top = 40
+  end
+  object cdsGrupo: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDGRUPO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'IDNIVEL'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'CUPO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo GRUPO'
+    IndexDefs = <>
+    Left = 504
+    Top = 72
+  end
+  object dsSubTipoPago: TDADataSource
+    DataSet = cdsSubTipoPago.Dataset
+    DataTable = cdsSubTipoPago
+    Left = 536
+    Top = 104
+  end
+  object cdsPago: TDACDSDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDPAGO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'NUMPAGO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'IMPORTE'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'FECHA'
+        DataType = datDateTime
+        Required = True
+      end
+      item
+        Name = 'FECHAPAGO'
+        DataType = datDateTime
+      end
+      item
+        Name = 'STATUS'
+        DataType = datString
+        Size = 1
+        Required = True
+      end
+      item
+        Name = 'INTERES'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'IDEMPLEADO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'IDSUBTIPOPAGO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'IDHISTORIALALUMNO'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'EMITIDO'
+        DataType = datInteger
+        Required = True
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    LogicalName = 'dbo PAGO'
+    IndexDefs = <>
+    Left = 160
+    Top = 280
+  end
+  object dsPago: TDADataSource
+    DataSet = cdsPago.Dataset
+    DataTable = cdsPago
+    Left = 192
+    Top = 280
+  end
+end

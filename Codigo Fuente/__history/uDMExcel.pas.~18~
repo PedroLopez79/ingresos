@@ -1,0 +1,123 @@
+unit uDMExcel;
+
+interface
+
+uses
+  SysUtils, Classes, DB, KDaoTable, KDaoDataBase, ADODB;
+
+type
+  TDMExcel = class(TDataModule)
+    tblExcel: TADOTable;
+    tblExcelNum: TFloatField;
+    tblExcelMATERIACODIGO: TWideStringField;
+    tblExcelPROMEDIO: TFloatField;
+    tblExcelMATERIA: TWideStringField;
+    tblExcelCalif01: TFloatField;
+    tblExcelAuxA01: TFloatField;
+    tblExcelAuxB01: TFloatField;
+    tblExcelProm01: TFloatField;
+    tblExcelFaltas01: TFloatField;
+    tblExcelCalif02: TFloatField;
+    tblExcelAuxA02: TFloatField;
+    tblExcelAuxB02: TFloatField;
+    tblExcelProm02: TFloatField;
+    tblExcelFaltas02: TFloatField;
+    tblExcelCalif03: TFloatField;
+    tblExcelAuxA03: TFloatField;
+    tblExcelAuxB03: TFloatField;
+    tblExcelProm03: TFloatField;
+    tblExcelFaltas03: TFloatField;
+    tblExcelCalif04: TFloatField;
+    tblExcelAuxA04: TFloatField;
+    tblExcelAuxB04: TFloatField;
+    tblExcelProm04: TFloatField;
+    tblExcelFaltas04: TFloatField;
+    tblExcelCalif05: TFloatField;
+    tblExcelAuxA05: TFloatField;
+    tblExcelAuxB05: TFloatField;
+    tblExcelProm05: TFloatField;
+    tblExcelFaltas05: TFloatField;
+    tblExcelCalif06: TFloatField;
+    tblExcelAuxA06: TFloatField;
+    tblExcelAuxB06: TFloatField;
+    tblExcelProm06: TFloatField;
+    tblExcelFaltas06: TFloatField;
+    tblExcelCalif07: TFloatField;
+    tblExcelAuxA07: TFloatField;
+    tblExcelAuxB07: TFloatField;
+    tblExcelProm07: TFloatField;
+    tblExcelFaltas07: TFloatField;
+    tblExcelCalif08: TFloatField;
+    tblExcelAuxA08: TFloatField;
+    tblExcelAuxB08: TFloatField;
+    tblExcelProm08: TFloatField;
+    tblExcelFaltas08: TFloatField;
+    tblExcelCalif09: TFloatField;
+    tblExcelAuxA09: TFloatField;
+    tblExcelAuxB09: TFloatField;
+    tblExcelProm09: TFloatField;
+    tblExcelFaltas09: TFloatField;
+    tblExcelCalif10: TFloatField;
+    tblExcelAuxA10: TFloatField;
+    tblExcelAuxB10: TFloatField;
+    tblExcelProm10: TFloatField;
+    tblExcelFaltas10: TFloatField;
+    tblExcelCalif11: TFloatField;
+    tblExcelAuxA11: TFloatField;
+    tblExcelAuxB11: TFloatField;
+    tblExcelProm11: TFloatField;
+    tblExcelFaltas11: TFloatField;
+    tblExcelCalif12: TFloatField;
+    tblExcelAuxA12: TFloatField;
+    tblExcelAuxB12: TFloatField;
+    tblExcelProm12: TFloatField;
+    tblExcelFaltas12: TFloatField;
+    tblExcelCalif13: TFloatField;
+    tblExcelAuxA13: TFloatField;
+    tblExcelAuxB13: TFloatField;
+    tblExcelProm13: TFloatField;
+    tblExcelFaltas13: TFloatField;
+    tblExcelCalif14: TFloatField;
+    tblExcelAuxA14: TFloatField;
+    tblExcelAuxB14: TFloatField;
+    tblExcelProm14: TFloatField;
+    tblExcelFaltas14: TFloatField;
+    tblExcelCalif15: TFloatField;
+    tblExcelAuxA15: TFloatField;
+    tblExcelAuxB15: TFloatField;
+    tblExcelProm15: TFloatField;
+    tblExcelFaltas15: TFloatField;
+    tblExcelCalif16: TFloatField;
+    tblExcelAuxA16: TFloatField;
+    tblExcelAuxB16: TFloatField;
+    tblExcelProm16: TFloatField;
+    tblExcelFaltas16: TFloatField;
+    tblExcelEER1: TFloatField;
+    tblExcelEER2: TFloatField;
+    tblExcelEER3: TFloatField;
+    tblExcelEER4: TFloatField;
+    tblExcelEER5: TFloatField;
+    tblExcelCalifFin: TFloatField;
+    tblExcelAuxAFin: TFloatField;
+    tblExcelAuxBFin: TFloatField;
+    tblExcelProm161: TFloatField;
+    tblExcelFaltasFin: TFloatField;
+    tblExcelAlumno: TWideStringField;
+    tblExcelNumControl: TWideStringField;
+    tblExcelGrupoCodigo: TWideStringField;
+    tblExcelGrupo: TWideStringField;
+    tblExcelCiclo: TWideStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMExcel: TDMExcel;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,506 @@
+inherited frmMaterias: TfrmMaterias
+  Caption = 'frmMaterias'
+  ExplicitWidth = 625
+  ExplicitHeight = 449
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgcCatalogo: TcxPageControl
+    ActivePage = cxTabSheet2
+    inherited cxTabSheet1: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 416
+      inherited dbgCatalogo: TcxGrid
+        inherited dbgCatalogoDBTableView1: TcxGridDBTableView
+          object dbgCatalogoDBTableView1IDMATERIA: TcxGridDBColumn
+            DataBinding.FieldName = 'IDMATERIA'
+          end
+          object dbgCatalogoDBTableView1CODIGO: TcxGridDBColumn
+            DataBinding.FieldName = 'CODIGO'
+          end
+          object dbgCatalogoDBTableView1NOMBRE: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBRE'
+          end
+          object dbgCatalogoDBTableView1CREDITOS: TcxGridDBColumn
+            DataBinding.FieldName = 'CREDITOS'
+          end
+          object dbgCatalogoDBTableView1MINIMOAPRO: TcxGridDBColumn
+            DataBinding.FieldName = 'MINIMOAPRO'
+          end
+          object dbgCatalogoDBTableView1MAXIMOFALTAS: TcxGridDBColumn
+            DataBinding.FieldName = 'MAXIMOFALTAS'
+          end
+          object dbgCatalogoDBTableView1SERIADACON: TcxGridDBColumn
+            DataBinding.FieldName = 'SERIADACON'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX1: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX1'
+          end
+          object dbgCatalogoDBTableView1NOMBREAUX2: TcxGridDBColumn
+            DataBinding.FieldName = 'NOMBREAUX2'
+          end
+          object dbgCatalogoDBTableView1HORASXSEMANA: TcxGridDBColumn
+            DataBinding.FieldName = 'HORASXSEMANA'
+          end
+          object dbgCatalogoDBTableView1PROMEDIO: TcxGridDBColumn
+            DataBinding.FieldName = 'PROMEDIO'
+          end
+          object dbgCatalogoDBTableView1ORDENOFICIAL: TcxGridDBColumn
+            DataBinding.FieldName = 'ORDENOFICIAL'
+          end
+          object dbgCatalogoDBTableView1ORDENINTERNO: TcxGridDBColumn
+            DataBinding.FieldName = 'ORDENINTERNO'
+          end
+        end
+      end
+    end
+    inherited cxTabSheet2: TcxTabSheet
+      ExplicitLeft = 6
+      ExplicitWidth = 616
+      ExplicitHeight = 416
+      object Label1: TLabel
+        Left = 14
+        Top = 43
+        Width = 33
+        Height = 13
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label2: TLabel
+        Left = 14
+        Top = 83
+        Width = 35
+        Height = 13
+        Caption = 'Materia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label3: TLabel
+        Left = 14
+        Top = 123
+        Width = 79
+        Height = 13
+        Caption = 'Nombre Auxiliar I'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label4: TLabel
+        Left = 14
+        Top = 163
+        Width = 82
+        Height = 13
+        Caption = 'Nombre Auxiliar II'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label5: TLabel
+        Left = 14
+        Top = 203
+        Width = 38
+        Height = 13
+        Caption = 'Creditos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label6: TLabel
+        Left = 85
+        Top = 203
+        Width = 78
+        Height = 13
+        Caption = 'Horas x Semana'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label7: TLabel
+        Left = 186
+        Top = 203
+        Width = 90
+        Height = 13
+        Caption = 'Minimo Aprobatorio'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label8: TLabel
+        Left = 296
+        Top = 203
+        Width = 67
+        Height = 13
+        Caption = 'Maximo Faltas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label9: TLabel
+        Left = 14
+        Top = 243
+        Width = 57
+        Height = 13
+        Caption = 'Seriada con'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 14
+        Top = 56
+        DataBinding.DataField = 'CODIGO'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 0
+        Width = 121
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 30
+        Width = 616
+        Height = 2
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clNone
+        ParentBackground = False
+        TabOrder = 1
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 616
+        Height = 30
+        Align = alTop
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Caption = ' Informacion acerca de la Materia'
+        Color = clBtnShadow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+      end
+      object cxDBTextEdit2: TcxDBTextEdit
+        Left = 14
+        Top = 96
+        DataBinding.DataField = 'NOMBRE'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 3
+        Width = 355
+      end
+      object cxDBTextEdit3: TcxDBTextEdit
+        Left = 14
+        Top = 136
+        DataBinding.DataField = 'NOMBREAUX1'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 4
+        Width = 355
+      end
+      object cxDBTextEdit4: TcxDBTextEdit
+        Left = 14
+        Top = 176
+        DataBinding.DataField = 'NOMBREAUX2'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 5
+        Width = 355
+      end
+      object cxDBTextEdit5: TcxDBTextEdit
+        Left = 14
+        Top = 216
+        DataBinding.DataField = 'CREDITOS'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 6
+        Width = 57
+      end
+      object cxDBTextEdit6: TcxDBTextEdit
+        Left = 85
+        Top = 216
+        DataBinding.DataField = 'HORASXSEMANA'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 7
+        Width = 90
+      end
+      object cxDBTextEdit7: TcxDBTextEdit
+        Left = 186
+        Top = 216
+        DataBinding.DataField = 'MINIMOAPRO'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 8
+        Width = 95
+      end
+      object cxDBTextEdit8: TcxDBTextEdit
+        Left = 291
+        Top = 216
+        DataBinding.DataField = 'MAXIMOFALTAS'
+        DataBinding.DataSource = dsCatalogo
+        TabOrder = 9
+        Width = 78
+      end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 14
+        Top = 256
+        DataBinding.DataField = 'SERIADACON'
+        DataBinding.DataSource = dsCatalogo
+        Properties.KeyFieldNames = 'IDMATERIA'
+        Properties.ListColumns = <
+          item
+            FieldName = 'CODIGO'
+          end
+          item
+            FieldName = 'NOMBRE'
+          end>
+        Properties.ListSource = dsMaterias
+        TabOrder = 10
+        Width = 355
+      end
+      object cxDBRadioGroup1: TcxDBRadioGroup
+        Left = 99
+        Top = 283
+        Caption = 'Tipo de promedio'
+        DataBinding.DataField = 'PROMEDIO'
+        DataBinding.DataSource = dsCatalogo
+        Properties.Columns = 3
+        Properties.Items = <
+          item
+            Caption = 'Normal'
+            Value = '1'
+          end
+          item
+            Caption = 'Sin Promedio'
+            Value = '0'
+          end
+          item
+            Caption = 'Examen'
+            Value = '2'
+          end>
+        TabOrder = 11
+        Height = 74
+        Width = 270
+      end
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 14
+        Top = 302
+        Caption = 'Orden Oficial'
+        DataBinding.DataField = 'ORDENOFICIAL'
+        DataBinding.DataSource = dsCatalogo
+        Properties.ValueChecked = 0
+        TabOrder = 12
+        Transparent = True
+        Width = 82
+      end
+      object cxDBCheckBox2: TcxDBCheckBox
+        Left = 14
+        Top = 335
+        Caption = 'Orden Interno'
+        DataBinding.DataField = 'ORDENINTERNO'
+        DataBinding.DataSource = dsCatalogo
+        Properties.ValueChecked = -1
+        TabOrder = 13
+        Transparent = True
+        Width = 85
+      end
+    end
+  end
+  inherited cdsCatalogo: TDAMemDataTable
+    Fields = <
+      item
+        Name = 'IDMATERIA'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'CREDITOS'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'MINIMOAPRO'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'MAXIMOFALTAS'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'SERIADACON'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'HORASXSEMANA'
+        DataType = datInteger
+      end
+      item
+        Name = 'PROMEDIO'
+        DataType = datInteger
+      end
+      item
+        Name = 'ORDENOFICIAL'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'ORDENINTERNO'
+        DataType = datInteger
+        Required = True
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    OnNewRecord = cdsCatalogoNewRecord
+    LogicalName = 'dbo MATERIA'
+  end
+  inherited dsCatalogo: TDADataSource
+    DataSet = cdsCatalogo.Dataset
+  end
+  object cdsMaterias: TDAMemDataTable
+    RemoteUpdatesOptions = []
+    Fields = <
+      item
+        Name = 'IDMATERIA'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'CODIGO'
+        DataType = datString
+        Size = 10
+        Required = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 50
+        Required = True
+      end
+      item
+        Name = 'CREDITOS'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'MINIMOAPRO'
+        DataType = datFloat
+        Required = True
+      end
+      item
+        Name = 'MAXIMOFALTAS'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'SERIADACON'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOMBREAUX1'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'NOMBREAUX2'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'HORASXSEMANA'
+        DataType = datInteger
+      end
+      item
+        Name = 'PROMEDIO'
+        DataType = datInteger
+      end
+      item
+        Name = 'ORDENOFICIAL'
+        DataType = datInteger
+        Required = True
+      end
+      item
+        Name = 'ORDENINTERNO'
+        DataType = datInteger
+        Required = True
+      end>
+    Params = <>
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    AfterPost = cdsCatalogoAfterPost
+    AfterDelete = cdsCatalogoAfterPost
+    LogicalName = 'dbo MATERIA'
+    IndexDefs = <>
+    Left = 496
+    Top = 216
+  end
+  object dsMaterias: TDADataSource
+    DataSet = cdsMaterias.Dataset
+    OnStateChange = dsCatalogoStateChange
+    DataTable = cdsMaterias
+    Left = 496
+    Top = 264
+  end
+end
