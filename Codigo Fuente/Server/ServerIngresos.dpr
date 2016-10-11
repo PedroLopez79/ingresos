@@ -46,7 +46,6 @@ begin
     Application.Title := 'Server Ingresos';
   Application.CreateForm(TServerDataModule, ServerDataModule);
   Application.CreateForm(TServerForm, ServerForm);
-  Application.CreateForm(TfrmServerForm, frmServerForm);
   Application.Run;
   //end;
 end.
