@@ -1,0 +1,55 @@
+declare @FechaIni as DateTime
+declare @FechaFin as DateTime
+declare @Alumno as Integer
+declare @AlumnoIni as Integer
+declare @AlumnoFin as Integer
+declare @Grupo as integer
+declare @Ciclo as Integer
+declare @Maestro as Integer
+declare @MaestroIni as Integer
+declare @MaestroFin as Integer
+declare @Nivel as Integer
+declare @TipoPago as Integer
+declare @TipoCalificacion as Integer
+declare @Usuario as Integer
+declare @Familia as Integer
+declare @Valor1 as Integer
+declare @Status as Integer
+declare @Serie as varchar(500)
+declare @Factura as Integer
+declare @FacturasCompras as Integer
+declare @TurnoInicio as Integer
+declare @TurnoFin as Integer
+declare @NumeroEstacion as Integer
+declare @HorarioIni as Integer
+declare @HorarioFin as Integer
+declare @NumeroEstacionIni as Integer
+declare @NumeroEstacionFin as Integer
+
+select @FechaIni=:FechaIni
+select @FechaFin=:FechaFin
+select @Alumno=:Alumno
+select @AlumnoIni=:AlumnoIni
+select @AlumnoFin=:AlumnoFin
+select @Grupo=:Grupo
+select @Ciclo=:Ciclo
+select @Maestro=:Maestro
+select @MaestroIni=:MaestroIni
+select @MaestroFin=:MaestroFin
+select @Nivel=:Nivel
+select @TipoPago=:TipoPago
+select @TipoCalificacion=:TipoCalificacion
+select @Usuario=:Usuario
+select @Familia=:Familia
+select @Valor1=:Valor1
+select @Status=:Status
+select @Serie=:Serie
+select @Factura=:Factura
+select @FacturasCompras=:FacturasCompras
+select @TurnoInicio=:TurnoInicio
+select @TurnoFin=:TurnoFin
+select @NumeroEstacion=:NumeroEstacion
+select @HorarioIni=:HorarioIni
+select @HorarioFin=:HorarioFin
+select @NumeroEstacionIni=:NumeroEstacionIni
+select @NumeroEstacionFin=:NumeroEstacionFin
