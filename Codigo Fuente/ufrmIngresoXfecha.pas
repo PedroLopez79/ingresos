@@ -71,7 +71,7 @@ type
     cxTabSheet1: TcxTabSheet;
     cxTabSheet3: TcxTabSheet;
     cxTabSheet4: TcxTabSheet;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cbTurno: TcxDBLookupComboBox;
     cxLabel2: TcxLabel;
     cdsEmpleado: TDACDSDataTable;
     dsEmpleado: TDADataSource;
@@ -135,9 +135,6 @@ type
     cxGridLevel1: TcxGridLevel;
     ProductoDescripcion: TcxGridDBColumn;
     ProductoPrecio: TcxGridDBColumn;
-    Recibido: TcxGridDBColumn;
-    Resurtido: TcxGridDBColumn;
-    ProductoEntregado: TcxGridDBColumn;
     ProductoCantidad: TcxGridDBColumn;
     ProductoImporte: TcxGridDBColumn;
     cxGroupBox4: TcxGroupBox;
@@ -198,9 +195,12 @@ type
     cdsAgrupacionCajas: TDACDSDataTable;
     dsAgrupacionCajas: TDADataSource;
     dsAgrupacion: TDADataSource;
-    cbIsla: TcxLookupComboBox;
     cxLabel24: TcxLabel;
     Button1: TButton;
+    cbDepartamento: TcxDBLookupComboBox;
+    ProductoSalida: TcxGridDBColumn;
+    ProductoReferencia: TcxGridDBColumn;
+    ProductoTicket: TcxGridDBColumn;
     procedure pgcConceptosPageChanging(Sender: TObject; NewPage: TcxTabSheet;
       var AllowChange: Boolean);
     procedure cdsDetalleIngresoNewRecord(DataTable: TDADataTable);
@@ -234,6 +234,8 @@ type
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure cdsDetalleIngresoBeforePost(DataTable: TDADataTable);
     procedure FormCreate(Sender: TObject);
+    procedure dsIngresosStateChange(Sender: TObject);
+    procedure dsEncargadoIngresoStateChange(Sender: TObject);
   private
     { Private declarations }
     Cambiando: Boolean;
@@ -698,6 +700,22 @@ procedure TfrmIngresosXfecha.dbgConceptos1DBTableView1FocusedRecordChanged(
 begin
   inherited;
   Sender.OptionsSelection.CellSelect:=AFocusedRecord = nil;
+end;
+
+procedure TfrmIngresosXfecha.dsEncargadoIngresoStateChange(Sender: TObject);
+begin
+  inherited;
+  if (cdsEncargadoIngreso.State in dsEditModes) and (cdsIngresos.State = dsBrowse) then
+  begin
+    cdsIngresos.Edit;
+    UpdateActionsState;
+  end;
+end;
+
+procedure TfrmIngresosXfecha.dsIngresosStateChange(Sender: TObject);
+begin
+  inherited;
+  UpdateActionsState;
 end;
 
 procedure TfrmIngresosXfecha.EfectivoCantidadPropertiesValidate(Sender: TObject;

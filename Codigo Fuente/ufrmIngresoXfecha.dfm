@@ -109,7 +109,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       StyleHot.LookAndFeel.NativeStyle = False
       Transparent = True
     end
-    object cxDBLookupComboBox1: TcxDBLookupComboBox
+    object cbTurno: TcxDBLookupComboBox
       Left = 166
       Top = 46
       Hint = ''
@@ -360,20 +360,6 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         Transparent = True
       end
     end
-    object cbIsla: TcxLookupComboBox
-      Left = 114
-      Top = 99
-      Hint = ''
-      Properties.KeyFieldNames = 'IDAGRUPACION'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Nombre'
-        end>
-      Properties.ListSource = dsAgrupacion
-      Style.BorderStyle = ebsUltraFlat
-      TabOrder = 14
-      Width = 197
-    end
     object cxLabel24: TcxLabel
       Left = 24
       Top = 100
@@ -392,6 +378,21 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       StyleFocused.LookAndFeel.Kind = lfUltraFlat
       StyleHot.LookAndFeel.Kind = lfUltraFlat
       Transparent = True
+    end
+    object cbDepartamento: TcxDBLookupComboBox
+      Left = 114
+      Top = 99
+      Hint = ''
+      DataBinding.DataField = 'IDAGRUPACION'
+      DataBinding.DataSource = dsEncargadoIngreso
+      Properties.KeyFieldNames = 'IDAGRUPACION'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NOMBRE'
+        end>
+      Properties.ListSource = dsAgrupacion
+      TabOrder = 15
+      Width = 197
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -416,7 +417,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet6
+      Properties.ActivePage = Conceptos
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dmImages.Imagenes2
       OnPageChanging = pgcConceptosPageChanging
@@ -844,10 +845,12 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
               DataBinding.FieldName = 'IMPORTE'
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.OnValidate = ImportePropertiesValidate
-              Width = 68
+              Width = 84
             end
             object NoTicket: TcxGridDBColumn
               Caption = 'No Ticket'
+              DataBinding.FieldName = 'TICKET'
+              Width = 71
             end
           end
           object dbgConceptosLevel1: TcxGridLevel
@@ -1027,21 +1030,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             object ProductoPrecio: TcxGridDBColumn
               Caption = 'Precio'
               DataBinding.FieldName = 'PRECIO'
-              Width = 76
-            end
-            object Recibido: TcxGridDBColumn
-              Caption = 'Recibido'
-              DataBinding.FieldName = 'RECIBIDO'
-              Width = 78
-            end
-            object Resurtido: TcxGridDBColumn
-              Caption = 'Resurtido'
-              DataBinding.FieldName = 'RESURTIDO'
-              Width = 70
-            end
-            object ProductoEntregado: TcxGridDBColumn
-              Caption = 'Entregado'
-              DataBinding.FieldName = 'ENTREGADO'
+              Width = 82
             end
             object ProductoCantidad: TcxGridDBColumn
               Caption = 'Cantidad'
@@ -1049,11 +1038,27 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.OnValidate = ProductoCantidadPropertiesValidate
             end
+            object ProductoSalida: TcxGridDBColumn
+              Caption = 'Salida'
+              DataBinding.FieldName = 'IDSALIDA'
+              Width = 102
+            end
+            object ProductoReferencia: TcxGridDBColumn
+              Caption = 'Referencia'
+              DataBinding.FieldName = 'DESCRIPCION'
+              Width = 151
+            end
+            object ProductoTicket: TcxGridDBColumn
+              Caption = 'Ticket'
+              DataBinding.FieldName = 'TICKET'
+              Width = 92
+            end
             object ProductoImporte: TcxGridDBColumn
               Caption = 'Importe'
               DataBinding.FieldName = 'IMPORTE'
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.OnValidate = ProductoImportePropertiesValidate
+              Width = 128
             end
           end
           object cxGridLevel1: TcxGridLevel
@@ -1088,7 +1093,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             OptionsView.GroupByBox = False
             OptionsView.Indicator = True
             object IDCliente: TcxGridDBColumn
-              Caption = 'IDCliente'
+              Caption = '#Cliente'
               DataBinding.FieldName = 'IDCLIENTE'
               Width = 70
             end
@@ -1516,6 +1521,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   end
   object dsIngresos: TDADataSource
     DataSet = cdsIngresos.Dataset
+    OnStateChange = dsIngresosStateChange
     DataTable = cdsIngresos
     Left = 904
     Top = 344
@@ -1645,6 +1651,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   end
   object dsEncargadoIngreso: TDADataSource
     DataSet = cdsEncargadoIngreso.Dataset
+    OnStateChange = dsEncargadoIngresoStateChange
     DataTable = cdsEncargadoIngreso
     Left = 968
     Top = 344
