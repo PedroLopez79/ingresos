@@ -27,7 +27,7 @@ uses
   uDAFields, uDADataAdapter, uROChannelAwareComponent, uROMessage, uROComponent,
   uROBaseConnection, uROTransportChannel, uROBaseHTTPClient,
   LibraryFlotillas_Intf, dxBar, ClaseGenera,
-  ppModule, raCodMod;
+  ppModule, raCodMod, NB30;
 
 type
   Monedas = (Pesos, Dolares);
@@ -128,6 +128,8 @@ type
     function Campo(Nombre: string; Tipo, Size: Integer; Formato: string): TField;
     procedure AbreDataSet(SQL: String);
     procedure Exporta(Nombre: String);
+    function GetMACAdress: string;
+    Function GetPrimaryNicMacAddress: String;
   end;
 
 var
@@ -390,6 +392,93 @@ function TDM.Folio(ACampo, ASerie: String): Integer;
 begin
   Result:=Servidor.Folio(ACampo, ASerie);
 end;
+
+function TDM.GetMACAdress: string;
+var
+  NCB: PNCB;
+  Adapter: PAdapterStatus;
+  URetCode: PChar;
+  RetCode: ansichar;
+  I: integer;
+  Lenum: PlanaEnum;
+  _SystemID: string;
+  TMPSTR: string;
+begin
+  Result    := '';
+  _SystemID := '';
+  Getmem(NCB, SizeOf(TNCB));
+  Fillchar(NCB^, SizeOf(TNCB), 0);
+  Getmem(Lenum, SizeOf(TLanaEnum));
+  Fillchar(Lenum^, SizeOf(TLanaEnum), 0);
+  Getmem(Adapter, SizeOf(TAdapterStatus));
+  Fillchar(Adapter^, SizeOf(TAdapterStatus), 0);
+  Lenum.Length    := chr(0);
+  NCB.ncb_command := chr(NCBENUM);
+  NCB.ncb_buffer  := Pointer(Lenum);
+  NCB.ncb_length  := SizeOf(Lenum);
+  RetCode         := Netbios(NCB);
+  i := 0;
+  repeat
+    Fillchar(NCB^, SizeOf(TNCB), 0);
+    Ncb.ncb_command  := chr(NCBRESET);
+    Ncb.ncb_lana_num := lenum.lana[i];
+   RetCode          := Netbios(Ncb);
+    Fillchar(NCB^, SizeOf(TNCB), 0);
+    Ncb.ncb_command  := chr(NCBASTAT);
+    Ncb.ncb_lana_num := lenum.lana[i];
+    // Must be 16
+    Ncb.ncb_callname := '*               ';
+    Ncb.ncb_buffer := Pointer(Adapter);
+    Ncb.ncb_length := SizeOf(TAdapterStatus);
+    RetCode        := Netbios(Ncb);
+    //---- calc _systemId from mac-address[2-5] XOR mac-address[1]...
+    if (RetCode = chr(0)) or (RetCode = chr(6)) then
+    begin
+      _SystemId := IntToHex(Ord(Adapter.adapter_address[0]), 2) + '-' +
+        IntToHex(Ord(Adapter.adapter_address[1]), 2) + '-' +
+        IntToHex(Ord(Adapter.adapter_address[2]), 2) + '-' +
+        IntToHex(Ord(Adapter.adapter_address[3]), 2) + '-' +
+        IntToHex(Ord(Adapter.adapter_address[4]), 2) + '-' +
+        IntToHex(Ord(Adapter.adapter_address[5]), 2);
+    end;
+    Inc(i);
+  until (I >= Ord(Lenum.Length)) or (_SystemID <> '00-00-00-00-00-00');
+  FreeMem(NCB);
+  FreeMem(Adapter);
+  FreeMem(Lenum);
+  GetMacAdress := _SystemID;
+end;
+
+function TDM.GetPrimaryNicMacAddress: String;
+Type
+  TGUID = Record
+    A, B: word;
+    D, M, S: word;
+    MAC: Array[ 1..6 ] Of byte;
+  End;
+Var
+  UuidCreateFunc: Function(Var guid: TGUID): HResult; stdcall;
+  handle: THandle;
+  g: TGUID;
+  WinVer: _OSVersionInfoW;
+  i: integer;
+  //  ErrCode : HResult;
+Begin
+  Try
+    WinVer.dwOSVersionInfoSize := sizeof(WinVer); // Tamaño
+    getversionex(WinVer);  // Obtiene info del Windows en uso
+    handle := LoadLibrary('RPCRT4.DLL'); // Obtiene el handle de la DLL
+    If WinVer.dwMajorVersion >= 5 Then {Windows 2000 ó superior}
+      @UuidCreateFunc := GetProcAddress(Handle, 'UuidCreateSequential')
+    Else // (Win98 o menor)
+      @UuidCreateFunc := GetProcAddress(Handle, 'UuidCreate');
+    UuidCreateFunc(g); // Obtiene la info
+    Result := '';
+    For i := 1 To 6 Do Result := Result + IntToHex(g.MAC[ i ], 2); // Concatena la MAC Address
+  Except
+    Result := ''; // Resultado nulo
+  End;
+End;
 
 procedure TDM.Imprimir(SQL1, SQL2, Template, Documento, CampoJoin: String;
   Directo: Boolean; Impresora: String);

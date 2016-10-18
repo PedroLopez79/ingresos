@@ -14,7 +14,13 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxButtons, ComCtrls,
   uDAScriptingProvider, uDADataTable, uDAMemDataTable, cxControls, cxContainer,
-  cxEdit, DB, uDAInterfaces, cxTextEdit, cxDBEdit;
+  cxEdit, DB, uDAInterfaces, cxTextEdit, cxDBEdit, dxSkinBlueprint,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
+  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
+  uDAFields, uROComponent;
 
 type
   TfrmAgregaUnidadMedida = class(TForm)

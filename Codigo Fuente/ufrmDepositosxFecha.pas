@@ -19,7 +19,14 @@ uses
   cxGridCustomView, cxGrid, cxPC, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxLabel, cxMaskEdit, cxCalendar, cxDBEdit, cxGroupBox, uDAScriptingProvider,
   uDADataTable, uDACDSDataTable, uDAInterfaces, cxDBLabel, LibraryIngresos_Intf,
-  cxCurrencyEdit, Menus, StdCtrls, cxButtons, DBCtrls;
+  cxCurrencyEdit, Menus, StdCtrls, cxButtons, DBCtrls, dxSkinBlueprint,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
+  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
+  Vcl.ComCtrls, dxCore, cxDateUtils, cxPCdxBarPopupMenu, cxNavigator, uDAFields,
+  uROComponent;
 
   const
    MaximoValores: Integer = 10;

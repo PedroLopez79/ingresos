@@ -34,9 +34,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
       Top = 0
       Width = 783
       Height = 217
-      ActivePage = Conceptos
-      Images = dmImages.Imagenes2
+      Hint = ''
       TabOrder = 0
+      Properties.ActivePage = Conceptos
+      Properties.CustomButtons.Buttons = <>
+      Properties.Images = dmImages.Imagenes2
       OnPageChanging = pgcConceptosPageChanging
       ClientRectBottom = 211
       ClientRectLeft = 3
@@ -50,10 +52,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
           Top = 0
           Width = 774
           Height = 184
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object dbgConceptosDBTableView1: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -126,10 +129,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
           Top = 0
           Width = 774
           Height = 184
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView2: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -213,10 +217,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
           Top = 0
           Width = 774
           Height = 184
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView1: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -282,10 +287,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
           Top = 0
           Width = 774
           Height = 184
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView3: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -358,10 +364,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
           Top = 0
           Width = 774
           Height = 184
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView4: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -409,10 +416,11 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
           Top = 0
           Width = 774
           Height = 184
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView5: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -444,6 +452,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxLabel3: TcxLabel
       Left = 542
       Top = 234
+      Hint = ''
       Caption = 'Total de la Venta'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -456,6 +465,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxDBLabel1: TcxDBLabel
       Left = 672
       Top = 233
+      Hint = ''
       DataBinding.DataField = 'VENTATOTAL'
       DataBinding.DataSource = dsIngresos
       ParentFont = False
@@ -472,6 +482,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxLabel4: TcxLabel
       Left = 542
       Top = 254
+      Hint = ''
       Caption = 'Total Entregado'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -484,6 +495,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxDBLabel2: TcxDBLabel
       Left = 672
       Top = 254
+      Hint = ''
       DataBinding.DataField = 'EFECTIVOENTREGADO'
       DataBinding.DataSource = dsIngresos
       ParentFont = False
@@ -500,6 +512,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxLabel5: TcxLabel
       Left = 542
       Top = 274
+      Hint = ''
       Caption = 'Salida de Ingresos'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -512,6 +525,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxDBLabel3: TcxDBLabel
       Left = 672
       Top = 274
+      Hint = ''
       DataBinding.DataField = 'SALIDAEFECTIVO'
       DataBinding.DataSource = dsIngresos
       ParentFont = False
@@ -528,6 +542,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxLabel6: TcxLabel
       Left = 542
       Top = 295
+      Hint = ''
       Caption = 'Falta por Entregar'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -540,6 +555,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     object cxDBLabel4: TcxDBLabel
       Left = 672
       Top = 295
+      Hint = ''
       DataBinding.DataField = 'DIFERENCIA'
       DataBinding.DataSource = dsIngresos
       ParentFont = False
@@ -572,7 +588,6 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     end
   end
   object cdsDetalleIngreso: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDDETALLEINGRESOS'
@@ -671,21 +686,21 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
         Name = 'IDCLIENTE'
         DataType = datInteger
       end>
+    LogicalName = 'dbo DETALLEINGRESOS'
     Params = <
       item
         Name = 'IDINGRESO'
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    LogicalName = 'dbo DETALLEINGRESOS'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 48
     Top = 256
   end
   object cdsIngresos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDINGRESO'
@@ -753,6 +768,7 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
         Name = 'DIFERENCIA'
         DataType = datFloat
       end>
+    LogicalName = 'dbo INGRESOS2'
     Params = <
       item
         Name = 'NUMEROESTACION'
@@ -764,9 +780,9 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
         Value = ''
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    LogicalName = 'dbo INGRESOS2'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 16
     Top = 256
@@ -784,18 +800,18 @@ object frmDatosIngresosxFecha: TfrmDatosIngresosxFecha
     Top = 288
   end
   object cdsIDTipoValores: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <>
+    LogicalName = 'Reporte'
     Params = <
       item
         Name = 'TurnoID'
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = rdaIDTipoValores
     ReadOnly = True
-    LogicalName = 'Reporte'
+    RemoteDataAdapter = rdaIDTipoValores
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 24
     Top = 56

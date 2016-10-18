@@ -43,7 +43,7 @@ uses
   uAgregaUnidadMedida in 'uAgregaUnidadMedida.pas' {frmAgregaUnidadMedida},
   ufrmVehiculo in 'ufrmVehiculo.pas' {frmVehiculo},
   uCurp in 'uCurp.pas' {Fo_AyudaCurp},
-  uTurnoxFecha in 'uTurnoxFecha.pas' {Fo_TurnoxFecha},
+  uAgregarVenta in 'uAgregarVenta.pas' {Fo_AgregarVenta},
   ufrmBuscarCliente in 'ufrmBuscarCliente.pas' {frmBuscarCliente},
   ufrmBuscarClienteCredito in 'ufrmBuscarClienteCredito.pas' {frmBuscarClienteCredito},
   ufrmCredito in 'ufrmCredito.pas' {frmCredito},
@@ -108,7 +108,8 @@ uses
   uPSI_ExportaDataSet in 'CistemComun\CodigoFuente\uPSI_ExportaDataSet.pas',
   UtileriasComun in 'CistemComun\CodigoFuente\UtileriasComun.pas',
   LibraryCistemGas_Intf in 'CistemGas\LibraryCistemGas_Intf.pas',
-  LibraryFlotillas_Intf in 'Flotillas\LibraryFlotillas_Intf.pas';
+  LibraryFlotillas_Intf in 'Flotillas\LibraryFlotillas_Intf.pas',
+  uTurnoxFecha in 'uTurnoxFecha.pas' {Fo_TurnoxFecha};
 
 {$R *.res}
 
@@ -131,6 +132,7 @@ begin
   Application.CreateForm(TrbPrintPreview, rbPrintPreview);
   Application.CreateForm(TfrmCatalogo, frmCatalogo);
   Application.CreateForm(TfrmSplash, frmSplash);
+  Application.CreateForm(TFo_TurnoxFecha, Fo_TurnoxFecha);
   //Application.CreateForm(TDMExcel, DMExcel);
   //Application.CreateForm(TDMFlotillas, DMFlotillas);
   //Application.CreateForm(TDMCistemGas, DMCistemGas);

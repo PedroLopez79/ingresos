@@ -10,6 +10,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
   object cxGroupBox1: TcxGroupBox
     Left = 0
     Top = 0
+    Hint = ''
     Align = alTop
     Caption = 'Datos'
     TabOrder = 0
@@ -18,6 +19,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxLabel14: TcxLabel
       Left = 24
       Top = 29
+      Hint = ''
       Caption = 'Fecha'
       Style.BorderStyle = ebsNone
       Style.LookAndFeel.NativeStyle = False
@@ -29,6 +31,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxLabel2: TcxLabel
       Left = 426
       Top = 29
+      Hint = ''
       Caption = 'Turno'
       ParentFont = False
       Style.BorderStyle = ebsNone
@@ -43,6 +46,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object dtpFecha: TcxDateEdit
       Left = 64
       Top = 28
+      Hint = ''
       Enabled = False
       TabOrder = 2
       Width = 145
@@ -50,6 +54,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxLabel7: TcxLabel
       Left = 216
       Top = 29
+      Hint = ''
       Caption = 'Numero de Corte'
       ParentFont = False
       Style.BorderStyle = ebsNone
@@ -64,6 +69,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object edtSecuencia: TcxCurrencyEdit
       Left = 322
       Top = 28
+      Hint = ''
       Enabled = False
       Properties.DecimalPlaces = 0
       Properties.DisplayFormat = '#'
@@ -74,6 +80,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxComboBox1: TcxComboBox
       Left = 470
       Top = 28
+      Hint = ''
       Properties.OnChange = cxComboBox1PropertiesChange
       TabOrder = 5
       Width = 121
@@ -82,21 +89,24 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
   object cxGroupBox3: TcxGroupBox
     Left = 0
     Top = 73
+    Hint = ''
     Align = alClient
     TabOrder = 1
     Height = 288
     Width = 795
     object pgcConceptos: TcxPageControl
       Left = 3
-      Top = 18
+      Top = 22
       Width = 789
-      Height = 267
-      ActivePage = Conceptos
+      Height = 263
+      Hint = ''
       Align = alClient
-      Images = dmImages.Imagenes2
       TabOrder = 0
+      Properties.ActivePage = Conceptos
+      Properties.CustomButtons.Buttons = <>
+      Properties.Images = dmImages.Imagenes2
       OnPageChanging = pgcConceptosPageChanging
-      ClientRectBottom = 261
+      ClientRectBottom = 257
       ClientRectLeft = 3
       ClientRectRight = 783
       ClientRectTop = 27
@@ -107,11 +117,12 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
           Left = 0
           Top = 0
           Width = 780
-          Height = 234
+          Height = 230
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView1: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleDeposito
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -171,11 +182,12 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
           Left = 0
           Top = 0
           Width = 780
-          Height = 234
+          Height = 230
+          Hint = ''
           Align = alClient
           TabOrder = 0
           object cxGrid1DBTableView1: TcxGridDBTableView
-            NavigatorButtons.ConfirmDelete = False
+            Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleDeposito
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -234,6 +246,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
   object cxGroupBox2: TcxGroupBox
     Left = 0
     Top = 361
+    Hint = ''
     Align = alBottom
     Caption = '?'
     TabOrder = 2
@@ -242,6 +255,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxLabel1: TcxLabel
       Left = 522
       Top = 21
+      Hint = ''
       Caption = 'Total Depositado'
       ParentFont = False
       Style.BorderStyle = ebsNone
@@ -256,6 +270,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxLabel3: TcxLabel
       Left = 511
       Top = 44
+      Hint = ''
       Caption = 'Falta por Depositar'
       ParentFont = False
       Style.BorderStyle = ebsNone
@@ -270,6 +285,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxDBLabel1: TcxDBLabel
       Left = 630
       Top = 21
+      Hint = ''
       DataBinding.DataField = 'TOTALDEPOSITADO'
       DataBinding.DataSource = dsDepositos
       ParentFont = False
@@ -295,6 +311,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxLabel4: TcxLabel
       Left = 455
       Top = 44
+      Hint = ''
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clBlue
@@ -306,6 +323,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     object cxDBLabel2: TcxDBLabel
       Left = 630
       Top = 44
+      Hint = ''
       DataBinding.DataField = 'FALTAPORDEPOSITAR'
       DataBinding.DataSource = dsDepositos
       ParentFont = False
@@ -321,7 +339,6 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     end
   end
   object cdsDepositos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDDEPOSITO'
@@ -347,6 +364,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Name = 'FECHA'
         DataType = datDateTime
       end>
+    LogicalName = 'dbo DEPOSITOS2'
     Params = <
       item
         Name = 'FECHA'
@@ -358,12 +376,12 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Value = ''
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    AfterPost = cdsDepositosAfterPost
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     AfterDelete = cdsDepositosAfterDelete
+    AfterPost = cdsDepositosAfterPost
     OnNewRecord = cdsDepositosNewRecord
-    LogicalName = 'dbo DEPOSITOS2'
     IndexDefs = <>
     Left = 48
     Top = 176
@@ -381,7 +399,6 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     Top = 208
   end
   object cdsTurno: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDHORARIO'
@@ -402,16 +419,16 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         DataType = datString
         Size = 50
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo HORARIO'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 176
     Top = 176
   end
   object cdsTipoComprobacion: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDTIPOCOMPROBACION'
@@ -456,10 +473,11 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Name = 'ESSALIDAEFECTIVO'
         DataType = datBoolean
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo TIPOCOMPROBACION'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 144
     Top = 176
@@ -471,7 +489,6 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     Top = 208
   end
   object cdsTipoCambio: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDMONEDA'
@@ -484,10 +501,11 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         DataType = datString
         Size = 100
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo MONEDA'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 208
     Top = 176
@@ -499,7 +517,6 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     Top = 208
   end
   object cdsBanco: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDBANCO'
@@ -528,10 +545,11 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Name = 'IDEMPLEADO'
         DataType = datInteger
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo BANCO'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 240
     Top = 176
@@ -543,7 +561,6 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     Top = 208
   end
   object cdsIngresos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDINGRESO'
@@ -611,6 +628,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Name = 'DIFERENCIA'
         DataType = datFloat
       end>
+    LogicalName = 'dbo INGRESOS2'
     Params = <
       item
         Name = 'NUMEROESTACION'
@@ -622,9 +640,9 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Value = ''
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    LogicalName = 'dbo INGRESOS2'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 736
     Top = 176
@@ -636,7 +654,6 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     Top = 208
   end
   object cdsDetalleDeposito: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDDETALLEDEPOSITO'
@@ -679,6 +696,7 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         Name = 'IDHORARIO'
         DataType = datInteger
       end>
+    LogicalName = 'dbo DETALLEDEPOSITO'
     Params = <
       item
         Name = 'IDDEPOSITO'
@@ -690,12 +708,12 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
         DataType = datInteger
         Value = ''
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    AfterPost = cdsDepositosAfterPost
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     AfterDelete = cdsDepositosAfterDelete
+    AfterPost = cdsDepositosAfterPost
     OnNewRecord = cdsDetalleDepositoNewRecord
-    LogicalName = 'dbo DETALLEDEPOSITO'
     IndexDefs = <>
     Left = 80
     Top = 176
@@ -707,23 +725,23 @@ inherited frmDepositosxFecha: TfrmDepositosxFecha
     Top = 208
   end
   object spTotalDepositado: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IMPORTE'
         DataType = datFloat
       end>
+    LogicalName = 'spTotalDepositado'
     Params = <
       item
         Name = 'IDDEPOSITO'
         Value = ''
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    AfterPost = cdsDepositosAfterPost
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     AfterDelete = cdsDepositosAfterDelete
+    AfterPost = cdsDepositosAfterPost
     OnNewRecord = cdsDepositosNewRecord
-    LogicalName = 'spTotalDepositado'
     IndexDefs = <>
     Left = 48
     Top = 240

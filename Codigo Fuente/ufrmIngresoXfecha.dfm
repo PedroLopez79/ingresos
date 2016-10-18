@@ -2,25 +2,25 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   Left = 146
   Top = 0
   Caption = 'frmIngresosXfecha'
-  ClientHeight = 527
+  ClientHeight = 559
   ClientWidth = 1107
   Position = poDesigned
   OnShow = FormShow
   ExplicitWidth = 1107
-  ExplicitHeight = 527
+  ExplicitHeight = 559
   PixelsPerInch = 96
   TextHeight = 13
   object cxGroupBox1: TcxGroupBox
     Left = 0
-    Top = 0
+    Top = 30
     Hint = ''
     Align = alTop
     TabOrder = 0
-    Height = 151
+    Height = 152
     Width = 1107
     object cxLabel1: TcxLabel
       Left = 645
-      Top = 20
+      Top = 15
       Hint = ''
       Caption = 'El corte Inicio'
       ParentFont = False
@@ -35,7 +35,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object edtSecuencia: TcxCurrencyEdit
       Left = 213
-      Top = 126
+      Top = 121
       Hint = ''
       Enabled = False
       Properties.DecimalPlaces = 0
@@ -46,7 +46,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object dtpFecha: TcxDBDateEdit
       Left = 166
-      Top = 19
+      Top = 14
       Hint = ''
       DataBinding.DataField = 'FECHA'
       DataBinding.DataSource = dsIngresos
@@ -57,7 +57,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel9: TcxLabel
       Left = 24
-      Top = 74
+      Top = 69
       Hint = ''
       Caption = 'Encargado'
       ParentFont = False
@@ -76,7 +76,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cbEncargado: TcxDBLookupComboBox
       Left = 96
-      Top = 72
+      Top = 67
       Hint = ''
       DataBinding.DataField = 'IDEMPLEADO'
       DataBinding.DataSource = dsEncargadoIngreso
@@ -92,7 +92,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel14: TcxLabel
       Left = 24
-      Top = 20
+      Top = 15
       Hint = ''
       Caption = 'Fecha'
       ParentFont = False
@@ -111,7 +111,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cbTurno: TcxDBLookupComboBox
       Left = 166
-      Top = 46
+      Top = 41
       Hint = ''
       DataBinding.DataField = 'IDHORARIO'
       DataBinding.DataSource = dsIngresos
@@ -126,7 +126,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel2: TcxLabel
       Left = 24
-      Top = 47
+      Top = 42
       Hint = ''
       Caption = 'Turno'
       ParentFont = False
@@ -141,7 +141,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxGroupBox2: TcxGroupBox
       Left = 317
-      Top = 7
+      Top = 2
       Hint = ''
       Caption = 'Totales'
       ParentFont = False
@@ -285,7 +285,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel7: TcxLabel
       Left = 24
-      Top = 127
+      Top = 122
       Hint = ''
       Caption = 'Numero de Corte'
       ParentFont = False
@@ -300,7 +300,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel8: TcxLabel
       Left = 645
-      Top = 74
+      Top = 69
       Hint = ''
       Caption = 'El corte Termino'
       ParentFont = False
@@ -315,7 +315,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object tInicio: TcxTimeEdit
       Left = 645
-      Top = 46
+      Top = 38
       Hint = ''
       EditValue = 0d
       Properties.Use24HourFormat = False
@@ -324,7 +324,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object tFin: TcxTimeEdit
       Left = 645
-      Top = 99
+      Top = 94
       Hint = ''
       EditValue = 0d
       Properties.Use24HourFormat = False
@@ -333,7 +333,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxGroupBox4: TcxGroupBox
       Left = 772
-      Top = 10
+      Top = 5
       Hint = ''
       Caption = 'Totales Creditos, Debitos y Cupones'
       ParentFont = False
@@ -362,7 +362,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel24: TcxLabel
       Left = 24
-      Top = 100
+      Top = 95
       Hint = ''
       Caption = 'Departamento'
       ParentFont = False
@@ -381,7 +381,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cbDepartamento: TcxDBLookupComboBox
       Left = 114
-      Top = 99
+      Top = 94
       Hint = ''
       DataBinding.DataField = 'IDAGRUPACION'
       DataBinding.DataSource = dsEncargadoIngreso
@@ -397,17 +397,17 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   end
   object cxGroupBox3: TcxGroupBox
     Left = 0
-    Top = 151
+    Top = 182
     Hint = ''
     Align = alClient
     TabOrder = 1
-    Height = 376
+    Height = 377
     Width = 1107
     object pgcConceptos: TcxPageControl
       Left = 3
       Top = 22
       Width = 1101
-      Height = 351
+      Height = 352
       Hint = ''
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -421,7 +421,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dmImages.Imagenes2
       OnPageChanging = pgcConceptosPageChanging
-      ClientRectBottom = 345
+      ClientRectBottom = 346
       ClientRectLeft = 3
       ClientRectRight = 1095
       ClientRectTop = 27
@@ -436,9 +436,9 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         ParentFont = False
         object GBTotalesConceptos: TGroupBox
           Left = 21
-          Top = 17
+          Top = 16
           Width = 407
-          Height = 312
+          Height = 257
           Caption = 'Totales Conceptos'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -603,7 +603,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           end
           object cxLabel19: TcxLabel
             Left = 18
-            Top = 256
+            Top = 217
             Hint = ''
             Caption = 'Entregado.................:'
             ParentFont = False
@@ -617,7 +617,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           end
           object cxEntregado: TcxLabel
             Left = 200
-            Top = 256
+            Top = 217
             Hint = ''
             Caption = 'LEfectivo'
             ParentFont = False
@@ -635,7 +635,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           Left = 448
           Top = 25
           Width = 407
-          Height = 201
+          Height = 160
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -645,35 +645,35 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           TabOrder = 1
           object Bevel2: TBevel
             Left = 18
-            Top = 143
+            Top = 110
             Width = 375
             Height = 7
             Shape = bsBottomLine
           end
           object cxLabel20: TcxLabel
             Left = 18
-            Top = 32
+            Top = 23
             Hint = ''
             Caption = 'Venta............................:'
             Style.BorderStyle = ebsUltraFlat
           end
           object cxLabel21: TcxLabel
             Left = 18
-            Top = 69
+            Top = 52
             Hint = ''
             Caption = 'Otros Productos.......:'
             Style.BorderStyle = ebsUltraFlat
           end
           object cxLabel22: TcxLabel
             Left = 18
-            Top = 109
+            Top = 81
             Hint = ''
             Caption = 'Sobrantes..................:'
             Style.BorderStyle = ebsUltraFlat
           end
           object LEVenta: TcxLabel
             Left = 200
-            Top = 32
+            Top = 23
             Hint = ''
             Caption = 'LEfectivo'
             ParentFont = False
@@ -688,7 +688,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           end
           object LOtrosProductos: TcxLabel
             Left = 200
-            Top = 69
+            Top = 52
             Hint = ''
             Caption = 'LEfectivo'
             Style.BorderStyle = ebsUltraFlat
@@ -696,7 +696,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           end
           object LSobrantes: TcxLabel
             Left = 200
-            Top = 109
+            Top = 81
             Hint = ''
             Caption = 'LEfectivo'
             Style.BorderStyle = ebsUltraFlat
@@ -704,14 +704,14 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           end
           object cxLabel32: TcxLabel
             Left = 18
-            Top = 157
+            Top = 123
             Hint = ''
             Caption = 'Venta...........................:'
             Style.BorderStyle = ebsUltraFlat
           end
           object LEVentaTot: TcxLabel
             Left = 200
-            Top = 157
+            Top = 123
             Hint = ''
             Caption = 'LEfectivo'
             Style.BorderStyle = ebsUltraFlat
@@ -720,7 +720,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         end
         object cxGroupBox5: TcxGroupBox
           Left = 448
-          Top = 244
+          Top = 212
           Hint = ''
           Caption = 'Diferencia'
           Style.LookAndFeel.NativeStyle = False
@@ -764,7 +764,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
@@ -861,11 +861,15 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet2: TcxTabSheet
         Caption = 'Creditos,Debitos o Cupones'
         ImageIndex = 58
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object dbgCreditosDebitosCupones: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -875,6 +879,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          ExplicitHeight = 317
           object cxGridDBTableView2: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnFocusedRecordChanged = dbgConceptos1DBTableView1FocusedRecordChanged
@@ -968,14 +973,19 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet1: TcxTabSheet
         Caption = 'Otros Productos'
         ImageIndex = 62
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
+          ExplicitHeight = 318
           object cxGridDBTableView1: TcxGridDBTableView
             OnKeyDown = cxGridDBTableView1KeyDown
             Navigator.Buttons.CustomButtons = <>
@@ -1069,14 +1079,19 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet3: TcxTabSheet
         Caption = 'Documentos'
         ImageIndex = 39
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object dbgClientes: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
+          ExplicitHeight = 318
           object cxGridDBTableView3: TcxGridDBTableView
             OnKeyDown = cxGridDBTableView3KeyDown
             Navigator.Buttons.CustomButtons = <>
@@ -1148,14 +1163,19 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet4: TcxTabSheet
         Caption = 'Efectivo'
         ImageIndex = 56
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object dbgEfectivo: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
+          ExplicitHeight = 318
           object cxGridDBTableView4: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnFocusedRecordChanged = dbgConceptos1DBTableView1FocusedRecordChanged
@@ -1204,14 +1224,19 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet5: TcxTabSheet
         Caption = 'Salida de Efectivo'
         ImageIndex = 60
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object dbgSalidaEfectivos: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
+          ExplicitHeight = 318
           object cxGridDBTableView5: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnFocusedRecordChanged = dbgConceptos1DBTableView1FocusedRecordChanged
@@ -1245,15 +1270,20 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet7: TcxTabSheet
         Caption = 'Cheques'
         ImageIndex = 50
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object dbgCheques: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
           LookAndFeel.NativeStyle = False
+          ExplicitHeight = 318
           object dbgChequesDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -1340,15 +1370,20 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet8: TcxTabSheet
         Caption = 'Otros'
         ImageIndex = 59
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 318
         object dbgOtros: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 318
+          Height = 319
           Hint = ''
           Align = alClient
           TabOrder = 0
           LookAndFeel.NativeStyle = False
+          ExplicitHeight = 318
           object dbgOtrosDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -1419,19 +1454,144 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         end
       end
     end
-    object Button1: TButton
-      Left = 823
-      Top = 0
-      Width = 98
-      Height = 47
-      Caption = 'F2-Agregar'
-      Font.Charset = ANSI_CHARSET
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1107
+    Height = 30
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clInactiveCaption
+    ParentBackground = False
+    TabOrder = 2
+    object cxButton1: TcxButton
+      Left = 0
+      Top = 2
+      Width = 124
+      Height = 27
+      Caption = 'F2-Agregar Venta'
+      OptionsImage.ImageIndex = 23
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Arial'
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
+    end
+    object cxButton2: TcxButton
+      Left = 126
+      Top = 2
+      Width = 214
+      Height = 27
+      Caption = 'F3-(Creditos, Debitos o Cupones)'
+      OptionsImage.ImageIndex = 58
+      OptionsImage.Images = dmImages.Imagenes2
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cxButton3: TcxButton
+      Left = 342
+      Top = 2
+      Width = 134
+      Height = 27
+      Caption = 'F4-Otros Productos'
+      OptionsImage.ImageIndex = 62
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cxButton4: TcxButton
+      Left = 478
+      Top = 2
+      Width = 120
+      Height = 27
+      Caption = 'F5-Documentos'
+      OptionsImage.ImageIndex = 39
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 3
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cxButton5: TcxButton
+      Left = 600
+      Top = 2
+      Width = 92
+      Height = 27
+      Caption = 'F6-Efectivo'
+      OptionsImage.ImageIndex = 64
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 4
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cxButton6: TcxButton
+      Left = 694
+      Top = 2
+      Width = 132
+      Height = 27
+      Caption = 'F7-Salida Efectivo'
+      OptionsImage.ImageIndex = 60
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 5
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cxButton7: TcxButton
+      Left = 828
+      Top = 2
+      Width = 96
+      Height = 27
+      Caption = 'F8-Cheques'
+      OptionsImage.ImageIndex = 50
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 6
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cxButton8: TcxButton
+      Left = 926
+      Top = 2
+      Width = 78
+      Height = 27
+      Caption = 'F9-Otros'
+      OptionsImage.ImageIndex = 59
+      OptionsImage.Images = dmImages.Imagenes2
+      TabOrder = 7
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object cdsIngresos: TDACDSDataTable

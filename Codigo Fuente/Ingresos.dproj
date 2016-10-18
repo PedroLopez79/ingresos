@@ -256,8 +256,8 @@
         <DCCReference Include="uCurp.pas">
             <Form>Fo_AyudaCurp</Form>
         </DCCReference>
-        <DCCReference Include="uTurnoxFecha.pas">
-            <Form>Fo_TurnoxFecha</Form>
+        <DCCReference Include="uAgregarVenta.pas">
+            <Form>Fo_AgregarVenta</Form>
         </DCCReference>
         <DCCReference Include="ufrmBuscarCliente.pas">
             <Form>frmBuscarCliente</Form>
@@ -431,6 +431,10 @@
         <DCCReference Include="CistemComun\CodigoFuente\UtileriasComun.pas"/>
         <DCCReference Include="CistemGas\LibraryCistemGas_Intf.pas"/>
         <DCCReference Include="Flotillas\LibraryFlotillas_Intf.pas"/>
+        <DCCReference Include="uTurnoxFecha.pas">
+            <Form>Fo_TurnoxFecha</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

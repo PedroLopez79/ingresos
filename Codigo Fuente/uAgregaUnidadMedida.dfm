@@ -32,6 +32,7 @@ object frmAgregaUnidadMedida: TfrmAgregaUnidadMedida
     object TxtNombre: TcxDBTextEdit
       Left = 69
       Top = 15
+      Hint = ''
       DataBinding.DataField = 'DESCRIPCION'
       DataBinding.DataSource = dsUnidadMedida
       Properties.CharCase = ecUpperCase
@@ -71,7 +72,6 @@ object frmAgregaUnidadMedida: TfrmAgregaUnidadMedida
     end
   end
   object cdsUnidadMedida: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDUNIDADMEDIDA'
@@ -82,12 +82,13 @@ object frmAgregaUnidadMedida: TfrmAgregaUnidadMedida
         DataType = datString
         Size = 50
       end>
+    LogicalName = 'dbo UNIDADESMEDIDA'
     Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     AfterPost = cdsUnidadMedidaAfterPost
     OnNewRecord = cdsUnidadMedidaNewRecord
-    LogicalName = 'dbo UNIDADESMEDIDA'
     IndexDefs = <>
     Left = 320
     Top = 8

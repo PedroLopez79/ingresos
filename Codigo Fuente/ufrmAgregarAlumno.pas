@@ -17,7 +17,13 @@ uses
   dxSkinFoggy, dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSpringTime,
   cxImage, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxRadioGroup, cxMaskEdit,
-  cxCalendar, uDARemoteDataAdapter, cxPCdxBarPopupMenu, uROClient;
+  cxCalendar, uDARemoteDataAdapter, cxPCdxBarPopupMenu, uROClient,
+  dxSkinBlueprint, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
+  dxSkinWhiteprint, uDAFields, uROComponent;
 
 type
   TfrmAgregarAlumno = class(TForm)

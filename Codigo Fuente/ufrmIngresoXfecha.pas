@@ -27,7 +27,8 @@ uses
   dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
   dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, cxPCdxBarPopupMenu,
-  cxNavigator, uDADataAdapter, uDAFields, uROComponent, Vcl.ExtCtrls;
+  cxNavigator, uDADataAdapter, uDAFields, uROComponent, Vcl.ExtCtrls, Vcl.Menus,
+  cxButtons;
 
 const
    MaximoValores: Integer = 10;
@@ -196,11 +197,19 @@ type
     dsAgrupacionCajas: TDADataSource;
     dsAgrupacion: TDADataSource;
     cxLabel24: TcxLabel;
-    Button1: TButton;
     cbDepartamento: TcxDBLookupComboBox;
     ProductoSalida: TcxGridDBColumn;
     ProductoReferencia: TcxGridDBColumn;
     ProductoTicket: TcxGridDBColumn;
+    Panel1: TPanel;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton6: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
     procedure pgcConceptosPageChanging(Sender: TObject; NewPage: TcxTabSheet;
       var AllowChange: Boolean);
     procedure cdsDetalleIngresoNewRecord(DataTable: TDADataTable);
@@ -367,6 +376,7 @@ begin
   EstadoDataSets(False);
   cxGroupBox1.Enabled:= False;
   cxGroupBox3.Enabled:= False;
+  Panel1.Enabled:= False;
 end;
 
 procedure TfrmIngresosXfecha.ActionCerrar(Action: TBasicAction);
@@ -782,6 +792,7 @@ begin
   inherited;
   ListaTickets:=TStringList.Create;
   cxGroupBox1.Enabled:= False;
+  Panel1.Enabled:= False;
 end;
 
 procedure TfrmIngresosXfecha.FormShow(Sender: TObject);
@@ -813,6 +824,7 @@ begin
   begin
      cxGroupBox1.Enabled:= True;
      cxGroupBox3.Enabled:= True;
+     Panel1.Enabled:= True;
   end;
   //////////////////////////////////////////////////////////////////////////////
 

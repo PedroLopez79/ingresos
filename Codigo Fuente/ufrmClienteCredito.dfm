@@ -3,6 +3,7 @@ inherited frmClienteCredito: TfrmClienteCredito
   ClientHeight = 533
   ClientWidth = 871
   OnShow = FormShow
+  ExplicitTop = -36
   ExplicitWidth = 871
   ExplicitHeight = 533
   PixelsPerInch = 96
@@ -15,7 +16,7 @@ inherited frmClienteCredito: TfrmClienteCredito
     Hint = ''
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = cxTabSheet2
+    Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
     Properties.Images = dmImages.Imagenes
     Properties.TabHeight = 50
@@ -342,7 +343,7 @@ inherited frmClienteCredito: TfrmClienteCredito
         end
         object Label37: TLabel
           Left = 404
-          Top = 381
+          Top = 372
           Width = 80
           Height = 13
           Caption = 'Agente de Venta'
@@ -683,7 +684,7 @@ inherited frmClienteCredito: TfrmClienteCredito
         end
         object LOOKUPCMAGENTEVENTA: TcxDBLookupComboBox
           Left = 512
-          Top = 378
+          Top = 369
           Hint = ''
           DataBinding.DataField = 'VendedorID'
           DataBinding.DataSource = dsCatalogo
@@ -1570,14 +1571,14 @@ inherited frmClienteCredito: TfrmClienteCredito
     OnNewRecord = cdsCatalogoNewRecord
     IndexDefs = <>
     Left = 520
-    Top = 376
+    Top = 352
   end
   object dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset
     OnStateChange = dsCatalogoStateChange
     DataTable = cdsCatalogo
     Left = 552
-    Top = 376
+    Top = 352
   end
   object cdsFormaCompra: TDAMemDataTable
     Fields = <
@@ -1596,13 +1597,13 @@ inherited frmClienteCredito: TfrmClienteCredito
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 598
-    Top = 375
+    Left = 622
+    Top = 351
   end
   object dsFormaCompra: TDADataSource
     DataSet = cdsFormaCompra.Dataset
     DataTable = cdsFormaCompra
-    Left = 630
-    Top = 376
+    Left = 654
+    Top = 352
   end
 end

@@ -23,28 +23,24 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     Top = 0
     Width = 463
     Height = 327
+    Hint = ''
     Align = alTop
     TabOrder = 0
     TabStop = False
     Properties.ActivePage = cxTabSheet3
+    Properties.CustomButtons.Buttons = <>
     Properties.Images = dmImages.Imagenes2
-    ExplicitLeft = -312
-    ExplicitTop = 32
-    ExplicitWidth = 792
-    ExplicitHeight = 338
-    ClientRectBottom = 327
-    ClientRectRight = 463
-    ClientRectTop = 25
+    ClientRectBottom = 321
+    ClientRectLeft = 3
+    ClientRectRight = 457
+    ClientRectTop = 27
     object cxTabSheet3: TcxTabSheet
       Caption = 'Datos Generales'
       ImageIndex = 50
-      ExplicitLeft = 3
-      ExplicitTop = 27
-      ExplicitWidth = 454
-      ExplicitHeight = 294
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 6
         Top = 24
+        Hint = ''
         DataBinding.DataField = 'NUMCONTROL'
         DataBinding.DataSource = dsCatalogo
         Enabled = False
@@ -54,6 +50,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit2: TcxDBTextEdit
         Left = 6
         Top = 65
+        Hint = ''
         DataBinding.DataField = 'APATERNO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 2
@@ -62,6 +59,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit3: TcxDBTextEdit
         Left = 146
         Top = 65
+        Hint = ''
         DataBinding.DataField = 'AMATERNO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 3
@@ -70,6 +68,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit4: TcxDBTextEdit
         Left = 282
         Top = 65
+        Hint = ''
         DataBinding.DataField = 'NOMBRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 4
@@ -78,6 +77,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit5: TcxDBTextEdit
         Left = 6
         Top = 106
+        Hint = ''
         DataBinding.DataField = 'CURP'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 5
@@ -86,6 +86,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit6: TcxDBTextEdit
         Left = 6
         Top = 148
+        Hint = ''
         DataBinding.DataField = 'CIUDADNACIMIENTO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 7
@@ -94,6 +95,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit7: TcxDBTextEdit
         Left = 6
         Top = 190
+        Hint = ''
         DataBinding.DataField = 'DIRECCION'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 9
@@ -102,6 +104,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit8: TcxDBTextEdit
         Left = 6
         Top = 232
+        Hint = ''
         DataBinding.DataField = 'TELEFONOCASA'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 10
@@ -110,6 +113,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit9: TcxDBTextEdit
         Left = 154
         Top = 232
+        Hint = ''
         DataBinding.DataField = 'EMAIL'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 11
@@ -118,6 +122,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBDateEdit1: TcxDBDateEdit
         Left = 133
         Top = 24
+        Hint = ''
         DataBinding.DataField = 'FECHANACIMIENTO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 0
@@ -126,6 +131,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBDateEdit2: TcxDBDateEdit
         Left = 303
         Top = 148
+        Hint = ''
         DataBinding.DataField = 'FECHAINICIO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 8
@@ -134,16 +140,19 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel1: TcxLabel
         Left = 6
         Top = 9
+        Hint = ''
         Caption = 'No. Control'
       end
       object cxLabel2: TcxLabel
         Left = 133
         Top = 9
+        Hint = ''
         Caption = 'Fecha Nacimiento'
       end
       object cxDBRadioGroup1: TcxDBRadioGroup
         Left = 260
         Top = 9
+        Hint = ''
         Caption = 'Sexo'
         DataBinding.DataField = 'SEXO'
         DataBinding.DataSource = dsCatalogo
@@ -164,56 +173,67 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel3: TcxLabel
         Left = 6
         Top = 51
+        Hint = ''
         Caption = 'Apellido Paterno'
       end
       object cxLabel4: TcxLabel
         Left = 146
         Top = 51
+        Hint = ''
         Caption = 'Apellido Materno'
       end
       object cxLabel5: TcxLabel
         Left = 282
         Top = 51
+        Hint = ''
         Caption = 'Nombre(s)'
       end
       object cxLabel6: TcxLabel
         Left = 6
         Top = 92
+        Hint = ''
         Caption = 'CURP'
       end
       object cxLabel7: TcxLabel
         Left = 303
         Top = 92
+        Hint = ''
         Caption = 'STATUS'
       end
       object cxLabel8: TcxLabel
         Left = 6
         Top = 133
+        Hint = ''
         Caption = 'Lugar de Nacimiento'
       end
       object cxLabel9: TcxLabel
         Left = 303
         Top = 133
+        Hint = ''
         Caption = 'Fecha de Ingreso'
       end
       object cxLabel10: TcxLabel
         Left = 6
         Top = 175
+        Hint = ''
         Caption = 'Direccion'
       end
       object cxLabel11: TcxLabel
         Left = 6
         Top = 217
+        Hint = ''
         Caption = 'Telefono Casa'
       end
       object cxLabel12: TcxLabel
         Left = 154
         Top = 217
+        Hint = ''
         Caption = 'E-mail'
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 303
         Top = 106
+        Hint = ''
         DataBinding.DataField = 'IDSTATUS'
         DataBinding.DataSource = dsCatalogo
         Properties.KeyFieldNames = 'IDSTATUS'
@@ -231,6 +251,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 6
         Top = 264
+        Hint = ''
         Caption = 'Generar Numero de Control'
         DataBinding.DataField = 'GENERARNUMCONTROL'
         DataBinding.DataSource = dsCatalogo
@@ -242,78 +263,85 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     object cxTabSheet4: TcxTabSheet
       Caption = 'Datos de los Padres'
       ImageIndex = 51
-      ExplicitLeft = 3
-      ExplicitTop = 27
-      ExplicitWidth = 454
-      ExplicitHeight = 294
       object cxDBTextEdit10: TcxDBTextEdit
         Left = 6
         Top = 24
+        Hint = ''
         DataBinding.DataField = 'PADRE'
         DataBinding.DataSource = dsCatalogo
-        TabOrder = 4
+        TabOrder = 2
         Width = 363
       end
       object cxLabel13: TcxLabel
         Left = 6
         Top = 9
+        Hint = ''
         Caption = 'Nombre del Padre'
       end
       object cxLabel14: TcxLabel
         Left = 6
         Top = 51
+        Hint = ''
         Caption = 'Telefono del Padre'
       end
       object cxDBTextEdit11: TcxDBTextEdit
         Left = 6
         Top = 66
+        Hint = ''
         DataBinding.DataField = 'TELEFONOPADRE'
         DataBinding.DataSource = dsCatalogo
-        TabOrder = 5
+        TabOrder = 4
         Width = 170
       end
       object cxDBTextEdit12: TcxDBTextEdit
         Left = 182
         Top = 66
+        Hint = ''
         DataBinding.DataField = 'EMAILPADRE'
         DataBinding.DataSource = dsCatalogo
-        TabOrder = 7
+        TabOrder = 6
         Width = 187
       end
       object cxLabel15: TcxLabel
         Left = 182
         Top = 51
+        Hint = ''
         Caption = 'E-mail del Padre'
       end
       object cxDBTextEdit13: TcxDBTextEdit
         Left = 6
         Top = 108
+        Hint = ''
         DataBinding.DataField = 'PUESTOPADRE'
         DataBinding.DataSource = dsCatalogo
-        TabOrder = 8
+        TabOrder = 7
         Width = 170
       end
       object cxLabel16: TcxLabel
         Left = 6
         Top = 93
+        Hint = ''
         Caption = 'Puesto'
       end
       object cxDBTextEdit14: TcxDBTextEdit
         Left = 182
         Top = 108
+        Hint = ''
         DataBinding.DataField = 'EMPRESAPADRE'
         DataBinding.DataSource = dsCatalogo
-        TabOrder = 10
+        TabOrder = 9
         Width = 187
       end
       object cxLabel17: TcxLabel
         Left = 182
         Top = 93
+        Hint = ''
         Caption = 'Empresa'
       end
       object cxDBTextEdit15: TcxDBTextEdit
         Left = 6
         Top = 151
+        Hint = ''
         DataBinding.DataField = 'MADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 11
@@ -322,11 +350,13 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel18: TcxLabel
         Left = 6
         Top = 135
+        Hint = ''
         Caption = 'Nombre de la Madre'
       end
       object cxDBTextEdit16: TcxDBTextEdit
         Left = 6
         Top = 192
+        Hint = ''
         DataBinding.DataField = 'TELEFONOMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 13
@@ -335,11 +365,13 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel19: TcxLabel
         Left = 6
         Top = 177
+        Hint = ''
         Caption = 'Telefono la Madre'
       end
       object cxDBTextEdit17: TcxDBTextEdit
         Left = 182
         Top = 192
+        Hint = ''
         DataBinding.DataField = 'EMAILMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 14
@@ -348,11 +380,13 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel20: TcxLabel
         Left = 182
         Top = 177
+        Hint = ''
         Caption = 'E-mail de la Madre'
       end
       object cxDBTextEdit18: TcxDBTextEdit
         Left = 6
         Top = 234
+        Hint = ''
         DataBinding.DataField = 'PUESTOMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 15
@@ -361,11 +395,13 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel21: TcxLabel
         Left = 6
         Top = 219
+        Hint = ''
         Caption = 'Puesto'
       end
       object cxDBTextEdit19: TcxDBTextEdit
         Left = 182
         Top = 234
+        Hint = ''
         DataBinding.DataField = 'EMPRESAMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 16
@@ -374,25 +410,24 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel22: TcxLabel
         Left = 182
         Top = 219
+        Hint = ''
         Caption = 'Empresa'
       end
     end
     object cxTabSheet5: TcxTabSheet
       Caption = 'Datos de la Empresa'
       ImageIndex = 51
-      ExplicitLeft = 3
-      ExplicitTop = 27
-      ExplicitWidth = 454
-      ExplicitHeight = 294
       object cxLabel23: TcxLabel
         Left = 6
         Top = 9
+        Hint = ''
         Caption = 'Nombre de la Empresa'
         ParentFont = False
       end
       object cxDBTextEdit20: TcxDBTextEdit
         Left = 6
         Top = 24
+        Hint = ''
         DataBinding.DataField = 'EMPRESAPADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 1
@@ -401,12 +436,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel24: TcxLabel
         Left = 6
         Top = 49
+        Hint = ''
         Caption = 'Telefono de la Empresa'
         ParentFont = False
       end
       object cxDBTextEdit21: TcxDBTextEdit
         Left = 6
         Top = 64
+        Hint = ''
         DataBinding.DataField = 'TELEFONOPADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 3
@@ -415,12 +452,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel25: TcxLabel
         Left = 174
         Top = 49
+        Hint = ''
         Caption = 'E-mail de la Empresa'
         ParentFont = False
       end
       object cxDBTextEdit22: TcxDBTextEdit
         Left = 174
         Top = 64
+        Hint = ''
         DataBinding.DataField = 'EMAILPADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 5
@@ -429,12 +468,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel26: TcxLabel
         Left = 6
         Top = 89
+        Hint = ''
         Caption = 'Nombre del Encargado'
         ParentFont = False
       end
       object cxDBTextEdit23: TcxDBTextEdit
         Left = 6
         Top = 104
+        Hint = ''
         DataBinding.DataField = 'MADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 7
@@ -443,12 +484,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel27: TcxLabel
         Left = 6
         Top = 129
+        Hint = ''
         Caption = 'Telefono'
         ParentFont = False
       end
       object cxDBTextEdit24: TcxDBTextEdit
         Left = 6
         Top = 144
+        Hint = ''
         DataBinding.DataField = 'TELEFONOMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 9
@@ -457,12 +500,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel28: TcxLabel
         Left = 174
         Top = 129
+        Hint = ''
         Caption = 'E-mail'
         ParentFont = False
       end
       object cxDBTextEdit25: TcxDBTextEdit
         Left = 174
         Top = 144
+        Hint = ''
         DataBinding.DataField = 'EMAILMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 11
@@ -471,12 +516,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel29: TcxLabel
         Left = 6
         Top = 169
+        Hint = ''
         Caption = 'Puesto'
         ParentFont = False
       end
       object cxDBTextEdit26: TcxDBTextEdit
         Left = 6
         Top = 184
+        Hint = ''
         DataBinding.DataField = 'PUESTOMADRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 13
@@ -486,13 +533,10 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     object cxTabSheet7: TcxTabSheet
       Caption = 'Facturar'
       ImageIndex = 56
-      ExplicitLeft = 3
-      ExplicitTop = 27
-      ExplicitWidth = 454
-      ExplicitHeight = 294
       object cxDBTextEdit27: TcxDBTextEdit
         Left = 6
         Top = 24
+        Hint = ''
         DataBinding.DataField = 'FACTURANOMBRE'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 0
@@ -501,11 +545,13 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel30: TcxLabel
         Left = 6
         Top = 9
+        Hint = ''
         Caption = 'Facturar a Nombre de (Razon Social)'
       end
       object cxDBTextEdit28: TcxDBTextEdit
         Left = 6
         Top = 64
+        Hint = ''
         DataBinding.DataField = 'FACTURADOMICILIO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 1
@@ -514,11 +560,13 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel31: TcxLabel
         Left = 6
         Top = 49
+        Hint = ''
         Caption = 'Domicilio'
       end
       object cxDBTextEdit29: TcxDBTextEdit
         Left = 6
         Top = 112
+        Hint = ''
         DataBinding.DataField = 'FACTURATELEFONO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 2
@@ -527,16 +575,19 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel32: TcxLabel
         Left = 6
         Top = 97
+        Hint = ''
         Caption = 'Factura Telefono'
       end
       object cxLabel33: TcxLabel
         Left = 206
         Top = 97
+        Hint = ''
         Caption = 'R.F.C.'
       end
       object cxDBTextEdit30: TcxDBTextEdit
         Left = 206
         Top = 112
+        Hint = ''
         DataBinding.DataField = 'RFC'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 3
@@ -545,6 +596,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel34: TcxLabel
         Left = 206
         Top = 145
+        Hint = ''
         Caption = 'Numero Exterior'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -552,6 +604,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit31: TcxDBTextEdit
         Left = 6
         Top = 160
+        Hint = ''
         DataBinding.DataField = 'COLONIA'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 4
@@ -560,6 +613,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel35: TcxLabel
         Left = 6
         Top = 145
+        Hint = ''
         Caption = 'Colonia'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -567,6 +621,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit32: TcxDBTextEdit
         Left = 206
         Top = 160
+        Hint = ''
         DataBinding.DataField = 'NOEXTERIOR'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 5
@@ -575,6 +630,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel36: TcxLabel
         Left = 6
         Top = 193
+        Hint = ''
         Caption = 'Localidad'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -582,6 +638,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit33: TcxDBTextEdit
         Left = 6
         Top = 208
+        Hint = ''
         DataBinding.DataField = 'LOCALIDAD'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 7
@@ -590,6 +647,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel37: TcxLabel
         Left = 206
         Top = 193
+        Hint = ''
         Caption = 'Municipio'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -597,6 +655,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit34: TcxDBTextEdit
         Left = 206
         Top = 208
+        Hint = ''
         DataBinding.DataField = 'MUNICIPIO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 8
@@ -605,6 +664,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel38: TcxLabel
         Left = 6
         Top = 241
+        Hint = ''
         Caption = 'Estado'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -612,6 +672,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit35: TcxDBTextEdit
         Left = 6
         Top = 256
+        Hint = ''
         DataBinding.DataField = 'ESTADO'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 9
@@ -620,6 +681,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit36: TcxDBTextEdit
         Left = 206
         Top = 256
+        Hint = ''
         DataBinding.DataField = 'PAIS'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 10
@@ -628,6 +690,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel39: TcxLabel
         Left = 206
         Top = 241
+        Hint = ''
         Caption = 'Pais'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -635,6 +698,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxLabel40: TcxLabel
         Left = 303
         Top = 145
+        Hint = ''
         Caption = 'Codigo Postal'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -642,6 +706,7 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       object cxDBTextEdit37: TcxDBTextEdit
         Left = 303
         Top = 160
+        Hint = ''
         DataBinding.DataField = 'CODIGOPOSTAL'
         DataBinding.DataSource = dsCatalogo
         TabOrder = 6
@@ -660,7 +725,8 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     Colors.Hot = clWhite
     Colors.Pressed = clWhite
     Colors.Disabled = clWhite
-    Glyph.Data = {
+    LookAndFeel.NativeStyle = False
+    OptionsImage.Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
       FF00FFFF00FFFF00FF000288010893010B99010C99010893000389FF00FFFF00
@@ -687,7 +753,6 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       FF00FF0001890F1DBF3E5BF36B87FE728CFF5E7BFE395BFB1231EB010FB50001
       84FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000189030AA306
       11B2050FB10107A0000188FF00FFFF00FFFF00FFFF00FFFF00FF}
-    LookAndFeel.NativeStyle = False
     TabOrder = 1
     TabStop = False
     OnClick = btnCancelarClick
@@ -704,7 +769,8 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     Colors.Pressed = clWhite
     Colors.Disabled = clWhite
     Default = True
-    Glyph.Data = {
+    LookAndFeel.NativeStyle = False
+    OptionsImage.Glyph.Data = {
       36050000424D3605000000000000360400002800000010000000100000000100
       0800000000000001000000000000000000000001000000000000FF00FF00004B
       0000098611000A8615000D931A000C9518000C9C19000F991C000E9D1D001392
@@ -747,13 +813,11 @@ object frmAgregarAlumno: TfrmAgregarAlumno
       0000000000000001010000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
-    LookAndFeel.NativeStyle = False
     TabOrder = 2
     TabStop = False
     OnClick = btnAceptarClick
   end
   object cdsStatus: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDSTATUS'
@@ -773,10 +837,11 @@ object frmAgregarAlumno: TfrmAgregarAlumno
         Size = 50
         Required = True
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo STATUS'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 168
     Top = 344
@@ -788,7 +853,6 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     Top = 344
   end
   object cdsProspecto: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDPROSPECTO'
@@ -868,14 +932,15 @@ object frmAgregarAlumno: TfrmAgregarAlumno
         DataType = datString
         Size = 200
       end>
+    LogicalName = 'spProspecto'
     Params = <
       item
         Name = 'IDPROSPECTO'
         Value = '0'
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    LogicalName = 'spProspecto'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 352
     Top = 344
@@ -887,7 +952,6 @@ object frmAgregarAlumno: TfrmAgregarAlumno
     Top = 344
   end
   object cdsCatalogo: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDALUMNO'
@@ -1077,13 +1141,14 @@ object frmAgregarAlumno: TfrmAgregarAlumno
         Name = 'GENERARNUMCONTROL'
         DataType = datBoolean
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
-    AfterPost = cdsCatalogoAfterPost
-    AfterDelete = cdsCatalogoAfterPost
-    OnNewRecord = cdsCatalogoNewRecord
     LogicalName = 'dbo ALUMNO'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    AfterDelete = cdsCatalogoAfterPost
+    AfterPost = cdsCatalogoAfterPost
+    OnNewRecord = cdsCatalogoNewRecord
     IndexDefs = <>
     Left = 40
     Top = 344

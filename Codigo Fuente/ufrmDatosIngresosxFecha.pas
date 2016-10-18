@@ -18,7 +18,13 @@ uses
   cxEdit, DB, cxDBData, cxDBLookupComboBox, cxTextEdit, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxGridCustomView, cxGrid, cxPC, cxContainer, cxDBLabel, cxLabel,
-  uDAInterfaces, uDACDSDataTable, uDARemoteDataAdapter;
+  uDAInterfaces, uDACDSDataTable, uDARemoteDataAdapter, dxSkinBlueprint,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
+  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
+  cxPCdxBarPopupMenu, cxNavigator, uDADataAdapter, uDAFields, uROComponent;
 
 type
   TfrmDatosIngresosxFecha = class(TForm)

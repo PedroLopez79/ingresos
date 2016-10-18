@@ -18,7 +18,13 @@ uses
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, cxPC, cxContainer, cxLabel, cxTextEdit, cxDBEdit, ExtCtrls,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxCheckBox, Menus, StdCtrls, cxButtons;
+  cxCheckBox, Menus, StdCtrls, cxButtons, dxSkinBlueprint,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
+  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
+  cxPCdxBarPopupMenu, cxNavigator, uDAFields, uROComponent;
 
 type
   TfrmClienteEfectivo = class(TfrmCatalogo)
