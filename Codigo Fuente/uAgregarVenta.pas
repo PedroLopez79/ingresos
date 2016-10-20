@@ -22,7 +22,7 @@ uses
   dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
   dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, dxSkinsdxRibbonPainter,
   cxClasses, dxRibbon, ufrmPrincipal, cxContainer, cxEdit, cxTextEdit,
-  cxCurrencyEdit;
+  cxCurrencyEdit, dxRibbonForm;
 
 type
   // Declare a Venta record
@@ -35,7 +35,7 @@ type
     NUMTICKET   : string[50];
   end;
 
-  TFo_AgregarVenta = class(TForm)
+  TFo_AgregarVenta = class(TdxCustomRibbonForm)
     Panel1: TPanel;
     Pa_ayuda: TPanel;
     Label6: TLabel;

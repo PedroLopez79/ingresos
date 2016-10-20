@@ -6822,6 +6822,180 @@ object ServiceIngresos: TServiceIngresos
             Name = 'IDCAJA'
             DataType = datInteger
           end>
+      end
+      item
+        Params = <
+          item
+            Name = 'Tipo'
+            DataType = datInteger
+            Value = '0'
+            ParamType = daptInput
+          end
+          item
+            Name = 'EstacionID'
+            DataType = datInteger
+            Value = '1'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.PRODUCTO'
+            SQL = 
+              'declare @Tipo as Integer'#10'declare @EstacionID as integer'#10#10'select ' +
+              '@Tipo = (Select :Tipo)'#10'select @EstacionID = (Select :EstacionID)' +
+              #10#10'If @Tipo = 0'#10'begin'#10'     SELECT'#10'           IDPRODUCTO, CODIGOPR' +
+              'ODUCTO, NOMBRE, PRECIOVENTA, CLAVEPEMEX,'#10'           COSTO, STATU' +
+              'S, BARRAS, CCCOMPRA, CCVENTA,'#10'           INVENTARIABLE, IDLINEA'#10 +
+              '     FROM'#10'         dbo.Producto'#10'end'#10#10'If @Tipo = 1'#10'begin'#10'  SELECT' +
+              #10'    P.IDPRODUCTO, CODIGOPRODUCTO, NOMBRE, PP.PRECIO as PrecioVe' +
+              'nta, CLAVEPEMEX,'#10'    P.COSTO, STATUS, BARRAS, CCCOMPRA, CCVENTA,' +
+              ' '#10'    INVENTARIABLE, IDLINEA'#10'  FROM'#10'    dbo.Producto P Left Join' +
+              ' ProductoPrecio PP on P.IDPRODUCTO=PP.ProductoId'#10'  WHERE not ((C' +
+              'LAVEPEMEX is null) or (CLAVEPEMEX = '#39#39')) and (PP.EstacionID = @E' +
+              'stacionID)'#10'end'#10#10'    If @Tipo = 2'#10'    begin'#10'      SELECT'#10'        ' +
+              'IDPRODUCTO, CODIGOPRODUCTO, NOMBRE, PRECIOVENTA, CLAVEPEMEX,'#10'   ' +
+              '     COSTO, STATUS, BARRAS, CCCOMPRA, CCVENTA,'#10'        INVENTARI' +
+              'ABLE, IDLINEA'#10'      FROM'#10'        dbo.Producto'#10'      WHERE ((CLAV' +
+              'EPEMEX is null) or (CLAVEPEMEX = '#39#39')) and (INVENTARIABLE = 1)'#10'  ' +
+              '  end'#10#10'        If @Tipo = 3'#10'        begin'#10'          SELECT'#10'     ' +
+              '       IDPRODUCTO, CODIGOPRODUCTO, NOMBRE, PRECIOVENTA, CLAVEPEM' +
+              'EX,'#10'            COSTO, STATUS, BARRAS, CCCOMPRA, CCVENTA,'#10'      ' +
+              '      INVENTARIABLE, IDLINEA'#10'          FROM'#10'            dbo.Prod' +
+              'ucto'#10'          WHERE ((ClavePemex is null) or (ClavePemex = '#39#39'))' +
+              ' and (Inventariable = 0)'#10'        end'#10#10'            If @Tipo = 4'#10' ' +
+              '           begin'#10'              select IDPRODUCTO, CODIGOPRODUCTO' +
+              ', NOMBRE, (case'#10'                  when p.clavepemex is null then' +
+              ' p.PrecioVenta'#10'                  when p.clavepemex = '#39#39' then p.P' +
+              'recioVenta'#10'                  else'#10'                     (Select P' +
+              'recio From ProductoPrecio p2 Where p2.ProductoID = p.IDPRODUCTO ' +
+              'and EstacionID = @EstacionID)'#10'                  end) as PrecioVe' +
+              'nta,'#10'                  ClavePemex, P.Costo, Status, Barras, CCCO' +
+              'MPRA, CCVENTA,'#10'                  Inventariable, IDLINEA'#10'        ' +
+              '      From Producto  P'#10'              WHERE Inventariable = 1'#10'   ' +
+              '         end'#10#10'              If @Tipo = 5'#10'              begin'#10'   ' +
+              '             select IDPRODUCTO, CODIGOPRODUCTO, Nombre, (case'#10'  ' +
+              '                when p.clavepemex is null then p.PrecioVenta'#10'   ' +
+              '               when p.clavepemex = '#39#39' then p.PrecioVenta'#10'       ' +
+              '           else'#10'                     (Select Precio From Product' +
+              'oPrecio p2 Where p2.ProductoID = p.IDPRODUCTO and EstacionID = @' +
+              'EstacionID)'#10'                  end) as PrecioVenta,'#10'             ' +
+              '     ClavePemex, P.Costo, Status, Barras, CCCOMPRA, CCVENTA,'#10'   ' +
+              '               Inventariable, IDLINEA'#10'                From Produ' +
+              'cto  P'#10'                WHERE not ClavePemex is null and ClavePem' +
+              'ex<>'#39#39#10'              end'#10
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDPRODUCTO'
+                TableField = 'IDPRODUCTO'
+              end
+              item
+                DatasetField = 'CODIGOPRODUCTO'
+                TableField = 'CODIGOPRODUCTO'
+              end
+              item
+                DatasetField = 'NOMBRE'
+                TableField = 'NOMBRE'
+              end
+              item
+                DatasetField = 'PRECIOVENTA'
+                TableField = 'PRECIOVENTA'
+              end
+              item
+                DatasetField = 'CLAVEPEMEX'
+                TableField = 'CLAVEPEMEX'
+              end
+              item
+                DatasetField = 'COSTO'
+                TableField = 'COSTO'
+              end
+              item
+                DatasetField = 'STATUS'
+                TableField = 'STATUS'
+              end
+              item
+                DatasetField = 'BARRAS'
+                TableField = 'CCCOMPRA'
+                SQLOrigin = 'BARRAS'
+              end
+              item
+                DatasetField = 'CCCOMPRA'
+                TableField = 'CCCOMPRA'
+              end
+              item
+                DatasetField = 'CCVENTA'
+                TableField = 'IEPS'
+                SQLOrigin = 'CCVENTA'
+              end
+              item
+                DatasetField = 'INVENTARIABLE'
+                TableField = 'INVENTARIABLE'
+              end
+              item
+                DatasetField = 'IDLINEA'
+                TableField = 'IDLINEA'
+              end>
+          end>
+        Name = 'Obtenproductoportipo'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDPRODUCTO'
+            DataType = datInteger
+          end
+          item
+            Name = 'CODIGOPRODUCTO'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'NOMBRE'
+            DataType = datString
+            Size = 150
+          end
+          item
+            Name = 'PRECIOVENTA'
+            DataType = datFloat
+          end
+          item
+            Name = 'CLAVEPEMEX'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'COSTO'
+            DataType = datFloat
+          end
+          item
+            Name = 'STATUS'
+            DataType = datBoolean
+          end
+          item
+            Name = 'BARRAS'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'CCCOMPRA'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'CCVENTA'
+            DataType = datBlob
+          end
+          item
+            Name = 'INVENTARIABLE'
+            DataType = datBoolean
+          end
+          item
+            Name = 'IDLINEA'
+            DataType = datInteger
+          end>
       end>
     JoinDataTables = <>
     UnionDataTables = <>
@@ -7391,6 +7565,12 @@ object ServiceIngresos: TServiceIngresos
         Name = 'FK_dbo MATERIA_dbo MATERIA'
         MasterFields = 'IDMATERIA'
         DetailFields = 'SERIADACON'
+        RelationshipType = rtForeignKey
+      end
+      item
+        Name = 'FK_Obtenproductoportipo_Obtenproductoportipo'
+        MasterDatasetName = 'Obtenproductoportipo'
+        DetailDatasetName = 'Obtenproductoportipo'
         RelationshipType = rtForeignKey
       end>
     UpdateRules = <>

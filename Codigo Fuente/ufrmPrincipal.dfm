@@ -154,7 +154,6 @@ object frmPrincipal: TfrmPrincipal
     Align = alClient
     PanelStyle.Active = True
     TabOrder = 5
-    ExplicitHeight = 205
     Height = 206
     Width = 1235
   end

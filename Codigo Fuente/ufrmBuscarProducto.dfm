@@ -40,48 +40,60 @@ inherited frmBuscarProducto: TfrmBuscarProducto
         Size = 10
       end
       item
-        Name = 'Nombre'
+        Name = 'NOMBRE'
         DataType = datString
         Size = 150
       end
       item
-        Name = 'PrecioVenta'
+        Name = 'PRECIOVENTA'
         DataType = datFloat
       end
       item
-        Name = 'ClavePemex'
+        Name = 'CLAVEPEMEX'
         DataType = datString
         Size = 50
       end
       item
-        Name = 'Costo'
+        Name = 'COSTO'
         DataType = datFloat
       end
       item
-        Name = 'Status'
+        Name = 'STATUS'
         DataType = datBoolean
       end
       item
-        Name = 'CCCompra'
+        Name = 'BARRAS'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CCCOMPRA'
         DataType = datString
         Size = 20
       end
       item
         Name = 'CCVENTA'
-        DataType = datString
-        Size = 20
+        DataType = datBlob
+      end
+      item
+        Name = 'INVENTARIABLE'
+        DataType = datBoolean
+      end
+      item
+        Name = 'IDLINEA'
+        DataType = datInteger
       end>
-    LogicalName = 'obtenproductoportipo'
+    LogicalName = 'Obtenproductoportipo'
     Params = <
       item
         Name = 'Tipo'
-        DataType = datLargeInt
+        DataType = datInteger
         Value = '0'
         ParamType = daptInput
       end
       item
         Name = 'EstacionID'
-        DataType = datLargeInt
+        DataType = datInteger
         Value = '1'
         ParamType = daptInput
       end>

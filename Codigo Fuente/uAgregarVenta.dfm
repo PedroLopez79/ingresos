@@ -1,9 +1,10 @@
 object Fo_AgregarVenta: TFo_AgregarVenta
   Left = 303
   Top = 281
+  BorderStyle = bsDialog
   Caption = 'Agregar Venta'
-  ClientHeight = 211
-  ClientWidth = 344
+  ClientHeight = 221
+  ClientWidth = 354
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,12 +13,13 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnKeyDown = edtProductoKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 24
-    Width = 344
+    Width = 354
     Height = 156
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
@@ -27,8 +29,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 576
-    ExplicitHeight = 265
+    ExplicitHeight = 153
     object Label6: TLabel
       Left = 154
       Top = 51
@@ -288,8 +289,8 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   object Pa_ayuda: TPanel
     Left = 0
     Top = 180
-    Width = 344
-    Height = 31
+    Width = 354
+    Height = 41
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -298,11 +299,10 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 289
-    ExplicitWidth = 576
+    ExplicitTop = 181
     object Button2: TButton
       Left = 182
-      Top = 2
+      Top = 3
       Width = 75
       Height = 25
       Caption = 'Aceptar'
@@ -311,7 +311,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     end
     object Button1: TButton
       Left = 263
-      Top = 2
+      Top = 3
       Width = 75
       Height = 25
       Caption = 'Cancelar'
@@ -322,7 +322,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
-    Width = 344
+    Width = 354
     Height = 24
     Hint = ''
     BarManager = frmPrincipal.dxBarManager1
@@ -332,7 +332,6 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Contexts = <>
     TabOrder = 2
     TabStop = False
-    ExplicitWidth = 576
     object dxRibbon1Tab1: TdxRibbonTab
       Caption = 'dxRibbon1Tab1'
       Groups = <>
