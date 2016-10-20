@@ -2,8 +2,8 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   Left = 303
   Top = 281
   Caption = 'Agregar Venta'
-  ClientHeight = 320
-  ClientWidth = 576
+  ClientHeight = 211
+  ClientWidth = 344
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   object Panel1: TPanel
     Left = 0
     Top = 24
-    Width = 576
-    Height = 265
+    Width = 344
+    Height = 156
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -27,9 +27,10 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitTop = 20
+    ExplicitWidth = 576
+    ExplicitHeight = 265
     object Label6: TLabel
-      Left = 158
+      Left = 154
       Top = 51
       Width = 45
       Height = 13
@@ -40,61 +41,6 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-    end
-    object Label1: TLabel
-      Left = 405
-      Top = 224
-      Width = 131
-      Height = 13
-      Caption = 'Fecha y Hora del turno'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 363
-      Top = 209
-      Width = 36
-      Height = 13
-      Caption = 'Entidad'
-    end
-    object Label3: TLabel
-      Left = 363
-      Top = 228
-      Width = 36
-      Height = 13
-      Caption = 'Entidad'
-    end
-    object Label4: TLabel
-      Left = 542
-      Top = 181
-      Width = 19
-      Height = 36
-      Caption = '0'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clTeal
-      Font.Height = -31
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Visible = False
-    end
-    object Label5: TLabel
-      Left = 409
-      Top = 190
-      Width = 127
-      Height = 13
-      Caption = '# DE LA SECUENCIA:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Visible = False
     end
     object Label7: TLabel
       Left = 8
@@ -110,7 +56,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 158
+      Left = 154
       Top = 6
       Width = 68
       Height = 13
@@ -161,21 +107,13 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object CBB_Turnos: TComboBox
-      Left = 344
-      Top = 153
-      Width = 217
-      Height = 22
-      Style = csOwnerDrawFixed
-      TabOrder = 0
-      OnChange = CBB_TurnosChange
-    end
-    object edtCliente: TcxCurrencyEdit
+    object edtProducto: TcxCurrencyEdit
       Left = 66
       Top = 21
       Hint = ''
+      EditValue = 0
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
+      Properties.DisplayFormat = '#'
       Properties.ReadOnly = False
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -186,11 +124,12 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleFocused.LookAndFeel.NativeStyle = True
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 1
+      TabOrder = 0
+      OnKeyDown = edtProductoKeyDown
       Width = 55
     end
     object btnBuscaCliente: TcxButton
-      Left = 127
+      Left = 122
       Top = 21
       Width = 25
       Height = 21
@@ -243,14 +182,35 @@ object Fo_AgregarVenta: TFo_AgregarVenta
         2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
         0202020202020202020202020202020202020202020202020202020202020202
         0202020202020202020202020202020202020202020202020202}
-      TabOrder = 2
+      TabOrder = 1
     end
-    object cxCurrencyEdit1: TcxCurrencyEdit
-      Left = 158
+    object edtDescripcionProducto: TcxCurrencyEdit
+      Left = 153
       Top = 21
       Hint = ''
+      Enabled = False
+      Properties.AssignedValues.DisplayFormat = True
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
+      Properties.ReadOnly = False
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 2
+      Width = 180
+    end
+    object edtPrecio: TcxCurrencyEdit
+      Left = 66
+      Top = 48
+      Hint = ''
+      EditValue = 0c
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '#.##'
       Properties.ReadOnly = False
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -262,14 +222,15 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
       TabOrder = 3
-      Width = 180
+      Width = 81
     end
-    object cxCurrencyEdit2: TcxCurrencyEdit
+    object edtCantidad: TcxCurrencyEdit
       Left = 66
-      Top = 48
+      Top = 80
       Hint = ''
+      EditValue = 0
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
+      Properties.DisplayFormat = '#'
       Properties.ReadOnly = False
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -281,14 +242,15 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
       TabOrder = 4
-      Width = 86
+      Width = 81
     end
-    object cxCurrencyEdit3: TcxCurrencyEdit
+    object edtImporte: TcxCurrencyEdit
       Left = 66
-      Top = 80
+      Top = 112
       Hint = ''
+      EditValue = 0c
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
+      Properties.DisplayFormat = '#.##'
       Properties.ReadOnly = False
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -300,14 +262,15 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
       TabOrder = 5
-      Width = 86
+      Width = 81
     end
-    object cxCurrencyEdit4: TcxCurrencyEdit
-      Left = 66
-      Top = 112
+    object edtNumTicket: TcxCurrencyEdit
+      Left = 205
+      Top = 48
       Hint = ''
+      EditValue = 0
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
+      Properties.DisplayFormat = '#'
       Properties.ReadOnly = False
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -319,32 +282,13 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
       TabOrder = 6
-      Width = 86
-    end
-    object cxCurrencyEdit5: TcxCurrencyEdit
-      Left = 209
-      Top = 48
-      Hint = ''
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
-      Properties.ReadOnly = False
-      Style.BorderStyle = ebsOffice11
-      Style.LookAndFeel.Kind = lfOffice11
-      Style.LookAndFeel.NativeStyle = True
-      StyleDisabled.LookAndFeel.Kind = lfOffice11
-      StyleDisabled.LookAndFeel.NativeStyle = True
-      StyleFocused.LookAndFeel.Kind = lfOffice11
-      StyleFocused.LookAndFeel.NativeStyle = True
-      StyleHot.LookAndFeel.Kind = lfOffice11
-      StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 7
-      Width = 129
+      Width = 128
     end
   end
   object Pa_ayuda: TPanel
     Left = 0
-    Top = 289
-    Width = 576
+    Top = 180
+    Width = 344
     Height = 31
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
@@ -354,10 +298,10 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 250
-    ExplicitWidth = 474
+    ExplicitTop = 289
+    ExplicitWidth = 576
     object Button2: TButton
-      Left = 77
+      Left = 182
       Top = 2
       Width = 75
       Height = 25
@@ -366,7 +310,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       OnClick = Button2Click
     end
     object Button1: TButton
-      Left = 231
+      Left = 263
       Top = 2
       Width = 75
       Height = 25
@@ -378,7 +322,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
-    Width = 576
+    Width = 344
     Height = 24
     Hint = ''
     BarManager = frmPrincipal.dxBarManager1
@@ -388,7 +332,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Contexts = <>
     TabOrder = 2
     TabStop = False
-    ExplicitWidth = 474
+    ExplicitWidth = 576
     object dxRibbon1Tab1: TdxRibbonTab
       Caption = 'dxRibbon1Tab1'
       Groups = <>
@@ -396,7 +340,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       Index = 0
     end
   end
-  object rdaObtenTurno: TDARemoteDataAdapter
+  object rdaObtenProducto: TDARemoteDataAdapter
     GetSchemaCall.RemoteService = DM.RemoteService
     GetDataCall.RemoteService = DM.RemoteService
     GetDataCall.MethodName = 'AbreDataSetReportes'
@@ -427,10 +371,10 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     GetScriptsCall.RemoteService = DM.RemoteService
     RemoteService = DM.RemoteService
     DataStreamer = DM.DataStreamer
-    Left = 392
+    Left = 280
     Top = 110
   end
-  object cdsObtenTurno: TDACDSDataTable
+  object cdsObtenProducto: TDACDSDataTable
     Fields = <>
     LogicalName = 'Reporte'
     Params = <
@@ -440,11 +384,11 @@ object Fo_AgregarVenta: TFo_AgregarVenta
         ParamType = daptInput
       end>
     ReadOnly = True
-    RemoteDataAdapter = rdaObtenTurno
+    RemoteDataAdapter = rdaObtenProducto
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 392
-    Top = 62
+    Left = 184
+    Top = 110
   end
 end

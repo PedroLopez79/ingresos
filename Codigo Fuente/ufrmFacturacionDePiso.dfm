@@ -5,7 +5,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
   ClientHeight = 618
   ClientWidth = 812
   Position = poDesigned
-  ExplicitLeft = -52
   ExplicitWidth = 812
   ExplicitHeight = 618
   PixelsPerInch = 96
@@ -386,10 +385,10 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         Height = 310
         Width = 783
         object GridFacturacion: TcxGrid
-          Left = 2
-          Top = 5
-          Width = 779
-          Height = 303
+          Left = 3
+          Top = 22
+          Width = 777
+          Height = 285
           Hint = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -453,10 +452,10 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         Height = 553
         Width = 783
         object grdTicket: TcxGrid
-          Left = 2
-          Top = 5
-          Width = 779
-          Height = 546
+          Left = 3
+          Top = 22
+          Width = 777
+          Height = 528
           Hint = ''
           Align = alClient
           TabOrder = 0

@@ -245,6 +245,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure dsIngresosStateChange(Sender: TObject);
     procedure dsEncargadoIngresoStateChange(Sender: TObject);
+    procedure cxButton1Click(Sender: TObject);
   private
     { Private declarations }
     Cambiando: Boolean;
@@ -286,7 +287,7 @@ var
 
 implementation
 uses Modules, uDM, uDMCistemGas, uDMFlotillas, dmImagenes, dmActions, ufrmPantallaParametros,
-UtileriasComun, uTurnoxFecha;
+UtileriasComun, uTurnoxFecha, uAgregarVenta;
 
 {$R *.dfm}
 
@@ -674,6 +675,14 @@ begin
       Break;
     end;
   end;
+end;
+
+procedure TfrmIngresosXfecha.cxButton1Click(Sender: TObject);
+var
+  Venta: uAgregarVenta.TVenta;
+begin
+  inherited;
+  Venta:= Abrir_ModuloAgregarVenta(DM.NumeroEstacion);
 end;
 
 procedure TfrmIngresosXfecha.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;

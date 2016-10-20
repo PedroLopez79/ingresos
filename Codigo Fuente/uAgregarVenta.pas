@@ -25,112 +25,101 @@ uses
   cxCurrencyEdit;
 
 type
+  // Declare a Venta record
+  TVenta = record
+    IDPRODUCTO  : Integer;
+    DESCRIPCION : string[100];
+    PRECIO      : Float;
+    CANTIDAD    : Integer;
+    IMPORTE     : Float;
+    NUMTICKET   : string[50];
+  end;
+
   TFo_AgregarVenta = class(TForm)
     Panel1: TPanel;
     Pa_ayuda: TPanel;
     Label6: TLabel;
-    CBB_Turnos: TComboBox;
     Button2: TButton;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    rdaObtenTurno: TDARemoteDataAdapter;
-    cdsObtenTurno: TDACDSDataTable;
+    rdaObtenProducto: TDARemoteDataAdapter;
+    cdsObtenProducto: TDACDSDataTable;
     dxRibbon1: TdxRibbon;
     dxRibbon1Tab1: TdxRibbonTab;
     Button1: TButton;
-    edtCliente: TcxCurrencyEdit;
+    edtProducto: TcxCurrencyEdit;
     btnBuscaCliente: TcxButton;
     Label7: TLabel;
-    cxCurrencyEdit1: TcxCurrencyEdit;
+    edtDescripcionProducto: TcxCurrencyEdit;
     Label8: TLabel;
-    cxCurrencyEdit2: TcxCurrencyEdit;
+    edtPrecio: TcxCurrencyEdit;
     Label9: TLabel;
     Label10: TLabel;
-    cxCurrencyEdit3: TcxCurrencyEdit;
+    edtCantidad: TcxCurrencyEdit;
     Label11: TLabel;
-    cxCurrencyEdit4: TcxCurrencyEdit;
-    cxCurrencyEdit5: TcxCurrencyEdit;
-    procedure CBB_TurnosChange(Sender: TObject);
+    edtImporte: TcxCurrencyEdit;
+    edtNumTicket: TcxCurrencyEdit;
     procedure Button2Click(Sender: TObject);
+    procedure edtProductoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
-    IDTURNO: Integer;
+    procedure BuscarProducto;
   public
     { Public declarations }
   end;
 
 var
   Fo_AgregarVenta: TFo_AgregarVenta;
+  Venta: TVenta;
 
-function Abrir_ModuloTurnoxFecha(TurnoxFecha: ATTurnoxFecha):Integer;
+function Abrir_ModuloAgregarVenta(Estacion: Integer):TVenta;
 
 implementation
-uses  uDM;
+uses  uDM, ufrmBuscar, ufrmBuscarProducto;
 
 {$R *.dfm}
 
-function Abrir_ModuloTurnoxFecha(TurnoxFecha: ATTurnoxFecha):Integer;
-var
-  i:Integer;
+function Abrir_ModuloAgregarVenta(Estacion: Integer):TVenta;
 Begin
   Fo_AgregarVenta:=TFo_AgregarVenta.Create(Application);
-  Fo_AgregarVenta.IDTURNO:= -1;
-  i:= TurnoxFecha.Count;
-
-  for i := 0 to TurnoxFecha.Count - 1 do
-  begin
-    Fo_AgregarVenta.CBB_Turnos.Items.Add(inttostr(TurnoxFecha.Items[i].IDTURNO));
-  end;
-    Fo_AgregarVenta.CBB_Turnos.Items.Add('AGREGAR UNA SECUENCIA...');
 
   Fo_AgregarVenta.ShowModal;
 
-  Result:= strtoint(Fo_AgregarVenta.Label4.Caption);
+  Result:= Venta;
   Fo_AgregarVenta.Free;
 End;
 
+procedure TFo_AgregarVenta.BuscarProducto;
+var
+   Datos: TDatosBusqueda;
+begin
+  Datos:=PantallaBusqueda(TfrmBuscarProducto,'');
+  if Datos.OK then
+  begin
+     edtProducto.EditValue:= Datos.Clave;
+     edtDescripcionProducto.EditValue:= Datos.Nombre;
+     edtPrecio.Value:= Datos.Precio;
+  end;
+end;
+
 procedure TFo_AgregarVenta.Button2Click(Sender: TObject);
 begin
-  if (IDTURNO > 0) then
-  begin
-     DM.Servidor.AbreTurno(IDTURNO,DM.NumeroEstacion);
-  end;
+  Venta.IDPRODUCTO:= edtProducto.EditValue;
+  Venta.DESCRIPCION:= edtDescripcionProducto.EditValue;
+  Venta.PRECIO:= edtPrecio.EditValue;
+  Venta.CANTIDAD:= edtCantidad.EditValue;
+  Venta.IMPORTE:= edtImporte.EditValue;
+  Venta.NUMTICKET:= edtNumTicket.EditValue;
+
   Fo_AgregarVenta.Close;
 end;
 
-procedure TFo_AgregarVenta.CBB_TurnosChange(Sender: TObject);
-var
-  S: String;
-  P: TParametrosBI;
+procedure TFo_AgregarVenta.edtProductoKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 begin
-  if CBB_Turnos.Text = 'AGREGAR UNA SECUENCIA...' then
+  if Key=VK_F2 then
   begin
-    Try
-    P:= TParametrosBI.Create;
-    P.NumeroEstacion:= DM.NumeroEstacion;
-    S:= 'SELECT ISNULL(MAX(IDTURNO),0) + 1 AS IDTURNO FROM INGRESOS WHERE NUMEROESTACION= @NUMEROESTACION';
-        rdaObtenTurno.GetDataCall.ParamByName('SQL').AsString:=S;
-        rdaObtenTurno.GetDataCall.ParamByName('Parametros').AsComplexType:= P;
-        cdsObtenTurno.Open;
-
-    IDTURNO:= cdsObtenTurno.FieldByName('IDTURNO').AsInteger;
-    label4.Caption:= cdsObtenTurno.FieldByName('IDTURNO').AsString;
-
-    Label5.Visible:= True;
-    Label4.Visible:= True;
-    Finally
-      P.Free;
-    End;
-  end else
-  begin
-    Label5.Visible:= False;
-    Label4.Visible:= False;
-    Fo_AgregarVenta.Label4.Caption:= CBB_Turnos.Text;
+    BuscarProducto;
   end;
-
 end;
 
 end.

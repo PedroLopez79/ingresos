@@ -2,12 +2,12 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   Left = 146
   Top = 0
   Caption = 'frmIngresosXfecha'
-  ClientHeight = 559
+  ClientHeight = 518
   ClientWidth = 1107
   Position = poDesigned
   OnShow = FormShow
   ExplicitWidth = 1107
-  ExplicitHeight = 559
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   object cxGroupBox1: TcxGroupBox
@@ -401,13 +401,14 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     Hint = ''
     Align = alClient
     TabOrder = 1
-    Height = 377
+    ExplicitHeight = 377
+    Height = 336
     Width = 1107
     object pgcConceptos: TcxPageControl
       Left = 3
       Top = 22
       Width = 1101
-      Height = 352
+      Height = 311
       Hint = ''
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -417,11 +418,12 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = Conceptos
+      Properties.ActivePage = cxTabSheet6
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dmImages.Imagenes2
       OnPageChanging = pgcConceptosPageChanging
-      ClientRectBottom = 346
+      ExplicitHeight = 352
+      ClientRectBottom = 305
       ClientRectLeft = 3
       ClientRectRight = 1095
       ClientRectTop = 27
@@ -434,6 +436,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         Font.Style = []
         ImageIndex = 24
         ParentFont = False
+        ExplicitHeight = 319
         object GBTotalesConceptos: TGroupBox
           Left = 21
           Top = 16
@@ -720,7 +723,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         end
         object cxGroupBox5: TcxGroupBox
           Left = 448
-          Top = 212
+          Top = 211
           Hint = ''
           Caption = 'Diferencia'
           Style.LookAndFeel.NativeStyle = False
@@ -760,14 +763,16 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object Conceptos: TcxTabSheet
         Caption = 'Ventas'
         ImageIndex = 61
+        ExplicitHeight = 319
         object dbgConceptos: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
+          ExplicitHeight = 319
           object dbgConceptosDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsDetalleIngreso
@@ -861,15 +866,12 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet2: TcxTabSheet
         Caption = 'Creditos,Debitos o Cupones'
         ImageIndex = 58
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object dbgCreditosDebitosCupones: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -879,7 +881,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          ExplicitHeight = 317
+          ExplicitHeight = 319
           object cxGridDBTableView2: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnFocusedRecordChanged = dbgConceptos1DBTableView1FocusedRecordChanged
@@ -973,19 +975,16 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet1: TcxTabSheet
         Caption = 'Otros Productos'
         ImageIndex = 62
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 318
+          ExplicitHeight = 319
           object cxGridDBTableView1: TcxGridDBTableView
             OnKeyDown = cxGridDBTableView1KeyDown
             Navigator.Buttons.CustomButtons = <>
@@ -1079,19 +1078,16 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet3: TcxTabSheet
         Caption = 'Documentos'
         ImageIndex = 39
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object dbgClientes: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 318
+          ExplicitHeight = 319
           object cxGridDBTableView3: TcxGridDBTableView
             OnKeyDown = cxGridDBTableView3KeyDown
             Navigator.Buttons.CustomButtons = <>
@@ -1163,19 +1159,16 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet4: TcxTabSheet
         Caption = 'Efectivo'
         ImageIndex = 56
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object dbgEfectivo: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 318
+          ExplicitHeight = 319
           object cxGridDBTableView4: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnFocusedRecordChanged = dbgConceptos1DBTableView1FocusedRecordChanged
@@ -1224,19 +1217,16 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet5: TcxTabSheet
         Caption = 'Salida de Efectivo'
         ImageIndex = 60
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object dbgSalidaEfectivos: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 318
+          ExplicitHeight = 319
           object cxGridDBTableView5: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnFocusedRecordChanged = dbgConceptos1DBTableView1FocusedRecordChanged
@@ -1270,20 +1260,17 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet7: TcxTabSheet
         Caption = 'Cheques'
         ImageIndex = 50
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object dbgCheques: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
           LookAndFeel.NativeStyle = False
-          ExplicitHeight = 318
+          ExplicitHeight = 319
           object dbgChequesDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -1370,20 +1357,17 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet8: TcxTabSheet
         Caption = 'Otros'
         ImageIndex = 59
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 318
+        ExplicitHeight = 319
         object dbgOtros: TcxGrid
           Left = 0
           Top = 0
           Width = 1092
-          Height = 319
+          Height = 278
           Hint = ''
           Align = alClient
           TabOrder = 0
           LookAndFeel.NativeStyle = False
-          ExplicitHeight = 318
+          ExplicitHeight = 319
           object dbgOtrosDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -1480,6 +1464,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxButton1Click
     end
     object cxButton2: TcxButton
       Left = 126
