@@ -5,7 +5,9 @@ inherited frmBuscarProducto: TfrmBuscarProducto
   PixelsPerInch = 96
   TextHeight = 13
   inherited dbgAgrupacion: TcxGrid
+    ExplicitTop = 18
     inherited cxGridDBTableView1: TcxGridDBTableView
+      OnKeyDown = cxGridDBTableView1KeyDown
       object cxGridDBTableView1Codigo: TcxGridDBColumn
         DataBinding.FieldName = 'CODIGOPRODUCTO'
         Width = 109

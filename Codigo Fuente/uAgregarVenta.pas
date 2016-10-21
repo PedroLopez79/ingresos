@@ -58,11 +58,15 @@ type
     edtImporte: TcxCurrencyEdit;
     edtNumTicket: TcxCurrencyEdit;
     procedure Button2Click(Sender: TObject);
+    procedure btnBuscaClienteClick(Sender: TObject);
     procedure edtProductoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure Button1Click(Sender: TObject);
+    procedure edtCantidadPropertiesEditValueChanged(Sender: TObject);
   private
     { Private declarations }
-    procedure BuscarProducto;
+    procedure ActionBuscar(Action: TBasicAction);
   public
     { Public declarations }
   end;
@@ -88,9 +92,9 @@ Begin
   Fo_AgregarVenta.Free;
 End;
 
-procedure TFo_AgregarVenta.BuscarProducto;
+procedure TFo_AgregarVenta.ActionBuscar(Action: TBasicAction);
 var
-   Datos: TDatosBusqueda;
+  Datos: TDatosBusqueda;
 begin
   Datos:=PantallaBusqueda(TfrmBuscarProducto,'');
   if Datos.OK then
@@ -99,6 +103,17 @@ begin
      edtDescripcionProducto.EditValue:= Datos.Nombre;
      edtPrecio.Value:= Datos.Precio;
   end;
+  edtCantidad.SetFocus();
+end;
+
+procedure TFo_AgregarVenta.btnBuscaClienteClick(Sender: TObject);
+begin
+   ActionBuscar(nil);
+end;
+
+procedure TFo_AgregarVenta.Button1Click(Sender: TObject);
+begin
+  Fo_AgregarVenta.Close;
 end;
 
 procedure TFo_AgregarVenta.Button2Click(Sender: TObject);
@@ -113,12 +128,25 @@ begin
   Fo_AgregarVenta.Close;
 end;
 
+procedure TFo_AgregarVenta.edtCantidadPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  edtimporte.EditValue:= edtPrecio.EditValue * edtCantidad.EditValue;
+end;
+
 procedure TFo_AgregarVenta.edtProductoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key=VK_F2 then
+     ActionBuscar(nil);
+end;
+
+procedure TFo_AgregarVenta.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
   begin
-    BuscarProducto;
+    Key:=#0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
   end;
 end;
 

@@ -246,6 +246,7 @@ type
     procedure dsIngresosStateChange(Sender: TObject);
     procedure dsEncargadoIngresoStateChange(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     Cambiando: Boolean;
@@ -258,6 +259,7 @@ type
     ValorMoneda: Float;
     ValoresMoneda: LibraryIngresos_Intf.ATTipoValores;
 
+    procedure AgregaVenta(Producto: Integer; Cantidad, Importe: Double);
     procedure EstadoDataSets(Activos: Boolean);
     procedure Calcula(Aplicar: Boolean);
     procedure ActionNuevo(Action: TBasicAction);
@@ -457,6 +459,22 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TfrmIngresosXfecha.AgregaVenta(Producto: Integer; Cantidad,
+  Importe: Double);
+begin
+  cdsTipoComprobacion.Filtered:=False;
+  cdsTipoComprobacion.Locate('TipoValorID', Producto, []);
+  cdsDetalleIngreso.Append;
+  cdsDetalleIngreso.FieldByName('Cantidad').AsFloat:=Cantidad;
+  cdsDetalleIngreso.FieldByName('Importe').AsFloat:=Importe;
+  cdsDetalleIngreso.FieldByName('TipoValorID').AsInteger:=Producto;
+  cdsDetalleIngreso.FieldByName('Factor').AsInteger:=1;
+  cdsDetalleIngreso.FieldByName('ProductoID').AsInteger:=Producto;
+  cdsDetalleIngreso.FieldByName('Referencia').AsString:=cdsTipoComprobacion.FieldByName('Nombre').AsString;
+  cdsDetalleIngreso.FieldByName('Grupo').AsString:=cdsTipoComprobacion.FieldByName('Grupo').AsString;
+  cdsDetalleIngreso.Post;
 end;
 
 function TfrmIngresosXfecha.BuscarCliente: TDatosBusqueda;
@@ -683,6 +701,8 @@ var
 begin
   inherited;
   Venta:= Abrir_ModuloAgregarVenta(DM.NumeroEstacion);
+
+  //AGREGAR CODIGO PARA AGREGAR LA VENTA A DETALLEINGRESOS--------------------//
 end;
 
 procedure TfrmIngresosXfecha.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
@@ -802,6 +822,19 @@ begin
   ListaTickets:=TStringList.Create;
   cxGroupBox1.Enabled:= False;
   Panel1.Enabled:= False;
+end;
+
+procedure TfrmIngresosXfecha.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  if Key = VK_F2 then
+  begin
+     Venta:= Abrir_ModuloAgregarVenta(DM.NumeroEstacion);
+//AGREGAR CODIGO PARA AGREGAR LA VENTA A DETALLEINGRESOS--------------------//
+  end;
+
+
 end;
 
 procedure TfrmIngresosXfecha.FormShow(Sender: TObject);

@@ -9,6 +9,7 @@ inherited frmDebito: TfrmDebito
   object cxGroupBox2: TcxGroupBox
     Left = 8
     Top = 8
+    Hint = ''
     Caption = 'Cliente'
     TabOrder = 0
     Height = 170
@@ -72,6 +73,7 @@ inherited frmDebito: TfrmDebito
     object edtNombre: TcxTextEdit
       Left = 67
       Top = 69
+      Hint = ''
       TabStop = False
       Enabled = False
       Properties.ReadOnly = True
@@ -86,6 +88,7 @@ inherited frmDebito: TfrmDebito
     object edtRFC: TcxTextEdit
       Left = 67
       Top = 103
+      Hint = ''
       TabStop = False
       Enabled = False
       Properties.ReadOnly = True
@@ -100,6 +103,7 @@ inherited frmDebito: TfrmDebito
     object edtCuenta: TcxTextEdit
       Left = 67
       Top = 138
+      Hint = ''
       TabStop = False
       Enabled = False
       Properties.ReadOnly = True
@@ -114,6 +118,7 @@ inherited frmDebito: TfrmDebito
     object edtCliente: TcxCurrencyEdit
       Left = 67
       Top = 32
+      Hint = ''
       EditValue = 0
       Properties.DisplayFormat = '#'
       Style.LookAndFeel.NativeStyle = True
@@ -132,14 +137,13 @@ inherited frmDebito: TfrmDebito
       Width = 25
       Height = 21
       Hint = 'Buscar Recibo'
-      TabOrder = 4
-      OnClick = btnBuscaReciboClick
       Colors.Default = clWhite
       Colors.Normal = clWhite
       Colors.Hot = clWhite
       Colors.Pressed = clWhite
       Colors.Disabled = clWhite
-      Glyph.Data = {
+      LookAndFeel.NativeStyle = False
+      OptionsImage.Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000000000000000
@@ -174,21 +178,21 @@ inherited frmDebito: TfrmDebito
         0613C5884BE2D39B5AEF825A3196000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000003D2A174700000000000000000000000000000000}
-      LookAndFeel.NativeStyle = False
+      TabOrder = 4
+      OnClick = btnBuscaReciboClick
     end
     object btnBuscarCliente: TcxButton
       Left = 165
       Top = 32
       Width = 25
       Height = 21
-      TabOrder = 5
-      OnClick = btnBuscarClienteClick
       Colors.Default = clWhite
       Colors.Normal = clWhite
       Colors.Hot = clWhite
       Colors.Pressed = clWhite
       Colors.Disabled = clWhite
-      Glyph.Data = {
+      LookAndFeel.NativeStyle = False
+      OptionsImage.Glyph.Data = {
         36050000424D3605000000000000360400002800000010000000100000000100
         08000000000000010000120B0000120B0000000100000000000000000000FFFF
         FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
@@ -231,12 +235,14 @@ inherited frmDebito: TfrmDebito
         2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
         0202020202020202020202020202020202020202020202020202020202020202
         0202020202020202020202020202020202020202020202020202}
-      LookAndFeel.NativeStyle = False
+      TabOrder = 5
+      OnClick = btnBuscarClienteClick
     end
   end
   object cxGroupBox3: TcxGroupBox
     Left = 8
     Top = 184
+    Hint = ''
     Caption = 'Recibido'
     TabOrder = 1
     Height = 266
@@ -342,6 +348,7 @@ inherited frmDebito: TfrmDebito
     object cxDBTextEdit5: TcxDBTextEdit
       Left = 80
       Top = 64
+      Hint = ''
       DataBinding.DataField = 'Referencia'
       DataBinding.DataSource = dsRecibo
       Properties.CharCase = ecUpperCase
@@ -355,6 +362,7 @@ inherited frmDebito: TfrmDebito
     object cxDBTextEdit6: TcxDBTextEdit
       Left = 80
       Top = 128
+      Hint = ''
       DataBinding.DataField = 'Cheque'
       DataBinding.DataSource = dsRecibo
       Properties.CharCase = ecUpperCase
@@ -368,6 +376,7 @@ inherited frmDebito: TfrmDebito
     object cxDBCurrencyEdit1: TcxDBCurrencyEdit
       Left = 80
       Top = 160
+      Hint = ''
       DataBinding.DataField = 'Importe'
       DataBinding.DataSource = dsRecibo
       Style.LookAndFeel.NativeStyle = True
@@ -380,6 +389,7 @@ inherited frmDebito: TfrmDebito
     object dtpFecha: TcxDateEdit
       Left = 80
       Top = 32
+      Hint = ''
       Properties.ButtonGlyph.Data = {
         46020000424D460200000000000036000000280000000E0000000C0000000100
         1800000000001002000000000000000000000000000000000000FF00FFFF00FF
@@ -417,6 +427,7 @@ inherited frmDebito: TfrmDebito
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 80
       Top = 96
+      Hint = ''
       DataBinding.DataField = 'BancoID'
       DataBinding.DataSource = dsRecibo
       Properties.KeyFieldNames = 'BancoID'
@@ -431,6 +442,7 @@ inherited frmDebito: TfrmDebito
     object cbProducto: TcxLookupComboBox
       Left = 80
       Top = 194
+      Hint = ''
       Properties.DropDownWidth = 350
       Properties.KeyFieldNames = 'ProductoID'
       Properties.ListColumns = <
@@ -456,6 +468,7 @@ inherited frmDebito: TfrmDebito
     object cdEstacion: TcxLookupComboBox
       Left = 80
       Top = 232
+      Hint = ''
       Properties.DropDownWidth = 350
       Properties.KeyFieldNames = 'EstacionID'
       Properties.ListColumns = <
@@ -482,6 +495,7 @@ inherited frmDebito: TfrmDebito
   object cxGroupBox1: TcxGroupBox
     Left = 301
     Top = 8
+    Hint = ''
     Caption = 'Datos Recibo del Cliente'
     TabOrder = 2
     Height = 170
@@ -564,7 +578,6 @@ inherited frmDebito: TfrmDebito
     end
   end
   object cdsMovimientos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'MovimientoID'
@@ -631,14 +644,15 @@ inherited frmDebito: TfrmDebito
         Name = 'ClienteID'
         DataType = datInteger
       end>
+    LogicalName = 'dbo Movimiento'
     Params = <
       item
         Name = 'Movimiento'
         Value = '1'
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
-    LogicalName = 'dbo Movimiento'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 553
     Top = 8
@@ -650,7 +664,6 @@ inherited frmDebito: TfrmDebito
     Top = 48
   end
   object cdsRecibo: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'ReciboID'
@@ -720,15 +733,16 @@ inherited frmDebito: TfrmDebito
         Name = 'EstacionID'
         DataType = datInteger
       end>
+    LogicalName = 'dbo Recibo'
     Params = <
       item
         Name = 'Recibo'
         Value = '1'
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     AfterPost = cdsReciboAfterPost
-    LogicalName = 'dbo Recibo'
     IndexDefs = <>
     Left = 521
     Top = 8
@@ -740,7 +754,6 @@ inherited frmDebito: TfrmDebito
     Top = 48
   end
   object cdsCliente: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'ClienteID'
@@ -774,15 +787,16 @@ inherited frmDebito: TfrmDebito
         DataType = datString
         Size = 20
       end>
+    LogicalName = 'spBuscaCliente'
     Params = <
       item
         Name = 'Cliente'
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
-    LogicalName = 'spBuscaCliente'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 584
     Top = 8
@@ -794,7 +808,6 @@ inherited frmDebito: TfrmDebito
     Top = 48
   end
   object cdsBancos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'BancoID'
@@ -813,10 +826,11 @@ inherited frmDebito: TfrmDebito
         DataType = datString
         Size = 50
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
     LogicalName = 'dbo Banco'
+    Params = <>
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 616
     Top = 8
@@ -828,7 +842,6 @@ inherited frmDebito: TfrmDebito
     Top = 48
   end
   object cdsProductos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'ProductoID'
@@ -856,11 +869,12 @@ inherited frmDebito: TfrmDebito
         Name = 'IEPS'
         DataType = datFloat
       end>
-    Params = <>
-    MasterMappingMode = mmDataRequest
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
     LogicalName = 'dbo Producto'
+    MasterMappingMode = mmDataRequest
+    Params = <>
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 458
     Top = 8
@@ -872,7 +886,6 @@ inherited frmDebito: TfrmDebito
     Top = 8
   end
   object cdsEstacion: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'EstacionID'
@@ -936,11 +949,12 @@ inherited frmDebito: TfrmDebito
         DataType = datInteger
         Required = True
       end>
-    Params = <>
-    MasterMappingMode = mmDataRequest
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
     LogicalName = 'dbo Estacion'
+    MasterMappingMode = mmDataRequest
+    Params = <>
+    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 458
     Top = 48

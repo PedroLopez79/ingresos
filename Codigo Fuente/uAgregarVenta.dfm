@@ -13,7 +13,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnKeyDown = edtProductoKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -29,7 +29,6 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitHeight = 153
     object Label6: TLabel
       Left = 154
       Top = 51
@@ -183,7 +182,8 @@ object Fo_AgregarVenta: TFo_AgregarVenta
         2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
         0202020202020202020202020202020202020202020202020202020202020202
         0202020202020202020202020202020202020202020202020202}
-      TabOrder = 1
+      TabOrder = 6
+      OnClick = btnBuscaClienteClick
     end
     object edtDescripcionProducto: TcxCurrencyEdit
       Left = 153
@@ -202,7 +202,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleFocused.LookAndFeel.NativeStyle = True
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 2
+      TabOrder = 1
       Width = 180
     end
     object edtPrecio: TcxCurrencyEdit
@@ -211,8 +211,29 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       Hint = ''
       EditValue = 0c
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '#.##'
+      Properties.DisplayFormat = '$#0.00'
       Properties.ReadOnly = False
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 2
+      Width = 81
+    end
+    object edtCantidad: TcxCurrencyEdit
+      Left = 66
+      Top = 80
+      Hint = ''
+      EditValue = 0
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '#'
+      Properties.ReadOnly = False
+      Properties.OnEditValueChanged = edtCantidadPropertiesEditValueChanged
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
       Style.LookAndFeel.NativeStyle = True
@@ -225,13 +246,14 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       TabOrder = 3
       Width = 81
     end
-    object edtCantidad: TcxCurrencyEdit
+    object edtImporte: TcxCurrencyEdit
       Left = 66
-      Top = 80
+      Top = 112
       Hint = ''
-      EditValue = 0
+      EditValue = 0c
+      Enabled = False
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '#'
+      Properties.DisplayFormat = '$#0.00'
       Properties.ReadOnly = False
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -243,26 +265,6 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
       TabOrder = 4
-      Width = 81
-    end
-    object edtImporte: TcxCurrencyEdit
-      Left = 66
-      Top = 112
-      Hint = ''
-      EditValue = 0c
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '#.##'
-      Properties.ReadOnly = False
-      Style.BorderStyle = ebsOffice11
-      Style.LookAndFeel.Kind = lfOffice11
-      Style.LookAndFeel.NativeStyle = True
-      StyleDisabled.LookAndFeel.Kind = lfOffice11
-      StyleDisabled.LookAndFeel.NativeStyle = True
-      StyleFocused.LookAndFeel.Kind = lfOffice11
-      StyleFocused.LookAndFeel.NativeStyle = True
-      StyleHot.LookAndFeel.Kind = lfOffice11
-      StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 5
       Width = 81
     end
     object edtNumTicket: TcxCurrencyEdit
@@ -282,7 +284,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleFocused.LookAndFeel.NativeStyle = True
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 6
+      TabOrder = 5
       Width = 128
     end
   end
@@ -299,7 +301,6 @@ object Fo_AgregarVenta: TFo_AgregarVenta
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 181
     object Button2: TButton
       Left = 182
       Top = 3
@@ -316,7 +317,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       Height = 25
       Caption = 'Cancelar'
       TabOrder = 1
-      OnClick = Button2Click
+      OnClick = Button1Click
     end
   end
   object dxRibbon1: TdxRibbon

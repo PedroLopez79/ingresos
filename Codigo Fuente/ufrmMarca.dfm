@@ -3,7 +3,7 @@ inherited frmMarca: TfrmMarca
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCatalogo: TcxPageControl
-    ActivePage = cxTabSheet2
+    Properties.ActivePage = cxTabSheet2
     inherited cxTabSheet1: TcxTabSheet
       ExplicitLeft = 3
       ExplicitTop = 3
@@ -52,6 +52,7 @@ inherited frmMarca: TfrmMarca
       object LblNoProducto: TcxLabel
         Left = 16
         Top = 48
+        Hint = ''
         Caption = 'ID'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -59,6 +60,7 @@ inherited frmMarca: TfrmMarca
       object TxtNoProducto: TcxDBTextEdit
         Left = 82
         Top = 47
+        Hint = ''
         TabStop = False
         DataBinding.DataField = 'IDMARCA'
         DataBinding.DataSource = dsCatalogo
@@ -76,6 +78,7 @@ inherited frmMarca: TfrmMarca
       object LblNombre: TcxLabel
         Left = 16
         Top = 88
+        Hint = ''
         Caption = 'Descripcion'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -83,6 +86,7 @@ inherited frmMarca: TfrmMarca
       object TxtNombre: TcxDBTextEdit
         Left = 82
         Top = 87
+        Hint = ''
         DataBinding.DataField = 'DESCRIPCION'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -118,9 +122,9 @@ inherited frmMarca: TfrmMarca
         DataType = datString
         Size = 50
       end>
+    LogicalName = 'dbo MARCA'
     RemoteDataAdapter = DM.RemoteDataAdapter
     OnNewRecord = cdsCatalogoNewRecord
-    LogicalName = 'dbo MARCA'
   end
   inherited dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset

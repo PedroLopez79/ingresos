@@ -36,6 +36,8 @@ type
     procedure cdsBuscarFilterRecord(DataTable: TDADataTable;
       var Accept: Boolean);
     procedure cxGridDBTableView1DblClick(Sender: TObject);
+    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -66,6 +68,19 @@ begin
   Datos.Precio:= cdsBuscar.FieldByName('PrecioVenta').AsFloat;
   inherited;
 
+end;
+
+procedure TfrmBuscarProducto.cxGridDBTableView1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if Key = VK_RETURN then
+  begin
+    Datos.Clave:=cdsBuscar.FieldByName('IDPRODUCTO').AsInteger;
+    Datos.Nombre:= cdsBuscar.FieldByName('Nombre').AsString;
+    Datos.Costo:=cdsBuscar.FieldByName('COSTO').AsFloat;
+    Datos.Precio:= cdsBuscar.FieldByName('PrecioVenta').AsFloat;
+  end;
 end;
 
 end.

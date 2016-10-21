@@ -16,7 +16,13 @@ uses
   uDAInterfaces, uDADataTable, uDAScriptingProvider, uDACDSDataTable,
   cxDBLookupComboBox, StdCtrls, cxButtons, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, cxMaskEdit, cxCalendar, cxDBEdit, cxCurrencyEdit, cxTextEdit,
-  cxGroupBox, LibraryIngresos_Intf, LibraryFlotillas_Intf;
+  cxGroupBox, LibraryIngresos_Intf, LibraryFlotillas_Intf, dxSkinBlueprint,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
+  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
+  Vcl.ComCtrls, dxCore, cxDateUtils, uDAFields, uROComponent;
 
 type
   TfrmDebito = class(TfrmCustomModule)
