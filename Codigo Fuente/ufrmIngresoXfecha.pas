@@ -28,7 +28,7 @@ uses
   dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
   dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, cxPCdxBarPopupMenu,
   cxNavigator, uDADataAdapter, uDAFields, uROComponent, Vcl.ExtCtrls, Vcl.Menus,
-  cxButtons;
+  cxButtons, uAgregarVenta;
 
 const
    MaximoValores: Integer = 10;
@@ -259,7 +259,7 @@ type
     ValorMoneda: Float;
     ValoresMoneda: LibraryIngresos_Intf.ATTipoValores;
 
-    procedure AgregaVenta(Producto: Integer; Cantidad, Importe: Double);
+    procedure AgregaVenta(Venta: uAgregarVenta.TVenta);
     procedure EstadoDataSets(Activos: Boolean);
     procedure Calcula(Aplicar: Boolean);
     procedure ActionNuevo(Action: TBasicAction);
@@ -289,7 +289,7 @@ var
 
 implementation
 uses Modules, uDM, uDMCistemGas, uDMFlotillas, dmImagenes, dmActions, ufrmPantallaParametros,
-UtileriasComun, uTurnoxFecha, uAgregarVenta;
+UtileriasComun, uTurnoxFecha;
 
 {$R *.dfm}
 
@@ -461,19 +461,18 @@ begin
   end;
 end;
 
-procedure TfrmIngresosXfecha.AgregaVenta(Producto: Integer; Cantidad,
-  Importe: Double);
+procedure TfrmIngresosXfecha.AgregaVenta(Venta: uAgregarVenta.TVenta);
 begin
   cdsTipoComprobacion.Filtered:=False;
-  cdsTipoComprobacion.Locate('TipoValorID', Producto, []);
+  cdsTipoComprobacion.Locate('IDTIPOCOMPROBACION', 1, []);
   cdsDetalleIngreso.Append;
-  cdsDetalleIngreso.FieldByName('Cantidad').AsFloat:=Cantidad;
-  cdsDetalleIngreso.FieldByName('Importe').AsFloat:=Importe;
-  cdsDetalleIngreso.FieldByName('TipoValorID').AsInteger:=Producto;
-  cdsDetalleIngreso.FieldByName('Factor').AsInteger:=1;
-  cdsDetalleIngreso.FieldByName('ProductoID').AsInteger:=Producto;
-  cdsDetalleIngreso.FieldByName('Referencia').AsString:=cdsTipoComprobacion.FieldByName('Nombre').AsString;
-  cdsDetalleIngreso.FieldByName('Grupo').AsString:=cdsTipoComprobacion.FieldByName('Grupo').AsString;
+  cdsDetalleIngreso.FieldByName('Cantidad').AsFloat:= Venta.CANTIDAD;
+  cdsDetalleIngreso.FieldByName('Importe').AsFloat:= Venta.IMPORTE;
+  cdsDetalleIngreso.FieldByName('IDTIPOCOMPROBACION').AsInteger:= 1;
+  cdsDetalleIngreso.FieldByName('PRECIO').AsFloat:= Venta.PRECIO;
+  cdsDetalleIngreso.FieldByName('IDPRODUCTO').AsInteger:=Venta.IDPRODUCTO;
+  cdsDetalleIngreso.FieldByName('DESCRIPCION').AsString:=cdsTipoComprobacion.FieldByName('DESCRIPCION').AsString;
+  cdsDetalleIngreso.FieldByName('TICKET').AsString:= Venta.NUMTICKET;
   cdsDetalleIngreso.Post;
 end;
 
@@ -560,14 +559,14 @@ begin
   if pgcConceptos.ActivePageIndex in [1..8] then
   begin
     case pgcConceptos.ActivePageIndex of
-      1: s:='GRUPO = ''EFECTIVO''';
-      2: s:='GRUPO = ''CLIENTES''';
-      3: s:='GRUPO = ''CHEQUES''';
-      4: s:='GRUPO = ''TARJETAS Y CUPONES''';
-      5: s:='GRUPO = ''OTROS''';
-      6: s:='GRUPO = ''PRODUCTOS''';
-      7: s:='GRUPO = ''COMBUSTIBLES''';
-      8: s:='GRUPO = ''FALTANTES'' OR GRUPO = ''SOBRANTES'' OR GRUPO = ''PENDIENTE AUTORIZAR''';
+      1: s:='IDTIPOCOMPROBACION = ''1''';
+      2: s:='IDTIPOCOMPROBACION = ''CLIENTES''';
+      3: s:='IDTIPOCOMPROBACION = ''CHEQUES''';
+      4: s:='IDTIPOCOMPROBACION = ''TARJETAS Y CUPONES''';
+      5: s:='IDTIPOCOMPROBACION = ''OTROS''';
+      6: s:='IDTIPOCOMPROBACION = ''PRODUCTOS''';
+      7: s:='IDTIPOCOMPROBACION = ''EFECTIVO''';
+      8: s:='IDTIPOCOMPROBACION = ''FALTANTES'' OR GRUPO = ''SOBRANTES'' OR GRUPO = ''PENDIENTE AUTORIZAR''';
   end;
 
   {if pgcConceptos.ActivePageIndex in [0..5] then
@@ -703,6 +702,7 @@ begin
   Venta:= Abrir_ModuloAgregarVenta(DM.NumeroEstacion);
 
   //AGREGAR CODIGO PARA AGREGAR LA VENTA A DETALLEINGRESOS--------------------//
+  AgregaVenta(Venta);
 end;
 
 procedure TfrmIngresosXfecha.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
@@ -831,7 +831,8 @@ begin
   if Key = VK_F2 then
   begin
      Venta:= Abrir_ModuloAgregarVenta(DM.NumeroEstacion);
-//AGREGAR CODIGO PARA AGREGAR LA VENTA A DETALLEINGRESOS--------------------//
+     //AGREGAR VENTA A DETALLEINGRESOS----------------------------------------//
+     AgregaVenta(Venta);
   end;
 
 
@@ -1036,9 +1037,31 @@ end;
 procedure TfrmIngresosXfecha.pgcConceptosPageChanging(Sender: TObject;
   NewPage: TcxTabSheet; var AllowChange: Boolean);
 var
- s: String;
+  s: String;
 begin
   inherited;
+  if not (NewPage.PageIndex in [1..9]) then
+    Exit;
+
+  case NewPage.PageIndex of
+    1: s:='GRUPO = ''VENTAS''';
+    2: s:='GRUPO = ''CLIENTES''';
+    3: s:='GRUPO = ''CHEQUES''';
+    4: s:='GRUPO = ''TARJETAS Y CUPONES''';
+    5: s:='GRUPO = ''OTROS''';
+    6: s:='GRUPO = ''PRODUCTOS''';
+    7: s:='GRUPO = ''EFECTIVO''';
+    8: s:='(GRUPO = ''FALTANTES'' OR GRUPO = ''SOBRANTES'' OR GRUPO = ''PENDIENTE AUTORIZAR'')';
+    9: S:='GRUPO = ''OK''';
+  end;
+  cdsDetalleIngreso.Filtered:=False;
+  cdsTipoComprobacion.Filtered:=False;
+  cdsTipoComprobacion.Filter:=s;
+  cdsTipoComprobacion.Filtered:=True;
+  cdsDetalleIngreso.Filter:='IDTIPOCOMPROBACION ='+cdsTipoComprobacion.FieldByName('IDTIPOCOMPROBACION').AsString + ' AND IDENCARGADOINGRESOS = ' + IntToStr(cdsEncargadoIngreso.FieldByName('IDENCARGADOINGRESOS').AsInteger);
+  //cdsDetalleIngreso.Filter:=s + ' AND IDENCARGADOINGRESOS = ' + IntToStr(cdsEncargadoIngreso.FieldByName('IDENCARGADOINGRESOS').AsInteger);
+  cdsDetalleIngreso.Filtered:=True;
+  {inherited;
   case NewPage.PageIndex of
     0: begin IDTIPOVALOR:= ESCOMBUSTIBLE; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESCOMBUSTIBLE) +''''; end;
     1: begin IDTIPOVALOR:= ESCREDITODEBITOCUPON; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESCREDITODEBITOCUPON) +''''; end;
@@ -1050,7 +1073,7 @@ begin
 
   cdsDetalleIngreso.Filtered:=False;
   cdsDetalleIngreso.Filter:=s;
-  cdsDetalleIngreso.Filtered:=True;
+  cdsDetalleIngreso.Filtered:=True;}
 end;
 
 procedure TfrmIngresosXfecha.ProductoCantidadPropertiesValidate(Sender: TObject;

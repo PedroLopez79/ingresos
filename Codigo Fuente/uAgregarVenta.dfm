@@ -182,7 +182,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
         2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
         0202020202020202020202020202020202020202020202020202020202020202
         0202020202020202020202020202020202020202020202020202}
-      TabOrder = 6
+      TabOrder = 1
       OnClick = btnBuscaClienteClick
     end
     object edtDescripcionProducto: TcxCurrencyEdit
@@ -202,7 +202,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleFocused.LookAndFeel.NativeStyle = True
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 1
+      TabOrder = 5
       Width = 180
     end
     object edtPrecio: TcxCurrencyEdit
@@ -264,7 +264,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleFocused.LookAndFeel.NativeStyle = True
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 4
+      TabOrder = 6
       Width = 81
     end
     object edtNumTicket: TcxCurrencyEdit
@@ -284,7 +284,7 @@ object Fo_AgregarVenta: TFo_AgregarVenta
       StyleFocused.LookAndFeel.NativeStyle = True
       StyleHot.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 5
+      TabOrder = 4
       Width = 128
     end
   end

@@ -127,12 +127,7 @@ begin
     Application.Title := 'Ingresos 1.0';
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TdmAppActions, dmAppActions);
   Application.CreateForm(TdmImages, dmImages);
-  Application.CreateForm(TrbPrintPreview, rbPrintPreview);
-  Application.CreateForm(TfrmCatalogo, frmCatalogo);
-  Application.CreateForm(TfrmSplash, frmSplash);
-  Application.CreateForm(TFo_TurnoxFecha, Fo_TurnoxFecha);
   //Application.CreateForm(TDMExcel, DMExcel);
   //Application.CreateForm(TDMFlotillas, DMFlotillas);
   //Application.CreateForm(TDMCistemGas, DMCistemGas);

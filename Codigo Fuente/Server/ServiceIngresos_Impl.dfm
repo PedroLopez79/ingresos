@@ -5155,8 +5155,9 @@ object ServiceIngresos: TServiceIngresos
             SQL = 
               'SELECT '#10'    IDTIPOCOMPROBACION, DESCRIPCION, CUENTACONCENTRADORA' +
               ', '#10'    CC, ESCREDITODEBITOYCUPON, ESPRODUCTO, ESCOMBUSTIBLE,'#10'   ' +
-              ' ESCLIENTE, ESEFECTIVO, ESSALIDAEFECTIVO'#10'  FROM'#10'    dbo.TIPOCOMP' +
-              'ROBACION'#10'  WHERE {Where}'#10
+              ' ESCLIENTE, ESEFECTIVO, ESSALIDAEFECTIVO, GRUPO, GRUPOCIERRE,'#10'  ' +
+              '  FACTOR, OPERADOR'#10'  FROM'#10'    dbo.TIPOCOMPROBACION'#10'  WHERE {Wher' +
+              'e}'#10
             StatementType = stSQL
             ColumnMappings = <
               item
@@ -5198,6 +5199,22 @@ object ServiceIngresos: TServiceIngresos
               item
                 DatasetField = 'ESSALIDAEFECTIVO'
                 TableField = 'ESSALIDAEFECTIVO'
+              end
+              item
+                DatasetField = 'GRUPO'
+                TableField = 'GRUPO'
+              end
+              item
+                DatasetField = 'GRUPOCIERRE'
+                TableField = 'GRUPOCIERRE'
+              end
+              item
+                DatasetField = 'FACTOR'
+                TableField = 'FACTOR'
+              end
+              item
+                DatasetField = 'OPERADOR'
+                TableField = 'OPERADOR'
               end>
           end>
         Name = 'dbo TIPOCOMPROBACION'
@@ -5244,6 +5261,24 @@ object ServiceIngresos: TServiceIngresos
           item
             Name = 'ESSALIDAEFECTIVO'
             DataType = datBoolean
+          end
+          item
+            Name = 'GRUPO'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'GRUPOCIERRE'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'FACTOR'
+            DataType = datFloat
+          end
+          item
+            Name = 'OPERADOR'
+            DataType = datInteger
           end>
       end
       item

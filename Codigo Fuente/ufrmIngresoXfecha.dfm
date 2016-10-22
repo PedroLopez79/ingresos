@@ -7,6 +7,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   Position = poDesigned
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  ExplicitTop = -74
   ExplicitWidth = 1107
   ExplicitHeight = 518
   PixelsPerInch = 96
@@ -418,7 +419,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet6
+      Properties.ActivePage = cxTabSheet8
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dmImages.Imagenes2
       OnPageChanging = pgcConceptosPageChanging
@@ -1827,6 +1828,24 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       item
         Name = 'ESSALIDAEFECTIVO'
         DataType = datBoolean
+      end
+      item
+        Name = 'GRUPO'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'GRUPOCIERRE'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'FACTOR'
+        DataType = datFloat
+      end
+      item
+        Name = 'OPERADOR'
+        DataType = datInteger
       end>
     LogicalName = 'dbo TIPOCOMPROBACION'
     Params = <>
