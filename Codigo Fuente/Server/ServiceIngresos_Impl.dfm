@@ -6709,25 +6709,19 @@ object ServiceIngresos: TServiceIngresos
           item
             Name = 'IDINGRESO'
             DataType = datInteger
-            Value = '-1'
+            Value = '-5'
             ParamType = daptInput
           end
           item
             Name = 'IDTURNO'
-            DataType = datInteger
-            Value = ''
+            DataType = datString
+            Value = '4'
             ParamType = daptInput
           end
           item
             Name = 'NUMEROESTACION'
             DataType = datString
-            Size = 65536
             Value = '1'
-            ParamType = daptInput
-          end
-          item
-            Name = 'IDENCARGADOINGRESOS'
-            Value = ''
             ParamType = daptInput
           end>
         Statements = <
@@ -6746,12 +6740,8 @@ object ServiceIngresos: TServiceIngresos
               '          ,[VENTATOTAL]'#10'           ,[EFECTIVOENTREGADO]'#10'        ' +
               '   ,[SALIDAEFECTIVO]'#10'           ,[DIFERENCIA])'#10'     VALUES(:IDIN' +
               'GRESO,GETDATE(),@EJERCICIO,@PERIODO,@DIA,:IDTURNO,:NUMEROESTACIO' +
-              'N,-1,GETDATE(),GETDATE(),0,0,0,0,0,0)'#10#10#10'INSERT INTO [dbo].[ENCAR' +
-              'GADOINGRESOS]'#10'           ([IDENCARGADOINGRESOS]'#10'           ,[IDE' +
-              'MPLEADO]'#10'           ,[IDINGRESO]'#10'           ,[OBSERVACIONES])'#10'  ' +
-              '   VALUES'#10'           (:IDENCARGADOINGRESOS,-1,:IDINGRESO,'#39'LIQUID' +
-              'ACION AUTOGENERADA'#39')'#10#10#10' SELECT '#39'TURNO ABIERTO CORRECTAMENTE'#39' AS ' +
-              'RESULT'#10
+              'N,-1,GETDATE(),GETDATE(),0,0,0,0,0,0)'#10#10#10' SELECT '#39'TURNO ABIERTO C' +
+              'ORRECTAMENTE'#39' AS RESULT'#10
             StatementType = stSQL
             ColumnMappings = <>
           end>
@@ -6761,8 +6751,7 @@ object ServiceIngresos: TServiceIngresos
         Fields = <
           item
             Name = 'RESULT'
-            DataType = datString
-            Size = 27
+            DataType = datInteger
           end>
       end
       item
@@ -7030,6 +7019,53 @@ object ServiceIngresos: TServiceIngresos
           item
             Name = 'IDLINEA'
             DataType = datInteger
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'IDENCARGADOINGRESOS'
+            DataType = datInteger
+            Value = '7'
+            ParamType = daptInput
+          end
+          item
+            Name = 'IDINGRESO'
+            DataType = datInteger
+            Value = '6'
+            ParamType = daptInput
+          end
+          item
+            Name = 'IDAGRUPACION'
+            DataType = datInteger
+            Value = '3'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.ENCARGADOINGRESOS'
+            SQL = 
+              'INSERT INTO [dbo].[ENCARGADOINGRESOS]'#10'           ([IDENCARGADOIN' +
+              'GRESOS]'#10'           ,[IDEMPLEADO]'#10'           ,[IDINGRESO]'#10'       ' +
+              '    ,[OBSERVACIONES]'#10'           ,[IMPORTE]'#10'           ,[ENTREGAD' +
+              'O]'#10'           ,[DIFERENCIA]'#10'           ,[IDAGRUPACION])'#10'     VAL' +
+              'UES'#10'           (:IDENCARGADOINGRESOS,-1,:IDINGRESO,'#39'LIQUIDACION ' +
+              'AUTOGENERADA'#39',0,0,0,:IDAGRUPACION)'#10'           '#10'SELECT '#39'ENCARGADO' +
+              ' INGRESO OK'#39' AS RESULT'
+            StatementType = stSQL
+            ColumnMappings = <>
+          end>
+        Name = 'spAbreAgrupaciones'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'RESULT'
+            DataType = datString
+            Size = 20
           end>
       end>
     JoinDataTables = <>

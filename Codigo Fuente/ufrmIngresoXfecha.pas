@@ -197,7 +197,6 @@ type
     dsAgrupacionCajas: TDADataSource;
     dsAgrupacion: TDADataSource;
     cxLabel24: TcxLabel;
-    cbDepartamento: TcxDBLookupComboBox;
     ProductoSalida: TcxGridDBColumn;
     ProductoReferencia: TcxGridDBColumn;
     ProductoTicket: TcxGridDBColumn;
@@ -210,6 +209,7 @@ type
     cxButton6: TcxButton;
     cxButton7: TcxButton;
     cxButton8: TcxButton;
+    cbDepartamento: TcxLookupComboBox;
     procedure pgcConceptosPageChanging(Sender: TObject; NewPage: TcxTabSheet;
       var AllowChange: Boolean);
     procedure cdsDetalleIngresoNewRecord(DataTable: TDADataTable);
@@ -247,8 +247,12 @@ type
     procedure dsEncargadoIngresoStateChange(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure pgcConceptosChange(Sender: TObject);
+    procedure cbDepartamentoPropertiesChange(Sender: TObject);
+    procedure cdsEncargadoIngresoAfterScroll(DataTable: TDADataTable);
   private
     { Private declarations }
+    HacerScroll: Boolean;
     Cambiando: Boolean;
     ListaTickets: TStrings;
     FECHAINGRESO: DateTime;
@@ -510,7 +514,8 @@ begin
     Totales[I].Valor:=0;
   end;
   cdsDetalleIngreso.Filtered:=False;
-  I:=cdsDetalleIngreso.FieldByName('IDENCARGADOINGRESOS').AsInteger;
+  I:=cdsEncargadoIngreso.FieldByName('IDENCARGADOINGRESOS').AsInteger;
+  cdsDetalleIngreso.First;
   while not cdsDetalleIngreso.EOF do
   begin
     AgregaValor(cdsDetalleIngreso.FieldByName('IDTIPOCOMPROBACION').AsString, cdsDetalleIngreso.FieldByName('Importe').AsFloat, Totales);
@@ -556,9 +561,10 @@ begin
 
   cxLabel10.Caption:= floattostr(CualValor(inttostr(ESCREDITODEBITOCUPON),Valores));
 
-  if pgcConceptos.ActivePageIndex in [1..8] then
+  if pgcConceptos.ActivePageIndex in [0..8] then
   begin
     case pgcConceptos.ActivePageIndex of
+      0: s:='IDTIPOCOMPROBACION = ''0''';
       1: s:='IDTIPOCOMPROBACION = ''1''';
       2: s:='IDTIPOCOMPROBACION = ''CLIENTES''';
       3: s:='IDTIPOCOMPROBACION = ''CHEQUES''';
@@ -580,9 +586,8 @@ begin
     5: begin IDTIPOVALOR:= ESSALIDAEFECTIVO; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESSALIDAEFECTIVO) +''''; end;
   end;}
   //ELIMINAR SECCION SOLO CONSERVO PARA ACLARAR LO QUE HACIA AQUI---------------
-
   cdsDetalleIngreso.Filtered:=False;
-  cdsDetalleIngreso.Filter:=s;
+  cdsDetalleIngreso.Filter:=s + ' AND IDENCARGADOINGRESOS = ' + IntToStr(I);;
   cdsDetalleIngreso.Filtered:=True;
   end;
 end;
@@ -594,6 +599,23 @@ begin
   cdsDetalleIngreso.FieldByName('Cantidad').AsFloat:=DisplayValue;
   cdsDetalleIngreso.FieldByName('Importe').AsFloat:=Decimales(cdsDetalleIngreso.FieldByName('Cantidad').AsFloat*
                                                     cdsDetalleIngreso.FieldByName('Precio').AsFloat, 2);
+end;
+
+procedure TfrmIngresosXfecha.cbDepartamentoPropertiesChange(Sender: TObject);
+begin
+  inherited;
+  if not cdsEncargadoIngreso.Active then
+    Exit;
+
+  if (cdsEncargadoIngreso.Locate('IDAGRUPACION', cbDepartamento.EditValue, [])) then
+  begin
+    pgcConceptos.ActivePageIndex:=0;
+    Calcula(True);
+  end
+  else
+  begin
+
+  end;
 end;
 
 procedure TfrmIngresosXfecha.cdsDetalleIngresoAfterDelete(DataTable: TDADataTable);
@@ -649,6 +671,25 @@ begin
   cdsDetalleIngreso.FieldByName('NUMEROESTACION').AsInteger := DM.NumeroEstacion;
 
   UpdateActionsState;
+end;
+
+procedure TfrmIngresosXfecha.cdsEncargadoIngresoAfterScroll(
+  DataTable: TDADataTable);
+begin
+  inherited;
+  if not HacerScroll then
+    Exit;
+
+  if cdsEncargadoIngreso.Active then
+  begin
+    cbEncargado.EditValue:=cdsEncargadoIngreso.FieldByName('IDEMPLEADO').AsInteger;
+    cbDepartamento.Editvalue:=cdsEncargadoIngreso.FieldByName('IDAGRUPACION').AsInteger;
+  end
+  else
+  begin
+    cbEncargado.EditValue:='';
+    cbDepartamento.Editvalue:='';
+  end;
 end;
 
 procedure TfrmIngresosXfecha.CreaEncargado;
@@ -841,6 +882,7 @@ end;
 procedure TfrmIngresosXfecha.FormShow(Sender: TObject);
 begin
   inherited;
+  HacerScroll:=True;
   pgcConceptos.ActivePageIndex:= 0;
   ValoresMoneda:= DM.Servidor.ObtenTipoValores(DM.NumeroEstacion, Now);
 end;
@@ -872,7 +914,7 @@ begin
   //////////////////////////////////////////////////////////////////////////////
 
   cdsIngresos.Close;
-  cdsIngresos.ParamByName('IDTURNO').AsDateTime:=Turno;
+  cdsIngresos.ParamByName('IDTURNO').AsInteger:=Turno;
   cdsIngresos.ParamByName('NUMEROESTACION').AsInteger:= DM.NumeroEstacion;
   cdsIngresos.Open;
 
@@ -1032,6 +1074,16 @@ begin
   cdsDetalleIngreso.FieldByName('Importe').AsFloat:=DisplayValue;
   cdsDetalleIngreso.FieldByName('Cantidad').AsFloat:=Decimales(cdsDetalleIngreso.FieldByName('Importe').AsFloat /
                                                     cdsDetalleIngreso.FieldByName('Precio').AsFloat, 4);
+end;
+
+procedure TfrmIngresosXfecha.pgcConceptosChange(Sender: TObject);
+begin
+  inherited;
+  if pgcConceptos.ActivePageIndex = 9 then
+  begin
+    pgcConceptos.ActivePageIndex:=0;
+    cbDepartamento.EditValue:=cdsAgrupacionCajas.FieldByName('IDAGRUPACION').AsInteger;
+  end;
 end;
 
 procedure TfrmIngresosXfecha.pgcConceptosPageChanging(Sender: TObject;

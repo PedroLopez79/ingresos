@@ -668,21 +668,37 @@ end;
 function TServiceIngresos.AbreTurno(const IDTURNO,
   IDESTACION: Integer): AnsiString;
 var
-  FOLIOIDENCARGADOINGRESOS, FOLIOIDINGRESO, FOLIOIDDDETALLEINGRESOS: Integer;
+  FOLIOIDINGRESO, FOLIOIDDDETALLEINGRESOS: Integer;
   ds: IDADataset;
+  ds1: IDADataset;
+  ds2: IDADataset;
 begin
   Result:= 'TURNO NO GENERADO';
 
-  FOLIOIDENCARGADOINGRESOS:= Folio('IDENCARGADOINGRESOS','');
+  //FOLIOIDENCARGADOINGRESOS:= Folio('IDENCARGADOINGRESOS','');
   FOLIOIDINGRESO:= Folio('IDINGRESO','');
   FOLIOIDDDETALLEINGRESOS:= Folio('IDDDETALLEINGRESOS','');
 
   ds:=Schema.NewDataset(Connection, 'spAbreTurno');
   ds.ParamByName('IDINGRESO').AsInteger:=FOLIOIDINGRESO;
-  ds.ParamByName('IDENCARGADOINGRESOS').AsInteger:=FOLIOIDENCARGADOINGRESOS;
+  //ds.ParamByName('IDENCARGADOINGRESOS').AsInteger:=FOLIOIDENCARGADOINGRESOS;
   ds.ParamByName('IDTURNO').AsInteger:=IDTURNO;
   ds.ParamByName('NUMEROESTACION').AsInteger:=IDESTACION;
   ds.Open;
+
+  ds1:= Schema.NewDataset(Connection, 'AGRUPACION');
+  ds1.ParamByName('IDESTACION').AsInteger:= IDESTACION;
+  ds1.Open;
+
+  ds2:= Schema.NewDataset(Connection, 'spAbreAgrupaciones');
+  ds2.ParamByName('IDINGRESO').AsInteger:= FOLIOIDINGRESO;
+  while not (ds1.EOF) do
+  begin
+    ds2.ParamByName('IDENCARGADOINGRESOS').AsInteger:= Folio('IDENCARGADOINGRESOS','');
+    ds2.ParamByName('IDAGRUPACION').AsInteger:= ds1.FieldByName('IDAGRUPACION').AsInteger;
+    ds1.Next;
+    ds2.Execute;
+  end;
 
   if not (ds.EOF) then
      Result:= ds.FieldByName('RESULT').AsString;

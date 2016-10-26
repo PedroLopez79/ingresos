@@ -7,7 +7,6 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
   Position = poDesigned
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  ExplicitTop = -74
   ExplicitWidth = 1107
   ExplicitHeight = 518
   PixelsPerInch = 96
@@ -381,18 +380,18 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       StyleHot.LookAndFeel.Kind = lfUltraFlat
       Transparent = True
     end
-    object cbDepartamento: TcxDBLookupComboBox
+    object cbDepartamento: TcxLookupComboBox
       Left = 114
-      Top = 94
+      Top = 93
       Hint = ''
-      DataBinding.DataField = 'IDAGRUPACION'
-      DataBinding.DataSource = dsEncargadoIngreso
       Properties.KeyFieldNames = 'IDAGRUPACION'
       Properties.ListColumns = <
         item
           FieldName = 'NOMBRE'
         end>
       Properties.ListSource = dsAgrupacion
+      Properties.OnChange = cbDepartamentoPropertiesChange
+      Style.BorderStyle = ebsUltraFlat
       TabOrder = 15
       Width = 197
     end
@@ -419,9 +418,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet8
+      Properties.ActivePage = cxTabSheet6
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dmImages.Imagenes2
+      OnChange = pgcConceptosChange
       OnPageChanging = pgcConceptosPageChanging
       ClientRectBottom = 305
       ClientRectLeft = 3
@@ -1979,12 +1979,12 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       item
         Name = 'IDINGRESO'
         DataType = datInteger
-        Value = ''
         ParamType = daptInput
       end>
     RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
+    AfterScroll = cdsEncargadoIngresoAfterScroll
     IndexDefs = <>
     Left = 968
     Top = 312

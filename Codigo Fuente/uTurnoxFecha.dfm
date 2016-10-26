@@ -127,7 +127,7 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     TabOrder = 1
     object Button2: TButton
       Left = 150
-      Top = 2
+      Top = 3
       Width = 75
       Height = 25
       Caption = 'Aceptar'
