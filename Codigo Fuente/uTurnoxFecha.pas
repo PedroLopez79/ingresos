@@ -51,18 +51,20 @@ type
 
 var
   Fo_TurnoxFecha: TFo_TurnoxFecha;
+  FechaTurnos: DateTime;
 
-function Abrir_ModuloTurnoxFecha(TurnoxFecha: ATTurnoxFecha):Integer;
+function Abrir_ModuloTurnoxFecha(TurnoxFecha: ATTurnoxFecha; Fecha: DateTime):Integer;
 
 implementation
 uses  uDM;
 
 {$R *.dfm}
 
-function Abrir_ModuloTurnoxFecha(TurnoxFecha: ATTurnoxFecha):Integer;
+function Abrir_ModuloTurnoxFecha(TurnoxFecha: ATTurnoxFecha; Fecha: DateTime):Integer;
 var
   i:Integer;
 Begin
+  FechaTurnos:= Fecha;
   Fo_TurnoxFecha:=TFo_TurnoxFecha.Create(Application);
   Fo_TurnoxFecha.IDTURNO:= -1;
   i:= TurnoxFecha.Count;
@@ -83,7 +85,7 @@ procedure TFo_TurnoxFecha.Button2Click(Sender: TObject);
 begin
   if (IDTURNO > 0) then
   begin
-     DM.Servidor.AbreTurno(IDTURNO,DM.NumeroEstacion);
+     DM.Servidor.AbreTurno(IDTURNO,DM.NumeroEstacion,FechaTurnos);
   end;
   Fo_TurnoxFecha.Close;
 end;

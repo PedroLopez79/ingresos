@@ -31,7 +31,7 @@ type
   TDatosBusqueda = record
     OK:Boolean;
     Clave, FormaPago, Tipo:Integer;
-    Cuenta, RFC, Nombre: String;
+    Cuenta, RFC, Nombre, Referencia: String;
     Estatus : Variant;
     Precio, Importe, Costo: Float;
   end;

@@ -18,7 +18,13 @@ uses
   dxSkinOffice2007Silver, dxSkinSilver, dxSkinStardust, dxSkinSummer2008,
   dxSkinValentine, dxSkinXmas2008Blue, cxLookAndFeels, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinFoggy, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
-  dxSkinSpringTime;
+  dxSkinSpringTime, dxSkinBlueprint, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinHighContrast, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
+  dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, cxNavigator,
+  dxRibbonSkins, uDAFields, uROComponent;
 
 type
   TfrmBuscarClienteCredito = class(TfrmBuscar)
@@ -43,7 +49,7 @@ var
 
 implementation
 
-uses uDMFlotillas;
+uses uDM;
 
 {$R *.dfm}
 
@@ -56,11 +62,12 @@ end;
 
 procedure TfrmBuscarClienteCredito.cxGridDBTableView1DblClick(Sender: TObject);
 begin
-  Datos.Clave:=cdsBuscar.FieldByName('CLIENTEID').AsInteger;
-  Datos.Nombre:= cdsBuscar.FieldByName('Nombre').AsString;
-  Datos.FormaPago:= cdsBuscar.FieldByName('FormaPagoID').AsInteger;
-  Datos.Estatus := cdsBuscar.FieldByName('Estatus').AsString;
+  Datos.Clave:=cdsBuscar.FieldByName('IDCLIENTE').AsInteger;
+  Datos.Nombre:= cdsBuscar.FieldByName('NOMBRE').AsString;
+  //Datos.FormaPago:= cdsBuscar.FieldByName('FormaPagoID').AsInteger;
+  Datos.Estatus := cdsBuscar.FieldByName('STATUS').AsInteger;
   Datos.RFC := cdsBuscar.FieldByName('RFC').AsString;
+  Datos.Referencia:= cdsBuscar.FieldByName('REFERENCIA').AsString;
   //Datos.Cuenta:= cdsBuscar.FieldByName('CC').AsString;
   inherited;
 
@@ -71,12 +78,13 @@ procedure TfrmBuscarClienteCredito.cxGridDBTableView1KeyDown(Sender: TObject;
 begin
 
   if KEY = 13 then
-     Datos.Clave:=cdsBuscar.FieldByName('ClienteID').AsInteger;
-     Datos.Nombre:= cdsBuscar.FieldByName('Nombre').AsString;
+     Datos.Clave:=cdsBuscar.FieldByName('IDCLIENTE').AsInteger;
+     Datos.Nombre:= cdsBuscar.FieldByName('NOMBRE').AsString;
      //Datos.FormaPago:= cdsBuscar.FieldByName('FormaPagoID').AsInteger;
-     //Datos.Estatus := cdsBuscar.FieldByName('Estatus').AsString;
+     Datos.Estatus := cdsBuscar.FieldByName('STATUS').AsInteger;
+     Datos.Referencia:= cdsBuscar.FieldByName('REFERENCIA').AsString;
      Datos.RFC := cdsBuscar.FieldByName('RFC').AsString;
-     Datos.Cuenta:= cdsBuscar.FieldByName('CC').AsString;
+     Datos.Cuenta:= cdsBuscar.FieldByName('CCC').AsString;
      inherited;
 end;
 

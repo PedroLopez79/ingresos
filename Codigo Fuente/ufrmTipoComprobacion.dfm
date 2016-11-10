@@ -1,9 +1,10 @@
 inherited frmTipoComprobacion: TfrmTipoComprobacion
   Caption = 'frmTipoComprobacion'
+  ExplicitWidth = 625
+  ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCatalogo: TcxPageControl
-    ActivePage = cxTabSheet2
     inherited cxTabSheet1: TcxTabSheet
       ExplicitLeft = 3
       ExplicitTop = 3
@@ -37,6 +38,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
     end
     inherited cxTabSheet2: TcxTabSheet
       ExplicitLeft = 3
+      ExplicitTop = 3
       ExplicitWidth = 616
       ExplicitHeight = 416
       object Panel1: TPanel
@@ -72,6 +74,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object LblNoProducto: TcxLabel
         Left = 16
         Top = 48
+        Hint = ''
         Caption = 'ID'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -79,6 +82,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object TxtNoProducto: TcxDBTextEdit
         Left = 133
         Top = 47
+        Hint = ''
         TabStop = False
         DataBinding.DataField = 'IDTIPOCOMPROBACION'
         DataBinding.DataSource = dsCatalogo
@@ -96,6 +100,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object LblNombre: TcxLabel
         Left = 16
         Top = 88
+        Hint = ''
         Caption = 'Descripcion'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -103,6 +108,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object TxtNombre: TcxDBTextEdit
         Left = 133
         Top = 87
+        Hint = ''
         DataBinding.DataField = 'DESCRIPCION'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -117,6 +123,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxLabel1: TcxLabel
         Left = 16
         Top = 131
+        Hint = ''
         Caption = 'Cuenta Concentradora'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -124,6 +131,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 133
         Top = 130
+        Hint = ''
         DataBinding.DataField = 'CUENTACONCENTRADORA'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -138,6 +146,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxLabel2: TcxLabel
         Left = 16
         Top = 179
+        Hint = ''
         Caption = 'Cuenta Contable'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -145,6 +154,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBTextEdit2: TcxDBTextEdit
         Left = 133
         Top = 178
+        Hint = ''
         DataBinding.DataField = 'CC'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -159,6 +169,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 133
         Top = 224
+        Hint = ''
         Caption = 'Es Credito, Debito o Cupon ?'
         DataBinding.DataField = 'ESCREDITODEBITOYCUPON'
         DataBinding.DataSource = dsCatalogo
@@ -170,6 +181,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBCheckBox3: TcxDBCheckBox
         Left = 16
         Top = 247
+        Hint = ''
         Caption = 'Es Producto ?'
         DataBinding.DataField = 'ESPRODUCTO'
         DataBinding.DataSource = dsCatalogo
@@ -181,6 +193,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBCheckBox2: TcxDBCheckBox
         Left = 16
         Top = 224
+        Hint = ''
         Caption = 'Es Combustible ?'
         DataBinding.DataField = 'ESCOMBUSTIBLE'
         DataBinding.DataSource = dsCatalogo
@@ -192,6 +205,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBCheckBox4: TcxDBCheckBox
         Left = 133
         Top = 247
+        Hint = ''
         Caption = 'Es Efectivos ?'
         DataBinding.DataField = 'ESEFECTIVO'
         DataBinding.DataSource = dsCatalogo
@@ -203,6 +217,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBCheckBox5: TcxDBCheckBox
         Left = 300
         Top = 224
+        Hint = ''
         Caption = 'Es Salida de Efectivos ?'
         DataBinding.DataField = 'ESSALIDAEFECTIVO'
         DataBinding.DataSource = dsCatalogo
@@ -214,6 +229,7 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
       object cxDBCheckBox6: TcxDBCheckBox
         Left = 300
         Top = 247
+        Hint = ''
         Caption = 'Es Cliente ?'
         DataBinding.DataField = 'ESCLIENTE'
         DataBinding.DataSource = dsCatalogo
@@ -269,27 +285,27 @@ inherited frmTipoComprobacion: TfrmTipoComprobacion
         Name = 'ESSALIDAEFECTIVO'
         DataType = datBoolean
       end>
+    LogicalName = 'dbo TIPOCOMPROBACION'
     RemoteDataAdapter = DM.RemoteDataAdapter
     AfterEdit = cdsCatalogoAfterEdit
     OnNewRecord = cdsCatalogoNewRecord
-    LogicalName = 'dbo TIPOCOMPROBACION'
   end
   inherited dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset
   end
   object cdsBuscaTiposFijos: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <>
+    LogicalName = 'Reporte'
     Params = <
       item
         Name = 'TurnoID'
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = rdaBuscaTiposFijos
     ReadOnly = True
-    LogicalName = 'Reporte'
+    RemoteDataAdapter = rdaBuscaTiposFijos
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 8
     Top = 368

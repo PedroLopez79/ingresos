@@ -1,9 +1,10 @@
 inherited frmTipodePago: TfrmTipodePago
   Caption = 'frmTipodePago'
+  ExplicitWidth = 625
+  ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCatalogo: TcxPageControl
-    ActivePage = cxTabSheet2
     inherited cxTabSheet1: TcxTabSheet
       ExplicitLeft = 3
       ExplicitTop = 3
@@ -63,6 +64,7 @@ inherited frmTipodePago: TfrmTipodePago
       object LblNoProducto: TcxLabel
         Left = 16
         Top = 48
+        Hint = ''
         Caption = 'ID'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -70,6 +72,7 @@ inherited frmTipodePago: TfrmTipodePago
       object TcxDBTextEdit
         Left = 63
         Top = 47
+        Hint = ''
         TabStop = False
         DataBinding.DataField = 'FormaPagoID'
         DataBinding.DataSource = dsCatalogo
@@ -87,6 +90,7 @@ inherited frmTipodePago: TfrmTipodePago
       object LblNombre: TcxLabel
         Left = 16
         Top = 88
+        Hint = ''
         Caption = 'Nombre'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -94,6 +98,7 @@ inherited frmTipodePago: TfrmTipodePago
       object TxtNombre: TcxDBTextEdit
         Left = 63
         Top = 87
+        Hint = ''
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -120,9 +125,9 @@ inherited frmTipodePago: TfrmTipodePago
         Size = 50
         Required = True
       end>
+    LogicalName = 'dbo FormaPago'
     RemoteDataAdapter = DM.RemoteDataAdapter
     OnNewRecord = cdsCatalogoNewRecord
-    LogicalName = 'dbo FormaPago'
   end
   inherited dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset

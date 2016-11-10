@@ -4409,7 +4409,8 @@ object ServiceIngresos: TServiceIngresos
               'SELECT '#10'    IDCLIENTE, CODIGO, NOMBRE, GRUPO, CALLE, COLONIA, CI' +
               'UDAD, '#10'    TELEFONO, CODIGOPOSTAL, RFC, CURP, STATUS, CCA, CCC, ' +
               'LOCALIDAD,'#10'    DIRECCION, NOEXTERIOR, NOINTERIOR, MUNICIPIO, EST' +
-              'ADO, PAIS, EMAIL'#10'  FROM'#10'    dbo.CLIENTEEFECTIVO'#10'  WHERE {Where}'#10
+              'ADO, PAIS, EMAIL,'#10'    REFERENCIA'#10'  FROM'#10'    dbo.CLIENTEEFECTIVO'#10 +
+              '  WHERE {Where}'#10
             StatementType = stSQL
             ColumnMappings = <
               item
@@ -4499,6 +4500,10 @@ object ServiceIngresos: TServiceIngresos
               item
                 DatasetField = 'EMAIL'
                 TableField = 'EMAIL'
+              end
+              item
+                DatasetField = 'REFERENCIA'
+                TableField = 'REFERENCIA'
               end>
           end>
         Name = 'dbo CLIENTE EFECTIVO'
@@ -4555,7 +4560,7 @@ object ServiceIngresos: TServiceIngresos
           item
             Name = 'CURP'
             DataType = datString
-            Size = 20
+            Size = 15
           end
           item
             Name = 'STATUS'
@@ -4610,6 +4615,11 @@ object ServiceIngresos: TServiceIngresos
             Name = 'EMAIL'
             DataType = datString
             Size = 150
+          end
+          item
+            Name = 'REFERENCIA'
+            DataType = datString
+            Size = 100
           end>
       end
       item
@@ -6707,6 +6717,11 @@ object ServiceIngresos: TServiceIngresos
       item
         Params = <
           item
+            Name = 'FECHA'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
             Name = 'IDINGRESO'
             DataType = datInteger
             Value = '-5'
@@ -6715,12 +6730,14 @@ object ServiceIngresos: TServiceIngresos
           item
             Name = 'IDTURNO'
             DataType = datString
+            Size = 65536
             Value = '4'
             ParamType = daptInput
           end
           item
             Name = 'NUMEROESTACION'
             DataType = datString
+            Size = 65536
             Value = '1'
             ParamType = daptInput
           end>
@@ -6730,18 +6747,18 @@ object ServiceIngresos: TServiceIngresos
             Default = True
             SQL = 
               'declare @EJERCICIO as integer'#10'declare @PERIODO as integer'#10'declar' +
-              'e @DIA as integer'#10#10'set @EJERCICIO = (Select YEAR(GETDATE()))'#10'set' +
-              ' @PERIODO = (Select MONTH(GETDATE()))'#10'set @DIA = (Select DAY(GET' +
-              'DATE()))'#10#10'INSERT INTO [dbo].[INGRESOS]'#10'           ([IDINGRESO]'#10' ' +
-              '          ,[FECHA]'#10'           ,[EJERCICIO]'#10'           ,[PERIODO]' +
-              #10'           ,[DIA]'#10'           ,[IDTURNO]'#10'           ,[NUMEROESTA' +
-              'CION]'#10'           ,[IDUSUARIO]'#10'           ,[INICIOTURNO]'#10'        ' +
-              '   ,[FINTURNO]'#10'           ,[TERMINADA]'#10'           ,[IDHORARIO]'#10' ' +
-              '          ,[VENTATOTAL]'#10'           ,[EFECTIVOENTREGADO]'#10'        ' +
-              '   ,[SALIDAEFECTIVO]'#10'           ,[DIFERENCIA])'#10'     VALUES(:IDIN' +
-              'GRESO,GETDATE(),@EJERCICIO,@PERIODO,@DIA,:IDTURNO,:NUMEROESTACIO' +
-              'N,-1,GETDATE(),GETDATE(),0,0,0,0,0,0)'#10#10#10' SELECT '#39'TURNO ABIERTO C' +
-              'ORRECTAMENTE'#39' AS RESULT'#10
+              'e @DIA as integer'#10#10'set @EJERCICIO = (Select YEAR(:FECHA))'#10'set @P' +
+              'ERIODO = (Select MONTH(:FECHA))'#10'set @DIA = (Select DAY(:FECHA))'#10 +
+              #10'INSERT INTO [dbo].[INGRESOS]'#10'           ([IDINGRESO]'#10'          ' +
+              ' ,[FECHA]'#10'           ,[EJERCICIO]'#10'           ,[PERIODO]'#10'        ' +
+              '   ,[DIA]'#10'           ,[IDTURNO]'#10'           ,[NUMEROESTACION]'#10'   ' +
+              '        ,[IDUSUARIO]'#10'           ,[INICIOTURNO]'#10'           ,[FINT' +
+              'URNO]'#10'           ,[TERMINADA]'#10'           ,[IDHORARIO]'#10'          ' +
+              ' ,[VENTATOTAL]'#10'           ,[EFECTIVOENTREGADO]'#10'           ,[SALI' +
+              'DAEFECTIVO]'#10'           ,[DIFERENCIA])'#10'     VALUES(:IDINGRESO,:FE' +
+              'CHA,@EJERCICIO,@PERIODO,@DIA,:IDTURNO,:NUMEROESTACION,-1,GETDATE' +
+              '(),GETDATE(),0,0,0,0,0,0)'#10#10#10' SELECT '#39'TURNO ABIERTO CORRECTAMENTE' +
+              #39' AS RESULT'#10
             StatementType = stSQL
             ColumnMappings = <>
           end>
@@ -7066,6 +7083,277 @@ object ServiceIngresos: TServiceIngresos
             Name = 'RESULT'
             DataType = datString
             Size = 20
+          end>
+      end
+      item
+        Params = <>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.CLIENTECREDITO'
+            SQL = 
+              'SELECT '#10'    IDCLIENTE, CODIGO, NOMBRE, GRUPO, CALLE, COLONIA, CI' +
+              'UDAD, '#10'    TELEFONO, CODIGOPOSTAL, RFC, CURP, STATUS, CCA, CCC, ' +
+              'LOCALIDAD,'#10'    DIRECCION, NOEXTERIOR, NOINTERIOR, MUNICIPIO, EST' +
+              'ADO, PAIS, EMAIL,'#10'    REFERENCIA, NOMBRECLIENTE'#10'  FROM'#10'    dbo.C' +
+              'LIENTECREDITO'#10'  WHERE {Where}'
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDCLIENTE'
+                TableField = 'IDCLIENTE'
+              end
+              item
+                DatasetField = 'CODIGO'
+                TableField = 'CODIGO'
+              end
+              item
+                DatasetField = 'NOMBRE'
+                TableField = 'NOMBRE'
+              end
+              item
+                DatasetField = 'GRUPO'
+                TableField = 'GRUPO'
+              end
+              item
+                DatasetField = 'CALLE'
+                TableField = 'CALLE'
+              end
+              item
+                DatasetField = 'COLONIA'
+                TableField = 'COLONIA'
+              end
+              item
+                DatasetField = 'CIUDAD'
+                TableField = 'CIUDAD'
+              end
+              item
+                DatasetField = 'TELEFONO'
+                TableField = 'TELEFONO'
+              end
+              item
+                DatasetField = 'CODIGOPOSTAL'
+                TableField = 'CODIGOPOSTAL'
+              end
+              item
+                DatasetField = 'RFC'
+                TableField = 'RFC'
+              end
+              item
+                DatasetField = 'CURP'
+                TableField = 'CURP'
+              end
+              item
+                DatasetField = 'STATUS'
+                TableField = 'STATUS'
+              end
+              item
+                DatasetField = 'CCA'
+                TableField = 'CCA'
+              end
+              item
+                DatasetField = 'CCC'
+                TableField = 'CCC'
+              end
+              item
+                DatasetField = 'LOCALIDAD'
+                TableField = 'LOCALIDAD'
+              end
+              item
+                DatasetField = 'DIRECCION'
+                TableField = 'DIRECCION'
+              end
+              item
+                DatasetField = 'NOEXTERIOR'
+                TableField = 'NOEXTERIOR'
+              end
+              item
+                DatasetField = 'NOINTERIOR'
+                TableField = 'NOINTERIOR'
+              end
+              item
+                DatasetField = 'MUNICIPIO'
+                TableField = 'MUNICIPIO'
+              end
+              item
+                DatasetField = 'ESTADO'
+                TableField = 'ESTADO'
+              end
+              item
+                DatasetField = 'PAIS'
+                TableField = 'PAIS'
+              end
+              item
+                DatasetField = 'EMAIL'
+                TableField = 'EMAIL'
+              end
+              item
+                DatasetField = 'REFERENCIA'
+                TableField = 'REFERENCIA'
+              end
+              item
+                DatasetField = 'NOMBRECLIENTE'
+                TableField = 'NOMBRECLIENTE'
+              end>
+          end>
+        Name = 'dbo CLIENTE CREDITO'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDCLIENTE'
+            DataType = datInteger
+          end
+          item
+            Name = 'CODIGO'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'NOMBRE'
+            DataType = datString
+            Size = 80
+          end
+          item
+            Name = 'GRUPO'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'CALLE'
+            DataType = datString
+            Size = 60
+          end
+          item
+            Name = 'COLONIA'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'CIUDAD'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'TELEFONO'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'CODIGOPOSTAL'
+            DataType = datString
+            Size = 5
+          end
+          item
+            Name = 'RFC'
+            DataType = datString
+            Size = 15
+          end
+          item
+            Name = 'CURP'
+            DataType = datString
+            Size = 15
+          end
+          item
+            Name = 'STATUS'
+            DataType = datInteger
+          end
+          item
+            Name = 'CCA'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'CCC'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'LOCALIDAD'
+            DataType = datString
+            Size = 25
+          end
+          item
+            Name = 'DIRECCION'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'NOEXTERIOR'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'NOINTERIOR'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'MUNICIPIO'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'ESTADO'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'PAIS'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'EMAIL'
+            DataType = datString
+            Size = 150
+          end
+          item
+            Name = 'REFERENCIA'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'NOMBRECLIENTE'
+            DataType = datString
+            Size = 100
+          end>
+      end
+      item
+        Params = <>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.SALIDA'
+            StatementType = stAutoSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDSALIDA'
+                TableField = 'IDSALIDA'
+              end
+              item
+                DatasetField = 'NOMBRE'
+                TableField = 'NOMBRE'
+              end>
+          end>
+        Name = 'dbo.SALIDA'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDSALIDA'
+            DataType = datInteger
+            Required = True
+          end
+          item
+            Name = 'NOMBRE'
+            DataType = datString
+            Size = 100
+            Required = True
           end>
       end>
     JoinDataTables = <>

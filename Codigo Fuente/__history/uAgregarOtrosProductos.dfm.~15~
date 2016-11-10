@@ -1,0 +1,226 @@
+object Fo_AgregarVentaOtrosProductos: TFo_AgregarVentaOtrosProductos
+  Left = 303
+  Top = 281
+  BorderStyle = bsDialog
+  Caption = 'Agregar Otros Productos'
+  ClientHeight = 202
+  ClientWidth = 444
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 24
+    Width = 444
+    Height = 137
+    Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    object Label8: TLabel
+      Left = 8
+      Top = 24
+      Width = 68
+      Height = 13
+      Caption = 'Descripcion'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 8
+      Top = 51
+      Width = 37
+      Height = 13
+      Caption = 'Precio'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 8
+      Top = 78
+      Width = 51
+      Height = 13
+      Caption = 'Cantidad'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 8
+      Top = 105
+      Width = 43
+      Height = 13
+      Caption = 'Importe'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 252
+      Top = 6
+      Width = 63
+      Height = 13
+      Caption = 'Referencia'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object edtPrecio: TcxCurrencyEdit
+      Left = 83
+      Top = 48
+      Hint = ''
+      EditValue = 0c
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '$#0.00'
+      Properties.ReadOnly = False
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 0
+      Width = 81
+    end
+    object edtCantidad: TcxCurrencyEdit
+      Left = 83
+      Top = 75
+      Hint = ''
+      EditValue = 0
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '0'
+      Properties.ReadOnly = False
+      Properties.OnEditValueChanged = edtCantidadPropertiesEditValueChanged
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 1
+      Width = 81
+    end
+    object edtImporte: TcxCurrencyEdit
+      Left = 83
+      Top = 102
+      Hint = ''
+      EditValue = 0c
+      Enabled = False
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '$#0.00'
+      Properties.ReadOnly = False
+      Style.BorderStyle = ebsOffice11
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 2
+      Width = 81
+    end
+    object edtDescripcionProducto: TcxTextEdit
+      Left = 83
+      Top = 21
+      Hint = ''
+      TabOrder = 3
+      Width = 164
+    end
+    object edtReferenciaCliente: TcxTextEdit
+      Left = 252
+      Top = 21
+      Hint = ''
+      TabOrder = 4
+      Width = 180
+    end
+  end
+  object Pa_ayuda: TPanel
+    Left = 0
+    Top = 161
+    Width = 444
+    Height = 41
+    Align = alBottom
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    object Button2: TButton
+      Left = 276
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Aceptar'
+      TabOrder = 0
+      OnClick = Button2Click
+    end
+    object Button1: TButton
+      Left = 357
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Cancelar'
+      TabOrder = 1
+      OnClick = Button1Click
+    end
+  end
+  object dxRibbon1: TdxRibbon
+    Left = 0
+    Top = 0
+    Width = 444
+    Height = 24
+    Hint = ''
+    BarManager = frmPrincipal.dxBarManager1
+    ColorSchemeName = 'Blue'
+    ShowTabHeaders = False
+    SupportNonClientDrawing = True
+    Contexts = <>
+    TabOrder = 2
+    TabStop = False
+    object dxRibbon1Tab1: TdxRibbonTab
+      Caption = 'dxRibbon1Tab1'
+      Groups = <>
+      Visible = False
+      Index = 0
+    end
+  end
+end

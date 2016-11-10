@@ -43,9 +43,9 @@ uses
   uAgregaUnidadMedida in 'uAgregaUnidadMedida.pas' {frmAgregaUnidadMedida},
   ufrmVehiculo in 'ufrmVehiculo.pas' {frmVehiculo},
   uCurp in 'uCurp.pas' {Fo_AyudaCurp},
-  uAgregarVenta in 'uAgregarVenta.pas' {Fo_AgregarVenta},
+  uAgregarOtrosProductos in 'uAgregarOtrosProductos.pas' {Fo_AgregarVentaOtrosProductos},
   ufrmBuscarCliente in 'ufrmBuscarCliente.pas' {frmBuscarCliente},
-  ufrmBuscarClienteCredito in 'ufrmBuscarClienteCredito.pas' {frmBuscarClienteCredito},
+  ufrmBuscarClienteEfectivo in 'ufrmBuscarClienteEfectivo.pas' {frmBuscarClienteEfectivo},
   ufrmCredito in 'ufrmCredito.pas' {frmCredito},
   ufrmDebito in 'ufrmDebito.pas' {frmDebito},
   ufrmAutorizaciones in 'ufrmAutorizaciones.pas' {frmAutorizaciones},
@@ -109,7 +109,14 @@ uses
   UtileriasComun in 'CistemComun\CodigoFuente\UtileriasComun.pas',
   LibraryCistemGas_Intf in 'CistemGas\LibraryCistemGas_Intf.pas',
   LibraryFlotillas_Intf in 'Flotillas\LibraryFlotillas_Intf.pas',
-  uTurnoxFecha in 'uTurnoxFecha.pas' {Fo_TurnoxFecha};
+  uTurnoxFecha in 'uTurnoxFecha.pas' {Fo_TurnoxFecha},
+  uAgregarVentaSalidaEfectivo in 'uAgregarVentaSalidaEfectivo.pas' {Fo_AgregarVentaSalidaEfectivo},
+  uAgregarVentaOtros in 'uAgregarVentaOtros.pas' {Fo_AgregarVentaOtros},
+  uAgregarVentaCreditoDebitosCupones in 'uAgregarVentaCreditoDebitosCupones.pas' {Fo_AgregarVentaCreditoDebitosCupones},
+  ufrmBuscarClienteCredito in 'ufrmBuscarClienteCredito.pas' {frmBuscarClienteCredito},
+  uAgregarVenta in 'uAgregarVenta.pas' {Fo_AgregarVenta},
+  uAgregarVentaEfectivo in 'uAgregarVentaEfectivo.pas' {Fo_AgregarVentaEfectivo},
+  uAgregarVentaDocumentos in 'uAgregarVentaDocumentos.pas' {Fo_AgregarVentaDocumentos};
 
 {$R *.res}
 

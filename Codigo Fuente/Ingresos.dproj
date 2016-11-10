@@ -256,14 +256,14 @@
         <DCCReference Include="uCurp.pas">
             <Form>Fo_AyudaCurp</Form>
         </DCCReference>
-        <DCCReference Include="uAgregarVenta.pas">
-            <Form>Fo_AgregarVenta</Form>
+        <DCCReference Include="uAgregarOtrosProductos.pas">
+            <Form>Fo_AgregarVentaOtrosProductos</Form>
         </DCCReference>
         <DCCReference Include="ufrmBuscarCliente.pas">
             <Form>frmBuscarCliente</Form>
         </DCCReference>
-        <DCCReference Include="ufrmBuscarClienteCredito.pas">
-            <Form>frmBuscarClienteCredito</Form>
+        <DCCReference Include="ufrmBuscarClienteEfectivo.pas">
+            <Form>frmBuscarClienteEfectivo</Form>
         </DCCReference>
         <DCCReference Include="ufrmCredito.pas">
             <Form>frmCredito</Form>
@@ -433,6 +433,34 @@
         <DCCReference Include="Flotillas\LibraryFlotillas_Intf.pas"/>
         <DCCReference Include="uTurnoxFecha.pas">
             <Form>Fo_TurnoxFecha</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAgregarVentaSalidaEfectivo.pas">
+            <Form>Fo_AgregarVentaSalidaEfectivo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAgregarVentaOtros.pas">
+            <Form>Fo_AgregarVentaOtros</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAgregarVentaCreditoDebitosCupones.pas">
+            <Form>Fo_AgregarVentaCreditoDebitosCupones</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ufrmBuscarClienteCredito.pas">
+            <Form>frmBuscarClienteCredito</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAgregarVenta.pas">
+            <Form>Fo_AgregarVenta</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAgregarVentaEfectivo.pas">
+            <Form>Fo_AgregarVentaEfectivo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAgregarVentaDocumentos.pas">
+            <Form>Fo_AgregarVentaDocumentos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">

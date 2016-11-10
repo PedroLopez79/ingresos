@@ -23,6 +23,8 @@
 </Parameter>
 <Parameter Name="IDESTACION" DataType="Integer" Flag="In" >
 </Parameter>
+<Parameter Name="FECHA" DataType="DateTime" Flag="In" >
+</Parameter>
 </Parameters>
 </Operation>
 <Operation Name="ObtenTurnosdeFecha" UID="{8EDC414D-4E02-4EED-B2BE-EDE216F14123}">

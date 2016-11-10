@@ -20,16 +20,13 @@ object DatosFacturaCliente: TDatosFacturaCliente
     Top = 0
     Width = 569
     Height = 392
+    Hint = ''
     Align = alClient
     TabOrder = 0
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
-    ExplicitLeft = -102
-    ExplicitTop = -176
-    ExplicitWidth = 673
-    ExplicitHeight = 520
     object cxGridDBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dsSaldo
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
@@ -86,7 +83,6 @@ object DatosFacturaCliente: TDatosFacturaCliente
     end
   end
   object cdsSaldo: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'CLIENTE'
@@ -187,6 +183,7 @@ object DatosFacturaCliente: TDatosFacturaCliente
         DisplayFormat = '#,#0.00'
         Alignment = taRightJustify
       end>
+    LogicalName = 'spSaldos'
     Params = <
       item
         Name = 'Ejercicio'
@@ -229,9 +226,9 @@ object DatosFacturaCliente: TDatosFacturaCliente
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
-    LogicalName = 'spSaldos'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 275
     Top = 87

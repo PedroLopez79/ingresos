@@ -27,6 +27,7 @@ uses
 type
   // Declare a Venta record
   TVenta = record
+    OK          : Boolean;
     IDPRODUCTO  : Integer;
     DESCRIPCION : string[100];
     PRECIO      : Float;
@@ -113,11 +114,13 @@ end;
 
 procedure TFo_AgregarVenta.Button1Click(Sender: TObject);
 begin
+  Venta.OK:= False;
   Fo_AgregarVenta.Close;
 end;
 
 procedure TFo_AgregarVenta.Button2Click(Sender: TObject);
 begin
+  Venta.OK:= True;
   Venta.IDPRODUCTO:= edtProducto.EditValue;
   Venta.DESCRIPCION:= edtDescripcionProducto.EditValue;
   Venta.PRECIO:= edtPrecio.EditValue;
