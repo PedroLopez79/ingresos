@@ -1192,7 +1192,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Ingresos'
       Visible = ivAlways
-      LargeImageIndex = 61
+      LargeImageIndex = 47
     end
     object dxBarLargeButton34: TdxBarLargeButton
       Tag = 41
@@ -1219,7 +1219,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Compras'
       Visible = ivAlways
-      LargeImageIndex = 61
+      LargeImageIndex = 63
     end
     object dxBarLargeButton37: TdxBarLargeButton
       Action = dmAppActions.actCerrarLiquidacion
@@ -1259,7 +1259,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Ingresos x Fecha'
       Visible = ivAlways
-      LargeImageIndex = 61
+      LargeImageIndex = 47
     end
     object dxBarLargeButton43: TdxBarLargeButton
       Tag = 47

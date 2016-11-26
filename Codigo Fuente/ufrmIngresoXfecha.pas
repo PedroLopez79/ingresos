@@ -142,9 +142,6 @@ type
     ProductoPrecio: TcxGridDBColumn;
     ProductoCantidad: TcxGridDBColumn;
     ProductoImporte: TcxGridDBColumn;
-    cxGroupBox4: TcxGroupBox;
-    cxLabel10: TcxLabel;
-    cxLabel11: TcxLabel;
     cdsHorasCortes: TDACDSDataTable;
     rdaHorasCortes: TDARemoteDataAdapter;
     cxTabSheet6: TcxTabSheet;
@@ -163,7 +160,7 @@ type
     LFaltantes: TcxLabel;
     Bevel1: TBevel;
     cxLabel19: TcxLabel;
-    cxEntregado: TcxLabel;
+    LEntregado: TcxLabel;
     GBVenta: TGroupBox;
     Bevel2: TBevel;
     cxLabel20: TcxLabel;
@@ -174,8 +171,8 @@ type
     LSobrantes: TcxLabel;
     cxLabel32: TcxLabel;
     cxGroupBox5: TcxGroupBox;
-    cxLabel23: TcxLabel;
-    LEVentaTot: TcxLabel;
+    LDiferencia: TcxLabel;
+    LVentaTot: TcxLabel;
     cxTabSheet7: TcxTabSheet;
     cxTabSheet8: TcxTabSheet;
     dbgCheques: TcxGrid;
@@ -218,6 +215,16 @@ type
     dsBanco: TDADataSource;
     cdsSalida: TDACDSDataTable;
     dsSalida: TDADataSource;
+    cxTabSheet9: TcxTabSheet;
+    Bevel3: TBevel;
+    cxLabel25: TcxLabel;
+    LTotCreditoDebitoCupones: TcxLabel;
+    dbgDiferencias: TcxGrid;
+    dbgDiferenciasDBTableView1: TcxGridDBTableView;
+    cxGridDBColumn1: TcxGridDBColumn;
+    dbgDiferenciasDBTableView1Column1: TcxGridDBColumn;
+    cxGridDBColumn3: TcxGridDBColumn;
+    cxGridLevel7: TcxGridLevel;
     procedure pgcConceptosPageChanging(Sender: TObject; NewPage: TcxTabSheet;
       var AllowChange: Boolean);
     procedure cdsDetalleIngresoNewRecord(DataTable: TDADataTable);
@@ -405,6 +412,7 @@ begin
   EstadoDataSets(False);
   cxGroupBox1.Enabled:= False;
   cxGroupBox3.Enabled:= False;
+  pgcConceptos.Enabled:= False;
   Panel1.Enabled:= False;
 end;
 
@@ -657,43 +665,60 @@ begin
       AgregaValor(cdsDetalleIngreso.FieldByName('IDTIPOCOMPROBACION').AsString, cdsDetalleIngreso.FieldByName('Importe').AsFloat, Valores);
     cdsDetalleIngreso.Next;
   end;
-  LEVenta.EditValue:=CualValor('COMBUSTIBLES', Valores);
-  LEfectivo.EditValue:=CualValor('EFECTIVO', Valores);
-  LClientes.EditValue:=CualValor('CLIENTES', Valores);
-  LCheques.EditValue:=CualValor('CHEQUES', Valores);
-  LTarjetasYCupones.EditValue:=CualValor('TARJETAS Y CUPONES', Valores);
-  LOtros.EditValue:=CualValor('OTROS', Valores);
-  LOtrosProductos.EditValue:=CualValor('PRODUCTOS', Valores);
-  LFaltantes.EditValue:=CualValor('FALTANTES', Valores);
-  LSobrantes.EditValue:=CualValor('SOBRANTES', Valores);
+  LEVenta.EditValue:=CualValor('1', Valores);
+  LEfectivo.EditValue:=CualValor('6', Valores) + CualValor('7', Valores);
+  LClientes.EditValue:=CualValor('9', Valores);
+  LCheques.EditValue:=CualValor('8', Valores);
+  LTarjetasYCupones.EditValue:=CualValor('10', Valores) + CualValor('11', Valores);
+  LOtros.EditValue:=CualValor('12', Valores);
+  LOtrosProductos.EditValue:=CualValor('14', Valores);
+  LFaltantes.EditValue:=CualValor('16', Valores);
+  LSobrantes.EditValue:=CualValor('17', Valores);
 
   if Aplicar then
   begin
     cdsEncargadoIngreso.Edit;
-    Aux:=CualValor('COMBUSTIBLES', Valores) + CualValor('PRODUCTOS', Valores) + CualValor('SOBRANTES', Valores);
+    Aux:=CualValor('1', Valores) + CualValor('14', Valores) + CualValor('16', Valores);
     cdsEncargadoIngreso.FieldByName('Importe').AsFloat:=Decimales(Aux, 2);
-    Aux:=CualValor('EFECTIVO', Valores) + CualValor('CLIENTES', Valores) + CualValor('CHEQUES', Valores) + CualValor('TARJETAS Y CUPONES', Valores) + CualValor('OTROS', Valores) + CualValor('FALTANTES', Valores);
+    Aux:=CualValor('6', Valores) + CualValor('7', Valores) + CualValor('9', Valores) + CualValor('8', Valores) + CualValor('10', Valores) + CualValor('11', Valores) + CualValor('12', Valores) + CualValor('17', Valores);
     cdsEncargadoIngreso.FieldByName('Entregado').AsFloat:=Decimales(Aux, 2);
     Aux:=cdsEncargadoIngreso.FieldByName('Entregado').AsFloat - cdsEncargadoIngreso.FieldByName('Importe').AsFloat;
     cdsEncargadoIngreso.FieldByName('Diferencia').AsFloat:=Decimales(Aux, 2);
     cdsEncargadoIngreso.Post;
     if cdsIngresos.State = dsBrowse then
       cdsIngresos.Edit;
-    Aux:=CualValor('COMBUSTIBLES', Totales) + CualValor('PRODUCTOS', Totales) + CualValor('SOBRANTES', Totales);;
+    Aux:=CualValor('1', Valores) + CualValor('14', Valores) + CualValor('16', Valores);
     cdsIngresos.FieldByName('VENTATOTAL').AsFloat:=Decimales(Aux, 2);
-    Aux:=CualValor('EFECTIVO', Totales) + CualValor('CLIENTES', Totales) + CualValor('CHEQUES', Totales) + CualValor('TARJETAS Y CUPONES', Totales) + CualValor('OTROS', Totales) + CualValor('FALTANTES', Totales);
+    Aux:=CualValor('6', Valores) + CualValor('7', Valores) + CualValor('9', Valores) + CualValor('8', Valores) + CualValor('10', Valores) + CualValor('11', Valores) + CualValor('12', Valores) + CualValor('17', Valores);
     cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat:= Decimales(Aux, 2);
     Aux:=cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat - cdsIngresos.FieldByName('VENTATOTAL').AsFloat;
     cdsIngresos.FieldByName('DIFERENCIA').AsFloat:=Decimales(Aux, 2);
   end;
 
   if cdsIngresos.State = dsBrowse then cdsIngresos.Edit;  
-  cdsIngresos.FieldByName('VENTATOTAL').AsFloat:= CualValor(inttostr(ESCOMBUSTIBLE),Valores)+CualValor(inttostr(ESPRODUCTO),Valores);
-  cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat:= CualValor(inttostr(ESEFECTIVO),Valores);
-  cdsIngresos.FieldByName('SALIDAEFECTIVO').AsFloat:= CualValor(inttostr(ESSALIDAEFECTIVO),Valores);
-  cdsIngresos.FieldByName('DIFERENCIA').AsFloat:= (CualValor(inttostr(ESCOMBUSTIBLE),Valores)+CualValor(inttostr(ESPRODUCTO),Valores))-CualValor(inttostr(ESEFECTIVO),Valores)-CualValor(inttostr(ESCREDITODEBITOCUPON),Valores)-CualValor(inttostr(ESCLIENTE),Valores);
+  cdsIngresos.FieldByName('VENTATOTAL').AsFloat:= CualValor('1', Valores) + CualValor('14', Valores) + CualValor('16', Valores);;
+  cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat:= CualValor('6', Valores) + CualValor('7', Valores) + CualValor('9', Valores) + CualValor('8', Valores) + CualValor('10', Valores) + CualValor('11', Valores) + CualValor('12', Valores) + CualValor('17', Valores);
+  cdsIngresos.FieldByName('SALIDAEFECTIVO').AsFloat:= CualValor('18',Valores);
+  cdsIngresos.FieldByName('DIFERENCIA').AsFloat:= cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat - cdsIngresos.FieldByName('VENTATOTAL').AsFloat;
 
-  cxLabel10.Caption:= floattostr(CualValor(inttostr(ESCREDITODEBITOCUPON),Valores));
+  LEntregado.EditValue:= LEfectivo.EditValue+ LClientes.EditValue + LCheques.EditValue +
+                         LTarjetasyCupones.EditValue + LOtros.EditValue + LFaltantes.EditValue;
+  LVentaTot.EditValue:= LEVenta.EditValue + LOtrosProductos.EditValue + LSobrantes.EditValue;
+
+  LTotCreditoDebitoCupones.EditValue:= CualValor('10', Valores) + CualValor('11', Valores) + CualValor('9', Valores);
+
+  LDiferencia.EditValue:= cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat - cdsIngresos.FieldByName('VENTATOTAL').AsFloat;
+  if LDiferencia.EditValue < 0 then
+  begin
+     LDiferencia.EditValue:=  LDiferencia.EditValue * -1;
+     LDiferencia.Style.Color:= clRed;
+     cxGroupBox5.Caption:= 'Diferencia (Faltante)';
+  end
+  else
+  begin
+     LDiferencia.Style.Color:= clGreen;
+     cxGroupBox5.Caption:= 'Diferencia (Sobrante)';
+  end;
 
   if pgcConceptos.ActivePageIndex in [0..8] then
   begin
@@ -711,16 +736,6 @@ begin
       10: s:='IDTIPOCOMPROBACION = ''OK''';
   end;
 
-  {if pgcConceptos.ActivePageIndex in [0..5] then
-  begin
-    case pgcConceptos.ActivePageIndex of
-    0: begin IDTIPOVALOR:= ESCOMBUSTIBLE; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESCOMBUSTIBLE) +''''; end;
-    1: begin IDTIPOVALOR:= ESCREDITODEBITOCUPON; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESCREDITODEBITOCUPON) +''''; end;
-    2: begin IDTIPOVALOR:= ESPRODUCTO; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESPRODUCTO) +''''; end;
-    3: begin IDTIPOVALOR:= ESCLIENTE; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESCLIENTE) +''''; end;
-    4: begin IDTIPOVALOR:= ESEFECTIVO; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESEFECTIVO) +''''; end;
-    5: begin IDTIPOVALOR:= ESSALIDAEFECTIVO; s:= 'IDTIPOCOMPROBACION = '''+ INTTOSTR(ESSALIDAEFECTIVO) +''''; end;
-  end;}
   //ELIMINAR SECCION SOLO CONSERVO PARA ACLARAR LO QUE HACIA AQUI---------------
   cdsDetalleIngreso.Filtered:=False;
   cdsDetalleIngreso.Filter:=s + ' AND IDENCARGADOINGRESOS = ' + IntToStr(I);;
@@ -1088,6 +1103,7 @@ begin
   ListaTickets:=TStringList.Create;
   cxGroupBox1.Enabled:= False;
   Panel1.Enabled:= False;
+  pgcConceptos.Enabled:= False;
 end;
 
 procedure TfrmIngresosXfecha.FormKeyDown(Sender: TObject; var Key: Word;
@@ -1207,6 +1223,7 @@ begin
   begin
      cxGroupBox1.Enabled:= True;
      cxGroupBox3.Enabled:= True;
+     pgcConceptos.Enabled:= True;
      Panel1.Enabled:= True;
   end;
   //////////////////////////////////////////////////////////////////////////////
@@ -1377,7 +1394,7 @@ end;
 procedure TfrmIngresosXfecha.pgcConceptosChange(Sender: TObject);
 begin
   inherited;
-  if pgcConceptos.ActivePageIndex = 9 then
+  if pgcConceptos.ActivePageIndex = 10 then
   begin
     pgcConceptos.ActivePageIndex:=0;
     cbDepartamento.EditValue:=cdsAgrupacionCajas.FieldByName('IDAGRUPACION').AsInteger;
