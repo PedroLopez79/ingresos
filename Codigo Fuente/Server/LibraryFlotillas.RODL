@@ -465,6 +465,14 @@
 </Parameter>
 </Parameters>
 </Operation>
+<Operation Name="CierraLiquidacion" UID="{D88893FB-F31D-4CF6-8D41-487BF3FA19C4}">
+<Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
+<Parameter Name="LiquidacionID" DataType="Integer" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
 </Operations>
 </Interface>
 </Interfaces>

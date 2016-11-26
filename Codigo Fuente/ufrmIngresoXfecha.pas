@@ -417,14 +417,43 @@ begin
 end;
 
 procedure TfrmIngresosXfecha.ActionCerrar(Action: TBasicAction);
+var
+  S: String;
+  //Tramas: AAsignaTarjetaCupon;
 begin
-  if cdsIngresos.RecordCount > 0 then
-  begin
-    cdsIngresos.Edit;
-    cdsIngresos.FieldByName('TERMINADA').AsBoolean:= True;
-    cdsIngresos.Post;
-    cdsIngresos.ApplyUpdates();
+  if MessageDlg('Este proceso cerrará la liquidación actual y no'+#10+'podrá modificarse.  ¿Desea  inicar el proceso?', mtConfirmation, mbYesNo, 0) <> mrYes then
+    Exit;
+
+  Screen.Cursor:=crHourGlass;
+
+  try
+    {cdsIngresos.Filtered:=False;
+    cdsIngresos.First;
+    while not cdsIngresos.EOF do
+    begin
+      if cdsIngresos.FieldByName('IDTIPOCOMPROBACION').AsInteger = 17 then
+        cdsIngresos.Delete
+      else
+        cdsIngresos.Next;
+    end;
+    cdsIngresos.First;
+
+    while not cdsEncargadoIngreso.EOF do
+    begin
+      CalculaImportes(True);
+      cdsEncargadoIngreso.Next;
+    end;}
+
+    ActionGuardar(nil);
+
+    S:=DM.Servidor.CierraLiquidacion(cdsingresos.FieldByName('IDINGRESOS').AsInteger);
+    pgcConceptos.ActivePageIndex:=0;
+    MessageDlg(S, mtInformation, [mbOK], 0);
+
+  finally
+    Screen.Cursor:=crDefault;
   end;
+
 end;
 
 procedure TfrmIngresosXfecha.ActionGuardar(Action: TBasicAction);
@@ -711,12 +740,12 @@ begin
   if LDiferencia.EditValue < 0 then
   begin
      LDiferencia.EditValue:=  LDiferencia.EditValue * -1;
-     LDiferencia.Style.Color:= clRed;
+     LDiferencia.Style.TextColor:= clRed;
      cxGroupBox5.Caption:= 'Diferencia (Faltante)';
   end
   else
   begin
-     LDiferencia.Style.Color:= clGreen;
+     LDiferencia.Style.TextColor:= clGreen;
      cxGroupBox5.Caption:= 'Diferencia (Sobrante)';
   end;
 

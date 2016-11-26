@@ -1206,6 +1206,7 @@ type
     function ObtenTipoValores(const NUMEROESTACION: Integer; const FECHA: DateTime): ATTipoValores;
     function CostoProducto(const IDPRODUCTO: Integer): Double;
     function Exporta(const ExportarID: Integer): TExporta;
+    function CierraLiquidacion(const LiquidacionID: Integer): AnsiString;
   end;
 
   { CoServiceIngresos }
@@ -1268,6 +1269,7 @@ type
     function ObtenTipoValores(const NUMEROESTACION: Integer; const FECHA: DateTime): ATTipoValores;
     function CostoProducto(const IDPRODUCTO: Integer): Double;
     function Exporta(const ExportarID: Integer): TExporta;
+    function CierraLiquidacion(const LiquidacionID: Integer): AnsiString;
   end;
 
 implementation
@@ -8899,6 +8901,29 @@ begin
     lTransportChannel.Dispatch(lMessage);
 
     lMessage.Read('Result', System.TypeInfo(LibraryIngresos_Intf.TExporta), Result, []);
+  finally
+    lMessage.UnsetAttributes(lTransportChannel);
+    lMessage.FreeStream;
+    lMessage := nil;
+    lTransportChannel := nil;
+  end;
+end;
+
+function TServiceIngresos_Proxy.CierraLiquidacion(const LiquidacionID: Integer): AnsiString;
+var
+  lMessage: IROMessage;
+  lTransportChannel: IROTransportChannel;
+begin
+  lMessage := __GetMessage;
+  lTransportChannel := __TransportChannel;
+  try
+    lMessage.InitializeRequestMessage(lTransportChannel, 'LibraryIngresos', __InterfaceName, 'CierraLiquidacion');
+    lMessage.Write('LiquidacionID', System.TypeInfo(Integer), LiquidacionID, []);
+    lMessage.Finalize;
+
+    lTransportChannel.Dispatch(lMessage);
+
+    lMessage.Read('Result', System.TypeInfo(AnsiString), Result, []);
   finally
     lMessage.UnsetAttributes(lTransportChannel);
     lMessage.FreeStream;

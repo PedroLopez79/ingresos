@@ -84,6 +84,7 @@ type
     function CostoProducto(const IDPRODUCTO: Integer): Double;
     function Exporta(const ExportarID: Integer): TExporta;
     function ObtenTurnosdeFecha(const Fecha: DateTime; const Estacion: Integer): ATTurnoxFecha;
+    function CierraLiquidacion(const LiquidacionID: Integer): AnsiString;
   end;
 
 implementation
@@ -746,6 +747,147 @@ function TServiceIngresos.cfdi(const FacturaID,
   NumeroEstacion: Integer): TXmlCFD;
 begin
 
+end;
+
+function TServiceIngresos.CierraLiquidacion(
+  const LiquidacionID: Integer): AnsiString;
+var
+  ds, dsTotalAlmacen: IDADataSet;
+  dsInventario: IDADataSet;
+  dsFaltantes: IDADataSet;
+  MovID, AlmacenID, MiEstacionID: Integer;
+  cmdMov, cmdDet, cmdFyP, cmdDetLiq, cmdCierra: IDASQLCommand;
+  MiFecha: TDateTime;
+begin
+  Result:='OK';
+  ds:=Schema.NewDataset(Connection, 'spValidaCierreLiquidacion');
+  ds.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
+  ds.Open;
+  MiEstacionID:=ds.FieldByName('EstacionID').AsInteger;
+  MiFecha:=ds.FieldByName('Fecha').AsDateTime;
+  if not ds.FieldByName('Existe').AsBoolean then
+  begin
+    Result:='la liquidación no existe.';
+    ds.Close;
+    Exit;
+  end;
+
+  if ds.FieldByName('Cerrada').AsBoolean then
+  begin
+    Result:='La liquidación ya está cerrada.';
+    ds.Close;
+    Exit;
+  end;
+
+  if ds.FieldByName('Despachador').AsInteger > 0 then
+  begin
+    Result:='Debe seleccionar un despachador.';
+    ds.Close;
+    Exit;
+  end;
+
+  dsInventario:=Schema.NewDataset(Connection, 'spInventarioOtrosProductos');
+  dsInventario.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
+  dsInventario.Open;
+
+  AlmacenID:=-1;
+  MovID:=0;
+  cmdMov:=Schema.NewCommand(Connection, 'Insert_dbo MovimientoAlmacen2');
+  cmdDet:=Schema.NewCommand(Connection, 'Insert_dbo DetalleMovimientoAlmacen2');
+  dsTotalAlmacen:=Schema.NewDataset(Connection, 'spTotalAlmacen');
+  while not dsInventario.EOF do
+  begin
+    if dsInventario.FieldByName('AlmacenID').AsInteger <> AlmacenID then
+    begin
+      MovID:=Folio('MovimientoAlmacen', '');
+      AlmacenID:=dsInventario.FieldByName('AlmacenID').AsInteger;
+      dsTotalAlmacen.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
+      dsTotalAlmacen.ParamByName('AlmacenID').AsInteger:=AlmacenID;
+      dsTotalAlmacen.Open;
+      cmdMov.ParamByName('MovimientoAlmacenID').AsInteger:=MovID;
+      cmdMov.ParamByName('Folio').AsInteger:=MovID;
+      cmdMov.ParamByName('Fecha').AsDateTime:=Trunc(Now);
+      cmdMov.ParamByName('Ejercicio').AsString:=FormatDateTime('yyyy', Now);
+      cmdMov.ParamByName('Periodo').AsString:=FormatDateTime('m', Now);
+      cmdMov.ParamByName('Dia').AsString:=FormatDateTime('d', Now);
+      cmdMov.ParamByName('Total').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('Importe').AsFloat, 2);
+      cmdMov.ParamByName('ImpuestoPorcentaje').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('ImpuestoPorcentaje').AsFloat, 2);
+      cmdMov.ParamByName('SubTotal').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('SubTotal').AsFloat, 2);
+      cmdMov.ParamByName('Impuesto').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('Impuesto').AsFloat, 2);
+      cmdMov.ParamByName('EstacionID').AsInteger:=dsTotalAlmacen.FieldByName('EstacionID').AsInteger;
+      cmdMov.ParamByName('BonoMerma').AsInteger:=0;
+      cmdMov.ParamByName('EstacionDestinoID').AsInteger:=0;
+      cmdMov.ParamByName('AlmacenDestinoID').AsInteger:=0;
+      cmdMov.ParamByName('ProveedorID').AsInteger:=0;
+      cmdMov.ParamByName('AlmacenID').AsInteger:=AlmacenID;
+      cmdMov.ParamByName('TipoMovimientoAlmacenID').AsInteger:=2;
+      cmdMov.Execute;
+      dsTotalAlmacen.Close;
+    end;
+    cmdDet.ParamByName('DetalleMovimientoAlmacenID').AsInteger:=Folio('DetalleTransaccionID', '');
+    cmdDet.ParamByName('MovimientoAlmacenID').AsInteger:=MovID;
+    cmdDet.ParamByName('Cantidad').AsFloat:=Decimales(dsInventario.FieldByName('Cantidad').AsFloat, 2);
+    cmdDet.ParamByName('Precio').AsFloat:=Decimales(dsInventario.FieldByName('Precio').AsFloat, 2);
+    cmdDet.ParamByName('Importe').AsFloat:=Decimales(dsInventario.FieldByName('Importe').AsFloat, 2);
+    cmdDet.ParamByName('ProductoID').AsInteger:=dsInventario.FieldByName('ProductoID').AsInteger;
+    cmdDet.Execute;
+    dsInventario.Next;
+  end;
+  dsInventario.Close;
+
+
+  dsFaltantes:=Schema.NewDataset(Connection, 'spDiferenciasLiquidacion');
+  dsFaltantes.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
+  dsFaltantes.Open;
+  cmdFyP:=Schema.NewCommand(Connection, 'Insert_dbo FaltanteyPago');
+  cmdDetLiq:=Schema.NewCommand(Connection, 'Insert_dbo DetalleLiquidacion2');
+
+  while not dsFaltantes.Eof do
+  begin
+    cmdFyP.ParamByName('FaltanteyPagoID').AsInteger:=Folio('FaltanteyPago', '');
+    cmdFyP.ParamByName('Fecha').AsDateTime:=MiFecha;
+    cmdFyP.ParamByName('Cargo').AsInteger:=0;
+    cmdFyP.ParamByName('Abono').AsInteger:=0;
+    cmdFyP.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
+    cmdFyP.ParamByName('Descripcion').AsString:=Format('DIFERENCIA EN LIQUIDACION [%d-%d]', [MiEstacionID, dsFaltantes.FieldByName('TurnoID').AsInteger]);
+    cmdFyP.ParamByName('EmpleadoID').AsInteger:=dsFaltantes.FieldByName('DespachadorID').AsInteger;
+    cmdDetLiq.ParamByName('DetalleLiquidacionID').AsInteger:=Folio('LiquidacionDetalleID', '');
+    cmdDetLiq.ParamByName('DespachadorLiquidacionID').AsInteger:=dsFaltantes.FieldByName('DespachadorLiquidacionID').AsInteger;
+    cmdDetLiq.ParamByName('Cantidad').AsInteger:=1;
+    cmdDetLiq.ParamByName('Ticket').AsInteger:=0;
+    cmdDetLiq.ParamByName('CuponID').AsInteger:=0;
+    cmdDetLiq.ParamByName('SalidaID').AsInteger:=0;
+    cmdDetLiq.ParamByName('ClienteID').AsInteger:=0;
+    cmdDetLiq.ParamByName('BancoID').AsInteger:=0;
+    cmdDetLiq.ParamByName('ProductoID').AsInteger:=0;
+    cmdDetLiq.ParamByName('AuxiliarID').AsInteger:=0;
+    cmdDetLiq.ParamByName('Facturado').AsBoolean:=False;
+    cmdDetLiq.ParamByName('Importe').AsFloat:=Abs(Decimales(dsFaltantes.FieldByName('Diferencia').AsFloat, 2));
+
+    if dsFaltantes.FieldByName('Diferencia').AsFloat < 0 then
+    begin
+      cmdDetLiq.ParamByName('TipoValorID').AsInteger:=15;
+      cmdDetLiq.ParamByName('Referencia').AsString:=Format('FALTANTE EN LIQUIDACION [%d]', [dsFaltantes.FieldByName('TurnoID').AsInteger]);
+      cmdFyP.ParamByName('Cargo').AsFloat:=Abs(Decimales(dsFaltantes.FieldByName('Diferencia').AsFloat, 2));
+      cmdFyP.ParamByName('TipoFaltantePagoID').AsInteger:=1;
+      cmdFyP.Execute;
+    end
+    else
+    begin
+      cmdDetLiq.ParamByName('TipoValorID').AsInteger:=16;
+      cmdDetLiq.ParamByName('Referencia').AsString:=Format('SOBRANTE EN LIQUIDACION [%d]', [dsFaltantes.FieldByName('TurnoID').AsInteger]);
+      cmdFyP.ParamByName('Abono').AsFloat:=Abs(Decimales(dsFaltantes.FieldByName('Diferencia').AsFloat, 2));
+      cmdFyP.ParamByName('TipoFaltantePagoID').AsInteger:=2;
+      if ServerDataModule.AplicaSobrantes then
+        cmdFyP.Execute;
+    end;
+    cmdDetLiq.Execute;
+    dsFaltantes.Next;
+  end;
+  dsFaltantes.Close;
+  cmdCierra:=Schema.NewCommand(Connection, 'CierraLiquidacion');
+  cmdCierra.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
+  cmdCierra.Execute;
 end;
 
 function TServiceIngresos.CostoProducto(const IDPRODUCTO: Integer): Double;

@@ -27,6 +27,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    AplicaSobrantes: Boolean;
   end;
 
 var

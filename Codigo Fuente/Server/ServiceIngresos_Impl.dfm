@@ -2318,8 +2318,8 @@ object ServiceIngresos: TServiceIngresos
             Connection = 'INGRESOS'
             Default = True
             SQL = 
-              'SELECT'#10'    NUMEROESTACION, EMPRESA, RFC,'#10'    CIUDAD, HOSTVOLUMET' +
-              'RICO, CC,'#10'    IMPUESTOPORCENTAJE'#10'  FROM'#10'    dbo.Configuracion'#10
+              'SELECT'#10'    IDESTACION AS NUMEROESTACION, NOMBRE, RFC,'#10'    LOCALI' +
+              'DAD, HOST, CUENTACONTABLE,'#10'    IMPUESTO'#10'  FROM'#10'    dbo.Estacion'#10
             StatementType = stSQL
             ColumnMappings = <
               item
@@ -2327,28 +2327,28 @@ object ServiceIngresos: TServiceIngresos
                 TableField = 'NUMEROESTACION'
               end
               item
-                DatasetField = 'EMPRESA'
-                TableField = 'EMPRESA'
+                DatasetField = 'NOMBRE'
+                TableField = 'NOMBRE'
               end
               item
                 DatasetField = 'RFC'
                 TableField = 'RFC'
               end
               item
-                DatasetField = 'CIUDAD'
-                TableField = 'CIUDAD'
+                DatasetField = 'LOCALIDAD'
+                TableField = 'LOCALIDAD'
               end
               item
-                DatasetField = 'HOSTVOLUMETRICO'
-                TableField = 'HOSTVOLUMETRICO'
+                DatasetField = 'HOST'
+                TableField = 'HOST'
               end
               item
-                DatasetField = 'CC'
-                TableField = 'CC'
+                DatasetField = 'CUENTACONTABLE'
+                TableField = 'CUENTACONTABLE'
               end
               item
-                DatasetField = 'IMPUESTOPORCENTAJE'
-                TableField = 'IMPUESTOPORCENTAJE'
+                DatasetField = 'IMPUESTO'
+                TableField = 'IMPUESTO'
               end>
           end>
         Name = 'spEstacion'
@@ -2358,32 +2358,32 @@ object ServiceIngresos: TServiceIngresos
             DataType = datInteger
           end
           item
-            Name = 'EMPRESA'
+            Name = 'NOMBRE'
             DataType = datString
-            Size = 50
+            Size = 100
           end
           item
             Name = 'RFC'
             DataType = datString
-            Size = 50
+            Size = 30
           end
           item
-            Name = 'CIUDAD'
+            Name = 'LOCALIDAD'
             DataType = datString
             Size = 30
           end
           item
-            Name = 'HOSTVOLUMETRICO'
+            Name = 'HOST'
             DataType = datString
             Size = 30
           end
           item
-            Name = 'CC'
+            Name = 'CUENTACONTABLE'
             DataType = datString
             Size = 20
           end
           item
-            Name = 'IMPUESTOPORCENTAJE'
+            Name = 'IMPUESTO'
             DataType = datFloat
           end>
       end
@@ -5670,80 +5670,6 @@ object ServiceIngresos: TServiceIngresos
           end>
       end
       item
-        Params = <
-          item
-            Name = 'IDMOVIMIENTOALMACEN'
-            DataType = datInteger
-            Value = ''
-          end>
-        Statements = <
-          item
-            Connection = 'INGRESOS'
-            Default = True
-            TargetTable = 'dbo.DETALLEMOVIMIENTOALMACEN'
-            SQL = 
-              'SELECT '#10'    IDDETALLEMOVIMIENTOALMACEN, IDMOVIMIENTOALMACEN, CAN' +
-              'TIDAD, '#10'    PRECIO, IMPORTE, IDPRODUCTO'#10'  FROM'#10'    dbo.DETALLEMO' +
-              'VIMIENTOALMACEN'#10'  WHERE'#10'    IDMOVIMIENTOALMACEN = :IDMOVIMIENTOA' +
-              'LMACEN'#10
-            StatementType = stSQL
-            ColumnMappings = <
-              item
-                DatasetField = 'IDDETALLEMOVIMIENTOALMACEN'
-                TableField = 'IDDETALLEMOVIMIENTOALMACEN'
-              end
-              item
-                DatasetField = 'IDMOVIMIENTOALMACEN'
-                TableField = 'IDMOVIMIENTOALMACEN'
-              end
-              item
-                DatasetField = 'CANTIDAD'
-                TableField = 'CANTIDAD'
-              end
-              item
-                DatasetField = 'PRECIO'
-                TableField = 'PRECIO'
-              end
-              item
-                DatasetField = 'IMPORTE'
-                TableField = 'IMPORTE'
-              end
-              item
-                DatasetField = 'IDPRODUCTO'
-                TableField = 'IDPRODUCTO'
-              end>
-          end>
-        Name = 'dbo DETALLEMOVIMIENTOALMACEN'
-        Fields = <
-          item
-            Name = 'IDDETALLEMOVIMIENTOALMACEN'
-            DataType = datInteger
-            Required = True
-            InPrimaryKey = True
-          end
-          item
-            Name = 'IDMOVIMIENTOALMACEN'
-            DataType = datInteger
-            Required = True
-          end
-          item
-            Name = 'CANTIDAD'
-            DataType = datFloat
-          end
-          item
-            Name = 'PRECIO'
-            DataType = datFloat
-          end
-          item
-            Name = 'IMPORTE'
-            DataType = datFloat
-          end
-          item
-            Name = 'IDPRODUCTO'
-            DataType = datInteger
-          end>
-      end
-      item
         Params = <>
         Statements = <
           item
@@ -7355,6 +7281,395 @@ object ServiceIngresos: TServiceIngresos
             Size = 100
             Required = True
           end>
+      end
+      item
+        Params = <
+          item
+            Name = 'LiquidacionID'
+            DataType = datInteger
+            Value = '13'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'declare @LiquidacionID int'#10'declare @Despachador int'#10'declare @Cer' +
+              'rada bit'#10'declare @Existe bit'#10'declare @EstacionID integer'#10'declare' +
+              ' @Fecha datetime'#10#10'select @LiquidacionID = (select :LiquidacionID' +
+              ')'#10'select @Despachador = (Select isnull(Count(*), 0) from ENCARGA' +
+              'DOINGRESOS where IDINGRESO = @LiquidacionID and IDEMPLEADO = 0)'#10 +
+              'select @Cerrada = (Select isnull(TERMINADA, 0) from INGRESOS whe' +
+              're IDINGRESO = @LiquidacionID)'#10'select @Existe = (select count(*)' +
+              ' from INGRESOS where IDINGRESO = @LiquidacionID)'#10'select @Estacio' +
+              'nID = (select NUMEROESTACION from INGRESOS where IDINGRESO = @Li' +
+              'quidacionID)'#10'select @Fecha = (select FECHA from INGRESOS where I' +
+              'DINGRESO = @LiquidacionID)'#10#10'Select @Existe as Existe, @Cerrada a' +
+              's Cerrada, @Despachador as Despachador, @EstacionID as EstacionI' +
+              'D, @Fecha as Fecha'#10
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'Existe'
+                TableField = 'Existe'
+              end
+              item
+                DatasetField = 'Cerrada'
+                TableField = 'Cerrada'
+              end
+              item
+                DatasetField = 'Despachador'
+                TableField = 'Despachador'
+              end
+              item
+                DatasetField = 'EstacionID'
+                TableField = 'EstacionID'
+              end
+              item
+                DatasetField = 'Fecha'
+                TableField = 'Fecha'
+              end>
+          end>
+        Name = 'spValidaCierreLiquidacion'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'Existe'
+            DataType = datBoolean
+          end
+          item
+            Name = 'Cerrada'
+            DataType = datBoolean
+          end
+          item
+            Name = 'Despachador'
+            DataType = datInteger
+          end
+          item
+            Name = 'EstacionID'
+            DataType = datInteger
+          end
+          item
+            Name = 'Fecha'
+            DataType = datDateTime
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'IDMOVIMIENTOALMACEN'
+            DataType = datInteger
+            Value = '2'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.DETALLEMOVIMIENTOALMACEN'
+            SQL = 
+              'SELECT '#10'    IDDETALLEMOVIMIENTOALMACEN, IDMOVIMIENTOALMACEN, CAN' +
+              'TIDAD, '#10'    PRECIO, IMPORTE, IDPRODUCTO'#10'  FROM'#10'    dbo.DETALLEMO' +
+              'VIMIENTOALMACEN'#10'  WHERE'#10'    IDMOVIMIENTOALMACEN = :IDMOVIMIENTOA' +
+              'LMACEN'#10
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDDETALLEMOVIMIENTOALMACEN'
+                TableField = 'IDDETALLEMOVIMIENTOALMACEN'
+              end
+              item
+                DatasetField = 'IDMOVIMIENTOALMACEN'
+                TableField = 'IDMOVIMIENTOALMACEN'
+              end
+              item
+                DatasetField = 'CANTIDAD'
+                TableField = 'CANTIDAD'
+              end
+              item
+                DatasetField = 'PRECIO'
+                TableField = 'PRECIO'
+              end
+              item
+                DatasetField = 'IMPORTE'
+                TableField = 'IMPORTE'
+              end
+              item
+                DatasetField = 'IDPRODUCTO'
+                TableField = 'IDPRODUCTO'
+              end>
+          end>
+        Name = 'dbo DETALLEMOVIMIENTOALMACEN'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDDETALLEMOVIMIENTOALMACEN'
+            DataType = datInteger
+          end
+          item
+            Name = 'IDMOVIMIENTOALMACEN'
+            DataType = datInteger
+          end
+          item
+            Name = 'CANTIDAD'
+            DataType = datFloat
+          end
+          item
+            Name = 'PRECIO'
+            DataType = datFloat
+          end
+          item
+            Name = 'IMPORTE'
+            DataType = datFloat
+          end
+          item
+            Name = 'IDPRODUCTO'
+            DataType = datInteger
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'LiquidacionID'
+            DataType = datInteger
+            Value = '6'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'SELECT     Agrupacion.IDAlmacen, DetalleIngresos.IDProducto, SUM' +
+              '(CAST(DetalleIngresos.Cantidad AS DECIMAL(10, 2))) AS Cantidad, ' +
+              'Sum(CAST(DetalleIngresos.Importe AS DECIMAL(10, 2))) AS Importe,' +
+              #10'           SUM(CAST(CAST(DetalleIngresos.Importe AS DECIMAL(10,' +
+              ' 2)) / CAST(DetalleIngresos.Cantidad AS DECIMAL(10, 2)) AS DECIM' +
+              'AL(10, 2))) AS Precio'#10'FROM         DetalleIngresos INNER JOIN'#10'  ' +
+              '                    EncargadoIngresos ON DetalleIngresos.IDEncar' +
+              'gadoIngresos = EncargadoIngresos.IDEncargadoIngresos INNER JOIN'#10 +
+              '                      Agrupacion ON EncargadoIngresos.IDAgrupaci' +
+              'on = Agrupacion.IDAgrupacion'#10'WHERE     (EncargadoIngresos.IDIngr' +
+              'eso = :LiquidacionID) AND (DetalleIngresos.IDTipoComprobacion = ' +
+              '1)'#10'GROUP BY Agrupacion.IDAlmacen, DetalleIngresos.IDProducto, En' +
+              'cargadoIngresos.IDIngreso'#10'ORDER BY Agrupacion.IDAlmacen, Detalle' +
+              'Ingresos.IDProducto'
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDAlmacen'
+                TableField = 'IDAlmacen'
+              end
+              item
+                DatasetField = 'IDProducto'
+                TableField = 'IDProducto'
+              end
+              item
+                DatasetField = 'Cantidad'
+                TableField = 'Cantidad'
+              end
+              item
+                DatasetField = 'Importe'
+                TableField = 'Importe'
+              end
+              item
+                DatasetField = 'Precio'
+                TableField = 'Precio'
+              end>
+          end>
+        Name = 'spInventariosOtrosProductos'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDAlmacen'
+            DataType = datInteger
+          end
+          item
+            Name = 'IDProducto'
+            DataType = datInteger
+          end
+          item
+            Name = 'Cantidad'
+            DataType = datFloat
+          end
+          item
+            Name = 'Importe'
+            DataType = datFloat
+          end
+          item
+            Name = 'Precio'
+            DataType = datInteger
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'LiquidacionID'
+            DataType = datInteger
+            Value = '13'
+            ParamType = daptInput
+          end
+          item
+            Name = 'AlmacenID'
+            DataType = datInteger
+            Value = '3'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'SELECT     INGRESOS.NUMEROESTACION, Agrupacion.IDALMACEN, Estaci' +
+              'on.Impuesto AS ImpuestoPorcentaje, SUM(CAST(DETALLEINGRESOS.Impo' +
+              'rte AS DECIMAL(10,2))) AS Importe,'#10'                      SUM(CAS' +
+              'T(DETALLEINGRESOS.Importe / (1 + (Estacion.Impuesto / 100)) AS D' +
+              'ecimal(10,2))) AS SubTotal,'#10#9#9'      SUM(CAST(DETALLEINGRESOS.Imp' +
+              'orte AS DECIMAL(10,2)) - CAST(DETALLEINGRESOS.Importe / (1 + (Es' +
+              'tacion.Impuesto / 100)) AS Decimal(10,2))) AS Impuesto'#10'FROM     ' +
+              '    DETALLEINGRESOS INNER JOIN'#10'                      ENCARGADOIN' +
+              'GRESOS ON DETALLEINGRESOS.IDENCARGADOINGRESOS = ENCARGADOINGRESO' +
+              'S.IDENCARGADOINGRESOS INNER JOIN'#10'                      Agrupacio' +
+              'n ON ENCARGADOINGRESOS.IDAgrupacion = Agrupacion.IDAgrupacion IN' +
+              'NER JOIN'#10'                      INGRESOS ON ENCARGADOINGRESOS.IDI' +
+              'NGRESO = INGRESOS.IDINGRESO INNER JOIN'#10'                      Est' +
+              'acion ON Agrupacion.IDESTACION = Estacion.IDESTACION'#10'WHERE     (' +
+              'DETALLEINGRESOS.IDPRODUCTO > 5) AND (ENCARGADOINGRESOS.IDINGRESO' +
+              ' = :LiquidacionID) and (Agrupacion.IDALMACEN = :AlmacenID)'#10'GROUP' +
+              ' BY INGRESOS.NUMEROESTACION, Agrupacion.IDALMACEN, Estacion.Impu' +
+              'esto'
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'NUMEROESTACION'
+                TableField = 'NUMEROESTACION'
+              end
+              item
+                DatasetField = 'IDALMACEN'
+                TableField = 'IDALMACEN'
+              end
+              item
+                DatasetField = 'ImpuestoPorcentaje'
+                TableField = 'ImpuestoPorcentaje'
+              end
+              item
+                DatasetField = 'Importe'
+                TableField = 'Importe'
+              end
+              item
+                DatasetField = 'SubTotal'
+                TableField = 'SubTotal'
+              end
+              item
+                DatasetField = 'Impuesto'
+                TableField = 'Impuesto'
+              end>
+          end>
+        Name = 'spTotalAlmacen'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'NUMEROESTACION'
+            DataType = datInteger
+          end
+          item
+            Name = 'IDALMACEN'
+            DataType = datInteger
+          end
+          item
+            Name = 'ImpuestoPorcentaje'
+            DataType = datFloat
+          end
+          item
+            Name = 'Importe'
+            DataType = datFloat
+          end
+          item
+            Name = 'SubTotal'
+            DataType = datFloat
+          end
+          item
+            Name = 'Impuesto'
+            DataType = datFloat
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'LiquidacionID'
+            DataType = datInteger
+            Value = '6'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'SELECT     ENCARGADOINGRESOS.IDENCARGADOINGRESOS, ENCARGADOINGRE' +
+              'SOS.IDEMPLEADO, CAST(ENCARGADOINGRESOS.Diferencia AS DECIMAL(10,' +
+              '2)) AS Diferencia,'#10'                      INGRESOS.Fecha, INGRESO' +
+              'S.IDTURNO'#10'FROM         ENCARGADOINGRESOS INNER JOIN'#10'            ' +
+              '          INGRESOS ON ENCARGADOINGRESOS.IDINGRESO = INGRESOS.IDI' +
+              'NGRESO'#10'WHERE     (ENCARGADOINGRESOS.IDINGRESO = :LiquidacionID) ' +
+              'AND (ENCARGADOINGRESOS.Diferencia <> 0)'
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDENCARGADOINGRESOS'
+                TableField = 'IDENCARGADOINGRESOS'
+              end
+              item
+                DatasetField = 'IDEMPLEADO'
+                TableField = 'IDEMPLEADO'
+              end
+              item
+                DatasetField = 'Diferencia'
+                TableField = 'Diferencia'
+              end
+              item
+                DatasetField = 'Fecha'
+                TableField = 'Fecha'
+              end
+              item
+                DatasetField = 'IDTURNO'
+                TableField = 'IDTURNO'
+              end>
+          end>
+        Name = 'spDiferenciasLiquidacion'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDENCARGADOINGRESOS'
+            DataType = datInteger
+          end
+          item
+            Name = 'IDEMPLEADO'
+            DataType = datInteger
+          end
+          item
+            Name = 'Diferencia'
+            DataType = datFloat
+          end
+          item
+            Name = 'Fecha'
+            DataType = datDateTime
+          end
+          item
+            Name = 'IDTURNO'
+            DataType = datInteger
+          end>
       end>
     JoinDataTables = <>
     UnionDataTables = <>
@@ -7918,6 +8233,320 @@ object ServiceIngresos: TServiceIngresos
             ColumnMappings = <>
           end>
         Name = 'Update_dbo Reporte'
+      end
+      item
+        Params = <
+          item
+            Name = 'MovimientoAlmacenID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Folio'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Fecha'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Dia'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Ejercicio'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Periodo'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Total'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'SubTotal'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Impuesto'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'ImpuestoPorcentaje'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'EstacionID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'EstacionDestinoID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'AlmacenDestinoID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'ProveedorID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'AlmacenID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'TipoMovimientoAlmacenID'
+            Value = ''
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'INSERT'#10'INTO dbo.MovimientoAlmacen'#10'    (IDMOVIMIENTOALMACEN, Foli' +
+              'o, Fecha, Dia, Ejercicio, '#10'     Periodo, Total, SubTotal, Impues' +
+              'to, ImpuestoPorcentaje, '#10'     NUMMEROESTACION, IDESTACIOND, IDAL' +
+              'MACEND, '#10'     IDPROVEEDOR, IDALMACEN, IDTIPOMOVIMIENTO)'#10'  VALUES' +
+              #10'    (:MovimientoAlmacenID, :Folio, :Fecha, :Dia, :Ejercicio, '#10' ' +
+              '    :Periodo, :Total, :SubTotal, :Impuesto, :ImpuestoPorcentaje,' +
+              ' '#10'     :EstacionID, :EstacionDestinoID, :AlmacenDestinoID, '#10'    ' +
+              ' :ProveedorID, :AlmacenID, :TipoMovimientoAlmacenID)'
+            StatementType = stSQL
+            ColumnMappings = <>
+          end>
+        Name = 'Insert_dbo MovimientoAlmacen2'
+      end
+      item
+        Params = <
+          item
+            Name = 'DetalleMovimientoAlmacenID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'MovimientoAlmacenID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Cantidad'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Precio'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Importe'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'ProductoID'
+            Value = ''
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'INSERT'#10'  INTO dbo.DetalleMovimientoAlmacen'#10'    (IDDETALLEMOVIMIE' +
+              'NTOALMACEN, IDMOVIMIENTOALMACEN, Cantidad, '#10'     Precio, Importe' +
+              ', IDPRODUCTO)'#10'  VALUES'#10'    (:DetalleMovimientoAlmacenID, :Movimi' +
+              'entoAlmacenID, '#10'     :Cantidad, :Precio, :Importe, :ProductoID)'
+            StatementType = stSQL
+            ColumnMappings = <>
+          end>
+        Name = 'Insert_dbo DetalleMovimientoAlmacen2'
+      end
+      item
+        Params = <
+          item
+            Name = 'FaltanteyPagoID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Fecha'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'EmpleadoID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'TipoFaltantePagoID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Descripcion'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Cargo'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Abono'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'LiquidacionID'
+            Value = ''
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'INSERT'#10'  INTO dbo.FaltanteyPago'#10'    (FaltanteyPagoID, Fecha, IDE' +
+              'MPLEADO, TipoFaltantePagoID, '#10'     Descripcion, Cargo, Abono, ID' +
+              'INGRESO)'#10'  VALUES'#10'    (:FaltanteyPagoID, :Fecha, :EmpleadoID, :T' +
+              'ipoFaltantePagoID, '#10'     :Descripcion, :Cargo, :Abono, :Liquidac' +
+              'ionID)'
+            StatementType = stSQL
+            ColumnMappings = <>
+          end>
+        Name = 'Insert_dbo FaltanteyPago'
+      end
+      item
+        Params = <
+          item
+            Name = 'DetalleLiquidacionID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Cantidad'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Importe'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Referencia'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'Ticket'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'CuponID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'SalidaID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'ClienteID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'BancoID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'AuxiliarID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'DespachadorLiquidacionID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'TipoValorID'
+            Value = ''
+            ParamType = daptInput
+          end
+          item
+            Name = 'ProductoID'
+            Value = ''
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'INSERT'#10'  INTO dbo.DETALLEINGRESOS'#10'    (IDDETALLEINGRESOS, Cantid' +
+              'ad, Importe, DESCRIPCION, '#10'     Ticket, IDCUPON, IDSALIDA, IDCLI' +
+              'ENTE, IDBANCO, IDAUXILIAR,'#10'     IDENCARGADOINGRESOS, IDTIPOCOMPR' +
+              'OBACION, IDPRODUCTO)'#10'  VALUES'#10'    (:DetalleLiquidacionID, :Canti' +
+              'dad, :Importe, :Referencia, '#10'     :Ticket, :CuponID, :SalidaID, ' +
+              ':ClienteID, :BancoID,'#10'     :AuxiliarID, :DespachadorLiquidacionI' +
+              'D, :TipoValorID,'#10'     :ProductoID)'
+            StatementType = stSQL
+            ColumnMappings = <>
+          end>
+        Name = 'Insert_dbo DetalleLiquidacion2'
+      end
+      item
+        Params = <
+          item
+            Name = 'LiquidacionID'
+            Value = ''
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'DECLARE @LiquidacionID INT'#10#10'SELECT @LiquidacionID = (SELECT :Liq' +
+              'uidacionID)'#10#10'UPDATE INGRESOS SET'#10'TERMINADA = 1,'#10'EFECTIVOENTREGAD' +
+              'O = VENTATOTAL,'#10'Diferencia = 0'#10'WHERE IDINGRESO = @LiquidacionID'#10 +
+              #10'UPDATE ENCARGADOINGRESOS SET'#10'Entregado = Importe,'#10'Diferencia = ' +
+              '0'#10'WHERE IDINGRESO = @LiquidacionID'
+            StatementType = stSQL
+            ColumnMappings = <>
+          end>
+        Name = 'CierraLiquidacion'
       end>
     RelationShips = <
       item

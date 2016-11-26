@@ -69,6 +69,7 @@ type
     procedure Invoke_ObtenTipoValores(const __Instance:IInterface; const __Message:IROMessage; const __Transport:IROTransport; out __oResponseOptions:TROResponseOptions);
     procedure Invoke_CostoProducto(const __Instance:IInterface; const __Message:IROMessage; const __Transport:IROTransport; out __oResponseOptions:TROResponseOptions);
     procedure Invoke_Exporta(const __Instance:IInterface; const __Message:IROMessage; const __Transport:IROTransport; out __oResponseOptions:TROResponseOptions);
+    procedure Invoke_CierraLiquidacion(const __Instance:IInterface; const __Message:IROMessage; const __Transport:IROTransport; out __oResponseOptions:TROResponseOptions);
   end;
 
 implementation
@@ -1191,6 +1192,27 @@ begin
     finally
       __lObjectDisposer.Free();
     end;
+  end;
+end;
+
+procedure TServiceIngresos_Invoker.Invoke_CierraLiquidacion(const __Instance:IInterface; const __Message:IROMessage; const __Transport:IROTransport; out __oResponseOptions:TROResponseOptions);
+{ function CierraLiquidacion(const LiquidacionID: Integer): AnsiString; }
+var
+  LiquidacionID: Integer;
+  lResult: AnsiString;
+begin
+  CheckRoles(__Instance, GetDefaultServiceRoles);
+  try
+    __Message.Read('LiquidacionID', TypeInfo(Integer), LiquidacionID, []);
+
+    lResult := (__Instance as IServiceIngresos).CierraLiquidacion(LiquidacionID);
+
+    __Message.InitializeResponseMessage(__Transport, 'LibraryIngresos', 'ServiceIngresos', 'CierraLiquidacionResponse');
+    __Message.Write('Result', TypeInfo(AnsiString), lResult, []);
+    __Message.Finalize;
+    __Message.UnsetAttributes(__Transport);
+
+  finally
   end;
 end;
 
