@@ -31,17 +31,16 @@ type
     Bevel1: TBevel;
     CBB_Turnos: TComboBox;
     Button2: TButton;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     rdaObtenTurno: TDARemoteDataAdapter;
     cdsObtenTurno: TDACDSDataTable;
     dxRibbon1: TdxRibbon;
     dxRibbon1Tab1: TdxRibbonTab;
+    Button1: TButton;
     procedure CBB_TurnosChange(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     IDTURNO: Integer;
@@ -77,9 +76,16 @@ Begin
 
   Fo_TurnoxFecha.ShowModal;
 
-  Result:= strtoint(Fo_TurnoxFecha.Label4.Caption);
+  Result:= Fo_TurnoxFecha.IDTURNO;
+
   Fo_TurnoxFecha.Free;
 End;
+
+procedure TFo_TurnoxFecha.Button1Click(Sender: TObject);
+begin
+  IDTURNO:= -1;
+  Close;
+end;
 
 procedure TFo_TurnoxFecha.Button2Click(Sender: TObject);
 begin
@@ -118,6 +124,7 @@ begin
     Label5.Visible:= False;
     Label4.Visible:= False;
     Fo_TurnoxFecha.Label4.Caption:= CBB_Turnos.Text;
+    IDTURNO:= strtoint(CBB_Turnos.Text);
   end;
 
 end;

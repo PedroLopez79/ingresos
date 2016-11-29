@@ -1,9 +1,10 @@
 object Fo_TurnoxFecha: TFo_TurnoxFecha
   Left = 303
   Top = 281
+  BorderStyle = bsNone
   Caption = 'Secuencias x Fecha'
-  ClientHeight = 281
-  ClientWidth = 238
+  ClientHeight = 159
+  ClientWidth = 237
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +18,8 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
   object Panel1: TPanel
     Left = 0
     Top = 24
-    Width = 238
-    Height = 226
+    Width = 237
+    Height = 104
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -27,9 +28,12 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitTop = 21
+    ExplicitWidth = 238
+    ExplicitHeight = 125
     object Label6: TLabel
       Left = 8
-      Top = 22
+      Top = 6
       Width = 67
       Height = 13
       Caption = 'Secuencias'
@@ -41,42 +45,15 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
       ParentFont = False
     end
     object Bevel1: TBevel
-      Left = 4
-      Top = 173
-      Width = 330
+      Left = 8
+      Top = 53
+      Width = 217
       Height = 10
       Shape = bsBottomLine
     end
-    object Label1: TLabel
-      Left = 8
-      Top = 68
-      Width = 131
-      Height = 13
-      Caption = 'Fecha y Hora del turno'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 8
-      Top = 100
-      Width = 36
-      Height = 13
-      Caption = 'Entidad'
-    end
-    object Label3: TLabel
-      Left = 8
-      Top = 147
-      Width = 36
-      Height = 13
-      Caption = 'Entidad'
-    end
     object Label4: TLabel
       Left = 174
-      Top = 179
+      Top = 64
       Width = 19
       Height = 36
       Caption = '0'
@@ -90,7 +67,7 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     end
     object Label5: TLabel
       Left = 8
-      Top = 192
+      Top = 76
       Width = 127
       Height = 13
       Caption = '# DE LA SECUENCIA:'
@@ -104,7 +81,7 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     end
     object CBB_Turnos: TComboBox
       Left = 8
-      Top = 41
+      Top = 25
       Width = 217
       Height = 22
       Style = csOwnerDrawFixed
@@ -114,8 +91,8 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
   end
   object Pa_ayuda: TPanel
     Left = 0
-    Top = 250
-    Width = 238
+    Top = 128
+    Width = 237
     Height = 31
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
@@ -125,20 +102,31 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 250
+    ExplicitWidth = 238
     object Button2: TButton
-      Left = 150
-      Top = 3
+      Left = 69
+      Top = 2
       Width = 75
       Height = 25
       Caption = 'Aceptar'
       TabOrder = 0
       OnClick = Button2Click
     end
+    object Button1: TButton
+      Left = 150
+      Top = 2
+      Width = 75
+      Height = 25
+      Caption = 'Cancelar'
+      TabOrder = 1
+      OnClick = Button1Click
+    end
   end
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
-    Width = 238
+    Width = 237
     Height = 24
     Hint = ''
     BarManager = frmPrincipal.dxBarManager1
@@ -148,6 +136,7 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     Contexts = <>
     TabOrder = 2
     TabStop = False
+    ExplicitWidth = 238
     object dxRibbon1Tab1: TdxRibbonTab
       Caption = 'dxRibbon1Tab1'
       Groups = <>
@@ -186,8 +175,8 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     GetScriptsCall.RemoteService = DM.RemoteService
     RemoteService = DM.RemoteService
     DataStreamer = DM.DataStreamer
-    Left = 184
-    Top = 126
+    Left = 200
+    Top = 6
   end
   object cdsObtenTurno: TDACDSDataTable
     Fields = <>
@@ -203,7 +192,7 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 184
-    Top = 86
+    Left = 128
+    Top = 6
   end
 end

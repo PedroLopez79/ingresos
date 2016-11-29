@@ -225,6 +225,12 @@ type
     dbgDiferenciasDBTableView1Column1: TcxGridDBColumn;
     cxGridDBColumn3: TcxGridDBColumn;
     cxGridLevel7: TcxGridLevel;
+    Shape1: TShape;
+    lblCerrada: TLabel;
+    cdsHorario: TDACDSDataTable;
+    dsHorario: TDADataSource;
+    cxLabel10: TcxLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
     procedure pgcConceptosPageChanging(Sender: TObject; NewPage: TcxTabSheet;
       var AllowChange: Boolean);
     procedure cdsDetalleIngresoNewRecord(DataTable: TDADataTable);
@@ -272,8 +278,13 @@ type
     procedure cxButton6Click(Sender: TObject);
     procedure cxButton7Click(Sender: TObject);
     procedure cxButton8Click(Sender: TObject);
+    procedure cdsIngresosAfterScroll(DataTable: TDADataTable);
+    procedure cdsDetalleIngresoBeforeDelete(DataTable: TDADataTable);
+    procedure cdsDetalleIngresoBeforeInsert(DataTable: TDADataTable);
+    procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
   private
     { Private declarations }
+    Reprocesar: Boolean;
     HacerScroll: Boolean;
     Cambiando: Boolean;
     ListaTickets: TStrings;
@@ -446,7 +457,7 @@ begin
 
     ActionGuardar(nil);
 
-    S:=DM.Servidor.CierraLiquidacion(cdsingresos.FieldByName('IDINGRESOS').AsInteger);
+    S:=DM.Servidor.CierraLiquidacion(cdsingresos.FieldByName('IDINGRESO').AsInteger);
     pgcConceptos.ActivePageIndex:=0;
     MessageDlg(S, mtInformation, [mbOK], 0);
 
@@ -701,8 +712,8 @@ begin
   LTarjetasYCupones.EditValue:=CualValor('10', Valores) + CualValor('11', Valores);
   LOtros.EditValue:=CualValor('12', Valores);
   LOtrosProductos.EditValue:=CualValor('14', Valores);
-  LFaltantes.EditValue:=CualValor('16', Valores);
-  LSobrantes.EditValue:=CualValor('17', Valores);
+  LFaltantes.EditValue:=CualValor('15', Valores);
+  LSobrantes.EditValue:=CualValor('16', Valores);
 
   if Aplicar then
   begin
@@ -721,18 +732,13 @@ begin
     Aux:=CualValor('6', Valores) + CualValor('7', Valores) + CualValor('9', Valores) + CualValor('8', Valores) + CualValor('10', Valores) + CualValor('11', Valores) + CualValor('12', Valores) + CualValor('17', Valores);
     cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat:= Decimales(Aux, 2);
     Aux:=cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat - cdsIngresos.FieldByName('VENTATOTAL').AsFloat;
+    cdsIngresos.FieldByName('SALIDAEFECTIVO').AsFloat:= CualValor('18',Valores);
     cdsIngresos.FieldByName('DIFERENCIA').AsFloat:=Decimales(Aux, 2);
   end;
 
-  if cdsIngresos.State = dsBrowse then cdsIngresos.Edit;  
-  cdsIngresos.FieldByName('VENTATOTAL').AsFloat:= CualValor('1', Valores) + CualValor('14', Valores) + CualValor('16', Valores);;
-  cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat:= CualValor('6', Valores) + CualValor('7', Valores) + CualValor('9', Valores) + CualValor('8', Valores) + CualValor('10', Valores) + CualValor('11', Valores) + CualValor('12', Valores) + CualValor('17', Valores);
-  cdsIngresos.FieldByName('SALIDAEFECTIVO').AsFloat:= CualValor('18',Valores);
-  cdsIngresos.FieldByName('DIFERENCIA').AsFloat:= cdsIngresos.FieldByName('EFECTIVOENTREGADO').AsFloat - cdsIngresos.FieldByName('VENTATOTAL').AsFloat;
-
-  LEntregado.EditValue:= LEfectivo.EditValue+ LClientes.EditValue + LCheques.EditValue +
-                         LTarjetasyCupones.EditValue + LOtros.EditValue + LFaltantes.EditValue;
-  LVentaTot.EditValue:= LEVenta.EditValue + LOtrosProductos.EditValue + LSobrantes.EditValue;
+  LEntregado.EditValue:= strtofloat(LEfectivo.EditValue)+ strtofloat(LClientes.EditValue) + strtofloat(LCheques.EditValue) +
+                         strtofloat(LTarjetasyCupones.EditValue) + strtofloat(LOtros.EditValue) + strtofloat(LFaltantes.EditValue);
+  LVentaTot.EditValue:=  strtofloat(LOtrosProductos.EditValue) + strtofloat(LSobrantes.EditValue) + strtofloat(LEVenta.EditValue);
 
   LTotCreditoDebitoCupones.EditValue:= CualValor('10', Valores) + CualValor('11', Valores) + CualValor('9', Valores);
 
@@ -749,7 +755,7 @@ begin
      cxGroupBox5.Caption:= 'Diferencia (Sobrante)';
   end;
 
-  if pgcConceptos.ActivePageIndex in [0..8] then
+  if pgcConceptos.ActivePageIndex in [0..9] then
   begin
     case pgcConceptos.ActivePageIndex of
       0: s:='IDTIPOCOMPROBACION = ''0''';
@@ -761,7 +767,7 @@ begin
       6: s:='IDTIPOCOMPROBACION = ''18''';
       7: s:='IDTIPOCOMPROBACION = ''8''';
       8: s:='IDTIPOCOMPROBACION = ''12''';
-      9: s:='IDTIPOCOMPROBACION = ''FALTANTES'' OR GRUPO = ''SOBRANTES'' OR GRUPO = ''PENDIENTE AUTORIZAR''';
+      9: s:='IDTIPOCOMPROBACION = ''15'' OR GRUPO = ''16'' OR GRUPO = ''17''';
       10: s:='IDTIPOCOMPROBACION = ''OK''';
   end;
 
@@ -790,7 +796,7 @@ begin
   if (cdsEncargadoIngreso.Locate('IDAGRUPACION', cbDepartamento.EditValue, [])) then
   begin
     pgcConceptos.ActivePageIndex:=0;
-    Calcula(True);
+    Calcula(False);
   end
   else
   begin
@@ -812,6 +818,29 @@ begin
 
   cdsIngresos.Edit;
   UpdateActionsState;
+end;
+
+procedure TfrmIngresosXfecha.cdsDetalleIngresoBeforeDelete(
+  DataTable: TDADataTable);
+var
+  Aux: Integer;
+begin
+  inherited;
+  Aux:=cdsDetalleIngreso.FieldByName('IDAUXILIAR').AsInteger;
+  //if ((not Reprocesar) and (Aux = -1978) and (DM.Seguridad.SeguridadPorNombre('Eliminar Consumos Automáticos') = nil)) or
+  if  (cdsIngresos.FieldByName('TERMINADA').AsBoolean) then
+    Abort
+  else
+    if ListaTickets.IndexOf(cdsDetalleIngreso.FieldByName('Ticket').AsString) >= 0 then
+      ListaTickets.Delete(ListaTickets.IndexOf(cdsDetalleIngreso.FieldByName('Ticket').AsString));
+end;
+
+procedure TfrmIngresosXfecha.cdsDetalleIngresoBeforeInsert(
+  DataTable: TDADataTable);
+begin
+  inherited;
+  if  (cdsIngresos.FieldByName('TERMINADA').AsBoolean) then
+    Abort
 end;
 
 procedure TfrmIngresosXfecha.cdsDetalleIngresoBeforePost(DataTable: TDADataTable);
@@ -870,6 +899,14 @@ begin
     cbEncargado.EditValue:='';
     cbDepartamento.Editvalue:='';
   end;
+end;
+
+procedure TfrmIngresosXfecha.cdsIngresosAfterScroll(DataTable: TDADataTable);
+begin
+  inherited;
+  lblCerrada.Visible:=False;
+  if cdsIngresos.Active then
+    lblCerrada.Visible:=cdsIngresos.FieldByName('Terminada').AsBoolean;
 end;
 
 procedure TfrmIngresosXfecha.CreaEncargado;
@@ -1011,6 +1048,14 @@ begin
   AgregaVentaOtros(Venta);
 end;
 
+procedure TfrmIngresosXfecha.cxDBLookupComboBox1PropertiesChange(
+  Sender: TObject);
+begin
+  inherited;
+  tinicio.Time:= cdsHorario.FieldByName('HORAINICIO').AsDateTime;
+  tFin.Time:= cdsHorario.FieldByName('HORAFINAL').AsDateTime;
+end;
+
 procedure TfrmIngresosXfecha.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -1120,6 +1165,8 @@ begin
   cdsBanco.Open;
   cdsSalida.Close;
   cdsSalida.Open;
+  cdsHorario.Close;
+  cdsHorario.Open;
   if not Activos then
   begin
 
@@ -1129,6 +1176,7 @@ end;
 procedure TfrmIngresosXfecha.FormCreate(Sender: TObject);
 begin
   inherited;
+  Reprocesar:=False;
   ListaTickets:=TStringList.Create;
   cxGroupBox1.Enabled:= False;
   Panel1.Enabled:= False;
@@ -1254,7 +1302,9 @@ begin
      cxGroupBox3.Enabled:= True;
      pgcConceptos.Enabled:= True;
      Panel1.Enabled:= True;
-  end;
+  end
+  else
+     exit;
   //////////////////////////////////////////////////////////////////////////////
 
   cdsIngresos.Close;
@@ -1276,6 +1326,10 @@ begin
 
   //TurnoEstacion := DM.ServidorEstacion(DM.Estacion).TurnoActual;
   EstadoDataSets(True);
+
+  if cdsIngresos.FieldByName('TERMINADA').AsBoolean then
+
+
   if cdsIngresos.RecordCount = 0 then
   begin
     //----------------PROCESO PARA OBTENER LA VENTA DESDE LA CACETA DE VENTA--//
@@ -1333,7 +1387,8 @@ begin
   end
   else
   begin
-  if cdsIngresos.FieldByName('TERMINADA').AsBoolean then
+
+  {if cdsIngresos.FieldByName('TERMINADA').AsBoolean then
   begin
     if DM.Seguridad.SeguridadPorNombre('Re-Abre Cortes Terminados') = nil then
     begin
@@ -1343,7 +1398,7 @@ begin
       ShowMessage('SU USUARIO NO TIENE PERMISO DE RE-ABRIR CORTES YA CONCLUIDOS');
       Exit;
     end
-  end;
+  end;}
 
   cdsDetalleIngreso.Filtered:=False;
   cdsDetalleIngreso.First;
@@ -1363,7 +1418,7 @@ begin
   //if S <> '' then begin
   //  Showmessage('AUN NO SE DEFINEN LOS SIGUENTES TIPOS DE VALORES'+#13#10+S+'<<DEFINA ESTOS ANTES DE CAPTURAR INGRESOS>>'); Exit;
   //end;
-  Calcula(True);
+  Calcula(False);
   end;
 
   finally
@@ -1531,7 +1586,8 @@ begin
   dmAppActions.actNuevo.Enabled:=not (cdsIngresos.State in dsEditModes);
   dmAppActions.actGuardar.Enabled:=not dmAppActions.actNuevo.Enabled;
   dmAppActions.actCancelar.Enabled:=not dmAppActions.actNuevo.Enabled;
-   dmAppActions.actCerrarLiquidacion.Enabled:=not dmAppActions.actNuevo.Enabled;
+  dmAppActions.actCerrarLiquidacion.Enabled:=(cdsIngresos.State = dsBrowse) and (not cdsIngresos.FieldByName('TERMINADA').AsBoolean);
+ //dmAppActions.actCerrarLiquidacion.Enabled:=(cdsIngresos.State = dsBrowse) and (not cdsIngresos.FieldByName('TERMINADA').AsBoolean) and (DM.Seguridad.SeguridadPorNombre('Cerrar Liquidaciones') <> nil);
   edtSecuencia.Enabled:=not dmAppActions.actNuevo.Enabled;
 end;
 

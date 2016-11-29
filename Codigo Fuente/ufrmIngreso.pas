@@ -899,7 +899,7 @@ begin
   dmAppActions.actNuevo.Enabled:=not (cdsIngresos.State in dsEditModes);
   dmAppActions.actGuardar.Enabled:=not dmAppActions.actNuevo.Enabled;
   dmAppActions.actCancelar.Enabled:=not dmAppActions.actNuevo.Enabled;
-   dmAppActions.actCerrarLiquidacion.Enabled:=not dmAppActions.actNuevo.Enabled;
+  dmAppActions.actCerrarLiquidacion.Enabled:=not dmAppActions.actNuevo.Enabled;
   edtSecuencia.Enabled:=not dmAppActions.actNuevo.Enabled;
 end;
 

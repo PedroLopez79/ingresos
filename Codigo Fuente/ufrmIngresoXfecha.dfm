@@ -19,9 +19,24 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     TabOrder = 0
     Height = 152
     Width = 1107
+    object lblCerrada: TLabel
+      Left = 828
+      Top = 15
+      Width = 185
+      Height = 16
+      Caption = 'LIQUIDACION CERRADA!!!'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
+      Transparent = True
+      Visible = False
+    end
     object cxLabel1: TcxLabel
       Left = 645
-      Top = 15
+      Top = 49
       Hint = ''
       Caption = 'El corte Inicio'
       ParentFont = False
@@ -301,7 +316,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel8: TcxLabel
       Left = 645
-      Top = 69
+      Top = 97
       Hint = ''
       Caption = 'El corte Termino'
       ParentFont = False
@@ -316,7 +331,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object tInicio: TcxTimeEdit
       Left = 645
-      Top = 38
+      Top = 70
       Hint = ''
       EditValue = 0d
       Properties.Use24HourFormat = False
@@ -325,7 +340,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object tFin: TcxTimeEdit
       Left = 645
-      Top = 94
+      Top = 120
       Hint = ''
       EditValue = 0d
       Properties.Use24HourFormat = False
@@ -365,6 +380,38 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Style.BorderStyle = ebsUltraFlat
       TabOrder = 14
       Width = 197
+    end
+    object cxLabel10: TcxLabel
+      Left = 645
+      Top = 6
+      Hint = ''
+      Caption = 'Horario'
+      ParentFont = False
+      Style.BorderStyle = ebsNone
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = [fsBold]
+      Style.IsFontAssigned = True
+      Transparent = True
+    end
+    object cxDBLookupComboBox1: TcxDBLookupComboBox
+      Left = 645
+      Top = 22
+      Hint = ''
+      DataBinding.DataField = 'IDHORARIO'
+      DataBinding.DataSource = dsIngresos
+      Properties.KeyFieldNames = 'IDHORARIO'
+      Properties.ListColumns = <
+        item
+          FieldName = 'DESCRIPCION'
+        end>
+      Properties.ListSource = dsHorario
+      Properties.OnChange = cxDBLookupComboBox1PropertiesChange
+      StyleFocused.BorderColor = clWindowFrame
+      TabOrder = 16
+      Width = 121
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -423,16 +470,26 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           object Bevel1: TBevel
             Left = 18
             Top = 236
-            Width = 375
+            Width = 386
             Height = 7
             Shape = bsBottomLine
           end
           object Bevel3: TBevel
             Left = 18
-            Top = 145
-            Width = 375
+            Top = 19
+            Width = 386
             Height = 7
             Shape = bsBottomLine
+          end
+          object Shape1: TShape
+            Left = 15
+            Top = 87
+            Width = 381
+            Height = 94
+            Brush.Color = clLime
+            Brush.Style = bsDiagCross
+            Pen.Color = clGreen
+            Pen.Width = 2
           end
           object cxLabel12: TcxLabel
             Left = 18
@@ -1502,6 +1559,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           LookAndFeel.NativeStyle = False
           object dbgDiferenciasDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsDetalleIngreso
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <
               item
@@ -1518,22 +1576,22 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             OptionsView.Indicator = True
             object cxGridDBColumn1: TcxGridDBColumn
               Caption = 'Tipo'
-              DataBinding.FieldName = 'TipoValorID'
+              DataBinding.FieldName = 'IDTIPOCOMPROBACION'
               PropertiesClassName = 'TcxLookupComboBoxProperties'
-              Properties.KeyFieldNames = 'TipoValorID'
+              Properties.KeyFieldNames = 'IDTIPOCOMPROBACION'
               Properties.ListColumns = <
                 item
-                  FieldName = 'Nombre'
+                  FieldName = 'DESCRIPCION'
                 end>
               Properties.ListSource = dsTipoValor
               Width = 144
             end
             object dbgDiferenciasDBTableView1Column1: TcxGridDBColumn
-              DataBinding.FieldName = 'Referencia'
-              Width = 155
+              DataBinding.FieldName = 'DESCRIPCION'
+              Width = 216
             end
             object cxGridDBColumn3: TcxGridDBColumn
-              DataBinding.FieldName = 'Importe'
+              DataBinding.FieldName = 'IMPORTE'
               Width = 139
             end
           end
@@ -1772,6 +1830,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
+    AfterScroll = cdsIngresosAfterScroll
     IndexDefs = <>
     Left = 904
     Top = 312
@@ -1900,6 +1959,8 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     StreamingOptions = [soDisableEventsWhileStreaming]
     AfterDelete = cdsDetalleIngresoAfterDelete
     AfterPost = cdsDetalleIngresoAfterPost
+    BeforeDelete = cdsDetalleIngresoBeforeDelete
+    BeforeInsert = cdsDetalleIngresoBeforeInsert
     BeforePost = cdsDetalleIngresoBeforePost
     OnNewRecord = cdsDetalleIngresoNewRecord
     IndexDefs = <>
@@ -2747,5 +2808,41 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     DataTable = cdsSalida
     Left = 854
     Top = 457
+  end
+  object cdsHorario: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDHORARIO'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'HORAINICIO'
+        DataType = datDateTime
+      end
+      item
+        Name = 'HORAFINAL'
+        DataType = datDateTime
+      end
+      item
+        Name = 'DESCRIPCION'
+        DataType = datString
+        Size = 50
+      end>
+    LogicalName = 'dbo HORARIO'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 798
+    Top = 121
+  end
+  object dsHorario: TDADataSource
+    DataSet = cdsHorario.Dataset
+    DataTable = cdsHorario
+    Left = 798
+    Top = 169
   end
 end

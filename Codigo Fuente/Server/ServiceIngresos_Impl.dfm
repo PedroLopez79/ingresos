@@ -7483,7 +7483,7 @@ object ServiceIngresos: TServiceIngresos
                 TableField = 'Precio'
               end>
           end>
-        Name = 'spInventariosOtrosProductos'
+        Name = 'spInventarioOtrosProductos'
         BusinessRulesClient.CompileOnServer = False
         BusinessRulesClient.RunOnClientAndServer = False
         Fields = <
@@ -7541,11 +7541,10 @@ object ServiceIngresos: TServiceIngresos
               'n ON ENCARGADOINGRESOS.IDAgrupacion = Agrupacion.IDAgrupacion IN' +
               'NER JOIN'#10'                      INGRESOS ON ENCARGADOINGRESOS.IDI' +
               'NGRESO = INGRESOS.IDINGRESO INNER JOIN'#10'                      Est' +
-              'acion ON Agrupacion.IDESTACION = Estacion.IDESTACION'#10'WHERE     (' +
-              'DETALLEINGRESOS.IDPRODUCTO > 5) AND (ENCARGADOINGRESOS.IDINGRESO' +
-              ' = :LiquidacionID) and (Agrupacion.IDALMACEN = :AlmacenID)'#10'GROUP' +
-              ' BY INGRESOS.NUMEROESTACION, Agrupacion.IDALMACEN, Estacion.Impu' +
-              'esto'
+              'acion ON Agrupacion.IDESTACION = Estacion.IDESTACION'#10'WHERE (ENCA' +
+              'RGADOINGRESOS.IDINGRESO = :LiquidacionID) and (Agrupacion.IDALMA' +
+              'CEN = :AlmacenID)'#10'GROUP BY INGRESOS.NUMEROESTACION, Agrupacion.I' +
+              'DALMACEN, Estacion.Impuesto'
             StatementType = stSQL
             ColumnMappings = <
               item
@@ -8324,12 +8323,12 @@ object ServiceIngresos: TServiceIngresos
             SQL = 
               'INSERT'#10'INTO dbo.MovimientoAlmacen'#10'    (IDMOVIMIENTOALMACEN, Foli' +
               'o, Fecha, Dia, Ejercicio, '#10'     Periodo, Total, SubTotal, Impues' +
-              'to, ImpuestoPorcentaje, '#10'     NUMMEROESTACION, IDESTACIOND, IDAL' +
-              'MACEND, '#10'     IDPROVEEDOR, IDALMACEN, IDTIPOMOVIMIENTO)'#10'  VALUES' +
-              #10'    (:MovimientoAlmacenID, :Folio, :Fecha, :Dia, :Ejercicio, '#10' ' +
-              '    :Periodo, :Total, :SubTotal, :Impuesto, :ImpuestoPorcentaje,' +
-              ' '#10'     :EstacionID, :EstacionDestinoID, :AlmacenDestinoID, '#10'    ' +
-              ' :ProveedorID, :AlmacenID, :TipoMovimientoAlmacenID)'
+              'to, ImpuestoPorcentaje, '#10'     NUMEROESTACION, IDESTACIOND, IDALM' +
+              'ACEND, '#10'     IDPROVEEDOR, IDALMACEN, IDTIPOMOVIMIENTO)'#10'  VALUES'#10 +
+              '    (:MovimientoAlmacenID, :Folio, :Fecha, :Dia, :Ejercicio, '#10'  ' +
+              '   :Periodo, :Total, :SubTotal, :Impuesto, :ImpuestoPorcentaje, ' +
+              #10'     :EstacionID, :EstacionDestinoID, :AlmacenDestinoID, '#10'     ' +
+              ':ProveedorID, :AlmacenID, :TipoMovimientoAlmacenID)'
             StatementType = stSQL
             ColumnMappings = <>
           end>

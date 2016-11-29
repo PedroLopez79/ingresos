@@ -797,10 +797,10 @@ begin
   dsTotalAlmacen:=Schema.NewDataset(Connection, 'spTotalAlmacen');
   while not dsInventario.EOF do
   begin
-    if dsInventario.FieldByName('AlmacenID').AsInteger <> AlmacenID then
+    if dsInventario.FieldByName('IDAlmacen').AsInteger <> AlmacenID then
     begin
       MovID:=Folio('MovimientoAlmacen', '');
-      AlmacenID:=dsInventario.FieldByName('AlmacenID').AsInteger;
+      AlmacenID:=dsInventario.FieldByName('IDAlmacen').AsInteger;
       dsTotalAlmacen.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
       dsTotalAlmacen.ParamByName('AlmacenID').AsInteger:=AlmacenID;
       dsTotalAlmacen.Open;
@@ -814,8 +814,8 @@ begin
       cmdMov.ParamByName('ImpuestoPorcentaje').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('ImpuestoPorcentaje').AsFloat, 2);
       cmdMov.ParamByName('SubTotal').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('SubTotal').AsFloat, 2);
       cmdMov.ParamByName('Impuesto').AsFloat:=Decimales(dsTotalAlmacen.FieldByName('Impuesto').AsFloat, 2);
-      cmdMov.ParamByName('EstacionID').AsInteger:=dsTotalAlmacen.FieldByName('EstacionID').AsInteger;
-      cmdMov.ParamByName('BonoMerma').AsInteger:=0;
+      cmdMov.ParamByName('EstacionID').AsInteger:=dsTotalAlmacen.FieldByName('NUMEROESTACION').AsInteger;
+      //cmdMov.ParamByName('BonoMerma').AsInteger:=0;
       cmdMov.ParamByName('EstacionDestinoID').AsInteger:=0;
       cmdMov.ParamByName('AlmacenDestinoID').AsInteger:=0;
       cmdMov.ParamByName('ProveedorID').AsInteger:=0;
@@ -829,7 +829,7 @@ begin
     cmdDet.ParamByName('Cantidad').AsFloat:=Decimales(dsInventario.FieldByName('Cantidad').AsFloat, 2);
     cmdDet.ParamByName('Precio').AsFloat:=Decimales(dsInventario.FieldByName('Precio').AsFloat, 2);
     cmdDet.ParamByName('Importe').AsFloat:=Decimales(dsInventario.FieldByName('Importe').AsFloat, 2);
-    cmdDet.ParamByName('ProductoID').AsInteger:=dsInventario.FieldByName('ProductoID').AsInteger;
+    cmdDet.ParamByName('ProductoID').AsInteger:=dsInventario.FieldByName('IDProducto').AsInteger;
     cmdDet.Execute;
     dsInventario.Next;
   end;
@@ -849,10 +849,10 @@ begin
     cmdFyP.ParamByName('Cargo').AsInteger:=0;
     cmdFyP.ParamByName('Abono').AsInteger:=0;
     cmdFyP.ParamByName('LiquidacionID').AsInteger:=LiquidacionID;
-    cmdFyP.ParamByName('Descripcion').AsString:=Format('DIFERENCIA EN LIQUIDACION [%d-%d]', [MiEstacionID, dsFaltantes.FieldByName('TurnoID').AsInteger]);
-    cmdFyP.ParamByName('EmpleadoID').AsInteger:=dsFaltantes.FieldByName('DespachadorID').AsInteger;
-    cmdDetLiq.ParamByName('DetalleLiquidacionID').AsInteger:=Folio('LiquidacionDetalleID', '');
-    cmdDetLiq.ParamByName('DespachadorLiquidacionID').AsInteger:=dsFaltantes.FieldByName('DespachadorLiquidacionID').AsInteger;
+    cmdFyP.ParamByName('Descripcion').AsString:=Format('DIFERENCIA EN LIQUIDACION [%d-%d]', [MiEstacionID, dsFaltantes.FieldByName('IDTurno').AsInteger]);
+    cmdFyP.ParamByName('EmpleadoID').AsInteger:=dsFaltantes.FieldByName('IDEMPLEADO').AsInteger;
+    cmdDetLiq.ParamByName('DETALLELIQUIDACIONID').AsInteger:=Folio('IDDETALLEINGRESOS', '');
+    cmdDetLiq.ParamByName('DESPACHADORLIQUIDACIONID').AsInteger:=dsFaltantes.FieldByName('IDENCARGADOINGRESOS').AsInteger;
     cmdDetLiq.ParamByName('Cantidad').AsInteger:=1;
     cmdDetLiq.ParamByName('Ticket').AsInteger:=0;
     cmdDetLiq.ParamByName('CuponID').AsInteger:=0;
@@ -861,13 +861,13 @@ begin
     cmdDetLiq.ParamByName('BancoID').AsInteger:=0;
     cmdDetLiq.ParamByName('ProductoID').AsInteger:=0;
     cmdDetLiq.ParamByName('AuxiliarID').AsInteger:=0;
-    cmdDetLiq.ParamByName('Facturado').AsBoolean:=False;
+    //cmdDetLiq.ParamByName('Facturado').AsBoolean:=False;
     cmdDetLiq.ParamByName('Importe').AsFloat:=Abs(Decimales(dsFaltantes.FieldByName('Diferencia').AsFloat, 2));
 
     if dsFaltantes.FieldByName('Diferencia').AsFloat < 0 then
     begin
       cmdDetLiq.ParamByName('TipoValorID').AsInteger:=15;
-      cmdDetLiq.ParamByName('Referencia').AsString:=Format('FALTANTE EN LIQUIDACION [%d]', [dsFaltantes.FieldByName('TurnoID').AsInteger]);
+      cmdDetLiq.ParamByName('Referencia').AsString:=Format('FALTANTE EN LIQUIDACION [%d]', [dsFaltantes.FieldByName('IDTurno').AsInteger]);
       cmdFyP.ParamByName('Cargo').AsFloat:=Abs(Decimales(dsFaltantes.FieldByName('Diferencia').AsFloat, 2));
       cmdFyP.ParamByName('TipoFaltantePagoID').AsInteger:=1;
       cmdFyP.Execute;
@@ -875,7 +875,7 @@ begin
     else
     begin
       cmdDetLiq.ParamByName('TipoValorID').AsInteger:=16;
-      cmdDetLiq.ParamByName('Referencia').AsString:=Format('SOBRANTE EN LIQUIDACION [%d]', [dsFaltantes.FieldByName('TurnoID').AsInteger]);
+      cmdDetLiq.ParamByName('Referencia').AsString:=Format('SOBRANTE EN LIQUIDACION [%d]', [dsFaltantes.FieldByName('IDTurno').AsInteger]);
       cmdFyP.ParamByName('Abono').AsFloat:=Abs(Decimales(dsFaltantes.FieldByName('Diferencia').AsFloat, 2));
       cmdFyP.ParamByName('TipoFaltantePagoID').AsInteger:=2;
       if ServerDataModule.AplicaSobrantes then
