@@ -145,7 +145,7 @@ type
     cdsHorasCortes: TDACDSDataTable;
     rdaHorasCortes: TDARemoteDataAdapter;
     cxTabSheet6: TcxTabSheet;
-    GBTotalesConceptos: TGroupBox;
+    AGBTotalesConceptos: TGroupBox;
     cxLabel12: TcxLabel;
     cxLabel13: TcxLabel;
     cxLabel15: TcxLabel;
@@ -161,7 +161,7 @@ type
     Bevel1: TBevel;
     cxLabel19: TcxLabel;
     LEntregado: TcxLabel;
-    GBVenta: TGroupBox;
+    BGBVenta: TGroupBox;
     Bevel2: TBevel;
     cxLabel20: TcxLabel;
     cxLabel21: TcxLabel;
@@ -170,7 +170,7 @@ type
     LOtrosProductos: TcxLabel;
     LSobrantes: TcxLabel;
     cxLabel32: TcxLabel;
-    cxGroupBox5: TcxGroupBox;
+    FcxGroupBox5: TcxGroupBox;
     LDiferencia: TcxLabel;
     LVentaTot: TcxLabel;
     cxTabSheet7: TcxTabSheet;
@@ -225,12 +225,10 @@ type
     dbgDiferenciasDBTableView1Column1: TcxGridDBColumn;
     cxGridDBColumn3: TcxGridDBColumn;
     cxGridLevel7: TcxGridLevel;
-    Shape1: TShape;
     lblCerrada: TLabel;
     cdsHorario: TDACDSDataTable;
     dsHorario: TDADataSource;
-    cxLabel10: TcxLabel;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    CShape1: TShape;
     procedure pgcConceptosPageChanging(Sender: TObject; NewPage: TcxTabSheet;
       var AllowChange: Boolean);
     procedure cdsDetalleIngresoNewRecord(DataTable: TDADataTable);
@@ -295,7 +293,7 @@ type
     MiClienteID: Integer;
     ValorMoneda: Float;
     ValoresMoneda: LibraryIngresos_Intf.ATTipoValores;
-
+    procedure limpiacantidades;
     procedure AgregaVenta(Venta: uAgregarVenta.TVenta);
     procedure AgregaVentaCreditoDebitoCupones(Venta: uAgregarVentaCreditoDebitosCupones.TVentaCreditoDebitosCupones);
     procedure AgregaVentaOtrosProductos(Venta: uAgregarOtrosProductos.TVentaOtrosProductos);
@@ -469,9 +467,9 @@ end;
 
 procedure TfrmIngresosXfecha.ActionGuardar(Action: TBasicAction);
 begin
-  cdsIngresos.ApplyUpdates();
-  cdsEncargadoIngreso.ApplyUpdates();
-  cdsDetalleIngreso.ApplyUpdates();
+    cdsIngresos.ApplyUpdates();
+    cdsEncargadoIngreso.ApplyUpdates();
+    cdsDetalleIngreso.ApplyUpdates();
 end;
 
 procedure TfrmIngresosXfecha.ActionImprimir(Action: TBasicAction);
@@ -747,12 +745,12 @@ begin
   begin
      LDiferencia.EditValue:=  LDiferencia.EditValue * -1;
      LDiferencia.Style.TextColor:= clRed;
-     cxGroupBox5.Caption:= 'Diferencia (Faltante)';
+     FcxGroupBox5.Caption:= 'Diferencia (Faltante)';
   end
   else
   begin
      LDiferencia.Style.TextColor:= clGreen;
-     cxGroupBox5.Caption:= 'Diferencia (Sobrante)';
+     FcxGroupBox5.Caption:= 'Diferencia (Sobrante)';
   end;
 
   if pgcConceptos.ActivePageIndex in [0..9] then
@@ -1105,7 +1103,8 @@ end;
 procedure TfrmIngresosXfecha.dsIngresosStateChange(Sender: TObject);
 begin
   inherited;
-  UpdateActionsState;
+  if not lblCerrada.Visible then
+     UpdateActionsState;
 end;
 
 procedure TfrmIngresosXfecha.EfectivoCantidadPropertiesValidate(Sender: TObject;
@@ -1298,6 +1297,7 @@ begin
   Turno:= Abrir_ModuloTurnoxFecha(TurnoxFecha,FECHAINGRESO);
   if Turno > 0 then
   begin
+     limpiacantidades;
      cxGroupBox1.Enabled:= True;
      cxGroupBox3.Enabled:= True;
      pgcConceptos.Enabled:= True;
@@ -1327,9 +1327,6 @@ begin
   //TurnoEstacion := DM.ServidorEstacion(DM.Estacion).TurnoActual;
   EstadoDataSets(True);
 
-  if cdsIngresos.FieldByName('TERMINADA').AsBoolean then
-
-
   if cdsIngresos.RecordCount = 0 then
   begin
     //----------------PROCESO PARA OBTENER LA VENTA DESDE LA CACETA DE VENTA--//
@@ -1356,8 +1353,6 @@ begin
         cdsIngresos.FieldByName('TERMINADA').AsBoolean:=False;
         cdsIngresos.FieldByName('IDTURNO').AsInteger:=-1;
         cdsIngresos.FieldByName('NUMEROESTACION').AsInteger:=DM.NumeroEstacion;
-        //cdsIngresos.FieldByName('INICIOTURNO').AsDateTime:= ;
-        //cdsIngresos.FieldByName('FINTURNO').AsDateTime:= ;
 
         edtSecuencia.EditValue:= 0;
         CreaEncargado;
@@ -1475,6 +1470,21 @@ begin
                                                     cdsDetalleIngreso.FieldByName('Precio').AsFloat, 4);
 end;
 
+procedure TfrmIngresosXfecha.limpiacantidades;
+begin
+  LEfectivo.EditValue:= 0;
+  LCheques.EditValue:= 0;
+  LClientes.EditValue:= 0;
+  LTarjetasyCupones.EditValue:= 0;
+  LTotCreditoDebitoCupones.EditValue:= 0;
+  LEVenta.EditValue:= 0;
+  LOtrosProductos.EditValue:= 0;
+  LVentaTot.EditValue:= 0;
+  LEntregado.EditValue:= 0;
+  LOtros.EditValue:= 0;
+  LFaltantes.EditValue:= 0;
+end;
+
 procedure TfrmIngresosXfecha.pgcConceptosChange(Sender: TObject);
 begin
   inherited;
@@ -1521,7 +1531,8 @@ begin
     if not cdsTipoComprobacion.EOF then
        s:= s + ' OR ';
   end;
-  cdsDetalleIngreso.Filter:=s + ' AND IDENCARGADOINGRESOS = ' + IntToStr(cdsEncargadoIngreso.FieldByName('IDENCARGADOINGRESOS').AsInteger);
+  s:= '(' + s + ')';
+  cdsDetalleIngreso.Filter:=s + ' AND (IDENCARGADOINGRESOS = ' + IntToStr(cdsEncargadoIngreso.FieldByName('IDENCARGADOINGRESOS').AsInteger)+')';
   cdsDetalleIngreso.Filtered:=True;
 end;
 

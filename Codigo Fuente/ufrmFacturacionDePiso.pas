@@ -248,7 +248,7 @@ var
 implementation
 
   uses Modules, uDM, dmActions,  ufrmBuscarCliente, ufrmBuscar,
-  UtileriasComun, ufrmBuscarProducto, LibraryIngresos_Intf;
+  UtileriasComun, ufrmBuscarProducto, LibraryIngresos_Intf, ufrmPrincipal;
 
 {$R *.dfm}
 
@@ -748,14 +748,13 @@ var
 begin
   inherited;
   //TAMAÑOS DE PANELS PARA CENTRAR//
-  panelwidth:= ROUND(Panel1.Width / 3);
+  //panelwidth:= ROUND(Panel1.Width / 2);
+  panelwidth:= (ROUND((ufrmPrincipal.frmPrincipal.pnlPrincipal.Width - pgcFacturacion.Width) / 2));
   Panel3.Width:= panelwidth;
   Panel4.Width:= panelwidth;
   //////////////////////////////////
 
-
   SerieFactura:=DM.Serie;
-
 
   cdsConfiguracion.Close;
   cdsConfiguracion.Open;

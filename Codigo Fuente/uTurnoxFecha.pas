@@ -89,7 +89,7 @@ end;
 
 procedure TFo_TurnoxFecha.Button2Click(Sender: TObject);
 begin
-  if (IDTURNO > 0) then
+  if (IDTURNO > 0) AND (CBB_Turnos.Text = 'AGREGAR UNA SECUENCIA...') then
   begin
      DM.Servidor.AbreTurno(IDTURNO,DM.NumeroEstacion,FechaTurnos);
   end;

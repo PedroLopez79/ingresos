@@ -20,8 +20,8 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     Height = 152
     Width = 1107
     object lblCerrada: TLabel
-      Left = 828
-      Top = 15
+      Left = 27
+      Top = 5
       Width = 185
       Height = 16
       Caption = 'LIQUIDACION CERRADA!!!'
@@ -36,7 +36,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel1: TcxLabel
       Left = 645
-      Top = 49
+      Top = 52
       Hint = ''
       Caption = 'El corte Inicio'
       ParentFont = False
@@ -62,7 +62,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object dtpFecha: TcxDBDateEdit
       Left = 166
-      Top = 14
+      Top = 40
       Hint = ''
       DataBinding.DataField = 'FECHA'
       DataBinding.DataSource = dsIngresos
@@ -72,8 +72,8 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Width = 145
     end
     object cxLabel9: TcxLabel
-      Left = 24
-      Top = 69
+      Left = 27
+      Top = 95
       Hint = ''
       Caption = 'Encargado'
       ParentFont = False
@@ -92,7 +92,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cbEncargado: TcxDBLookupComboBox
       Left = 96
-      Top = 67
+      Top = 94
       Hint = ''
       DataBinding.DataField = 'IDEMPLEADO'
       DataBinding.DataSource = dsEncargadoIngreso
@@ -108,7 +108,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel14: TcxLabel
       Left = 24
-      Top = 15
+      Top = 41
       Hint = ''
       Caption = 'Fecha'
       ParentFont = False
@@ -126,8 +126,8 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Transparent = True
     end
     object cbTurno: TcxDBLookupComboBox
-      Left = 166
-      Top = 41
+      Left = 645
+      Top = 25
       Hint = ''
       DataBinding.DataField = 'IDHORARIO'
       DataBinding.DataSource = dsIngresos
@@ -141,8 +141,8 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Width = 145
     end
     object cxLabel2: TcxLabel
-      Left = 24
-      Top = 42
+      Left = 645
+      Top = 2
       Hint = ''
       Caption = 'Turno'
       ParentFont = False
@@ -316,7 +316,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel8: TcxLabel
       Left = 645
-      Top = 97
+      Top = 100
       Hint = ''
       Caption = 'El corte Termino'
       ParentFont = False
@@ -349,7 +349,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cxLabel24: TcxLabel
       Left = 24
-      Top = 95
+      Top = 68
       Hint = ''
       Caption = 'Departamento'
       ParentFont = False
@@ -368,7 +368,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
     end
     object cbDepartamento: TcxLookupComboBox
       Left = 114
-      Top = 93
+      Top = 67
       Hint = ''
       Properties.KeyFieldNames = 'IDAGRUPACION'
       Properties.ListColumns = <
@@ -380,38 +380,6 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Style.BorderStyle = ebsUltraFlat
       TabOrder = 14
       Width = 197
-    end
-    object cxLabel10: TcxLabel
-      Left = 645
-      Top = 6
-      Hint = ''
-      Caption = 'Horario'
-      ParentFont = False
-      Style.BorderStyle = ebsNone
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = [fsBold]
-      Style.IsFontAssigned = True
-      Transparent = True
-    end
-    object cxDBLookupComboBox1: TcxDBLookupComboBox
-      Left = 645
-      Top = 22
-      Hint = ''
-      DataBinding.DataField = 'IDHORARIO'
-      DataBinding.DataSource = dsIngresos
-      Properties.KeyFieldNames = 'IDHORARIO'
-      Properties.ListColumns = <
-        item
-          FieldName = 'DESCRIPCION'
-        end>
-      Properties.ListSource = dsHorario
-      Properties.OnChange = cxDBLookupComboBox1PropertiesChange
-      StyleFocused.BorderColor = clWindowFrame
-      TabOrder = 16
-      Width = 121
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -454,9 +422,19 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         Font.Style = []
         ImageIndex = 67
         ParentFont = False
-        object GBTotalesConceptos: TGroupBox
+        object CShape1: TShape
+          Left = 36
+          Top = 103
+          Width = 382
+          Height = 94
+          Brush.Color = clLime
+          Brush.Style = bsDiagCross
+          Pen.Color = clGreen
+          Pen.Width = 2
+        end
+        object AGBTotalesConceptos: TGroupBox
           Left = 21
-          Top = 16
+          Top = 17
           Width = 407
           Height = 277
           Caption = 'Totales Conceptos'
@@ -480,16 +458,6 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Width = 386
             Height = 7
             Shape = bsBottomLine
-          end
-          object Shape1: TShape
-            Left = 15
-            Top = 87
-            Width = 381
-            Height = 94
-            Brush.Color = clLime
-            Brush.Style = bsDiagCross
-            Pen.Color = clGreen
-            Pen.Width = 2
           end
           object cxLabel12: TcxLabel
             Left = 18
@@ -587,7 +555,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 32
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             ParentFont = False
             Style.BorderStyle = ebsUltraFlat
             Style.Font.Charset = DEFAULT_CHARSET
@@ -602,7 +570,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 90
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -610,7 +578,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 61
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -618,7 +586,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 119
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -626,7 +594,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 184
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -634,7 +602,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 213
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -656,7 +624,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 247
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             ParentFont = False
             Style.BorderStyle = ebsUltraFlat
             Style.Font.Charset = DEFAULT_CHARSET
@@ -685,7 +653,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 67
             Top = 152
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             ParentFont = False
             Style.BorderStyle = ebsUltraFlat
             Style.Edges = [bLeft, bTop, bRight, bBottom]
@@ -705,7 +673,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Transparent = True
           end
         end
-        object GBVenta: TGroupBox
+        object BGBVenta: TGroupBox
           Left = 448
           Top = 25
           Width = 407
@@ -749,7 +717,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 23
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             ParentFont = False
             Style.BorderStyle = ebsUltraFlat
             Style.Font.Charset = DEFAULT_CHARSET
@@ -764,7 +732,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 52
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -772,7 +740,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 81
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
@@ -787,14 +755,14 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 200
             Top = 123
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             Style.BorderStyle = ebsUltraFlat
             Style.TextColor = clBlue
           end
         end
-        object cxGroupBox5: TcxGroupBox
+        object FcxGroupBox5: TcxGroupBox
           Left = 448
-          Top = 211
+          Top = 231
           Hint = ''
           Caption = 'Diferencia'
           Style.LookAndFeel.NativeStyle = False
@@ -810,7 +778,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
             Left = 84
             Top = 19
             Hint = ''
-            Caption = 'LEfectivo'
+            Caption = '0'
             ParentFont = False
             Style.BorderStyle = ebsUltraFlat
             Style.Edges = [bLeft, bTop, bRight, bBottom]
@@ -834,6 +802,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object Conceptos: TcxTabSheet
         Caption = 'Ventas'
         ImageIndex = 61
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgConceptos: TcxGrid
           Left = 0
           Top = 0
@@ -946,6 +918,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet2: TcxTabSheet
         Caption = 'Creditos,Debitos o Cupones'
         ImageIndex = 58
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgCreditosDebitosCupones: TcxGrid
           Left = 0
           Top = 0
@@ -1055,6 +1031,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet1: TcxTabSheet
         Caption = 'Otros Productos'
         ImageIndex = 62
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
@@ -1157,6 +1137,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet3: TcxTabSheet
         Caption = 'Documentos'
         ImageIndex = 39
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgClientes: TcxGrid
           Left = 0
           Top = 0
@@ -1269,6 +1253,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet4: TcxTabSheet
         Caption = 'Efectivo'
         ImageIndex = 56
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgEfectivo: TcxGrid
           Left = 0
           Top = 0
@@ -1336,6 +1324,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet5: TcxTabSheet
         Caption = 'Salida de Efectivo'
         ImageIndex = 60
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgSalidaEfectivos: TcxGrid
           Left = 0
           Top = 0
@@ -1383,6 +1375,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet7: TcxTabSheet
         Caption = 'Cheques'
         ImageIndex = 65
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgCheques: TcxGrid
           Left = 0
           Top = 0
@@ -1478,6 +1474,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet8: TcxTabSheet
         Caption = 'Otros'
         ImageIndex = 68
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgOtros: TcxGrid
           Left = 0
           Top = 0
@@ -1548,6 +1548,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet9: TcxTabSheet
         Caption = 'Diferencias'
         ImageIndex = 66
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgDiferencias: TcxGrid
           Left = 0
           Top = 0

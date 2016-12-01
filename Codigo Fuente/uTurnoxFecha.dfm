@@ -28,9 +28,6 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitTop = 21
-    ExplicitWidth = 238
-    ExplicitHeight = 125
     object Label6: TLabel
       Left = 8
       Top = 6
@@ -102,8 +99,6 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 250
-    ExplicitWidth = 238
     object Button2: TButton
       Left = 69
       Top = 2
@@ -136,7 +131,6 @@ object Fo_TurnoxFecha: TFo_TurnoxFecha
     Contexts = <>
     TabOrder = 2
     TabStop = False
-    ExplicitWidth = 238
     object dxRibbon1Tab1: TdxRibbonTab
       Caption = 'dxRibbon1Tab1'
       Groups = <>
