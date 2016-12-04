@@ -802,7 +802,7 @@ object frmPrincipal: TfrmPrincipal
       Category = 0
       Hint = 'Salir'
       Visible = ivAlways
-      ImageIndex = 0
+      ImageIndex = 24
       OnClick = btnSalirClick
     end
     object btnLogin: TdxBarButton
@@ -810,7 +810,7 @@ object frmPrincipal: TfrmPrincipal
       Category = 0
       Hint = 'Conectarse'
       Visible = ivAlways
-      ImageIndex = 2
+      ImageIndex = 21
       OnClick = btnLoginClick
     end
     object btnLogout: TdxBarButton
@@ -819,7 +819,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Desconectarse'
       Visible = ivAlways
-      ImageIndex = 1
+      ImageIndex = 22
       OnClick = btnLogoutClick
     end
     object btnUsuarios: TdxBarLargeButton
@@ -829,7 +829,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Usuarios'
       Visible = ivAlways
-      LargeImageIndex = 13
+      LargeImageIndex = 65
     end
     object btnGenerales: TdxBarLargeButton
       Tag = 7
@@ -1050,7 +1050,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Clientes'
       Category = 0
       Visible = ivAlways
-      LargeImageIndex = 0
+      LargeImageIndex = 70
       ItemLinks = <
         item
           Visible = True
@@ -1099,6 +1099,7 @@ object frmPrincipal: TfrmPrincipal
     object dxBarLargeButton22: TdxBarLargeButton
       Action = dmAppActions.actCancelar
       Category = 0
+      LargeImageIndex = 68
     end
     object dxBarLargeButton24: TdxBarLargeButton
       Tag = 32
@@ -1116,7 +1117,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Factura'
       Visible = ivAlways
-      LargeImageIndex = 9
+      LargeImageIndex = 64
     end
     object dxBarLargeButton26: TdxBarLargeButton
       Tag = 33
@@ -1244,7 +1245,7 @@ object frmPrincipal: TfrmPrincipal
       LargeImageIndex = 61
     end
     object dxBarLargeButton41: TdxBarLargeButton
-      Tag = 46
+      Tag = 40
       Caption = 'Ingresos'
       Category = 0
       Enabled = False
@@ -1332,10 +1333,12 @@ object frmPrincipal: TfrmPrincipal
     object btnNuevo: TdxBarLargeButton
       Action = dmAppActions.actNuevo
       Category = 3
+      LargeImageIndex = 66
     end
     object btnGuardar: TdxBarLargeButton
       Action = dmAppActions.actGuardar
       Category = 3
+      LargeImageIndex = 67
     end
     object btnImprimir: TdxBarLargeButton
       Action = dmAppActions.actImprimir

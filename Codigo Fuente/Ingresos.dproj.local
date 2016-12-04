@@ -371,9 +371,6 @@
     <File Path="Flotillas"/>
     <File Path="Flotillas\LibraryFlotillas_Intf.pas"/>
     <File Path="Server"/>
-    <File Path="Server\lib Factura Electronica"/>
-    <File Path="Server\lib Factura Electronica\SiteConst.pas"/>
-    <File Path="Server\lib Factura Electronica\xslprod.pas"/>
     <File Path="Server\LibraryIngresos_Intf.pas"/>
     <File Path="SRV Exporta"/>
     <File Path="SRV Exporta\ClaseGenera.pas"/>

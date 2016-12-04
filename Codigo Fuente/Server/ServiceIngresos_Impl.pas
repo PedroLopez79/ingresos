@@ -20,7 +20,7 @@ uses
   {Generated:} LibraryIngresos_Intf, uDABin2DataStreamer, uDAScriptingProvider,
   uDABusinessProcessor, uDAClasses,
   {FACTURAELECT}FCTELECT,
-  {cfd}cfdv22, uCFD, uROClient, uROComponent, uDAStreamableComponent, uDASchema;
+  uROClient, uROComponent, uDAStreamableComponent, uDASchema;
 
 type
   { TServiceIngresos }
@@ -32,8 +32,8 @@ type
     function IEPS(ProductoID: Integer): Real;
     procedure CalculaIEPS(var Datos: TDatosFactura);
 
-    function cfd(const FacturaID: Integer; const NumeroEstacion: Integer):  TXmlCFD;
-    function cfdi(const FacturaID: Integer; const NumeroEstacion: Integer): TXmlCFD;
+    //function cfd(const FacturaID: Integer; const NumeroEstacion: Integer):  TXmlCFD;
+    //function cfdi(const FacturaID: Integer; const NumeroEstacion: Integer): TXmlCFD;
   protected
     { IServiceIngresos methods }
     function AbreDataSetReportes(const SQL: AnsiString; const Parametros: TParametrosBI): Binary;
@@ -712,7 +712,7 @@ function TServiceIngresos.BecaDescuento(const IDHISTORIALALUMNO: Integer; const 
 begin
 end;
 
-function TServiceIngresos.InsertaHistorialAlumno(const IDHISTORIALALUMNO: Integer; const IDHISTORIALGRUPO: Integer; const IDALUMNO: Integer; const DOCUMENTOSFALTANTES: AnsiString; 
+function TServiceIngresos.InsertaHistorialAlumno(const IDHISTORIALALUMNO: Integer; const IDHISTORIALGRUPO: Integer; const IDALUMNO: Integer; const DOCUMENTOSFALTANTES: AnsiString;
                                                  const BECA: Double; const DESCUENTO: Double): Boolean;
 begin
 end;
@@ -722,7 +722,7 @@ function TServiceIngresos.CambioGrupo(const IDHISTORIALALUMNO: Integer; const ID
 begin
 end;
 
-function TServiceIngresos.cfd(const FacturaID, NumeroEstacion: Integer): TXmlCFD;
+{function TServiceIngresos.cfd(const FacturaID, NumeroEstacion: Integer): TXmlCFD;
 var
   CDOR: WideString;
   ind, idx: integer;
@@ -741,13 +741,13 @@ begin
                      ds1.FieldByName('ArchivoCertificado').AsString,
                      ds1.FieldByName('ArchivoClavePrivada').AsString,
                      ds1.FieldByName('PasswordFCTELECT').AsString);
-end;
+end; }
 
-function TServiceIngresos.cfdi(const FacturaID,
+{function TServiceIngresos.cfdi(const FacturaID,
   NumeroEstacion: Integer): TXmlCFD;
 begin
 
-end;
+end;}
 
 function TServiceIngresos.CierraLiquidacion(
   const LiquidacionID: Integer): AnsiString;
@@ -966,7 +966,7 @@ var
   Datos: TDatosFactura;
 
   DFacturaElectronica: LibraryIngresos_Intf.TDataFacturaElectronicaBI;
-  fXmlcfdv22: TXmlCFD;
+  //fXmlcfdv22: TXmlCFD;
 begin
   Datos:=TDatosFactura.Create;
   try

@@ -153,20 +153,12 @@
             <Form>ServerDataModule</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="libeay32.pas"/>
-        <DCCReference Include="OpenSSLUtils.pas"/>
-        <DCCReference Include="LibEay32Plus.pas"/>
-        <DCCReference Include="FCTELECT.pas"/>
         <DCCReference Include="LibraryIngresos_Intf.pas"/>
         <DCCReference Include="LibraryIngresos_Invk.pas"/>
         <DCCReference Include="ServiceIngresos_Impl.pas">
             <Form>ServiceIngresos</Form>
             <DesignClass>TDataAbstractService</DesignClass>
         </DCCReference>
-        <DCCReference Include="CFD\cfdv22.pas"/>
-        <DCCReference Include="CFD\uCFD.pas"/>
-        <DCCReference Include="lib Factura Electronica\xslprod.pas"/>
-        <DCCReference Include="lib Factura Electronica\SiteConst.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\LibXmlParser.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\ufrmPassword.pas">
             <Form>frmPassword</Form>
@@ -177,6 +169,42 @@
             <Form>frmServerForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="FCTELECTRONICA\CadenaOriginal.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CadenaOriginalTimbre.pas"/>
+        <DCCReference Include="FCTELECTRONICA\ClaseCertificadoSellos.pas"/>
+        <DCCReference Include="FCTELECTRONICA\ClaseOpenSSL.pas"/>
+        <DCCReference Include="FCTELECTRONICA\ComprobanteFiscal.pas"/>
+        <DCCReference Include="FCTELECTRONICA\DocComprobanteFiscal.pas"/>
+        <DCCReference Include="FCTELECTRONICA\FacturacionHashes.pas"/>
+        <DCCReference Include="FCTELECTRONICA\FacturaElectronica.pas"/>
+        <DCCReference Include="FCTELECTRONICA\FacturaReglamentacion.pas"/>
+        <DCCReference Include="FCTELECTRONICA\FacturaTipos.pas"/>
+        <DCCReference Include="FCTELECTRONICA\libeay32.pas"/>
+        <DCCReference Include="FCTELECTRONICA\LibEay32Plus.pas"/>
+        <DCCReference Include="FCTELECTRONICA\OpenSSLUtils.pas"/>
+        <DCCReference Include="FCTELECTRONICA\SelloDigital.pas"/>
+        <DCCReference Include="FCTELECTRONICA\uWSHelper.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CFD\FeCFD.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CFD\FeCFDv2.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CFD\FeCFDv22.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CFD\FeCFDv32.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CFD\FEImpuestosLocales.pas"/>
+        <DCCReference Include="FCTELECTRONICA\CFD\FETimbreFiscalDigital.pas"/>
+        <DCCReference Include="FCTELECTRONICA\GeneradorCBB\GeneradorCBB.pas"/>
+        <DCCReference Include="FCTELECTRONICA\GeneradorCBB\QuricolAPI.pas"/>
+        <DCCReference Include="FCTELECTRONICA\GeneradorCBB\QuricolCode.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\ManejadorDeErroresComunes.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\ProveedorAutorizadoCertificacion.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\ComercioDigital\FECancelaComercioDigital.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\ComercioDigital\PACComercioDigital.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\EcodexWsCancelacion.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\EcodexWsClientes.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\EcodexWsComun.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\EcodexWsSeguridad.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\EcodexWsTimbrado.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\PAC.Ecodex.ManejadorDeSesion.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ecodex\PACEcodex.pas"/>
+        <DCCReference Include="FCTELECTRONICA\PACs\Ejemplo\PACEjemplo.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -9,6 +9,7 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
   object cxGroupBox4: TcxGroupBox
     Left = 0
     Top = 0
+    Hint = ''
     Align = alTop
     Caption = '  Parametros para facturar  '
     Style.BorderStyle = ebsThick
@@ -53,9 +54,8 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
       Width = 95
       Height = 25
       Caption = 'Preeliminar'
-      TabOrder = 0
-      OnClick = btnPreeliminarClick
-      Glyph.Data = {
+      LookAndFeel.Kind = lfOffice11
+      OptionsImage.Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000000000000000000000000000000000000FF00FF004A66
         7C00BE959600FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
@@ -90,17 +90,20 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
         B700EFDFB200E7CEAC00B8908600B8908600FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00BA96
         8A00BB988C00B7918800FF00FF00FF00FF00FF00FF00FF00FF00}
-      LookAndFeel.Kind = lfOffice11
+      TabOrder = 0
+      OnClick = btnPreeliminarClick
     end
     object cxDateEdit2: TcxDateEdit
       Left = 253
       Top = 27
+      Hint = ''
       TabOrder = 1
       Width = 121
     end
     object dtpHora: TcxTimeEdit
       Left = 383
       Top = 27
+      Hint = ''
       EditValue = 0d
       Style.BorderStyle = ebsOffice11
       Style.LookAndFeel.Kind = lfOffice11
@@ -117,6 +120,7 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
     object cxDateEdit1: TcxDateEdit
       Left = 86
       Top = 27
+      Hint = ''
       TabOrder = 3
       Width = 121
     end
@@ -126,10 +130,11 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
     Top = 65
     Width = 762
     Height = 367
+    Hint = ''
     Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DataSource1
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
@@ -224,12 +229,12 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
     Top = 152
   end
   object spActualizaFacturaElectronica: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'COLUMN1'
         DataType = datInteger
       end>
+    LogicalName = 'spActualizaFacturaElectronica'
     Params = <
       item
         Name = 'VIGENCIA'
@@ -239,15 +244,14 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
         Name = 'FACTURAID'
         Value = '1'
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
-    LogicalName = 'spActualizaFacturaElectronica'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 688
     Top = 247
   end
   object cdsConfiguracion: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDCONFIGURACION'
@@ -482,10 +486,11 @@ inherited frmReporteSatCreditos: TfrmReporteSatCreditos
         DataType = datString
         Size = 50
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo CONFIGURACION'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 688
     Top = 279

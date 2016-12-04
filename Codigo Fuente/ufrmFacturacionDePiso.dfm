@@ -944,7 +944,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Transparent = True
         end
         object cxDBTextEdit9: TcxDBTextEdit
-          Left = 512
+          Left = 517
           Top = 128
           Hint = ''
           DataBinding.DataField = 'MUNICIPIO'
@@ -955,7 +955,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.BorderStyle = ebsUltraFlat
           Style.TextStyle = [fsBold]
           TabOrder = 25
-          Width = 261
+          Width = 256
         end
         object cxDBTextEdit7: TcxDBTextEdit
           Left = 61
@@ -1049,36 +1049,67 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           TabOrder = 32
           Width = 177
         end
+        object dbCbxFormaPago: TcxDBLookupComboBox
+          Left = 556
+          Top = 153
+          Hint = ''
+          DataBinding.DataField = 'FormaPagoID'
+          DataBinding.DataSource = dsFactura
+          Properties.KeyFieldNames = 'FormaPagoID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descripcion'
+            end>
+          Properties.ListSource = dsFormaPago
+          Style.BorderStyle = ebsUltraFlat
+          TabOrder = 33
+          Width = 217
+        end
+        object cxLabel15: TcxLabel
+          Left = 463
+          Top = 153
+          Hint = ''
+          Caption = 'Forma de Pago'
+          ParentFont = False
+          Style.BorderStyle = ebsNone
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'MS Sans Serif'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Transparent = True
+        end
       end
       object cxGroupBox5: TcxGroupBox
         Left = 0
-        Top = 451
+        Top = 481
         Hint = ''
         Align = alBottom
         Enabled = False
         Style.BorderStyle = ebsUltraFlat
         TabOrder = 1
-        Height = 102
+        Height = 72
         Width = 783
         object cxLabel17: TcxLabel
-          Left = 20
-          Top = 39
+          Left = 597
+          Top = 27
           Hint = ''
           Caption = 'IVA'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxLabel18: TcxLabel
-          Left = 20
-          Top = 61
+          Left = 597
+          Top = 49
           Hint = ''
           Caption = 'Total'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxDBTextEdit10: TcxDBTextEdit
-          Left = 76
-          Top = 59
+          Left = 653
+          Top = 47
           Hint = ''
           TabStop = False
           DataBinding.DataField = 'Total'
@@ -1097,8 +1128,8 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Width = 121
         end
         object cxDBTextEdit11: TcxDBTextEdit
-          Left = 76
-          Top = 37
+          Left = 653
+          Top = 25
           Hint = ''
           TabStop = False
           DataBinding.DataField = 'Impuesto'
@@ -1117,8 +1148,8 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Width = 121
         end
         object cxDBTextEdit12: TcxDBTextEdit
-          Left = 76
-          Top = 15
+          Left = 653
+          Top = 3
           Hint = ''
           TabStop = False
           DataBinding.DataField = 'Subtotal'
@@ -1137,16 +1168,16 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Width = 121
         end
         object cxLabel19: TcxLabel
-          Left = 20
-          Top = 17
+          Left = 597
+          Top = 5
           Hint = ''
           Caption = 'Subtotal'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxCurrencyEdit1: TcxCurrencyEdit
-          Left = 76
-          Top = 15
+          Left = 653
+          Top = 3
           Hint = ''
           Enabled = False
           Properties.Alignment.Horz = taRightJustify
@@ -1157,8 +1188,8 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Width = 121
         end
         object cxCurrencyEdit2: TcxCurrencyEdit
-          Left = 76
-          Top = 37
+          Left = 653
+          Top = 25
           Hint = ''
           Enabled = False
           Properties.Alignment.Horz = taRightJustify
@@ -1169,8 +1200,8 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Width = 121
         end
         object cxCurrencyEdit3: TcxCurrencyEdit
-          Left = 76
-          Top = 59
+          Left = 653
+          Top = 47
           Hint = ''
           Enabled = False
           Properties.Alignment.Horz = taRightJustify
@@ -1180,60 +1211,35 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           TabOrder = 8
           Width = 121
         end
-        object dbCbxFormaPago: TcxDBLookupComboBox
-          Left = 612
-          Top = 15
-          Hint = ''
-          DataBinding.DataField = 'FormaPagoID'
-          DataBinding.DataSource = dsFactura
-          Properties.KeyFieldNames = 'FormaPagoID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Descripcion'
-            end>
-          Properties.ListSource = dsFormaPago
-          Style.BorderStyle = ebsUltraFlat
-          TabOrder = 9
-          Width = 161
-        end
-        object cxLabel15: TcxLabel
-          Left = 517
-          Top = 16
-          Hint = ''
-          Caption = 'Forma de Pago'
-          Style.BorderStyle = ebsNone
-          Transparent = True
-        end
-        object ComboBox1: TComboBox
-          Left = 612
-          Top = 37
+        object xcombo: TComboBox
+          Left = 117
+          Top = 22
           Width = 161
           Height = 21
-          TabOrder = 11
+          TabOrder = 9
           Text = 'en una sola Exhibicion'
-          OnChange = ComboBox1Change
           Items.Strings = (
             'en una sola Exhibicion')
         end
         object cxLabel22: TcxLabel
-          Left = 517
-          Top = 38
+          Left = 28
+          Top = 22
           Hint = ''
           Caption = 'Metodo de Pago'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxLabel23: TcxLabel
-          Left = 517
-          Top = 60
+          Left = 13
+          Top = 45
           Hint = ''
           Caption = 'Condicion de Pago'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxDBLookupComboBox1: TcxDBLookupComboBox
-          Left = 612
-          Top = 59
+          Left = 117
+          Top = 44
           Hint = ''
           DataBinding.DataField = 'IDCONDICIONPAGO'
           DataBinding.DataSource = dsFactura
@@ -1244,7 +1250,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
             end>
           Properties.ListSource = dsCondicionPago
           Style.BorderStyle = ebsUltraFlat
-          TabOrder = 14
+          TabOrder = 12
           Width = 161
         end
       end
@@ -1259,14 +1265,14 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 2
-        Height = 274
+        Height = 304
         Width = 783
         object cxGrid1: TcxGrid
           Tag = 1
           Left = 3
           Top = 22
           Width = 777
-          Height = 249
+          Height = 279
           Hint = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -1306,7 +1312,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
               DataBinding.FieldName = 'Descripcion'
               Options.Editing = False
               Options.Focusing = False
-              Width = 280
+              Width = 321
             end
             object cxGridDBTableView3Cantidad: TcxGridDBColumn
               DataBinding.FieldName = 'Cantidad'
@@ -1319,14 +1325,14 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
               DataBinding.FieldName = 'Precio'
               Options.Editing = False
               Options.Focusing = False
-              Width = 71
+              Width = 107
             end
             object cxGridDBTableView3Importe: TcxGridDBColumn
               DataBinding.FieldName = 'Importe'
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.OnValidate = cxGridDBTableView3ImportePropertiesValidate
               Options.Editing = False
-              Width = 100
+              Width = 189
             end
           end
           object cxGridLevel3: TcxGridLevel

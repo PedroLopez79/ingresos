@@ -393,25 +393,19 @@
         <DCCReference Include="ufrmSaldosPageDown.pas">
             <Form>DatosFacturaCliente</Form>
         </DCCReference>
-        <DCCReference Include="Server\lib Factura Electronica\xslprod.pas"/>
-        <DCCReference Include="Server\lib Factura Electronica\SiteConst.pas"/>
         <DCCReference Include="uRapFunctions.pas"/>
         <DCCReference Include="uRFC.pas">
             <Form>Fo_AyudaRFC</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\CustomModule.pas">
             <Form>frmCustomModule</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\dmActions.pas">
             <Form>dmAppActions</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\dmImagenes.pas">
             <Form>dmImages</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\ExportaDataSet.pas"/>
@@ -421,21 +415,17 @@
         <DCCReference Include="CistemComun\CodigoFuente\Modules.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\rbPrvDlg.pas">
             <Form>rbPrintPreview</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\Seguridad.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\SynchedThreads.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\ufrmCatalogo.pas">
             <Form>frmCatalogo</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\ufrmPassword.pas">
             <Form>frmPassword</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\ufrmSplash.pas">
             <Form>frmSplash</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CistemComun\CodigoFuente\uPSI_ExportaDataSet.pas"/>
         <DCCReference Include="CistemComun\CodigoFuente\UtileriasComun.pas"/>
@@ -443,35 +433,27 @@
         <DCCReference Include="Flotillas\LibraryFlotillas_Intf.pas"/>
         <DCCReference Include="uTurnoxFecha.pas">
             <Form>Fo_TurnoxFecha</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uAgregarVentaSalidaEfectivo.pas">
             <Form>Fo_AgregarVentaSalidaEfectivo</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uAgregarVentaOtros.pas">
             <Form>Fo_AgregarVentaOtros</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uAgregarVentaCreditoDebitosCupones.pas">
             <Form>Fo_AgregarVentaCreditoDebitosCupones</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ufrmBuscarClienteCredito.pas">
             <Form>frmBuscarClienteCredito</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uAgregarVenta.pas">
             <Form>Fo_AgregarVenta</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uAgregarVentaEfectivo.pas">
             <Form>Fo_AgregarVentaEfectivo</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uAgregarVentaDocumentos.pas">
             <Form>Fo_AgregarVentaDocumentos</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

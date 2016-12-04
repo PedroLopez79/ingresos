@@ -154,15 +154,12 @@ type
     dsConfiguracion: TDADataSource;
     Panel1: TPanel;
     Panel2: TPanel;
-    dbCbxFormaPago: TcxDBLookupComboBox;
-    cxLabel15: TcxLabel;
     cxLabel16: TcxLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     cxLabel20: TcxLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     cxLabel21: TcxLabel;
     cxDBTextEdit9: TcxDBTextEdit;
-    ComboBox1: TComboBox;
     cxLabel22: TcxLabel;
     cxLabel23: TcxLabel;
     cxDBTextEdit7: TcxDBTextEdit;
@@ -177,6 +174,9 @@ type
     dsCondicionPago: TDADataSource;
     Panel3: TPanel;
     Panel4: TPanel;
+    dbCbxFormaPago: TcxDBLookupComboBox;
+    cxLabel15: TcxLabel;
+    xcombo: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsFacturaNewRecord(DataTable: TDADataTable);
     procedure cdsDetalleFacturaNewRecord(DataTable: TDADataTable);
@@ -212,7 +212,6 @@ type
       AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
       Shift: TShiftState);
     procedure cxButton1Click(Sender: TObject);
-    procedure ComboBox1Change(Sender: TObject);
   private
     { Private declarations }
     procedure ActionNuevo(Action: TBasicAction);
@@ -499,12 +498,6 @@ procedure TFrmFacturacionDePiso.cdsTicketFacturaBeforeDelete(
 begin
   inherited;
   EliminarProducto;
-end;
-
-procedure TFrmFacturacionDePiso.ComboBox1Change(Sender: TObject);
-begin
-  inherited;
-  cdsFactura.FieldByName('METODOPAGO').AsString:= ComboBox1.Text;
 end;
 
 procedure TFrmFacturacionDePiso.cxButton1Click(Sender: TObject);

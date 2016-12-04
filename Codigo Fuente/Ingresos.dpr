@@ -87,8 +87,6 @@ uses
   LibraryIngresos_Intf in 'Server\LibraryIngresos_Intf.pas',
   ufrmSaldosClientes in 'ufrmSaldosClientes.pas' {frmSaldosClientes},
   ufrmSaldosPageDown in 'ufrmSaldosPageDown.pas' {DatosFacturaCliente},
-  xslprod in 'Server\lib Factura Electronica\xslprod.pas',
-  SiteConst in 'Server\lib Factura Electronica\SiteConst.pas',
   uRapFunctions in 'uRapFunctions.pas',
   uRFC in 'uRFC.pas' {Fo_AyudaRFC},
   CustomModule in 'CistemComun\CodigoFuente\CustomModule.pas' {frmCustomModule},

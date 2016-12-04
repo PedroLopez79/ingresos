@@ -19,7 +19,13 @@ uses
   cxButtons, cxGroupBox, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   uDAInterfaces, uDADataTable, dxmdaset, uDAScriptingProvider, uDACDSDataTable,
   ExtDlgs, cxSpinEdit, cxTimeEdit, ComCtrls, cxCurrencyEdit,
-  {xmldocument} xmldom, XMLIntf, msxmldom, XMLDoc, XSBuiltIns, XSLProd, ShlObj;
+  {xmldocument} xmldom, XMLIntf, msxmldom, XMLDoc, XSBuiltIns, ShlObj,
+  dxSkinBlueprint, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
+  dxSkinWhiteprint, dxCore, cxDateUtils, cxNavigator, uROComponent;
 
 type
   TfrmReporteSatCreditos = class(TfrmCustomModule)
