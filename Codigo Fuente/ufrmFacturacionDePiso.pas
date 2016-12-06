@@ -31,7 +31,6 @@ type
   TEx=Class(Exception);
 
   TFrmFacturacionDePiso = class(TfrmCustomModule)
-    cdsCliente: TDACDSDataTable;
     dsCliente: TDADataSource;
     dsProducto: TDADataSource;
     cdsProducto: TDACDSDataTable;
@@ -150,8 +149,6 @@ type
     cdsComparaFechas: TDACDSDataTable;
     dsComparaFechas: TDADataSource;
     cxButton1: TcxButton;
-    cdsConfiguracion: TDACDSDataTable;
-    dsConfiguracion: TDADataSource;
     Panel1: TPanel;
     Panel2: TPanel;
     cxLabel16: TcxLabel;
@@ -160,8 +157,6 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     cxLabel21: TcxLabel;
     cxDBTextEdit9: TcxDBTextEdit;
-    cxLabel22: TcxLabel;
-    cxLabel23: TcxLabel;
     cxDBTextEdit7: TcxDBTextEdit;
     cxLabel24: TcxLabel;
     cxLabel25: TcxLabel;
@@ -169,14 +164,20 @@ type
     cxLabel27: TcxLabel;
     cxLabel28: TcxLabel;
     cxDBTextEdit13: TcxDBTextEdit;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
-    cdsCondicionPago: TDACDSDataTable;
-    dsCondicionPago: TDADataSource;
+    cdsTipoFactura: TDACDSDataTable;
+    dsTipoFactura: TDADataSource;
     Panel3: TPanel;
     Panel4: TPanel;
     dbCbxFormaPago: TcxDBLookupComboBox;
     cxLabel15: TcxLabel;
-    xcombo: TComboBox;
+    cxDBImage1: TcxDBImage;
+    mDescripcion: TMemo;
+    cxLabel29: TcxLabel;
+    cxLabel23: TcxLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cdsEstacion: TDACDSDataTable;
+    dsEstacion: TDADataSource;
+    cdsCliente: TDACDSDataTable;
     procedure FormCreate(Sender: TObject);
     procedure cdsFacturaNewRecord(DataTable: TDADataTable);
     procedure cdsDetalleFacturaNewRecord(DataTable: TDADataTable);
@@ -298,7 +299,7 @@ begin
        dbTxtSerie.SetFocus;
   end;
   cdsFactura.FieldByName('FormaPagoID').AsInteger:=1;
-  cdsFactura.FieldByName('IDCONDICIONPAGO').AsInteger:=1;
+  cdsFactura.FieldByName('TipoFacturaID').AsInteger:=1;
   if dbtxtCliente.CanFocus then
      dbtxtCliente.SetFocus;
 
@@ -554,7 +555,7 @@ begin
      end;
 
      cdsCliente.Close;
-     cdsCliente.ParamByName('IDCLIENTE').AsInteger:=cdsFactura.FieldByName('ClienteID').AsInteger;
+     cdsCliente.ParamByName('ClienteID').AsInteger:=cdsFactura.FieldByName('ClienteID').AsInteger;
      cdsCliente.Open
 
 end;
@@ -565,7 +566,7 @@ begin
   dmAppActions.actBuscar.Enabled:=((cdsFactura.State=dsEdit) or (cdsFactura.State=dsInsert)) and (cxPagFacturacion.ActivePageIndex=0);
   Consulta:=2;
   cdsCliente.Close;
-  cdsCliente.ParamByName('IDCLIENTE').AsInteger:=cdsFactura.FieldByName('ClienteID').AsInteger;
+  cdsCliente.ParamByName('ClienteID').AsInteger:=cdsFactura.FieldByName('ClienteID').AsInteger;
   cdsCliente.Open;
   if cdsCliente.RecordCount=0 then
   begin
@@ -749,18 +750,20 @@ begin
 
   SerieFactura:=DM.Serie;
 
-  cdsConfiguracion.Close;
-  cdsConfiguracion.Open;
-  cdsConfiguracion.Locate('NUMEROESTACION',DM.NumeroEstacion,[]);
+  cdsEstacion.Close;
+  cdsEstacion.ParamByName('EstacionID').AsInteger:= DM.NumeroEstacion;
+  cdsEstacion.Open;
 
-  cxLabel25.Caption:= cdsConfiguracion.FieldByName('EMPRESA').AsString;
-  cxLabel26.Caption:= 'ESTACION NUM. ' + cdsConfiguracion.FieldByName('NUMEROESTACION').AsString;
-  cxLabel27.Caption:= 'RFC - ' + cdsConfiguracion.FieldByName('RFC').AsString;
-  cxLabel28.Caption:= 'DIRECCION: ' + cdsConfiguracion.FieldByName('DIRECCION').AsString;
+  cxLabel25.Caption:= cdsEstacion.FieldByName('NOMBRE').AsString;
+  cxLabel26.Caption:= 'ESTACION NUM. ' + cdsEstacion.FieldByName('IDESTACION').AsString;
+  cxLabel27.Caption:= 'RFC - ' + cdsEstacion.FieldByName('RFC').AsString;
+  cxLabel28.Caption:= 'DIRECCION: ' + cdsEstacion.FieldByName('CALLE').AsString + ', '
+                                    + cdsEstacion.FieldByName('COLONIA').AsString + ', CP:'
+                                    + cdsEstacion.FieldByName('CODIGOPOSTAL').AsString;
 
   cdsFormaPago.Open;
   cdsProducto.Open;
-  cdsCondicionPago.Open;
+  cdsTipoFactura.Open;
   IF DM.Seguridad.SeguridadPorNombre('Factura Por Fecha') <> nil then
      cxDBDateEdit1.Enabled:=True;
  // DM.Seguridad.idEmpleado;// Para saber el Id del Empleado que esta Logeado
@@ -770,7 +773,7 @@ begin
   cdsFactura.Open;
   cdsDetalleFactura.Open;
 
-  ImpuestoPorcentaje:=cdsConfiguracion.FieldByName('ImpuestoPorcentaje').AsFloat;
+  ImpuestoPorcentaje:=cdsEstacion.FieldByName('IMPUESTO').AsFloat;
   cxPagFacturacion.ActivePageIndex:=0;
 end;
 

@@ -5,6 +5,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
   ClientHeight = 618
   ClientWidth = 812
   Position = poDesigned
+  ExplicitLeft = 0
   ExplicitWidth = 812
   ExplicitHeight = 618
   PixelsPerInch = 96
@@ -625,19 +626,23 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 0
+        ExplicitTop = 1
+        DesignSize = (
+          783
+          177)
         Height = 177
         Width = 783
         object cxLabel5: TcxLabel
           Left = 665
-          Top = 36
+          Top = 32
           Hint = ''
           Caption = 'Folio'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxLabel6: TcxLabel
-          Left = 8
-          Top = 81
+          Left = 10
+          Top = 84
           Hint = ''
           Caption = 'Cliente'
           Style.BorderStyle = ebsNone
@@ -645,7 +650,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel7: TcxLabel
           Left = 573
-          Top = 81
+          Top = 83
           Hint = ''
           Caption = 'RFC'
           Style.BorderStyle = ebsNone
@@ -653,23 +658,23 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel8: TcxLabel
           Left = 580
-          Top = 10
+          Top = 9
           Hint = ''
           Caption = 'Fecha'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxLabel9: TcxLabel
-          Left = 8
-          Top = 105
+          Left = 10
+          Top = 106
           Hint = ''
-          Caption = 'Direcci'#243'n'
+          Caption = 'Direccion'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxLabel10: TcxLabel
           Left = 232
-          Top = 129
+          Top = 131
           Hint = ''
           Caption = 'Colonia'
           Style.BorderStyle = ebsNone
@@ -677,7 +682,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel11: TcxLabel
           Left = 232
-          Top = 153
+          Top = 154
           Hint = ''
           Caption = 'Estado'
           Style.BorderStyle = ebsNone
@@ -685,7 +690,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel12: TcxLabel
           Left = 574
-          Top = 105
+          Top = 106
           Hint = ''
           Caption = 'Codigo Postal'
           Style.BorderStyle = ebsNone
@@ -693,7 +698,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel13: TcxLabel
           Left = 143
-          Top = 79
+          Top = 81
           Hint = ''
           Caption = 'Nombre'
           Style.BorderStyle = ebsNone
@@ -701,7 +706,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit3: TcxDBTextEdit
           Left = 186
-          Top = 78
+          Top = 80
           Hint = ''
           DataBinding.DataField = 'Nombre'
           DataBinding.DataSource = dsCliente
@@ -722,7 +727,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit4: TcxDBTextEdit
           Left = 604
-          Top = 78
+          Top = 80
           Hint = ''
           DataBinding.DataField = 'RFC'
           DataBinding.DataSource = dsCliente
@@ -736,7 +741,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit5: TcxDBTextEdit
           Left = 61
-          Top = 104
+          Top = 105
           Hint = ''
           DataBinding.DataField = 'DIRECCION'
           DataBinding.DataSource = dsCliente
@@ -750,7 +755,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit6: TcxDBTextEdit
           Left = 283
-          Top = 128
+          Top = 130
           Hint = ''
           DataBinding.DataField = 'COLONIA'
           DataBinding.DataSource = dsCliente
@@ -764,7 +769,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit8: TcxDBTextEdit
           Left = 644
-          Top = 104
+          Top = 105
           Hint = ''
           DataBinding.DataField = 'CODIGOPOSTAL'
           DataBinding.DataSource = dsCliente
@@ -778,7 +783,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBDateEdit1: TcxDBDateEdit
           Left = 617
-          Top = 9
+          Top = 8
           Hint = ''
           TabStop = False
           DataBinding.DataField = 'Fecha'
@@ -790,7 +795,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel14: TcxLabel
           Left = 580
-          Top = 36
+          Top = 32
           Hint = ''
           Caption = 'Serie'
           Style.BorderStyle = ebsNone
@@ -798,7 +803,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object dbTxtSerie: TcxDBTextEdit
           Left = 617
-          Top = 35
+          Top = 31
           Hint = ''
           DataBinding.DataField = 'Serie'
           DataBinding.DataSource = dsFactura
@@ -813,7 +818,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object dbTxtFolio: TcxDBTextEdit
           Left = 693
-          Top = 35
+          Top = 31
           Hint = ''
           DataBinding.DataField = 'Folio'
           DataBinding.DataSource = dsFactura
@@ -828,7 +833,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object dbTxtCliente: TcxDBTextEdit
           Left = 61
-          Top = 78
+          Top = 80
           Hint = ''
           DataBinding.DataField = 'ClienteID'
           DataBinding.DataSource = dsFactura
@@ -842,7 +847,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxButton1: TcxButton
           Left = 117
-          Top = 76
+          Top = 78
           Width = 25
           Height = 25
           OptionsImage.Glyph.Data = {
@@ -893,15 +898,15 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel16: TcxLabel
           Left = 462
-          Top = 105
+          Top = 106
           Hint = ''
           Caption = 'No. Ext.'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxDBTextEdit1: TcxDBTextEdit
-          Left = 506
-          Top = 104
+          Left = 517
+          Top = 105
           Hint = ''
           DataBinding.DataField = 'NOEXTERIOR'
           DataBinding.DataSource = dsCliente
@@ -911,11 +916,11 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.BorderStyle = ebsUltraFlat
           Style.TextStyle = [fsBold]
           TabOrder = 21
-          Width = 65
+          Width = 54
         end
         object cxLabel20: TcxLabel
-          Left = 8
-          Top = 153
+          Left = 10
+          Top = 154
           Hint = ''
           Caption = 'Localidad'
           Style.BorderStyle = ebsNone
@@ -923,7 +928,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit2: TcxDBTextEdit
           Left = 61
-          Top = 153
+          Top = 154
           Hint = ''
           DataBinding.DataField = 'LOCALIDAD'
           DataBinding.DataSource = dsCliente
@@ -937,7 +942,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel21: TcxLabel
           Left = 462
-          Top = 129
+          Top = 131
           Hint = ''
           Caption = 'Municipio'
           Style.BorderStyle = ebsNone
@@ -945,7 +950,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit9: TcxDBTextEdit
           Left = 517
-          Top = 128
+          Top = 130
           Hint = ''
           DataBinding.DataField = 'MUNICIPIO'
           DataBinding.DataSource = dsCliente
@@ -959,7 +964,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBTextEdit7: TcxDBTextEdit
           Left = 61
-          Top = 128
+          Top = 130
           Hint = ''
           DataBinding.DataField = 'CALLE'
           DataBinding.DataSource = dsCliente
@@ -973,16 +978,17 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxLabel24: TcxLabel
           Left = 10
-          Top = 129
+          Top = 131
           Hint = ''
           Caption = 'Calle'
           Style.BorderStyle = ebsNone
           Transparent = True
         end
         object cxLabel25: TcxLabel
-          Left = 321
-          Top = 2
+          Left = 159
+          Top = 4
           Hint = ''
+          Caption = '.'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
@@ -990,13 +996,14 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.Font.Name = 'MS Sans Serif'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          AnchorX = 326
+          Properties.Alignment.Horz = taLeftJustify
+          Transparent = True
         end
         object cxLabel26: TcxLabel
-          Left = 321
-          Top = 22
+          Left = 159
+          Top = 21
           Hint = ''
+          Caption = '.'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
@@ -1004,13 +1011,14 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.Font.Name = 'MS Sans Serif'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          AnchorX = 326
+          Properties.Alignment.Horz = taLeftJustify
+          Transparent = True
         end
         object cxLabel27: TcxLabel
-          Left = 321
-          Top = 41
+          Left = 159
+          Top = 39
           Hint = ''
+          Caption = '.'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
@@ -1018,26 +1026,22 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.Font.Name = 'MS Sans Serif'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          AnchorX = 326
+          Properties.Alignment.Horz = taLeftJustify
+          Transparent = True
         end
         object cxLabel28: TcxLabel
-          Left = 321
-          Top = 60
+          Left = 159
+          Top = 56
           Hint = ''
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -11
-          Style.Font.Name = 'MS Sans Serif'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          AnchorX = 326
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          Caption = '.'
+          Style.BorderStyle = ebsNone
+          Properties.Alignment.Horz = taLeftJustify
+          Transparent = True
         end
         object cxDBTextEdit13: TcxDBTextEdit
           Left = 283
-          Top = 152
+          Top = 153
           Hint = ''
           DataBinding.DataField = 'ESTADO'
           DataBinding.DataSource = dsCliente
@@ -1050,8 +1054,8 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Width = 177
         end
         object dbCbxFormaPago: TcxDBLookupComboBox
-          Left = 556
-          Top = 153
+          Left = 617
+          Top = 54
           Hint = ''
           DataBinding.DataField = 'FormaPagoID'
           DataBinding.DataSource = dsFactura
@@ -1063,11 +1067,11 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Properties.ListSource = dsFormaPago
           Style.BorderStyle = ebsUltraFlat
           TabOrder = 33
-          Width = 217
+          Width = 156
         end
         object cxLabel15: TcxLabel
-          Left = 463
-          Top = 153
+          Left = 521
+          Top = 55
           Hint = ''
           Caption = 'Forma de Pago'
           ParentFont = False
@@ -1079,6 +1083,41 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Transparent = True
+        end
+        object cxDBImage1: TcxDBImage
+          Left = 13
+          Top = 4
+          Hint = ''
+          DataBinding.DataField = 'LOGOESTACION'
+          DataBinding.DataSource = dsEstacion
+          TabOrder = 35
+          Transparent = True
+          Height = 71
+          Width = 140
+        end
+        object cxLabel23: TcxLabel
+          Left = 462
+          Top = 154
+          Hint = ''
+          Caption = 'Tipo Pago'
+          Style.BorderStyle = ebsNone
+          Transparent = True
+        end
+        object cxDBLookupComboBox1: TcxDBLookupComboBox
+          Left = 517
+          Top = 154
+          Hint = ''
+          DataBinding.DataField = 'TipoFacturaID'
+          DataBinding.DataSource = dsFactura
+          Properties.KeyFieldNames = 'TipoFacturaID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descripcion'
+            end>
+          Properties.ListSource = dsTipoFactura
+          Style.BorderStyle = ebsUltraFlat
+          TabOrder = 37
+          Width = 256
         end
       end
       object cxGroupBox5: TcxGroupBox
@@ -1211,47 +1250,20 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           TabOrder = 8
           Width = 121
         end
-        object xcombo: TComboBox
-          Left = 117
-          Top = 22
-          Width = 161
-          Height = 21
+        object mDescripcion: TMemo
+          Left = 8
+          Top = 15
+          Width = 583
+          Height = 53
           TabOrder = 9
-          Text = 'en una sola Exhibicion'
-          Items.Strings = (
-            'en una sola Exhibicion')
         end
-        object cxLabel22: TcxLabel
-          Left = 28
-          Top = 22
+        object cxLabel29: TcxLabel
+          Left = 8
+          Top = 0
           Hint = ''
-          Caption = 'Metodo de Pago'
+          Caption = 'Descripcion'
           Style.BorderStyle = ebsNone
           Transparent = True
-        end
-        object cxLabel23: TcxLabel
-          Left = 13
-          Top = 45
-          Hint = ''
-          Caption = 'Condicion de Pago'
-          Style.BorderStyle = ebsNone
-          Transparent = True
-        end
-        object cxDBLookupComboBox1: TcxDBLookupComboBox
-          Left = 117
-          Top = 44
-          Hint = ''
-          DataBinding.DataField = 'IDCONDICIONPAGO'
-          DataBinding.DataSource = dsFactura
-          Properties.KeyFieldNames = 'IDCONDICIONPAGO'
-          Properties.ListColumns = <
-            item
-              FieldName = 'DESCRIPCION'
-            end>
-          Properties.ListSource = dsCondicionPago
-          Style.BorderStyle = ebsUltraFlat
-          TabOrder = 12
-          Width = 161
         end
       end
       object grbDetalles: TcxGroupBox
@@ -1286,6 +1298,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           OnExit = cxGrid1Exit
           LookAndFeel.Kind = lfStandard
           LookAndFeel.NativeStyle = False
+          ExplicitLeft = 6
           object cxGridDBTableView3: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnEditKeyDown = cxGridDBTableView3EditKeyDown
@@ -1400,136 +1413,17 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     Caption = '___________'
     TabOrder = 5
   end
-  object cdsCliente: TDACDSDataTable
-    Fields = <
-      item
-        Name = 'IDCLIENTE'
-        DataType = datInteger
-      end
-      item
-        Name = 'CODIGO'
-        DataType = datString
-        Size = 10
-      end
-      item
-        Name = 'NOMBRE'
-        DataType = datString
-        Size = 80
-      end
-      item
-        Name = 'GRUPO'
-        DataType = datString
-        Size = 30
-      end
-      item
-        Name = 'CALLE'
-        DataType = datString
-        Size = 60
-      end
-      item
-        Name = 'COLONIA'
-        DataType = datString
-        Size = 30
-      end
-      item
-        Name = 'CIUDAD'
-        DataType = datString
-        Size = 30
-      end
-      item
-        Name = 'TELEFONO'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'CODIGOPOSTAL'
-        DataType = datString
-        Size = 5
-      end
-      item
-        Name = 'RFC'
-        DataType = datString
-        Size = 15
-      end
-      item
-        Name = 'CURP'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'STATUS'
-        DataType = datInteger
-      end
-      item
-        Name = 'CCA'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'CCC'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'LOCALIDAD'
-        DataType = datString
-        Size = 25
-      end
-      item
-        Name = 'DIRECCION'
-        DataType = datString
-        Size = 100
-      end
-      item
-        Name = 'NOEXTERIOR'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'MUNICIPIO'
-        DataType = datString
-        Size = 100
-      end
-      item
-        Name = 'ESTADO'
-        DataType = datString
-        Size = 100
-      end
-      item
-        Name = 'PAIS'
-        DataType = datString
-        Size = 100
-      end
-      item
-        Name = 'EMAIL'
-        DataType = datString
-        Size = 150
-      end>
-    LogicalName = 'ObtenerDatosCliente'
-    Params = <
-      item
-        Name = 'IDCLIENTE'
-        Value = '1'
-        ParamType = daptInput
-      end>
-    RemoteDataAdapter = DM.RemoteDataAdapter
-    RemoteUpdatesOptions = []
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    IndexDefs = <>
-    Left = 80
-    Top = 360
-  end
   object dsCliente: TDADataSource
     DataSet = cdsCliente.Dataset
     DataTable = cdsCliente
-    Left = 80
-    Top = 392
+    Left = 608
+    Top = 312
   end
   object dsProducto: TDADataSource
     DataSet = cdsProducto.Dataset
     DataTable = cdsProducto
-    Left = 112
-    Top = 392
+    Left = 544
+    Top = 312
   end
   object cdsProducto: TDACDSDataTable
     Fields = <
@@ -1602,19 +1496,19 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 112
-    Top = 360
+    Left = 544
+    Top = 264
   end
   object dsDetalleFactura: TDADataSource
     DataSet = cdsDetalleFactura.Dataset
     DataTable = cdsDetalleFactura
-    Left = 48
+    Left = 72
     Top = 392
   end
   object dsFactura: TDADataSource
     DataSet = cdsFactura.Dataset
     DataTable = cdsFactura
-    Left = 16
+    Left = 32
     Top = 393
   end
   object cdsFormaPago: TDACDSDataTable
@@ -1629,6 +1523,11 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         DataType = datString
         Size = 50
         Required = True
+      end
+      item
+        Name = 'Codigo'
+        DataType = datString
+        Size = 5
       end>
     LogicalName = 'dbo FormaPago'
     Params = <>
@@ -1636,14 +1535,14 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 144
-    Top = 360
+    Left = 472
+    Top = 264
   end
   object dsFormaPago: TDADataSource
     DataSet = cdsFormaPago.Dataset
     DataTable = cdsFormaPago
-    Left = 144
-    Top = 392
+    Left = 472
+    Top = 312
   end
   object cdsDetalleFactura: TDACDSDataTable
     DetailFields = 'FacturaID'
@@ -1708,7 +1607,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     BeforePost = cdsDetalleFacturaBeforePost
     OnNewRecord = cdsDetalleFacturaNewRecord
     IndexDefs = <>
-    Left = 48
+    Left = 72
     Top = 360
   end
   object cdsFactura: TDACDSDataTable
@@ -1779,13 +1678,81 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         DataType = datInteger
       end
       item
-        Name = 'METODOPAGO'
+        Name = 'Turno'
+        DataType = datInteger
+      end
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+      end
+      item
+        Name = 'IDINGRESO'
+        DataType = datInteger
+      end
+      item
+        Name = 'Tickets'
+        DataType = datString
+        Size = 350
+      end
+      item
+        Name = 'CADENAORIGINAL'
+        DataType = datMemo
+      end
+      item
+        Name = 'SELLODIGITAL'
+        DataType = datMemo
+      end
+      item
+        Name = 'XML'
+        DataType = datMemo
+      end
+      item
+        Name = 'NoCertificado'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'FechaCancelada'
+        DataType = datDateTime
+      end
+      item
+        Name = 'FechaFacturaE'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NoAprobacion'
+        DataType = datInteger
+      end
+      item
+        Name = 'EjercicioAprobacion'
+        DataType = datInteger
+      end
+      item
+        Name = 'VersionSAT'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'UUID'
         DataType = datString
         Size = 50
       end
       item
-        Name = 'IDCONDICIONPAGO'
-        DataType = datInteger
+        Name = 'FechaTimbrado'
+        DataType = datDateTime
+      end
+      item
+        Name = 'NoCertificadoSAT'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'SELLOSAT'
+        DataType = datMemo
+      end
+      item
+        Name = 'ACUSE'
+        DataType = datMemo
       end>
     LogicalName = 'dbo Factura'
     Params = <>
@@ -1796,7 +1763,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     BeforePost = cdsFacturaBeforePost
     OnNewRecord = cdsFacturaNewRecord
     IndexDefs = <>
-    Left = 16
+    Left = 32
     Top = 360
   end
   object cdsComparaFechas: TDACDSDataTable
@@ -1830,29 +1797,183 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     Left = 400
     Top = 392
   end
-  object cdsConfiguracion: TDACDSDataTable
+  object cdsTipoFactura: TDACDSDataTable
     Fields = <
       item
-        Name = 'IDCONFIGURACION'
+        Name = 'TipoFacturaID'
         DataType = datInteger
       end
       item
-        Name = 'TIPOCAMBIO'
+        Name = 'Descripcion'
+        DataType = datString
+        Size = 50
+      end>
+    LogicalName = 'dbo.TipoFactura'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 672
+    Top = 264
+  end
+  object dsTipoFactura: TDADataSource
+    DataSet = cdsTipoFactura.Dataset
+    DataTable = cdsTipoFactura
+    Left = 672
+    Top = 312
+  end
+  object cdsEstacion: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDESTACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'RAZONSOCIAL'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'HOST'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CUENTACONTABLE'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IMPUESTO'
         DataType = datFloat
       end
       item
-        Name = 'EMPRESA'
+        Name = 'CALLE'
         DataType = datString
-        Size = 50
+        Size = 60
       end
       item
-        Name = 'LOGO'
-        DataType = datMemo
+        Name = 'COLONIA'
+        DataType = datString
+        Size = 30
       end
       item
-        Name = 'DIRECCION'
+        Name = 'NOEXTERIOR'
         DataType = datString
-        Size = 70
+        Size = 10
+      end
+      item
+        Name = 'NOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'CODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'LOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'ESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXCALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'EXCOLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXNOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXNOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXCODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXMUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXLOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOAPROBACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'FECHAAPROBACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOAPROBACIONES'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'VERSIONCFD'
+        DataType = datInteger
+      end
+      item
+        Name = 'REGIMENFISCAL'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'CODIGOFACTURA'
+        DataType = datString
+        Size = 2
+      end
+      item
+        Name = 'FORMATOFACTURAWEB'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'SERIEENLINEA'
+        DataType = datString
+        Size = 5
       end
       item
         Name = 'TELEFONO'
@@ -1860,142 +1981,70 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         Size = 20
       end
       item
-        Name = 'NOMBRECOMERCIAL'
-        DataType = datString
-        Size = 70
-      end
-      item
-        Name = 'FAX'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'CUENTABANCO1'
-        DataType = datString
-        Size = 25
-      end
-      item
-        Name = 'RFC'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'NoExterior'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'NoInterior'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'Localidad'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Municipio'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Estado'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Pais'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'noAprobacion'
+        Name = 'IDESTACIONBANCARIA'
         DataType = datInteger
       end
       item
-        Name = 'Colonia'
+        Name = 'SERIEBANCARIA'
         DataType = datString
-        Size = 50
+        Size = 5
       end
       item
-        Name = 'CodigoPostal'
-        DataType = datString
-        Size = 50
-      end
+        Name = 'LOGOESTACION'
+        DataType = datMemo
+      end>
+    LogChanges = False
+    LogicalName = 'ObtenerDatosEstacion'
+    Params = <
       item
-        Name = 'NoCertificado'
-        DataType = datString
-        Size = 50
-      end
+        Name = 'EstacionID'
+        DataType = datInteger
+        Value = '1'
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 400
+    Top = 264
+  end
+  object dsEstacion: TDADataSource
+    DataSet = cdsEstacion.Dataset
+    DataTable = cdsEstacion
+    Left = 400
+    Top = 312
+  end
+  object cdsCliente: TDACDSDataTable
+    Fields = <
       item
-        Name = 'ArchivoClavePrivada'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'ArchivoCertificado'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'ClavePriv'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'Certificado'
-        DataType = datString
-        Size = 4000
-      end
-      item
-        Name = 'PasswordFCTElect'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'Sucursal'
-        DataType = datBoolean
-      end
-      item
-        Name = 'SucursalDE'
+        Name = 'IDCLIENTE'
         DataType = datInteger
       end
       item
-        Name = 'Telefono1'
+        Name = 'CODIGO'
         DataType = datString
-        Size = 50
+        Size = 10
       end
       item
-        Name = 'Telefono2'
+        Name = 'NOMBRE'
         DataType = datString
-        Size = 50
+        Size = 80
       end
       item
-        Name = 'AnoAprobacion'
-        DataType = datDateTime
-      end
-      item
-        Name = 'FolioInicial'
-        DataType = datInteger
-      end
-      item
-        Name = 'FolioFinal'
-        DataType = datInteger
-      end
-      item
-        Name = 'ImpuestoPorcentaje'
-        DataType = datFloat
-      end
-      item
-        Name = 'CC'
+        Name = 'GRUPO'
         DataType = datString
-        Size = 20
+        Size = 30
       end
       item
-        Name = 'CLAVEPEMEX'
+        Name = 'CALLE'
         DataType = datString
-        Size = 50
+        Size = 60
+      end
+      item
+        Name = 'COLONIA'
+        DataType = datString
+        Size = 30
       end
       item
         Name = 'CIUDAD'
@@ -2003,107 +2052,101 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         Size = 30
       end
       item
-        Name = 'BOMBAS'
+        Name = 'TELEFONO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'CODIGOPOSTAL'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'CURP'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'STATUS'
         DataType = datInteger
       end
       item
-        Name = 'HOSTVOLUMETRICO'
+        Name = 'CCA'
         DataType = datString
-        Size = 30
+        Size = 20
       end
       item
-        Name = 'PUERTOVOLUMETRICO'
+        Name = 'CCC'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'LOCALIDAD'
+        DataType = datString
+        Size = 25
+      end
+      item
+        Name = 'DIRECCION'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'NOEXTERIOR'
         DataType = datString
         Size = 50
       end
       item
-        Name = 'HOSTFLOTILLAS'
+        Name = 'NOINTERIOR'
         DataType = datString
-        Size = 30
+        Size = 50
       end
       item
-        Name = 'PUERTOFLOTILLAS'
+        Name = 'MUNICIPIO'
         DataType = datString
-        Size = 10
+        Size = 100
       end
       item
-        Name = 'NUMEROESTACION'
-        DataType = datInteger
+        Name = 'ESTADO'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'PAIS'
+        DataType = datString
+        Size = 100
       end
       item
         Name = 'EMAIL'
         DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'SERIEFACTURACREDITO'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'SERIEFACTURADEBITO'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'REPORTEFACTURACREDITODEBITO'
-        DataType = datString
         Size = 150
       end
       item
-        Name = 'LICENCIA'
+        Name = 'REFERENCIA'
         DataType = datString
-        Size = 150
+        Size = 100
       end
       item
-        Name = 'VERSION'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'TIPOINGRESO'
-        DataType = datString
-        Size = 50
+        Name = 'AUTORIZACHEQUE'
+        DataType = datBoolean
       end>
-    LogicalName = 'dbo CONFIGURACION'
-    Params = <>
-    RemoteDataAdapter = DM.RemoteDataAdapter
-    RemoteUpdatesOptions = []
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    IndexDefs = <>
-    Left = 176
-    Top = 360
-  end
-  object dsConfiguracion: TDADataSource
-    DataSet = cdsConfiguracion.Dataset
-    DataTable = cdsConfiguracion
-    Left = 176
-    Top = 392
-  end
-  object cdsCondicionPago: TDACDSDataTable
-    Fields = <
+    LogicalName = 'spObtenerDatosCliente'
+    Params = <
       item
-        Name = 'IDCONDICIONPAGO'
+        Name = 'ClienteID'
         DataType = datInteger
-      end
-      item
-        Name = 'DESCRIPCION'
-        DataType = datString
-        Size = 50
+        Value = '1'
+        ParamType = daptInput
       end>
-    LogicalName = 'dbo CONDICIONPAGO'
-    Params = <>
     RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []
-    StreamingOptions = [soDisableEventsWhileStreaming]
+    StreamingOptions = [soDisableEventsWhileStreaming, soDisableFiltering]
     IndexDefs = <>
-    Left = 208
-    Top = 360
-  end
-  object dsCondicionPago: TDADataSource
-    DataSet = cdsCondicionPago.Dataset
-    DataTable = cdsCondicionPago
-    Left = 208
-    Top = 392
+    Left = 607
+    Top = 264
   end
 end

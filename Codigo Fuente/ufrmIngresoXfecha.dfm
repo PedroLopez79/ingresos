@@ -426,8 +426,8 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
         ImageIndex = 67
         ParentFont = False
         object CShape1: TShape
-          Left = 36
-          Top = 103
+          Left = 35
+          Top = 102
           Width = 382
           Height = 94
           Brush.Color = clLime
@@ -435,9 +435,134 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           Pen.Color = clGreen
           Pen.Width = 2
         end
+        object BGBVenta: TGroupBox
+          Left = 448
+          Top = 25
+          Width = 407
+          Height = 160
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 1
+          object Bevel2: TBevel
+            Left = 18
+            Top = 110
+            Width = 375
+            Height = 7
+            Shape = bsBottomLine
+          end
+          object cxLabel20: TcxLabel
+            Left = 18
+            Top = 23
+            Hint = ''
+            Caption = 'Venta............................:'
+            Style.BorderStyle = ebsUltraFlat
+          end
+          object cxLabel21: TcxLabel
+            Left = 18
+            Top = 52
+            Hint = ''
+            Caption = 'Otros Productos.......:'
+            Style.BorderStyle = ebsUltraFlat
+          end
+          object cxLabel22: TcxLabel
+            Left = 18
+            Top = 81
+            Hint = ''
+            Caption = 'Sobrantes..................:'
+            Style.BorderStyle = ebsUltraFlat
+          end
+          object LEVenta: TcxLabel
+            Left = 200
+            Top = 23
+            Hint = ''
+            Caption = '0'
+            ParentFont = False
+            Style.BorderStyle = ebsUltraFlat
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -16
+            Style.Font.Name = 'Arial'
+            Style.Font.Style = [fsBold]
+            Style.TextColor = clBlue
+            Style.IsFontAssigned = True
+          end
+          object LOtrosProductos: TcxLabel
+            Left = 200
+            Top = 52
+            Hint = ''
+            Caption = '0'
+            Style.BorderStyle = ebsUltraFlat
+            Style.TextColor = clBlue
+          end
+          object LSobrantes: TcxLabel
+            Left = 200
+            Top = 81
+            Hint = ''
+            Caption = '0'
+            Style.BorderStyle = ebsUltraFlat
+            Style.TextColor = clBlue
+          end
+          object cxLabel32: TcxLabel
+            Left = 18
+            Top = 123
+            Hint = ''
+            Caption = 'Venta...........................:'
+            Style.BorderStyle = ebsUltraFlat
+          end
+          object LVentaTot: TcxLabel
+            Left = 200
+            Top = 123
+            Hint = ''
+            Caption = '0'
+            Style.BorderStyle = ebsUltraFlat
+            Style.TextColor = clBlue
+          end
+        end
+        object FcxGroupBox5: TcxGroupBox
+          Left = 448
+          Top = 231
+          Hint = ''
+          Caption = 'Diferencia'
+          Style.LookAndFeel.NativeStyle = False
+          Style.Shadow = False
+          Style.TextStyle = [fsBold]
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.NativeStyle = False
+          TabOrder = 2
+          Height = 61
+          Width = 240
+          object LDiferencia: TcxLabel
+            Left = 84
+            Top = 19
+            Hint = ''
+            Caption = '0'
+            ParentFont = False
+            Style.BorderStyle = ebsUltraFlat
+            Style.Edges = [bLeft, bTop, bRight, bBottom]
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -16
+            Style.Font.Name = 'Arial'
+            Style.Font.Style = [fsBold]
+            Style.LookAndFeel.NativeStyle = False
+            Style.Shadow = True
+            Style.TextColor = clGreen
+            Style.IsFontAssigned = True
+            StyleDisabled.LookAndFeel.NativeStyle = False
+            StyleFocused.LookAndFeel.NativeStyle = False
+            StyleFocused.TextColor = clGreen
+            StyleHot.LookAndFeel.NativeStyle = False
+            Transparent = True
+          end
+        end
         object AGBTotalesConceptos: TGroupBox
           Left = 21
-          Top = 17
+          Top = 16
           Width = 407
           Height = 277
           Caption = 'Totales Conceptos'
@@ -655,131 +780,6 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
           object LTotCreditoDebitoCupones: TcxLabel
             Left = 67
             Top = 152
-            Hint = ''
-            Caption = '0'
-            ParentFont = False
-            Style.BorderStyle = ebsUltraFlat
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -16
-            Style.Font.Name = 'Arial'
-            Style.Font.Style = [fsBold]
-            Style.LookAndFeel.NativeStyle = False
-            Style.Shadow = True
-            Style.TextColor = clGreen
-            Style.IsFontAssigned = True
-            StyleDisabled.LookAndFeel.NativeStyle = False
-            StyleFocused.LookAndFeel.NativeStyle = False
-            StyleFocused.TextColor = clGreen
-            StyleHot.LookAndFeel.NativeStyle = False
-            Transparent = True
-          end
-        end
-        object BGBVenta: TGroupBox
-          Left = 448
-          Top = 25
-          Width = 407
-          Height = 160
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 1
-          object Bevel2: TBevel
-            Left = 18
-            Top = 110
-            Width = 375
-            Height = 7
-            Shape = bsBottomLine
-          end
-          object cxLabel20: TcxLabel
-            Left = 18
-            Top = 23
-            Hint = ''
-            Caption = 'Venta............................:'
-            Style.BorderStyle = ebsUltraFlat
-          end
-          object cxLabel21: TcxLabel
-            Left = 18
-            Top = 52
-            Hint = ''
-            Caption = 'Otros Productos.......:'
-            Style.BorderStyle = ebsUltraFlat
-          end
-          object cxLabel22: TcxLabel
-            Left = 18
-            Top = 81
-            Hint = ''
-            Caption = 'Sobrantes..................:'
-            Style.BorderStyle = ebsUltraFlat
-          end
-          object LEVenta: TcxLabel
-            Left = 200
-            Top = 23
-            Hint = ''
-            Caption = '0'
-            ParentFont = False
-            Style.BorderStyle = ebsUltraFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -16
-            Style.Font.Name = 'Arial'
-            Style.Font.Style = [fsBold]
-            Style.TextColor = clBlue
-            Style.IsFontAssigned = True
-          end
-          object LOtrosProductos: TcxLabel
-            Left = 200
-            Top = 52
-            Hint = ''
-            Caption = '0'
-            Style.BorderStyle = ebsUltraFlat
-            Style.TextColor = clBlue
-          end
-          object LSobrantes: TcxLabel
-            Left = 200
-            Top = 81
-            Hint = ''
-            Caption = '0'
-            Style.BorderStyle = ebsUltraFlat
-            Style.TextColor = clBlue
-          end
-          object cxLabel32: TcxLabel
-            Left = 18
-            Top = 123
-            Hint = ''
-            Caption = 'Venta...........................:'
-            Style.BorderStyle = ebsUltraFlat
-          end
-          object LVentaTot: TcxLabel
-            Left = 200
-            Top = 123
-            Hint = ''
-            Caption = '0'
-            Style.BorderStyle = ebsUltraFlat
-            Style.TextColor = clBlue
-          end
-        end
-        object FcxGroupBox5: TcxGroupBox
-          Left = 448
-          Top = 231
-          Hint = ''
-          Caption = 'Diferencia'
-          Style.LookAndFeel.NativeStyle = False
-          Style.Shadow = False
-          Style.TextStyle = [fsBold]
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 2
-          Height = 61
-          Width = 240
-          object LDiferencia: TcxLabel
-            Left = 84
-            Top = 19
             Hint = ''
             Caption = '0'
             ParentFont = False

@@ -3212,10 +3212,13 @@ object ServiceIngresos: TServiceIngresos
             Default = True
             TargetTable = 'dbo.Factura'
             SQL = 
-              'SELECT '#10'    FacturaID, Folio, Serie, Ejercicio, Periodo, Dia, Fe' +
-              'cha, '#10'    Subtotal, Impuesto, Total, ImpuestoPorcentaje, Cancela' +
-              'da, '#10'    ClienteID, FormaPagoID, UsuarioID, TipoFacturaID, METOD' +
-              'OPAGO,'#10'    IDCONDICIONPAGO'#10'  FROM'#10'    dbo.Factura'#10'  WHERE 2 = 1'#10
+              'SELECT '#10'    FacturaID,Folio,Serie,Ejercicio,Periodo,Dia,Fecha,Su' +
+              'btotal,Impuesto,Total,ImpuestoPorcentaje,Cancelada,ClienteID,For' +
+              'maPagoID'#10'   ,UsuarioID,TipoFacturaID,Turno,EstacionID,IDINGRESO,' +
+              'Tickets,CADENAORIGINAL,SELLODIGITAL,XML,NoCertificado,FechaCance' +
+              'lada,FechaFacturaE'#10'   ,NoAprobacion,EjercicioAprobacion,VersionS' +
+              'AT,UUID,FechaTimbrado,NoCertificadoSAT,SELLOSAT,ACUSE'#10'  FROM'#10'   ' +
+              ' dbo.Factura'#10'  WHERE 2 = 1'#10
             StatementType = stSQL
             ColumnMappings = <
               item
@@ -3283,12 +3286,76 @@ object ServiceIngresos: TServiceIngresos
                 TableField = 'TipoFacturaID'
               end
               item
-                DatasetField = 'METODOPAGO'
-                TableField = 'METODOPAGO'
+                DatasetField = 'Turno'
+                TableField = 'Turno'
               end
               item
-                DatasetField = 'IDCONDICIONPAGO'
-                TableField = 'IDCONDICIONPAGO'
+                DatasetField = 'EstacionID'
+                TableField = 'EstacionID'
+              end
+              item
+                DatasetField = 'IDINGRESO'
+                TableField = 'IDINGRESO'
+              end
+              item
+                DatasetField = 'Tickets'
+                TableField = 'Tickets'
+              end
+              item
+                DatasetField = 'CADENAORIGINAL'
+                TableField = 'CADENAORIGINAL'
+              end
+              item
+                DatasetField = 'SELLODIGITAL'
+                TableField = 'SELLODIGITAL'
+              end
+              item
+                DatasetField = 'XML'
+                TableField = 'XML'
+              end
+              item
+                DatasetField = 'NoCertificado'
+                TableField = 'NoCertificado'
+              end
+              item
+                DatasetField = 'FechaCancelada'
+                TableField = 'FechaCancelada'
+              end
+              item
+                DatasetField = 'FechaFacturaE'
+                TableField = 'FechaFacturaE'
+              end
+              item
+                DatasetField = 'NoAprobacion'
+                TableField = 'NoAprobacion'
+              end
+              item
+                DatasetField = 'EjercicioAprobacion'
+                TableField = 'EjercicioAprobacion'
+              end
+              item
+                DatasetField = 'VersionSAT'
+                TableField = 'VersionSAT'
+              end
+              item
+                DatasetField = 'UUID'
+                TableField = 'UUID'
+              end
+              item
+                DatasetField = 'FechaTimbrado'
+                TableField = 'FechaTimbrado'
+              end
+              item
+                DatasetField = 'NoCertificadoSAT'
+                TableField = 'NoCertificadoSAT'
+              end
+              item
+                DatasetField = 'SELLOSAT'
+                TableField = 'SELLOSAT'
+              end
+              item
+                DatasetField = 'ACUSE'
+                TableField = 'ACUSE'
               end>
           end>
         Name = 'dbo Factura'
@@ -3359,13 +3426,81 @@ object ServiceIngresos: TServiceIngresos
             DataType = datInteger
           end
           item
-            Name = 'METODOPAGO'
+            Name = 'Turno'
+            DataType = datInteger
+          end
+          item
+            Name = 'EstacionID'
+            DataType = datInteger
+          end
+          item
+            Name = 'IDINGRESO'
+            DataType = datInteger
+          end
+          item
+            Name = 'Tickets'
+            DataType = datString
+            Size = 350
+          end
+          item
+            Name = 'CADENAORIGINAL'
+            DataType = datMemo
+          end
+          item
+            Name = 'SELLODIGITAL'
+            DataType = datMemo
+          end
+          item
+            Name = 'XML'
+            DataType = datMemo
+          end
+          item
+            Name = 'NoCertificado'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'FechaCancelada'
+            DataType = datDateTime
+          end
+          item
+            Name = 'FechaFacturaE'
+            DataType = datDateTime
+          end
+          item
+            Name = 'NoAprobacion'
+            DataType = datInteger
+          end
+          item
+            Name = 'EjercicioAprobacion'
+            DataType = datInteger
+          end
+          item
+            Name = 'VersionSAT'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'UUID'
             DataType = datString
             Size = 50
           end
           item
-            Name = 'IDCONDICIONPAGO'
-            DataType = datInteger
+            Name = 'FechaTimbrado'
+            DataType = datDateTime
+          end
+          item
+            Name = 'NoCertificadoSAT'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'SELLOSAT'
+            DataType = datMemo
+          end
+          item
+            Name = 'ACUSE'
+            DataType = datMemo
           end>
       end
       item
@@ -3454,8 +3589,8 @@ object ServiceIngresos: TServiceIngresos
             Default = True
             TargetTable = 'dbo.FormaPago'
             SQL = 
-              'SELECT '#10'    FormaPagoID, Descripcion'#10'  FROM'#10'    dbo.FormaPago'#10'  ' +
-              'WHERE {Where}'
+              'SELECT '#10'    FormaPagoID, Descripcion, Codigo'#10'  FROM'#10'    dbo.Form' +
+              'aPago'#10'  WHERE {Where}'
             StatementType = stSQL
             ColumnMappings = <
               item
@@ -3465,6 +3600,10 @@ object ServiceIngresos: TServiceIngresos
               item
                 DatasetField = 'Descripcion'
                 TableField = 'Descripcion'
+              end
+              item
+                DatasetField = 'Codigo'
+                TableField = 'Codigo'
               end>
           end>
         Name = 'dbo FormaPago'
@@ -3479,6 +3618,11 @@ object ServiceIngresos: TServiceIngresos
             DataType = datString
             Size = 50
             Required = True
+          end
+          item
+            Name = 'Codigo'
+            DataType = datString
+            Size = 5
           end>
       end
       item
@@ -7668,6 +7812,662 @@ object ServiceIngresos: TServiceIngresos
           item
             Name = 'IDTURNO'
             DataType = datInteger
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'EstacionID'
+            DataType = datInteger
+            Value = '1'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'declare @EstacionID as integer'#10#10'Select @EstacionID = (Select :Es' +
+              'tacionID)'#10#10'SELECT '#10'    [IDESTACION],[NOMBRE],[RAZONSOCIAL],[RFC]' +
+              ',[HOST],[CUENTACONTABLE],[IMPUESTO],[CALLE],[COLONIA],[NOEXTERIO' +
+              'R]'#10'   ,[NOINTERIOR],[CODIGOPOSTAL],[MUNICIPIO],[LOCALIDAD],[ESTA' +
+              'DO],[EXCALLE],[EXCOLONIA],[EXNOEXTERIOR],[EXNOINTERIOR]'#10'   ,[EXC' +
+              'ODIGOPOSTAL],[EXMUNICIPIO],[EXLOCALIDAD],[EXESTADO],[NOAPROBACIO' +
+              'N],[FECHAAPROBACION],[NOAPROBACIONES]'#10'   ,[VERSIONCFD],[REGIMENF' +
+              'ISCAL],[CODIGOFACTURA],[FORMATOFACTURAWEB],[SERIEENLINEA],[TELEF' +
+              'ONO],[IDESTACIONBANCARIA]'#10'   ,[SERIEBANCARIA],[LOGOESTACION]'#10'  F' +
+              'ROM'#10'    dbo.Estacion'#10'  WHERE IDESTACION = @EstacionID'
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDESTACION'
+                TableField = 'IDESTACION'
+              end
+              item
+                DatasetField = 'NOMBRE'
+                TableField = 'NOMBRE'
+              end
+              item
+                DatasetField = 'RAZONSOCIAL'
+                TableField = 'RAZONSOCIAL'
+              end
+              item
+                DatasetField = 'RFC'
+                TableField = 'RFC'
+              end
+              item
+                DatasetField = 'HOST'
+                TableField = 'HOST'
+              end
+              item
+                DatasetField = 'CUENTACONTABLE'
+                TableField = 'CUENTACONTABLE'
+              end
+              item
+                DatasetField = 'IMPUESTO'
+                TableField = 'IMPUESTO'
+              end
+              item
+                DatasetField = 'CALLE'
+                TableField = 'CALLE'
+              end
+              item
+                DatasetField = 'COLONIA'
+                TableField = 'COLONIA'
+              end
+              item
+                DatasetField = 'NOEXTERIOR'
+                TableField = 'NOEXTERIOR'
+              end
+              item
+                DatasetField = 'NOINTERIOR'
+                TableField = 'NOINTERIOR'
+              end
+              item
+                DatasetField = 'CODIGOPOSTAL'
+                TableField = 'CODIGOPOSTAL'
+              end
+              item
+                DatasetField = 'MUNICIPIO'
+                TableField = 'MUNICIPIO'
+              end
+              item
+                DatasetField = 'LOCALIDAD'
+                TableField = 'LOCALIDAD'
+              end
+              item
+                DatasetField = 'ESTADO'
+                TableField = 'ESTADO'
+              end
+              item
+                DatasetField = 'EXCALLE'
+                TableField = 'EXCALLE'
+              end
+              item
+                DatasetField = 'EXCOLONIA'
+                TableField = 'EXCOLONIA'
+              end
+              item
+                DatasetField = 'EXNOEXTERIOR'
+                TableField = 'EXNOEXTERIOR'
+              end
+              item
+                DatasetField = 'EXNOINTERIOR'
+                TableField = 'EXNOINTERIOR'
+              end
+              item
+                DatasetField = 'EXCODIGOPOSTAL'
+                TableField = 'EXCODIGOPOSTAL'
+              end
+              item
+                DatasetField = 'EXMUNICIPIO'
+                TableField = 'EXMUNICIPIO'
+              end
+              item
+                DatasetField = 'EXLOCALIDAD'
+                TableField = 'EXLOCALIDAD'
+              end
+              item
+                DatasetField = 'EXESTADO'
+                TableField = 'EXESTADO'
+              end
+              item
+                DatasetField = 'NOAPROBACION'
+                TableField = 'NOAPROBACION'
+              end
+              item
+                DatasetField = 'FECHAAPROBACION'
+                TableField = 'FECHAAPROBACION'
+              end
+              item
+                DatasetField = 'NOAPROBACIONES'
+                TableField = 'NOAPROBACIONES'
+              end
+              item
+                DatasetField = 'VERSIONCFD'
+                TableField = 'VERSIONCFD'
+              end
+              item
+                DatasetField = 'REGIMENFISCAL'
+                TableField = 'REGIMENFISCAL'
+              end
+              item
+                DatasetField = 'CODIGOFACTURA'
+                TableField = 'CODIGOFACTURA'
+              end
+              item
+                DatasetField = 'FORMATOFACTURAWEB'
+                TableField = 'FORMATOFACTURAWEB'
+              end
+              item
+                DatasetField = 'SERIEENLINEA'
+                TableField = 'SERIEENLINEA'
+              end
+              item
+                DatasetField = 'TELEFONO'
+                TableField = 'TELEFONO'
+              end
+              item
+                DatasetField = 'IDESTACIONBANCARIA'
+                TableField = 'IDESTACIONBANCARIA'
+              end
+              item
+                DatasetField = 'SERIEBANCARIA'
+                TableField = 'SERIEBANCARIA'
+              end
+              item
+                DatasetField = 'LOGOESTACION'
+                TableField = 'LOGOESTACION'
+              end>
+          end>
+        Name = 'ObtenerDatosEstacion'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDESTACION'
+            DataType = datInteger
+          end
+          item
+            Name = 'NOMBRE'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'RAZONSOCIAL'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'RFC'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'HOST'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'CUENTACONTABLE'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'IMPUESTO'
+            DataType = datFloat
+          end
+          item
+            Name = 'CALLE'
+            DataType = datString
+            Size = 60
+          end
+          item
+            Name = 'COLONIA'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'NOEXTERIOR'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'NOINTERIOR'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'CODIGOPOSTAL'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'MUNICIPIO'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'LOCALIDAD'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'ESTADO'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'EXCALLE'
+            DataType = datString
+            Size = 60
+          end
+          item
+            Name = 'EXCOLONIA'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'EXNOEXTERIOR'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'EXNOINTERIOR'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'EXCODIGOPOSTAL'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'EXMUNICIPIO'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'EXLOCALIDAD'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'EXESTADO'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'NOAPROBACION'
+            DataType = datInteger
+          end
+          item
+            Name = 'FECHAAPROBACION'
+            DataType = datInteger
+          end
+          item
+            Name = 'NOAPROBACIONES'
+            DataType = datString
+            Size = 150
+          end
+          item
+            Name = 'VERSIONCFD'
+            DataType = datInteger
+          end
+          item
+            Name = 'REGIMENFISCAL'
+            DataType = datString
+            Size = 150
+          end
+          item
+            Name = 'CODIGOFACTURA'
+            DataType = datString
+            Size = 2
+          end
+          item
+            Name = 'FORMATOFACTURAWEB'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'SERIEENLINEA'
+            DataType = datString
+            Size = 5
+          end
+          item
+            Name = 'TELEFONO'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'IDESTACIONBANCARIA'
+            DataType = datInteger
+          end
+          item
+            Name = 'SERIEBANCARIA'
+            DataType = datString
+            Size = 5
+          end
+          item
+            Name = 'LOGOESTACION'
+            DataType = datMemo
+          end>
+      end
+      item
+        Params = <>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.FormaPago'
+            StatementType = stAutoSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'FormaPagoID'
+                TableField = 'FormaPagoID'
+              end
+              item
+                DatasetField = 'Descripcion'
+                TableField = 'Descripcion'
+              end
+              item
+                DatasetField = 'Codigo'
+                TableField = 'Codigo'
+              end>
+          end>
+        Name = 'dbo.FormaPago'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'FormaPagoID'
+            DataType = datInteger
+            Required = True
+            InPrimaryKey = True
+          end
+          item
+            Name = 'Descripcion'
+            DataType = datString
+            Size = 50
+            Required = True
+          end
+          item
+            Name = 'Codigo'
+            DataType = datString
+            Size = 5
+          end>
+      end
+      item
+        Params = <
+          item
+            Name = 'ClienteID'
+            DataType = datInteger
+            Value = '1'
+            ParamType = daptInput
+          end>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            SQL = 
+              'declare @ClienteID as integer'#10#10'Select  @ClienteID = (select :Cli' +
+              'enteID)'#10#10'SELECT'#10'    *'#10'  FROM'#10'    dbo.ClienteEfectivo'#10'  WHERE IDC' +
+              'LIENTE = @ClienteID'#10
+            StatementType = stSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'IDCLIENTE'
+                TableField = 'IDCLIENTE'
+              end
+              item
+                DatasetField = 'CODIGO'
+                TableField = 'CODIGO'
+              end
+              item
+                DatasetField = 'NOMBRE'
+                TableField = 'NOMBRE'
+              end
+              item
+                DatasetField = 'GRUPO'
+                TableField = 'GRUPO'
+              end
+              item
+                DatasetField = 'CALLE'
+                TableField = 'CALLE'
+              end
+              item
+                DatasetField = 'COLONIA'
+                TableField = 'COLONIA'
+              end
+              item
+                DatasetField = 'CIUDAD'
+                TableField = 'CIUDAD'
+              end
+              item
+                DatasetField = 'TELEFONO'
+                TableField = 'TELEFONO'
+              end
+              item
+                DatasetField = 'CODIGOPOSTAL'
+                TableField = 'CODIGOPOSTAL'
+              end
+              item
+                DatasetField = 'RFC'
+                TableField = 'RFC'
+              end
+              item
+                DatasetField = 'CURP'
+                TableField = 'CURP'
+              end
+              item
+                DatasetField = 'STATUS'
+                TableField = 'STATUS'
+              end
+              item
+                DatasetField = 'CCA'
+                TableField = 'CCA'
+              end
+              item
+                DatasetField = 'CCC'
+                TableField = 'CCC'
+              end
+              item
+                DatasetField = 'LOCALIDAD'
+                TableField = 'LOCALIDAD'
+              end
+              item
+                DatasetField = 'DIRECCION'
+                TableField = 'DIRECCION'
+              end
+              item
+                DatasetField = 'NOEXTERIOR'
+                TableField = 'NOEXTERIOR'
+              end
+              item
+                DatasetField = 'NOINTERIOR'
+                TableField = 'NOINTERIOR'
+              end
+              item
+                DatasetField = 'MUNICIPIO'
+                TableField = 'MUNICIPIO'
+              end
+              item
+                DatasetField = 'ESTADO'
+                TableField = 'ESTADO'
+              end
+              item
+                DatasetField = 'PAIS'
+                TableField = 'PAIS'
+              end
+              item
+                DatasetField = 'EMAIL'
+                TableField = 'EMAIL'
+              end
+              item
+                DatasetField = 'REFERENCIA'
+                TableField = 'REFERENCIA'
+              end
+              item
+                DatasetField = 'AUTORIZACHEQUE'
+                TableField = 'AUTORIZACHEQUE'
+              end>
+          end>
+        Name = 'spObtenerDatosCliente'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'IDCLIENTE'
+            DataType = datInteger
+          end
+          item
+            Name = 'CODIGO'
+            DataType = datString
+            Size = 10
+          end
+          item
+            Name = 'NOMBRE'
+            DataType = datString
+            Size = 80
+          end
+          item
+            Name = 'GRUPO'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'CALLE'
+            DataType = datString
+            Size = 60
+          end
+          item
+            Name = 'COLONIA'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'CIUDAD'
+            DataType = datString
+            Size = 30
+          end
+          item
+            Name = 'TELEFONO'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'CODIGOPOSTAL'
+            DataType = datString
+            Size = 5
+          end
+          item
+            Name = 'RFC'
+            DataType = datString
+            Size = 15
+          end
+          item
+            Name = 'CURP'
+            DataType = datString
+            Size = 15
+          end
+          item
+            Name = 'STATUS'
+            DataType = datInteger
+          end
+          item
+            Name = 'CCA'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'CCC'
+            DataType = datString
+            Size = 20
+          end
+          item
+            Name = 'LOCALIDAD'
+            DataType = datString
+            Size = 25
+          end
+          item
+            Name = 'DIRECCION'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'NOEXTERIOR'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'NOINTERIOR'
+            DataType = datString
+            Size = 50
+          end
+          item
+            Name = 'MUNICIPIO'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'ESTADO'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'PAIS'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'EMAIL'
+            DataType = datString
+            Size = 150
+          end
+          item
+            Name = 'REFERENCIA'
+            DataType = datString
+            Size = 100
+          end
+          item
+            Name = 'AUTORIZACHEQUE'
+            DataType = datBoolean
+          end>
+      end
+      item
+        Params = <>
+        Statements = <
+          item
+            Connection = 'INGRESOS'
+            ConnectionType = 'MSSQL'
+            Default = True
+            TargetTable = 'dbo.TipoFactura'
+            StatementType = stAutoSQL
+            ColumnMappings = <
+              item
+                DatasetField = 'TipoFacturaID'
+                TableField = 'TipoFacturaID'
+              end
+              item
+                DatasetField = 'Descripcion'
+                TableField = 'Descripcion'
+              end>
+          end>
+        Name = 'dbo.TipoFactura'
+        BusinessRulesClient.CompileOnServer = False
+        BusinessRulesClient.RunOnClientAndServer = False
+        Fields = <
+          item
+            Name = 'TipoFacturaID'
+            DataType = datInteger
+          end
+          item
+            Name = 'Descripcion'
+            DataType = datString
+            Size = 50
           end>
       end>
     JoinDataTables = <>
