@@ -159,10 +159,6 @@ type
     cxDBTextEdit9: TcxDBTextEdit;
     cxDBTextEdit7: TcxDBTextEdit;
     cxLabel24: TcxLabel;
-    cxLabel25: TcxLabel;
-    cxLabel26: TcxLabel;
-    cxLabel27: TcxLabel;
-    cxLabel28: TcxLabel;
     cxDBTextEdit13: TcxDBTextEdit;
     cdsTipoFactura: TDACDSDataTable;
     dsTipoFactura: TDADataSource;
@@ -178,6 +174,7 @@ type
     cdsEstacion: TDACDSDataTable;
     dsEstacion: TDADataSource;
     cdsCliente: TDACDSDataTable;
+    Memo1: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure cdsFacturaNewRecord(DataTable: TDADataTable);
     procedure cdsDetalleFacturaNewRecord(DataTable: TDADataTable);
@@ -203,7 +200,6 @@ type
     procedure cdsDetalleFacturaBeforePost(DataTable: TDADataTable);
     procedure dbTxtClienteKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure cdsDetalleFacturaBeforeDelete(DataTable: TDADataTable);
     procedure dbTxtSerieExit(Sender: TObject);
     procedure cxDBTextEdit12PropertiesChange(Sender: TObject);
     procedure cxDBTextEdit11PropertiesChange(Sender: TObject);
@@ -213,6 +209,7 @@ type
       AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
       Shift: TShiftState);
     procedure cxButton1Click(Sender: TObject);
+    procedure cdsDetalleFacturaAfterDelete(DataTable: TDADataTable);
   private
     { Private declarations }
     procedure ActionNuevo(Action: TBasicAction);
@@ -384,6 +381,13 @@ begin
 end;
 
 
+procedure TFrmFacturacionDePiso.cdsDetalleFacturaAfterDelete(
+  DataTable: TDADataTable);
+begin
+  inherited;
+  TotalFactura; //Calculamos el Total de la Factura
+end;
+
 procedure TFrmFacturacionDePiso.cdsDetalleFacturaAfterPost(
   DataTable: TDADataTable);
 //var
@@ -411,13 +415,6 @@ begin
       else
         cxPagFacturacion.Pages[2].Enabled:=false
   end;}
-end;
-
-procedure TFrmFacturacionDePiso.cdsDetalleFacturaBeforeDelete(
-  DataTable: TDADataTable);
-begin
-  inherited;
-  TotalFactura; //Calculamos el Total de la Factura
 end;
 
 procedure TFrmFacturacionDePiso.cdsDetalleFacturaBeforePost(
@@ -512,7 +509,7 @@ begin
     //if EditarCliente(MiCliente) then
     //begin
       cdsCliente.Close;
-      cdsCliente.ParamByName('IDCLIENTE').AsInteger:=MiCliente;
+      cdsCliente.ParamByName('CLIENTEID').AsInteger:=MiCliente;
       cdsCliente.Open;
     //end;
   end;
@@ -754,11 +751,11 @@ begin
   cdsEstacion.ParamByName('EstacionID').AsInteger:= DM.NumeroEstacion;
   cdsEstacion.Open;
 
-  cxLabel25.Caption:= cdsEstacion.FieldByName('NOMBRE').AsString;
-  cxLabel26.Caption:= 'ESTACION NUM. ' + cdsEstacion.FieldByName('IDESTACION').AsString;
-  cxLabel27.Caption:= 'RFC - ' + cdsEstacion.FieldByName('RFC').AsString;
-  cxLabel28.Caption:= 'DIRECCION: ' + cdsEstacion.FieldByName('CALLE').AsString + ', '
-                                    + cdsEstacion.FieldByName('COLONIA').AsString + ', CP:'
+  Memo1.Text:= cdsEstacion.FieldByName('NOMBRE').AsString + #13#10 +
+               'ESTACION NUM. ' + cdsEstacion.FieldByName('IDESTACION').AsString + #13#10+
+               'RFC - ' + cdsEstacion.FieldByName('RFC').AsString + #13#10+
+               'DIRECCION: ' + cdsEstacion.FieldByName('CALLE').AsString + ','+#13#10+'COL.:'
+                                    + cdsEstacion.FieldByName('COLONIA').AsString +#13#10+ 'CP.:'
                                     + cdsEstacion.FieldByName('CODIGOPOSTAL').AsString;
 
   cdsFormaPago.Open;
@@ -836,6 +833,9 @@ begin
       cdsDetalleFactura.Append;
     cdsDetalleFactura.FieldByName('ProductoID').AsInteger:=Datos.Clave;
     cdsDetalleFactura.FieldByName('Precio').AsFloat:=DM.Servidor.PrecioProducto(cdsDetalleFactura.FieldByName('ProductoID').AsInteger);
+    cdsDetalleFactura.FieldByName('Descripcion').AsString:= Datos.Nombre;
+
+    cxGridDBTableView3Cantidad.Focused:= true;
   end;
 end;
 

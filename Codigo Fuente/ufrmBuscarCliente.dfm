@@ -1,10 +1,12 @@
 inherited frmBuscarCliente: TfrmBuscarCliente
   Caption = 'Buscar Cliente'
-  ExplicitWidth = 625
-  ExplicitHeight = 445
+  ClientWidth = 752
+  OnCreate = FormCreate
+  ExplicitWidth = 758
   PixelsPerInch = 96
   TextHeight = 13
-  inherited dbgAgrupacion: TcxGrid
+  inherited dbgBuscar: TcxGrid
+    Width = 752
     inherited cxGridDBTableView1: TcxGridDBTableView
       OnKeyDown = cxGridDBTableView1KeyDown
       object cxGridDBTableView1Column1: TcxGridDBColumn
@@ -12,8 +14,13 @@ inherited frmBuscarCliente: TfrmBuscarCliente
         Width = 68
       end
       object cxGridDBTableView1Column2: TcxGridDBColumn
+        Caption = 'NOMBRE'
         DataBinding.FieldName = 'NOMBRE'
-        Width = 153
+        Width = 216
+      end
+      object cxGridDBTableView1Column6: TcxGridDBColumn
+        DataBinding.FieldName = 'RFC'
+        Width = 164
       end
       object cxGridDBTableView1Column3: TcxGridDBColumn
         DataBinding.FieldName = 'CIUDAD'
@@ -25,8 +32,18 @@ inherited frmBuscarCliente: TfrmBuscarCliente
       end
       object cxGridDBTableView1Column5: TcxGridDBColumn
         DataBinding.FieldName = 'CALLE'
+        Width = 153
       end
     end
+  end
+  inherited dxRibbon1: TdxRibbon
+    Width = 752
+  end
+  inherited cxGroupBox1: TcxGroupBox
+    Width = 752
+  end
+  inherited Panel1: TPanel
+    Width = 752
   end
   inherited cdsBuscar: TDACDSDataTable
     Fields = <
@@ -82,7 +99,7 @@ inherited frmBuscarCliente: TfrmBuscarCliente
       item
         Name = 'CURP'
         DataType = datString
-        Size = 20
+        Size = 15
       end
       item
         Name = 'STATUS'
@@ -137,10 +154,27 @@ inherited frmBuscarCliente: TfrmBuscarCliente
         Name = 'EMAIL'
         DataType = datString
         Size = 150
+      end
+      item
+        Name = 'REFERENCIA'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'AUTORIZACHEQUE'
+        DataType = datBoolean
+      end>
+    LogicalName = 'BuscaCliente'
+    Params = <
+      item
+        Name = 'Parametro'
+        DataType = datString
+        Size = 65536
+        Value = '170'
+        ParamType = daptInput
       end>
     RemoteDataAdapter = DM.RemoteDataAdapter
     OnFilterRecord = cdsBuscarFilterRecord
-    LogicalName = 'dbo CLIENTE EFECTIVO'
     Left = 511
     Top = 272
   end

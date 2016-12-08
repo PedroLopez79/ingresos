@@ -221,9 +221,6 @@
         <DCCReference Include="ufmAlmacen.pas">
             <Form>frmAlmacen</Form>
         </DCCReference>
-        <DCCReference Include="ufrmTanque.pas">
-            <Form>frmTanque</Form>
-        </DCCReference>
         <DCCReference Include="ufrmTipodePago.pas">
             <Form>frmTipodePago</Form>
         </DCCReference>
@@ -454,6 +451,10 @@
         </DCCReference>
         <DCCReference Include="uAgregarVentaDocumentos.pas">
             <Form>Fo_AgregarVentaDocumentos</Form>
+        </DCCReference>
+        <DCCReference Include="ufrmEstaciones.pas">
+            <Form>FrmEstaciones</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

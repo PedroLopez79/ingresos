@@ -28,7 +28,6 @@ uses
   ufrmProveedor in 'ufrmProveedor.pas' {frmProveedor},
   ufrmClienteEfectivo in 'ufrmClienteEfectivo.pas' {frmClienteEfectivo},
   ufmAlmacen in 'ufmAlmacen.pas' {frmAlmacen},
-  ufrmTanque in 'ufrmTanque.pas' {frmTanque},
   ufrmTipodePago in 'ufrmTipodePago.pas' {frmTipodePago},
   ufrmStatus in 'ufrmStatus.pas' {frmStatus},
   ufrmTipoComprobacion in 'ufrmTipoComprobacion.pas' {frmTipoComprobacion},
@@ -114,7 +113,8 @@ uses
   ufrmBuscarClienteCredito in 'ufrmBuscarClienteCredito.pas' {frmBuscarClienteCredito},
   uAgregarVenta in 'uAgregarVenta.pas' {Fo_AgregarVenta},
   uAgregarVentaEfectivo in 'uAgregarVentaEfectivo.pas' {Fo_AgregarVentaEfectivo},
-  uAgregarVentaDocumentos in 'uAgregarVentaDocumentos.pas' {Fo_AgregarVentaDocumentos};
+  uAgregarVentaDocumentos in 'uAgregarVentaDocumentos.pas' {Fo_AgregarVentaDocumentos},
+  ufrmEstaciones in 'ufrmEstaciones.pas' {FrmEstaciones};
 
 {$R *.res}
 

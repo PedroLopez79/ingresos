@@ -1,0 +1,1409 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 372
+  Top = 277
+  Caption = 'Ingresos 1.0'
+  ClientHeight = 393
+  ClientWidth = 1235
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Ribbon: TdxRibbon
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 1229
+    Height = 158
+    Hint = ''
+    ApplicationButton.Visible = False
+    BarManager = dxBarManager1
+    ColorSchemeAccent = rcsaBlue
+    ColorSchemeName = 'Blueprint'
+    QuickAccessToolbar.Toolbar = tbRapida
+    SupportNonClientDrawing = True
+    Contexts = <>
+    TabOrder = 0
+    TabStop = False
+    object rbtAcciones: TdxRibbonTab
+      Caption = 'Acciones'
+      Groups = <
+        item
+          ToolbarName = 'tbAcciones'
+        end>
+      Visible = False
+      Index = 0
+    end
+    object RibbonTab7: TdxRibbonTab
+      Caption = 'Ingresos'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar10'
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar11'
+        end>
+      Index = 1
+    end
+    object RibbonTab8: TdxRibbonTab
+      Caption = 'Inventario'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar12'
+        end>
+      Index = 2
+    end
+    object RibbonTab3: TdxRibbonTab
+      Caption = 'Clientes'
+      Groups = <
+        item
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar3'
+        end
+        item
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar6'
+        end>
+      Index = 3
+    end
+    object RibbonTab5: TdxRibbonTab
+      Caption = 'Facturacion'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar7'
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar2'
+        end>
+      Index = 4
+    end
+    object RibbonTab2: TdxRibbonTab
+      Caption = 'Pagos'
+      Groups = <
+        item
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar5'
+        end>
+      Index = 5
+    end
+    object RibbonTab6: TdxRibbonTab
+      Caption = 'SAT'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar8'
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar9'
+        end>
+      Index = 6
+    end
+    object RibbonTab9: TdxRibbonTab
+      Caption = 'Exporta Polizas'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar14'
+        end>
+      Index = 7
+    end
+    object RibbonTab4: TdxRibbonTab
+      Caption = 'Reportes'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar4'
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar13'
+        end>
+      Index = 8
+    end
+    object dxRibbon1Tab2: TdxRibbonTab
+      Active = True
+      Caption = 'Catalogos'
+      Groups = <
+        item
+          ToolbarName = 'tbCatalogos'
+        end>
+      Index = 9
+    end
+    object RibbonTab1: TdxRibbonTab
+      Caption = 'Configuracion'
+      Groups = <
+        item
+          ToolbarName = 'dxBarManager1Bar1'
+        end>
+      Index = 10
+    end
+  end
+  object pnlPrincipal: TcxGroupBox
+    Left = 0
+    Top = 164
+    Hint = ''
+    Align = alClient
+    PanelStyle.Active = True
+    TabOrder = 5
+    Height = 206
+    Width = 1235
+  end
+  object StatusBar: TdxRibbonStatusBar
+    Left = 0
+    Top = 370
+    Width = 1235
+    Height = 23
+    Hint = ''
+    Images = dmImages.Imagenes
+    Panels = <
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.ImageIndex = 35
+        Width = 86
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.ImageIndex = 36
+        Width = 166
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.ImageIndex = 15
+        Width = 216
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.Alignment = taCenter
+        PanelStyle.ImageIndex = 41
+        Width = 80
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarKeyboardStatePanelStyle'
+        PanelStyle.KeyboardStates = [dxksCapsLock, dxksNumLock, dxksInsert]
+        PanelStyle.CapsLockKeyAppearance.ActiveFontColor = clDefault
+        PanelStyle.CapsLockKeyAppearance.ActiveCaption = 'MAY'
+        PanelStyle.CapsLockKeyAppearance.InactiveCaption = 'MAY'
+        PanelStyle.NumLockKeyAppearance.ActiveFontColor = clDefault
+        PanelStyle.NumLockKeyAppearance.ActiveCaption = 'NUM'
+        PanelStyle.NumLockKeyAppearance.InactiveCaption = 'NUM'
+        PanelStyle.ScrollLockKeyAppearance.ActiveFontColor = clDefault
+        PanelStyle.ScrollLockKeyAppearance.ActiveCaption = 'SCRL'
+        PanelStyle.ScrollLockKeyAppearance.InactiveCaption = 'SCRL'
+        PanelStyle.InsertKeyAppearance.ActiveFontColor = clDefault
+        PanelStyle.InsertKeyAppearance.ActiveCaption = 'INS'
+        PanelStyle.InsertKeyAppearance.InactiveCaption = 'INS'
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+        PanelStyle.ImageIndex = 40
+      end>
+    Ribbon = Ribbon
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clDefault
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ExplicitLeft = -105
+    ExplicitTop = 424
+    ExplicitWidth = 790
+  end
+  object dxBarManager1: TdxBarManager
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    Categories.Strings = (
+      'PopupMenuPrincipal'
+      'Catalogos'
+      'Exportar'
+      'Acciones')
+    Categories.ItemsVisibles = (
+      2
+      2
+      2
+      2)
+    Categories.Visibles = (
+      True
+      True
+      True
+      True)
+    ImageOptions.Images = dmImages.MenuImages
+    ImageOptions.LargeImages = dmImages.ToolBarImages
+    ImageOptions.UseLargeImagesForLargeIcons = True
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.SkinName = 'Office2007Black'
+    MenuAnimations = maSlide
+    PopupMenuLinks = <>
+    Style = bmsXP
+    UseSystemFont = False
+    OnClickItem = dxBarManager1ClickItem
+    Left = 88
+    Top = 272
+    DockControlHeights = (
+      0
+      0
+      0
+      0)
+    object tbCatalogos: TdxBar
+      Caption = 'Cat'#225'logos'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 811
+      FloatTop = 8
+      FloatClientWidth = 129
+      FloatClientHeight = 184
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnProductos'
+        end
+        item
+          Visible = True
+          ItemName = 'btnBancos'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton3'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton4'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton7'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton8'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton9'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton10'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton11'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton12'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton13'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton14'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton15'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton16'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tbRapida: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
+      Caption = 'Rapida'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 811
+      FloatTop = 8
+      FloatClientWidth = 51
+      FloatClientHeight = 82
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnLogin'
+        end
+        item
+          Visible = True
+          ItemName = 'btnLogout'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnSalir'
+        end>
+      OneOnRow = True
+      Row = 0
+      ShowMark = False
+      SizeGrip = False
+      UseOwnFont = False
+      UseRecentItems = False
+      Visible = True
+      WholeRow = False
+    end
+    object tbAcciones: TdxBar
+      Caption = 'Acciones'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 811
+      FloatTop = 8
+      FloatClientWidth = 62
+      FloatClientHeight = 433
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnNuevo'
+        end
+        item
+          Visible = True
+          ItemName = 'btnGuardar'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton22'
+        end
+        item
+          Visible = True
+          ItemName = 'btnEliminar'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton37'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton23'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton39'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton46'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnImprimir'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnPrimer'
+        end
+        item
+          Visible = True
+          ItemName = 'btnAnteriior'
+        end
+        item
+          Visible = True
+          ItemName = 'btnActualizar'
+        end
+        item
+          Visible = True
+          ItemName = 'btnUltimo'
+        end
+        item
+          Visible = True
+          ItemName = 'btnSiguiente'
+        end
+        item
+          Visible = True
+          ItemName = 'btnBuscar'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar1: TdxBar
+      Caption = 'Configuracion'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 719
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnUsuarios'
+        end
+        item
+          Visible = True
+          ItemName = 'btnConfiguracion'
+        end
+        item
+          Visible = True
+          ItemName = 'btnReportes'
+        end
+        item
+          Visible = True
+          ItemName = 'btnPropiedadesdelsistema'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar4: TdxBar
+      Caption = 'Reportes'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 784
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnPagos'
+        end
+        item
+          Visible = True
+          ItemName = 'btnGenerales'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar3: TdxBar
+      Caption = 'Clientes'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarSubItem1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton19'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarSubItem2'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar5: TdxBar
+      Caption = 'Pagos Credito/Debito'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton20'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton21'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar6: TdxBar
+      Caption = 'Acciones de Creditos'
+      CaptionButtons = <>
+      DockedLeft = 179
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton47'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton24'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton31'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton32'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar7: TdxBar
+      Caption = 'Efectivo'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnFacturas'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar2: TdxBar
+      Caption = 'Creditos'
+      CaptionButtons = <>
+      DockedLeft = 64
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton26'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar8: TdxBar
+      Caption = 'SAT'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton28'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton29'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar9: TdxBar
+      Caption = 'SAT EFECTIVO'
+      CaptionButtons = <>
+      DockedDockingStyle = dsTop
+      DockedLeft = 148
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton25'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton30'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = False
+      WholeRow = False
+    end
+    object dxBarManager1Bar10: TdxBar
+      Caption = 'Ingresos'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton27'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton42'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton35'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton43'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar11: TdxBar
+      Caption = 'Valores Monedas'
+      CaptionButtons = <>
+      DockedLeft = 275
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton34'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar12: TdxBar
+      Caption = 'Inventario'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton36'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar13: TdxBar
+      Caption = 'Flotillas'
+      CaptionButtons = <>
+      DockedLeft = 142
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton40'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar14: TdxBar
+      Caption = 'Exportar'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1269
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton44'
+        end
+        item
+          Visible = True
+          ItemName = 'btnExport'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object btnSalir: TdxBarButton
+      Caption = '&Salir'
+      Category = 0
+      Hint = 'Salir'
+      Visible = ivAlways
+      ImageIndex = 24
+      OnClick = btnSalirClick
+    end
+    object btnLogin: TdxBarButton
+      Caption = '&Conectarse'
+      Category = 0
+      Hint = 'Conectarse'
+      Visible = ivAlways
+      ImageIndex = 21
+      OnClick = btnLoginClick
+    end
+    object btnLogout: TdxBarButton
+      Caption = '&Desconectarse'
+      Category = 0
+      Enabled = False
+      Hint = 'Desconectarse'
+      Visible = ivAlways
+      ImageIndex = 22
+      OnClick = btnLogoutClick
+    end
+    object btnUsuarios: TdxBarLargeButton
+      Tag = 44
+      Caption = 'Usuarios'
+      Category = 0
+      Enabled = False
+      Hint = 'Usuarios'
+      Visible = ivAlways
+      LargeImageIndex = 65
+    end
+    object btnGenerales: TdxBarLargeButton
+      Tag = 7
+      Caption = 'Generales'
+      Category = 0
+      Enabled = False
+      Hint = 'Generales'
+      Visible = ivAlways
+      LargeImageIndex = 21
+    end
+    object btnReportes: TdxBarLargeButton
+      Tag = 2
+      Caption = 'Reportes'
+      Category = 0
+      Enabled = False
+      Hint = 'Reportes'
+      Visible = ivAlways
+      LargeImageIndex = 15
+    end
+    object btnConfiguracion: TdxBarLargeButton
+      Tag = 9
+      Caption = 'Configuracion'
+      Category = 0
+      Enabled = False
+      Hint = 'Configuracion'
+      Visible = ivAlways
+      LargeImageIndex = 35
+    end
+    object btnProductos: TdxBarLargeButton
+      Tag = 10
+      Caption = 'Productos'
+      Category = 0
+      Enabled = False
+      Hint = 'Productos'
+      Visible = ivAlways
+      LargeImageIndex = 62
+    end
+    object btnPropiedadesdelsistema: TdxBarLargeButton
+      Tag = 3
+      Caption = 'Propiedades del Sistema'
+      Category = 0
+      Enabled = False
+      Hint = 'Propiedades del Sistema'
+      Visible = ivNever
+    end
+    object btnPagos: TdxBarLargeButton
+      Tag = 6
+      Caption = 'Ingresos'
+      Category = 0
+      Enabled = False
+      Hint = 'Ingresos'
+      Visible = ivAlways
+      LargeImageIndex = 19
+    end
+    object btnBancos: TdxBarLargeButton
+      Tag = 5
+      Caption = 'Bancos'
+      Category = 0
+      Enabled = False
+      Hint = 'Bancos'
+      Visible = ivAlways
+      LargeImageIndex = 1
+    end
+    object dxBarLargeButton1: TdxBarLargeButton
+      Tag = 11
+      Caption = 'Horario'
+      Category = 0
+      Enabled = False
+      Hint = 'Horario'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton2: TdxBarLargeButton
+      Tag = 12
+      Caption = 'Empresa'
+      Category = 0
+      Enabled = False
+      Hint = 'Empresa'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton3: TdxBarLargeButton
+      Tag = 13
+      Caption = 'Empleado'
+      Category = 0
+      Enabled = False
+      Hint = 'Empleado'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton4: TdxBarLargeButton
+      Tag = 14
+      Caption = 'Proveedor'
+      Category = 0
+      Enabled = False
+      Hint = 'Proveedor'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton6: TdxBarLargeButton
+      Tag = 16
+      Caption = 'Almacen'
+      Category = 0
+      Enabled = False
+      Hint = 'Almacen'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton7: TdxBarLargeButton
+      Tag = 17
+      Caption = 'Estaciones'
+      Category = 0
+      Enabled = False
+      Hint = 'Estaciones'
+      Visible = ivAlways
+      LargeImageIndex = 71
+    end
+    object dxBarLargeButton8: TdxBarLargeButton
+      Tag = 18
+      Caption = 'Tipo Pago'
+      Category = 0
+      Enabled = False
+      Hint = 'Tipo Pago'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton9: TdxBarLargeButton
+      Tag = 19
+      Caption = 'Status'
+      Category = 0
+      Enabled = False
+      Hint = 'Status'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton10: TdxBarLargeButton
+      Tag = 20
+      Caption = 'Tipo Comprobacion'
+      Category = 0
+      Enabled = False
+      Hint = 'Tipo Comprobacion'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton11: TdxBarLargeButton
+      Tag = 21
+      Caption = 'Cuentas Contables'
+      Category = 0
+      Enabled = False
+      Hint = 'Cuentas Contables'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton12: TdxBarLargeButton
+      Tag = 22
+      Caption = 'Chequera'
+      Category = 0
+      Enabled = False
+      Hint = 'Chequera'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton13: TdxBarLargeButton
+      Tag = 23
+      Caption = 'Linea'
+      Category = 0
+      Enabled = False
+      Hint = 'Linea'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton14: TdxBarLargeButton
+      Tag = 24
+      Caption = 'Marca'
+      Category = 0
+      Enabled = False
+      Hint = 'Marca'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton15: TdxBarLargeButton
+      Tag = 25
+      Caption = 'Unidades de Medida'
+      Category = 0
+      Enabled = False
+      Hint = 'Unidades de Medida'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton16: TdxBarLargeButton
+      Tag = 26
+      Caption = 'Conceptos de Movimientos Bancarios'
+      Category = 0
+      Enabled = False
+      Hint = 'Conceptos de Movimientos Bancarios'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton17: TdxBarLargeButton
+      Tag = 15
+      Caption = 'Clientes Efectivo'
+      Category = 0
+      Enabled = False
+      Hint = 'Clientes Efectivo'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton18: TdxBarLargeButton
+      Tag = 27
+      Caption = 'Clientes Credito'
+      Category = 0
+      Enabled = False
+      Hint = 'Clientes Credito'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarSubItem1: TdxBarSubItem
+      Caption = 'Clientes'
+      Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 70
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton17'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton18'
+        end>
+    end
+    object dxBarLargeButton5: TdxBarLargeButton
+      Tag = 28
+      Caption = 'Vehiculos'
+      Category = 0
+      Enabled = False
+      Hint = 'Vehiculos'
+      Visible = ivAlways
+    end
+    object dxBarLargeButton19: TdxBarLargeButton
+      Tag = 29
+      Caption = 'Vehiculos'
+      Category = 0
+      Enabled = False
+      Hint = 'Vehiculos'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton20: TdxBarLargeButton
+      Tag = 30
+      Caption = 'Credito'
+      Category = 0
+      Enabled = False
+      Hint = 'Credito'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton21: TdxBarLargeButton
+      Tag = 31
+      Caption = 'Debito'
+      Category = 0
+      Enabled = False
+      Hint = 'Debito'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton22: TdxBarLargeButton
+      Action = dmAppActions.actCancelar
+      Category = 0
+      LargeImageIndex = 68
+    end
+    object dxBarLargeButton24: TdxBarLargeButton
+      Tag = 32
+      Caption = 'Autorizaciones'
+      Category = 0
+      Enabled = False
+      Hint = 'Autorizaciones'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object btnFacturas: TdxBarLargeButton
+      Tag = 8
+      Caption = 'Factura'
+      Category = 0
+      Enabled = False
+      Hint = 'Factura'
+      Visible = ivAlways
+      LargeImageIndex = 64
+    end
+    object dxBarLargeButton26: TdxBarLargeButton
+      Tag = 33
+      Caption = 'Facturas x Cliente'
+      Category = 0
+      Enabled = False
+      Hint = 'Facturas x Cliente'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton28: TdxBarLargeButton
+      Tag = 34
+      Caption = 'Reporte SAT'
+      Category = 0
+      Enabled = False
+      Hint = 'Reporte SAT'
+      Visible = ivAlways
+      LargeImageIndex = 44
+    end
+    object dxBarLargeButton29: TdxBarLargeButton
+      Tag = 35
+      Caption = 'Reenvio de Correo SAT'
+      Category = 0
+      Enabled = False
+      Hint = 'Reenvio de Correo SAT'
+      Visible = ivAlways
+      LargeImageIndex = 45
+    end
+    object dxBarLargeButton23: TdxBarLargeButton
+      Action = dmAppActions.actFacturar
+      Category = 0
+    end
+    object dxBarLargeButton25: TdxBarLargeButton
+      Tag = 36
+      Caption = 'Reporte SAT'
+      Category = 0
+      Enabled = False
+      Hint = 'Reporte SAT'
+      Visible = ivNever
+      LargeImageIndex = 44
+    end
+    object dxBarLargeButton30: TdxBarLargeButton
+      Tag = 37
+      Caption = 'Reenvio de Correo SAT'
+      Category = 0
+      Enabled = False
+      Hint = 'Reenvio de Correo SAT'
+      Visible = ivNever
+      LargeImageIndex = 45
+    end
+    object dxBarLargeButton31: TdxBarLargeButton
+      Tag = 38
+      Caption = 'Consumo Manual'
+      Category = 0
+      Enabled = False
+      Hint = 'Consumo Manual'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton32: TdxBarLargeButton
+      Tag = 39
+      Caption = 'Generar Dispositivo'
+      Category = 0
+      Enabled = False
+      Hint = 'Generar Dispositivo'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton27: TdxBarLargeButton
+      Tag = 40
+      Caption = 'Ingresos'
+      Category = 0
+      Enabled = False
+      Hint = 'Ingresos'
+      Visible = ivAlways
+      LargeImageIndex = 47
+    end
+    object dxBarLargeButton34: TdxBarLargeButton
+      Tag = 41
+      Caption = 'Tipo de Cambio'
+      Category = 0
+      Enabled = False
+      Hint = 'Tipo de Cambio'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton35: TdxBarLargeButton
+      Tag = 42
+      Caption = 'Depositos'
+      Category = 0
+      Enabled = False
+      Hint = 'Depositos'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton36: TdxBarLargeButton
+      Tag = 43
+      Caption = 'Compras'
+      Category = 0
+      Enabled = False
+      Hint = 'Compras'
+      Visible = ivAlways
+      LargeImageIndex = 63
+    end
+    object dxBarLargeButton37: TdxBarLargeButton
+      Action = dmAppActions.actCerrarLiquidacion
+      Caption = 'Cerrar'
+      Category = 0
+    end
+    object dxBarLargeButton38: TdxBarLargeButton
+      Tag = 1
+      Caption = 'Blanco'
+      Category = 0
+      Enabled = False
+      Hint = 'Blanco'
+      Visible = ivNever
+    end
+    object dxBarLargeButton40: TdxBarLargeButton
+      Tag = 45
+      Caption = 'Flotillas Consumos'
+      Category = 0
+      Enabled = False
+      Hint = 'Flotillas Consumos'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton41: TdxBarLargeButton
+      Tag = 40
+      Caption = 'Ingresos'
+      Category = 0
+      Enabled = False
+      Hint = 'Ingresos'
+      Visible = ivNever
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton42: TdxBarLargeButton
+      Tag = 46
+      Caption = 'Ingresos x Fecha'
+      Category = 0
+      Enabled = False
+      Hint = 'Ingresos x Fecha'
+      Visible = ivAlways
+      LargeImageIndex = 47
+    end
+    object dxBarLargeButton43: TdxBarLargeButton
+      Tag = 47
+      Caption = 'Depositos x Fecha'
+      Category = 0
+      Enabled = False
+      Hint = 'Depositos x Fecha'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarSubItem2: TdxBarSubItem
+      Caption = 'Vales'
+      Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 61
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton45'
+        end>
+    end
+    object dxBarLargeButton45: TdxBarLargeButton
+      Tag = 48
+      Caption = 'Generar Vales'
+      Category = 0
+      Enabled = False
+      Hint = 'Generar Vales'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton44: TdxBarLargeButton
+      Tag = 49
+      Caption = 'Configurar Polizas'
+      Category = 0
+      Enabled = False
+      Hint = 'Configurar Polizas'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object btnExport: TdxBarLargeButton
+      Tag = 50
+      Caption = 'Exportacion'
+      Category = 0
+      Enabled = False
+      Hint = 'Exportacion'
+      Visible = ivAlways
+      LargeImageIndex = 61
+    end
+    object dxBarLargeButton33: TdxBarLargeButton
+      Tag = 4
+      Action = dmAppActions.actExportar
+      Category = 0
+      Visible = ivNever
+    end
+    object dxBarLargeButton39: TdxBarLargeButton
+      Action = dmAppActions.actProcesar
+      Category = 0
+    end
+    object dxBarLargeButton46: TdxBarLargeButton
+      Action = dmAppActions.actExportar
+      Category = 0
+    end
+    object dxBarLargeButton47: TdxBarLargeButton
+      Tag = 51
+      Caption = 'Saldos Clientes'
+      Category = 0
+      Hint = 'Saldos Clientes'
+      Visible = ivAlways
+    end
+    object btnNuevo: TdxBarLargeButton
+      Action = dmAppActions.actNuevo
+      Category = 3
+      LargeImageIndex = 66
+    end
+    object btnGuardar: TdxBarLargeButton
+      Action = dmAppActions.actGuardar
+      Category = 3
+      LargeImageIndex = 67
+    end
+    object btnImprimir: TdxBarLargeButton
+      Action = dmAppActions.actImprimir
+      Category = 3
+    end
+    object btnCortar: TdxBarButton
+      Category = 3
+      Visible = ivAlways
+    end
+    object btnCopiar: TdxBarButton
+      Category = 3
+      Visible = ivAlways
+    end
+    object btnPegar: TdxBarButton
+      Category = 3
+      Visible = ivAlways
+    end
+    object btnEliminar: TdxBarLargeButton
+      Action = dmAppActions.actEliminar
+      Category = 3
+    end
+    object btnPrimer: TdxBarButton
+      Action = dmAppActions.actPrimer
+      Category = 3
+    end
+    object btnAnteriior: TdxBarButton
+      Action = dmAppActions.actAnterior
+      Category = 3
+    end
+    object btnSiguiente: TdxBarButton
+      Action = dmAppActions.actSiguiente
+      Category = 3
+    end
+    object btnUltimo: TdxBarButton
+      Action = dmAppActions.actUltimo
+      Category = 3
+    end
+    object btnActualizar: TdxBarButton
+      Action = dmAppActions.actActualizar
+      Category = 3
+    end
+    object btnBuscar: TdxBarButton
+      Action = dmAppActions.actBuscar
+      Category = 3
+    end
+  end
+  object tmrPrincipal: TTimer
+    OnTimer = tmrPrincipalTimer
+    Left = 168
+    Top = 272
+  end
+  object TdxBarSeparator
+    Category = -1
+    Visible = ivAlways
+  end
+  object TdxBarSeparator
+    Category = -1
+    Visible = ivAlways
+  end
+  object TdxBarSeparator
+    Category = -1
+    Visible = ivAlways
+  end
+  object TdxBarSeparator
+    Category = -1
+    Visible = ivAlways
+  end
+end

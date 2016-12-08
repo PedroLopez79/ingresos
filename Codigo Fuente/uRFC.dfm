@@ -205,7 +205,7 @@ object Fo_AyudaRFC: TFo_AyudaRFC
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 304
+    Left = 288
     Top = 96
   end
 end

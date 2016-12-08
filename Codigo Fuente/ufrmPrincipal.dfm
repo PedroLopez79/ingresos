@@ -45,7 +45,6 @@ object frmPrincipal: TfrmPrincipal
       Index = 0
     end
     object RibbonTab7: TdxRibbonTab
-      Active = True
       Caption = 'Ingresos'
       Groups = <
         item
@@ -65,6 +64,7 @@ object frmPrincipal: TfrmPrincipal
       Index = 2
     end
     object RibbonTab3: TdxRibbonTab
+      Active = True
       Caption = 'Clientes'
       Groups = <
         item
@@ -270,6 +270,10 @@ object frmPrincipal: TfrmPrincipal
       ItemLinks = <
         item
           Visible = True
+          ItemName = 'dxBarLargeButton7'
+        end
+        item
+          Visible = True
           ItemName = 'btnProductos'
         end
         item
@@ -291,10 +295,6 @@ object frmPrincipal: TfrmPrincipal
         item
           Visible = True
           ItemName = 'dxBarLargeButton6'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton7'
         end
         item
           Visible = True
@@ -940,12 +940,12 @@ object frmPrincipal: TfrmPrincipal
     end
     object dxBarLargeButton7: TdxBarLargeButton
       Tag = 17
-      Caption = 'Tanque'
+      Caption = 'Estaciones'
       Category = 0
       Enabled = False
-      Hint = 'Tanque'
+      Hint = 'Estaciones'
       Visible = ivAlways
-      LargeImageIndex = 61
+      LargeImageIndex = 72
     end
     object dxBarLargeButton8: TdxBarLargeButton
       Tag = 18

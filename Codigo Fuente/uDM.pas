@@ -130,6 +130,7 @@ type
     procedure Exporta(Nombre: String);
     function GetMACAdress: string;
     Function GetPrimaryNicMacAddress: String;
+    Function ValidaRFC(Const Cad:String):Boolean;
   end;
 
 var
@@ -876,6 +877,19 @@ begin
     frmPrincipal.rbtAcciones.Visible:=True;
     frmPrincipal.rbtAcciones.Active:=True;
   end;
+end;
+
+function TDM.ValidaRFC(const Cad: String): Boolean;
+var
+ I:Integer;
+begin
+  Result:=True;
+  For I:=1 to Length(Cad) do
+    If (Cad[i] in (['-',' '])) then
+    begin
+      Result:=False;
+      Break;//Exit
+    end;
 end;
 
 function TDM.ValorParametro(Cual: Integer): Variant;

@@ -509,6 +509,12 @@
 </Element>
 <Element Name="Detalles" DataType="ATDetalleFactura">
 </Element>
+<Element Name="Emisor" DataType="TEmisor">
+</Element>
+<Element Name="EmisorExpedidoEn" DataType="TEmisorExpedidoEn">
+</Element>
+<Element Name="Receptor" DataType="TReceptor">
+</Element>
 </Elements>
 </Struct>
 <Struct Name="TFactura" UID="{97445B5F-20F1-484F-A53D-9574DAE27798}" AutoCreateParams="1">
@@ -870,6 +876,88 @@
 <Element Name="FECHA" DataType="DateTime">
 </Element>
 <Element Name="IDHORARIO" DataType="Integer">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TEmisor" UID="{B9D842C1-9F24-43EB-B65C-EFC448525E37}" AutoCreateParams="1">
+<Elements>
+<Element Name="RFC" DataType="AnsiString">
+</Element>
+<Element Name="NOMBRE" DataType="AnsiString">
+</Element>
+<Element Name="CALLE" DataType="AnsiString">
+</Element>
+<Element Name="NOEXTERIOR" DataType="AnsiString">
+</Element>
+<Element Name="NOINTERIOR" DataType="AnsiString">
+</Element>
+<Element Name="CODIGOPOSTAL" DataType="AnsiString">
+</Element>
+<Element Name="COLONIA" DataType="AnsiString">
+</Element>
+<Element Name="MUNICIPIO" DataType="AnsiString">
+</Element>
+<Element Name="ESTADO" DataType="AnsiString">
+</Element>
+<Element Name="PAIS" DataType="AnsiString">
+</Element>
+<Element Name="LOCALIDAD" DataType="AnsiString">
+</Element>
+<Element Name="REGIMENFISCAL" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TEmisorExpedidoEn" UID="{4AF1FB5C-DB0E-47C4-B02C-C5A29E2686AF}" AutoCreateParams="1">
+<Elements>
+<Element Name="CALLE" DataType="AnsiString">
+</Element>
+<Element Name="NOEXTERIOR" DataType="AnsiString">
+</Element>
+<Element Name="NOINTERIOR" DataType="AnsiString">
+</Element>
+<Element Name="CODIGOPOSTAL" DataType="AnsiString">
+</Element>
+<Element Name="COLONIA" DataType="AnsiString">
+</Element>
+<Element Name="MUNICIPIO" DataType="AnsiString">
+</Element>
+<Element Name="ESTADO" DataType="AnsiString">
+</Element>
+<Element Name="PAIS" DataType="AnsiString">
+</Element>
+<Element Name="LOCALIDAD" DataType="AnsiString">
+</Element>
+<Element Name="REFERENCIA" DataType="AnsiString">
+</Element>
+<Element Name="LUGARDEEXPEDICION" DataType="AnsiString">
+</Element>
+<Element Name="NUMERODECUENTA" DataType="AnsiString">
+</Element>
+</Elements>
+</Struct>
+<Struct Name="TReceptor" UID="{0BC5D2F3-A500-4DCE-B677-0DA054701A8A}" AutoCreateParams="1">
+<Elements>
+<Element Name="RFC" DataType="AnsiString">
+</Element>
+<Element Name="NOMBRE" DataType="AnsiString">
+</Element>
+<Element Name="CALLE" DataType="AnsiString">
+</Element>
+<Element Name="NOEXTERIOR" DataType="AnsiString">
+</Element>
+<Element Name="NOINTERIOR" DataType="AnsiString">
+</Element>
+<Element Name="CODIGOPOSTAL" DataType="AnsiString">
+</Element>
+<Element Name="COLONIA" DataType="AnsiString">
+</Element>
+<Element Name="MUNICIPIO" DataType="AnsiString">
+</Element>
+<Element Name="ESTADO" DataType="AnsiString">
+</Element>
+<Element Name="PAIS" DataType="AnsiString">
+</Element>
+<Element Name="LOCALIDAD" DataType="AnsiString">
 </Element>
 </Elements>
 </Struct>

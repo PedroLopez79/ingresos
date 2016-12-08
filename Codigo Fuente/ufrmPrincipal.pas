@@ -170,7 +170,7 @@ const
                                               {14} 'Proveedor',
                                               {15} 'ClienteEfectivo',
                                               {16} 'Almacen',
-                                              {17} 'Tanque',
+                                              {17} 'Estaciones',
                                               {18} 'TipoPago',
                                               {19} 'Status',
                                               {20} 'TipoComprobacion',

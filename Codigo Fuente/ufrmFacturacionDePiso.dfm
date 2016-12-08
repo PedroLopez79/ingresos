@@ -5,7 +5,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
   ClientHeight = 618
   ClientWidth = 812
   Position = poDesigned
-  ExplicitLeft = 0
+  ExplicitTop = -174
   ExplicitWidth = 812
   ExplicitHeight = 618
   PixelsPerInch = 96
@@ -627,9 +627,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 0
         ExplicitTop = 1
-        DesignSize = (
-          783
-          177)
         Height = 177
         Width = 783
         object cxLabel5: TcxLabel
@@ -984,61 +981,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Style.BorderStyle = ebsNone
           Transparent = True
         end
-        object cxLabel25: TcxLabel
-          Left = 159
-          Top = 4
-          Hint = ''
-          Caption = '.'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -11
-          Style.Font.Name = 'MS Sans Serif'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taLeftJustify
-          Transparent = True
-        end
-        object cxLabel26: TcxLabel
-          Left = 159
-          Top = 21
-          Hint = ''
-          Caption = '.'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -11
-          Style.Font.Name = 'MS Sans Serif'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taLeftJustify
-          Transparent = True
-        end
-        object cxLabel27: TcxLabel
-          Left = 159
-          Top = 39
-          Hint = ''
-          Caption = '.'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -11
-          Style.Font.Name = 'MS Sans Serif'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taLeftJustify
-          Transparent = True
-        end
-        object cxLabel28: TcxLabel
-          Left = 159
-          Top = 56
-          Hint = ''
-          Anchors = [akLeft, akTop, akRight, akBottom]
-          Caption = '.'
-          Style.BorderStyle = ebsNone
-          Properties.Alignment.Horz = taLeftJustify
-          Transparent = True
-        end
         object cxDBTextEdit13: TcxDBTextEdit
           Left = 283
           Top = 153
@@ -1050,7 +992,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           Properties.ReadOnly = True
           Style.BorderStyle = ebsUltraFlat
           Style.TextStyle = [fsBold]
-          TabOrder = 32
+          TabOrder = 28
           Width = 177
         end
         object dbCbxFormaPago: TcxDBLookupComboBox
@@ -1066,7 +1008,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
             end>
           Properties.ListSource = dsFormaPago
           Style.BorderStyle = ebsUltraFlat
-          TabOrder = 33
+          TabOrder = 29
           Width = 156
         end
         object cxLabel15: TcxLabel
@@ -1086,13 +1028,16 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         end
         object cxDBImage1: TcxDBImage
           Left = 13
-          Top = 4
+          Top = 3
           Hint = ''
           DataBinding.DataField = 'LOGOESTACION'
           DataBinding.DataSource = dsEstacion
-          TabOrder = 35
+          Properties.GraphicClassName = 'TJPEGImage'
+          Properties.Proportional = False
+          Properties.Stretch = True
+          TabOrder = 31
           Transparent = True
-          Height = 71
+          Height = 73
           Width = 140
         end
         object cxLabel23: TcxLabel
@@ -1116,8 +1061,24 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
             end>
           Properties.ListSource = dsTipoFactura
           Style.BorderStyle = ebsUltraFlat
-          TabOrder = 37
+          TabOrder = 33
           Width = 256
+        end
+        object Memo1: TMemo
+          Left = 155
+          Top = 4
+          Width = 367
+          Height = 71
+          BorderStyle = bsNone
+          Color = clInactiveCaption
+          Enabled = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 34
         end
       end
       object cxGroupBox5: TcxGroupBox
@@ -1298,7 +1259,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
           OnExit = cxGrid1Exit
           LookAndFeel.Kind = lfStandard
           LookAndFeel.NativeStyle = False
-          ExplicitLeft = 6
           object cxGridDBTableView3: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnEditKeyDown = cxGridDBTableView3EditKeyDown
@@ -1323,6 +1283,7 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
             end
             object cxGridDBTableView3Descripcion: TcxGridDBColumn
               DataBinding.FieldName = 'Descripcion'
+              PropertiesClassName = 'TcxTextEditProperties'
               Options.Editing = False
               Options.Focusing = False
               Width = 321
@@ -1417,13 +1378,13 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     DataSet = cdsCliente.Dataset
     DataTable = cdsCliente
     Left = 608
-    Top = 312
+    Top = 328
   end
   object dsProducto: TDADataSource
     DataSet = cdsProducto.Dataset
     DataTable = cdsProducto
     Left = 544
-    Top = 312
+    Top = 328
   end
   object cdsProducto: TDACDSDataTable
     Fields = <
@@ -1497,19 +1458,19 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 544
-    Top = 264
+    Top = 280
   end
   object dsDetalleFactura: TDADataSource
     DataSet = cdsDetalleFactura.Dataset
     DataTable = cdsDetalleFactura
     Left = 72
-    Top = 392
+    Top = 408
   end
   object dsFactura: TDADataSource
     DataSet = cdsFactura.Dataset
     DataTable = cdsFactura
     Left = 32
-    Top = 393
+    Top = 409
   end
   object cdsFormaPago: TDACDSDataTable
     Fields = <
@@ -1536,13 +1497,13 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 472
-    Top = 264
+    Top = 280
   end
   object dsFormaPago: TDADataSource
     DataSet = cdsFormaPago.Dataset
     DataTable = cdsFormaPago
     Left = 472
-    Top = 312
+    Top = 328
   end
   object cdsDetalleFactura: TDACDSDataTable
     DetailFields = 'FacturaID'
@@ -1602,8 +1563,8 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
+    AfterDelete = cdsDetalleFacturaAfterDelete
     AfterPost = cdsDetalleFacturaAfterPost
-    BeforeDelete = cdsDetalleFacturaBeforeDelete
     BeforePost = cdsDetalleFacturaBeforePost
     OnNewRecord = cdsDetalleFacturaNewRecord
     IndexDefs = <>
@@ -1789,13 +1750,13 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 400
-    Top = 360
+    Top = 376
   end
   object dsComparaFechas: TDADataSource
     DataSet = cdsComparaFechas.Dataset
     DataTable = cdsComparaFechas
     Left = 400
-    Top = 392
+    Top = 424
   end
   object cdsTipoFactura: TDACDSDataTable
     Fields = <
@@ -1815,13 +1776,13 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 672
-    Top = 264
+    Top = 280
   end
   object dsTipoFactura: TDADataSource
     DataSet = cdsTipoFactura.Dataset
     DataTable = cdsTipoFactura
     Left = 672
-    Top = 312
+    Top = 328
   end
   object cdsEstacion: TDACDSDataTable
     Fields = <
@@ -2007,13 +1968,13 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 400
-    Top = 264
+    Top = 280
   end
   object dsEstacion: TDADataSource
     DataSet = cdsEstacion.Dataset
     DataTable = cdsEstacion
     Left = 400
-    Top = 312
+    Top = 328
   end
   object cdsCliente: TDACDSDataTable
     Fields = <
@@ -2147,6 +2108,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     StreamingOptions = [soDisableEventsWhileStreaming, soDisableFiltering]
     IndexDefs = <>
     Left = 607
-    Top = 264
+    Top = 280
   end
 end

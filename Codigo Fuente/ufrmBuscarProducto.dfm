@@ -1,11 +1,8 @@
 inherited frmBuscarProducto: TfrmBuscarProducto
   Caption = 'Buscar Producto'
-  ExplicitWidth = 625
-  ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
-  inherited dbgAgrupacion: TcxGrid
-    ExplicitTop = 18
+  inherited dbgBuscar: TcxGrid
     inherited cxGridDBTableView1: TcxGridDBTableView
       OnKeyDown = cxGridDBTableView1KeyDown
       object cxGridDBTableView1Codigo: TcxGridDBColumn
@@ -29,6 +26,9 @@ inherited frmBuscarProducto: TfrmBuscarProducto
         Width = 85
       end
     end
+  end
+  inherited Panel1: TPanel
+    Visible = False
   end
   inherited cdsBuscar: TDACDSDataTable
     Fields = <
