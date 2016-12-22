@@ -95,6 +95,10 @@ type
     DateUltimoPago: TcxDBDateEdit;
     cxLabel19: TcxLabel;
     cxDBTextEdit11: TcxDBTextEdit;
+    cxDBTextEdit15: TcxDBTextEdit;
+    cxLabel20: TcxLabel;
+    cxLabel21: TcxLabel;
+    cxDBTextEdit18: TcxDBTextEdit;
     procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
     procedure TxtIvaExit(Sender: TObject);
     procedure TxtRFCExit(Sender: TObject);

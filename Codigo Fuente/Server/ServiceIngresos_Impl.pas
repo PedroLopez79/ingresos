@@ -12,14 +12,21 @@ unit ServiceIngresos_Impl;
 interface
 
 uses
-  {vcl:} Classes, SysUtils,
+  {vcl:} Classes, SysUtils, ShlObj, Forms,
   {RemObjects:} uROXMLIntf, uROClientIntf, uROTypes, uROServer, uROServerIntf, uROSessions,
   {Required:} uRORemoteDataModule, uDAInterfaces, uDADataStreamer,
   {Ancestor Implementation:} DataAbstractService_Impl,
   {Used RODLs:} DataAbstract4_Intf,
   {Generated:} LibraryIngresos_Intf, uDABin2DataStreamer, uDAScriptingProvider,
   uDABusinessProcessor, uDAClasses,
-  {FACTURAELECT}FCTELECT,
+  {FACTURAELECT}EcodexWsCancelacion, PACComercioDigital, ClaseCertificadoSellos,
+  FEImpuestosLocales, ManejadorDeErroresComunes, EcodexWsComun, EcodexWsClientes,
+  CadenaOriginalTimbre, FECancelaComercioDigital, QuricolCode, QuricolAPI, GeneradorCBB,
+  FacturacionHashes, PAC.Ecodex.ManejadorDeSesion, EcodexWsSeguridad, EcodexWsTimbrado,
+  FeCFD, ProveedorAutorizadoCertificacion, FETimbreFiscalDigital, FeCFDv32, FeCFDv2,
+  FeCFDv22, CadenaOriginal, DocComprobanteFiscal, DateUtils, SelloDigital, OpenSSLUtils,
+  LibEay32Plus, libeay32, FacturaTipos, FacturaReglamentacion, FacturaElectronica,
+  ComprobanteFiscal, ClaseOpenSSL, PACEcodex,
   uROClient, uROComponent, uDAStreamableComponent, uDASchema;
 
 type
@@ -78,7 +85,7 @@ type
     function PrecioProducto(const ProductoID: Integer): Double;
     function FolioActual(const Campo: AnsiString; const Serie: AnsiString): Integer;
     function ValidaFolioFactura(const Campo: AnsiString; const Folio: Integer): Boolean;
-    procedure GuardarDatosFactura(const DatosFactura: TDatosFactura);
+    function GuardarDatosFactura(const DatosFactura: TDatosFactura): AnsiString;
     function ActualizaTipoCampio(const NUMEROESTACION: Int64; const FECHA: DateTime; const VALOR: Double; const IDMONEDA: Integer): Boolean;
     function ObtenTipoValores(const NUMEROESTACION: Integer; const FECHA: DateTime): ATTipoValores;
     function CostoProducto(const IDPRODUCTO: Integer): Double;
@@ -92,6 +99,18 @@ implementation
 {$R *.dfm}
 uses
   {Generated:} LibraryIngresos_Invk, UtileriasComun, fServerDataModule;
+
+function GetDesktopFolder: string;
+var
+     buf: array[0..255] of char;
+     pidList: PItemIDList;
+begin
+     Result := 'No Desktop Folder found.';
+     SHGetSpecialFolderLocation(Application.Handle, CSIDL_DESKTOP, pidList);
+     if (pidList <> nil) then
+      if (SHGetPathFromIDList(pidList, buf)) then
+        Result := buf;
+end;
 
 procedure Create_ServiceIngresos(out anInstance : IUnknown);
 begin
@@ -955,18 +974,32 @@ begin
   ds.Close;
 end;
 
-procedure TServiceIngresos.GuardarDatosFactura(const DatosFactura: TDatosFactura);
+function TServiceIngresos.GuardarDatosFactura(const DatosFactura: TDatosFactura): AnsiString;
 var
   cmdFactura:IDASQLCommand;
   cmdDetalles:IDASQLCommand;
   dsConfiguracion: IDADataSet;
+  cmdActualizaFacturaE:IDASQLCommand;
 
   I:integer;
   J:integer;
   Datos: TDatosFactura;
 
-  DFacturaElectronica: LibraryIngresos_Intf.TDataFacturaElectronicaBI;
-  //fXmlcfdv22: TXmlCFD;
+  ProveedorTimbrado : TProveedorAutorizadoCertificacion;
+  TimbreDeFactura : TFETimbre;
+  archivoFacturaXML, rutaImagenCBB: String;
+  Factura: TFacturaElectronica;
+  Emisor, Receptor: TFEContribuyente;
+  Certificado: TFECertificado;
+  ImpuestoRetenido, Impuesto1: TFEImpuestoRetenido;
+  ImpuestoTraslado, Impuesto2 : TFEImpuestoTrasladado;
+  ImpuestoLocal: TFEImpuestoLocal;
+  Concepto, Concepto1, Concepto2 : TFEConcepto;
+  generadorCBB: TGeneradorCBB;
+  CredencialesPAC: TFEPACCredenciales;
+const
+  _URL_ECODEX_PRUEBAS = 'https://pruebas.ecodex.com.mx:2045';
+
 begin
   Datos:=TDatosFactura.Create;
   try
@@ -988,8 +1021,8 @@ begin
     cmdFactura.ParamByName('FormaPagoID').AsInteger:=Datos.Factura.FormaPagoID;
     cmdFactura.ParamByName('UsuarioID').AsInteger:=Datos.Factura.UsuarioID;
     cmdFactura.ParamByName('NumeroEstacion').AsInteger:= Datos.Factura.NumeroEstacion;
-    cmdFactura.ParamByName('IDCONDICIONPAGO').AsInteger:= Datos.Factura.IDCondicionPago;
-    cmdFactura.ParamByName('METODOPAGO').AsString:= Datos.Factura.MetodoPago;
+    cmdFactura.ParamByName('Tickets').AsString:= Datos.Factura.Tickets;
+    cmdFactura.ParamByName('TipoFacturaID').AsInteger:= Datos.Factura.IDCondicionPago;
     cmdFactura.Execute;
 
     cmdDetalles:=Schema.NewCommand(Connection,'spInsertarDetalleFactura') ;
@@ -1004,24 +1037,208 @@ begin
       cmdDetalles.ParamByName('ProductoID').AsInteger:=Datos.Detalles.Items[I].ProductoID;
       cmdDetalles.Execute;
     end;
+
+
   finally
     ///////////FACTURA ELECTRONICA//////////////////////////////////////////////
-    dsConfiguracion:=Schema.NewDataset(Connection, 'dbo CONFIGURACION');
-    dsConfiguracion.Open;
+    Try
+      // 1. Definimos los datos del emisor y receptor
 
-    {fXmlcfdv22:= cfd(Datos.Factura.FacturaID, Datos.Factura.NumeroEstacion);
+      // Si se desea probar al PAC FinkOk usar el siguiente Emisor:
+      //Emisor.RFC:='AAD990814BP7';
+      // Si se desea usar al PAC Ecodex usar al siguiente Emisor
+      Emisor.RFC                     :=Datos.Emisor.RFC;
+      Emisor.Nombre                  :=Datos.Emisor.NOMBRE;
+      Emisor.Direccion.Calle         :=Datos.Emisor.CALLE;
+      Emisor.Direccion.NoExterior    :=Datos.Emisor.NOINTERIOR;
+      Emisor.Direccion.NoInterior    :=Datos.Emisor.NOEXTERIOR;
+      Emisor.Direccion.CodigoPostal  :=Datos.Emisor.CODIGOPOSTAL;
+      Emisor.Direccion.Colonia       :=Datos.Emisor.COLONIA;
+      Emisor.Direccion.Municipio     :=Datos.Emisor.MUNICIPIO;
+      Emisor.Direccion.Estado        :=Datos.Emisor.ESTADO;
+      Emisor.Direccion.Pais          :=Datos.Emisor.PAIS;
+      Emisor.Direccion.Localidad     :=Datos.Emisor.LOCALIDAD;
 
-    InsertaFacturaElectronica(Folio('FacturaElectronicaID',''),
-                              fXmlcfdv22.CadenaOriginal,
-                              fXmlcfdv22.cfdv22.Sello,
-                              Datos.Factura.FacturaID,
-                              True,False,
-                              dsConfiguracion.FieldByName('NOCERTIFICADO').AsString,
-                              dsConfiguracion.FieldByName('NOAPROBACION').AsString,
-                              dsConfiguracion.FieldByName('ANOAPROBACION').AsDateTime,
-                              fXmlcfdv22.cfdv22.XML,
-                              '');}
-    ////////////////////////////////////////////////////////////////////////////
+       // 2. Agregamos los régimenes fiscales (requerido en CFD >= 2.2)
+      SetLength(Emisor.Regimenes, 1);
+      Emisor.Regimenes[0]            := Datos.Emisor.REGIMENFISCAL;
+
+      // Asignamos los valores iguales a la direcion del emisor suponiendo que se genera en el mismo lugar que se emitio
+      Emisor.ExpedidoEn.Calle        :=Datos.EmisorExpedidoEn.CALLE;
+      Emisor.ExpedidoEn.NoExterior   :=Datos.EmisorExpedidoEn.NOEXTERIOR;
+      Emisor.ExpedidoEn.NoInterior   :=Datos.EmisorExpedidoEn.NOINTERIOR;
+      Emisor.ExpedidoEn.CodigoPostal :=Datos.EmisorExpedidoEn.CODIGOPOSTAL;
+      Emisor.ExpedidoEn.Colonia      :=Datos.EmisorExpedidoEn.COLONIA;
+      Emisor.ExpedidoEn.Municipio    :=Datos.EmisorExpedidoEn.MUNICIPIO;
+      Emisor.ExpedidoEn.Estado       :=Datos.EmisorExpedidoEn.ESTADO;
+      Emisor.ExpedidoEn.Pais         :=Datos.EmisorExpedidoEn.PAIS;
+      Emisor.ExpedidoEn.Localidad    :=Datos.EmisorExpedidoEn.LOCALIDAD;
+      Emisor.ExpedidoEn.Referencia   :=Datos.EmisorExpedidoEn.REFERENCIA;
+
+      Receptor.RFC                   :=Datos.Receptor.RFC;
+      Receptor.Nombre                :=Datos.Receptor.NOMBRE;
+      Receptor.Direccion.Calle       :=Datos.Receptor.CALLE;
+      Receptor.Direccion.NoExterior  :=Datos.Receptor.NOEXTERIOR;
+      Receptor.Direccion.NoInterior  :=Datos.Receptor.NOINTERIOR;
+      Receptor.Direccion.CodigoPostal:=Datos.Receptor.CODIGOPOSTAL;
+      Receptor.Direccion.Colonia     :=Datos.Receptor.COLONIA;
+      Receptor.Direccion.Municipio   :=Datos.Receptor.MUNICIPIO;
+      Receptor.Direccion.Estado      :=Datos.Receptor.ESTADO;
+      Receptor.Direccion.Pais        :=Datos.Receptor.PAIS;
+      Receptor.Direccion.Localidad   :=Datos.Receptor.LOCALIDAD;
+
+      // 4. Definimos el certificado junto con su llave privada
+      Certificado.Ruta:=ExtractFilePath(Application.ExeName) + '\' + Emisor.RFC + '.cer';
+      Certificado.LlavePrivada.Ruta:=ExtractFilePath(Application.ExeName) + '\' + Emisor.RFC + '.key';
+      Certificado.LlavePrivada.Clave:='12345678a';
+      //Certificado.Ruta              := Datos.Emisor.ARCHIVOCERTIFICADO;
+      //Certificado.LlavePrivada.Ruta := Datos.Emisor.ARCHIVOLLAVEPRIVADA;
+      //Certificado.LlavePrivada.Clave:= Datos.Emisor.CLAVELLAVEPRIVADA;
+
+      // 5. Creamos la clase Factura con los parametros minimos.
+      //WriteLn('Generando factura CFDI ...');
+      Factura:=TFacturaElectronica.Create(Emisor, Receptor, Certificado, tcIngreso);
+
+      //Factura.AutoAsignarFechaGeneracion := False;
+      //Factura.FechaGeneracion := EncodeDateTime(2012, 05, 12, 19, 47, 22, 0);
+      //Factura.OnComprobanteGenerado:=onComprobanteGenerado;
+
+      // Asignamos el método de pago, de momento funciona con la cadena "Efectivo"
+      // o el numero de catálogo.
+      //Factura.MetodoDePago:='Efectivo';
+      Factura.MetodoDePago := Datos.Emisor.METODOPAGO;
+      Factura.NumeroDeCuenta:=Datos.EmisorExpedidoen.NUMERODECUENTA;
+
+      // Asignamos el lugar de expedición (requerido en  CFD >= 2.2)
+      Factura.LugarDeExpedicion:= Datos.EmisorExpedidoen.LUGARDEEXPEDICION;
+
+      for I := 0 to Datos.Detalles.Count - 1 do
+      begin
+        Concepto.Cantidad     := Datos.Detalles.Items[I].Cantidad;
+        Concepto.Unidad       := Datos.Detalles.Items[I].Unidad;
+        Concepto.Descripcion  := Datos.Detalles.Items[I].Descripcion;
+        Concepto.ValorUnitario:= Datos.Detalles.Items[I].Precio;
+        Factura.AgregarConcepto(Concepto);
+      end;
+
+      ImpuestoTraslado.Nombre:='IVA';
+      ImpuestoTraslado.Tasa:= Datos.Factura.ImpuestoPorcentaje;
+      ImpuestoTraslado.Importe:= Datos.Factura.Impuesto;
+      Factura.AgregarImpuestoTrasladado(ImpuestoTraslado);
+
+      // Le damos un descuento
+      //Factura.AsignarDescuento(5, 'Por pronto pago');
+
+      // Mandamos generar la factura con el siguiente folio disponible
+      if Not(DirectoryExists(GetDesktopFolder() + '\Prueba-CFDI')) then
+        CreateDir(GetDesktopFolder() + '\Prueba-CFDI');
+
+      archivoFacturaXML:=GetDesktopFolder() + '\Prueba-CFDI\MiFactura.xml';
+      rutaImagenCBB := GetDesktopFolder() + '\Prueba-CFDI\MiFactura-CBB.jpg';
+
+      // Mandamos generar el CFD en memoria antes de timbrarlo
+      Factura.Generar(12345, fpUnaSolaExhibicion);
+
+      // Ya que tenemos el comprobante, lo mandamos timbrar con el PAC de nuestra elección,
+      // por cuestiones de ejemplo, usaremos al PAC "Ecodex"
+
+      //ProveedorTimbrado := TPACFinkOk.Create;
+      //ProveedorTimbrado := TPACEcodex.Create(_URL_ECODEX_PRUEBAS);
+      ProveedorTimbrado := TPACComercioDigital.Create; // Si queremos usar a Comercio Digital solo des-comentamos aqui
+
+      try
+        CredencialesPAC.RFC   := Emisor.RFC;
+        CredencialesPAC.Clave := 'PWD';
+        CredencialesPac.Certificado:= Certificado;  // Si queremos usar a Comercio Digital solo des-comentamos aqui
+
+        // Este es el "ID de Integrador" de pruebas de Ecodex
+        //CredencialesPAC.DistribuidorID := '2b3a8764-d586-4543-9b7e-82834443f219';
+        // Asignamos nuestras credenciales de acceso con el PAC (en caso de Ecodex asignamos la credencial como usuario e integrador)
+        //ProveedorTimbrado.AsignarCredenciales(CredencialesPAC, CredencialesPAC);
+        ProveedorTimbrado.AsignarCredenciales(CredencialesPAC);  // Si queremos usar a Comercio Digital solo des-comentamos aqui
+        // Mandamos timbrar el documento al PAC
+        TimbreDeFactura := ProveedorTimbrado.TimbrarDocumento(Factura.XML);
+
+        // Asignamos el timbre a la factura para que sea válida
+        //WriteLn('Asignando timbre a factura para generar CFDI');
+        Factura.AsignarTimbreFiscal(TimbreDeFactura);
+
+        //ACTUALIZAR DATOS DE FACTURA ELECTRONICA CFDI
+        cmdActualizaFacturaE:=Schema.NewCommand(Connection,'spActualizaDatosFE') ;
+        cmdActualizaFacturaE.ParamByName('CADENAORIGINAL').AsString:= Factura.CadenaOriginal;
+        cmdActualizaFacturaE.ParamByName('SELLODIGITAL').AsString:= Factura.SelloDigital;
+        cmdActualizaFacturaE.ParamByName('XML').AsString:= Factura.XML;
+        cmdActualizaFacturaE.ParamByName('NoCertificado').AsString:= Factura.Certificado.NumeroSerie;
+        cmdActualizaFacturaE.ParamByName('FechaFacturaE').AsDateTime:= Factura.FechaGeneracion;
+        //cmdActualizaFacturaE.ParamByName('NoAprobacion').AsString:= Factura.
+        //cmdActualizaFacturaE.ParamByName('EjercicioAprobacion').AsString:= Factura.
+        cmdActualizaFacturaE.ParamByName('VersionSAT').AsString:= '32';
+        cmdActualizaFacturaE.ParamByName('UUID').AsString:= Factura.Timbre.UUID;
+        cmdActualizaFacturaE.ParamByName('FechaTimbrado').AsDateTime:= Factura.Timbre.FechaTimbrado;
+        cmdActualizaFacturaE.ParamByName('NoCertificadoSAT').AsString:= Factura.Timbre.NoCertificadoSAT;
+        cmdActualizaFacturaE.ParamByName('SELLOSAT').AsString:= Factura.Timbre.SelloSAT;
+        cmdActualizaFacturaE.ParamByName('CADENATIMBRE').AsString:= '||1.0|'+Factura.Timbre.UUID+'|'+datetostr(Factura.Timbre.FechaTimbrado)+
+                                                                    '|'+Factura.Timbre.SelloSAT+'|'+Factura.Timbre.NoCertificadoSAT+
+                                                                    '||';
+        cmdActualizaFacturaE.ParamByName('CBB').AsString:= Format('?re=%s&rr=%s&tt=%s&id=%s',
+                                                                  [Emisor.RFC,
+                                                                   Receptor.RFC,
+                                                                   FloatToStrF(Factura.Total, ffFixed, 17, 6),
+                                                                   Factura.Timbre.UUID]);
+
+        cmdActualizaFacturaE.ParamByName('ACUSE').AsString:= Factura.Timbre.Referencia;
+        cmdActualizaFacturaE.ParamByName('FacturaID').AsInteger:= Datos.Factura.FacturaID;
+        cmdActualizaFacturaE.ParamByName('EstacionID').AsInteger:= Datos.Factura.NumeroEstacion;
+        cmdActualizaFacturaE.Execute;
+
+
+        // Guardamos la factura una vez timbrada
+        Factura.Guardar(archivoFacturaXML);
+        // *********** PARA LA REPRESENTACION GRAFICA ***********
+        // Generamos el CBB del CFDI
+        generadorCBB := TGeneradorCBB.Create;
+        // Generamos el CBB que por default se genera de 1200x1200px para que tenga la resolucion necesaria
+        generadorCBB.GenerarImagen(Emisor,
+                                   Receptor,
+                                   Factura.Total,
+                                   TimbreDeFactura.UUID,
+                                   rutaImagenCBB);
+        generadorCBB.Free;
+
+        // Generamos la Cadena Original del Timbre:
+        //Writeln('Cadena Original del Timbre Fiscal:');
+        //Writeln(Factura.CadenaOriginalTimbre);
+
+        //WriteLn('CFDI generado con éxito en ' + archivoFacturaXML + '. Presiona cualquier tecla para cancelarlo');
+        //Readln;
+
+        // Para cancelar el CFDI simplemente hacemos la siguiente llamada
+        //Writeln('Mandando cancelar la factura con el PAC...');
+        //if ProveedorTimbrado.CancelarDocumento(Factura.XML) then
+        //  Writeln('El CFDI fue cancelado correctamente. Presiona cualquier tecla para salir')
+        //else
+        //  Writeln('El CFDI no pudo ser cancelado.');
+
+        //Readln;
+      finally
+        ProveedorTimbrado.Free;
+        FreeAndNil(Factura);
+
+        result:= 'OK';
+      end;
+
+    except
+    on E: Exception do
+    begin
+      result:= E.Message;
+      //WriteLn('Ocurrio un error:');
+      //Writeln(E.ClassName, ': ', E.Message);
+      //ReadLn;
+    end;
+
+    End;
+
+
     Datos.Free;
   end;
 end;

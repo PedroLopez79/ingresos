@@ -158,6 +158,7 @@ TFETimbre = record
   NoCertificadoSAT : WideString;
   SelloSAT : WideString;
   XML: WideString;
+  Referencia: String;
 end;
 
 TFEImpuestoTrasladado = record

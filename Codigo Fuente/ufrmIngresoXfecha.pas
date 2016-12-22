@@ -1523,6 +1523,7 @@ begin
   cdsTipoComprobacion.Filtered:=True;
   s:= '';
   cdsTipoComprobacion.First;
+  IDTIPOVALOR:= cdsTipoComprobacion.FieldByName('IDTIPOCOMPROBACION').AsInteger;
   while not cdsTipoComprobacion.EOF do
   begin
     s:= s + ' IDTIPOCOMPROBACION ='+cdsTipoComprobacion.FieldByName('IDTIPOCOMPROBACION').AsString;

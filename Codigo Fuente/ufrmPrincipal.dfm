@@ -45,6 +45,7 @@ object frmPrincipal: TfrmPrincipal
       Index = 0
     end
     object RibbonTab7: TdxRibbonTab
+      Active = True
       Caption = 'Ingresos'
       Groups = <
         item
@@ -64,7 +65,6 @@ object frmPrincipal: TfrmPrincipal
       Index = 2
     end
     object RibbonTab3: TdxRibbonTab
-      Active = True
       Caption = 'Clientes'
       Groups = <
         item
@@ -927,7 +927,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Proveedor'
       Visible = ivAlways
-      LargeImageIndex = 61
+      LargeImageIndex = 73
     end
     object dxBarLargeButton6: TdxBarLargeButton
       Tag = 16

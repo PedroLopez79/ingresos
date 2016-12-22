@@ -64,7 +64,6 @@ type
     cxLabel4: TcxLabel;
     cdsTipoMovAlmacen: TDACDSDataTable;
     dsTipoMovAlmacen: TDADataSource;
-    cdsMovimientoAlmacen2: TDACDSDataTable;
     dsMovimientoAlmacen2: TDADataSource;
     cdsAlmacen2: TDACDSDataTable;
     dsAlmacen2: TDADataSource;
@@ -82,6 +81,7 @@ type
     cdsDetalleMovAlmacen2: TDACDSDataTable;
     Panel3: TPanel;
     Panel4: TPanel;
+    cdsMovimientoAlmacen2: TDACDSDataTable;
     procedure dbCbxAlmacenEnter(Sender: TObject);
     procedure cdsDetalleMovAlmacen2ProductoIDValidate(Sender: TDACustomField);
     procedure cxGridDBTableView3FocusedRecordChanged(

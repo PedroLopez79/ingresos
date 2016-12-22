@@ -34,7 +34,10 @@ uses HTTPSend,
      ComprobanteFiscal,
      FeCFDv32,
      FeCFD,
-     FECancelaComercioDigital;
+     FECancelaComercioDigital,
+     IdSSLOpenSSL,
+     IdHTTP,
+     ssl_openssl;
 
 type
  ECDNoPeticionVacia = class(Exception); // Error código 001
@@ -79,9 +82,9 @@ public
  end;
 
 const
-  _URL_API_TIMBRADO = 'http://pruebas.comercio-digital.mx/timbre/timbrar.aspx?rfc=%s&pwd=%s';
-  _URL_API_CANCELAR = 'http://pruebas.comercio-digital.mx/cancela/uuid.aspx';
-  _URL_API_CANCELAR_PRM = '?rfc=%s&pwd=%s';  
+  _URL_API_TIMBRADO = 'https://pruebas.comercio-digital.mx/timbre/timbrar.aspx?usr=%s&pwd=%s';
+  _URL_API_CANCELAR = 'https://pruebas.comercio-digital.mx/cancela/uuid.aspx';
+  _URL_API_CANCELAR_PRM = '?rfc=%s&pwd=%s';
 implementation
 
 uses FacturaReglamentacion;
@@ -297,34 +300,36 @@ end;
 function TPACComercioDigital.RealizarPeticionREST(const URL: string; const aDocumentoXML:
     TTipoComprobanteXML): TTipoComprobanteXML;
 var
-  HTTP: THTTPSend;
   resultadoAPI : TStringStream;
-  respuestaDeServidor: TStrings;
-  llamadoExitoso: Boolean;
+  LHandler: TIdSSLIOHandlerSocketOpenSSL;
+  HTTP: TIdHTTP;
+  sstream: TStringStream;
+  XML: String;
 begin
+  XML:= aDocumentoXML.Replace('?xml version="1.0"?', '?xml version="1.0" encoding="UTF-8"?');
   // TODO: Cambiar este codigo para no depender de Synapse
   {$IF Compilerversion >= 20}
-   resultadoAPI := TStringStream.Create(aDocumentoXML,TEncoding.UTF8 );
+  resultadoAPI := TStringStream.Create(XML,TEncoding.UTF8 );
   {$ELSE}
-   resultadoAPI := TStringStream.Create(aDocumentoXML);
+  resultadoAPI := TStringStream.Create(XML);
   {$IFEND}
-  HTTP := THTTPSend.Create;
-  respuestaDeServidor := TStringList.Create;
-  try
-    // Copiamos el documento XML al Memory Stream
-    resultadoAPI.WriteString(aDocumentoXML);
-    HTTP.Document.CopyFrom(resultadoAPI, 0);
-    llamadoExitoso:=HTTP.HTTPMethod('POST', URL);
+  HTTP:= TidHTTP.Create;
 
-    if llamadoExitoso then
-    begin
-      respuestaDeServidor.LoadFromStream(HTTP.Document);
-      Result := respuestaDeServidor.Text;
-    end else
-      raise Exception.Create('Error al timbrar en API:' + HTTP.ResultString);
+  LHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+  HTTP.IOHandler:=LHandler;
+
+  try
+
+    HTTP.Request.ContentType := 'text/xml';
+    http.Request.CharSet:= 'UTF-8';
+
+    sstream      := TStringStream.Create('', TEncoding.UTF8);
+    //resultadoAPI := TStringStream.Create(XML,TEncoding.UTF8 );
+    HTTP.Post(URL, resultadoAPI, sstream);
+
+    Result:= sstream.DataString;
   finally
     HTTP.Free;
-    respuestaDeServidor.Free;
     resultadoAPI.Free;
   end;
 end;
@@ -378,6 +383,8 @@ var
 begin
   // TODO: Cambiar este codigo para no depender de Synapse
   HTTP := THTTPSend.Create;
+  HTTP.Sock.CreateWithSSL(TSSLOpenSSL);
+  HTTP.Sock.SSLDoConnect;
   respuestaDeServidor := TStringList.Create;
   Res:= TStringList.Create;
   try
@@ -447,8 +454,13 @@ begin
       Result.NoCertificadoSAT:=nodoXMLTimbre.NoCertificadoSAT;
       Result.SelloSAT:=nodoXMLTimbre.SelloSAT;
       Result.XML := nodoXMLTimbre.XML;
+
+      Result.Referencia:= 'OK';
     end else
-      ProcesarCodigoDeError(respuestaCadena);
+    begin
+      Result.Referencia:= respuestaCadena;
+      //ProcesarCodigoDeError(respuestaCadena);
+    end;
   except
     On E:Exception do
     begin

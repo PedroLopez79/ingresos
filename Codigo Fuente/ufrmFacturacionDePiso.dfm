@@ -5,7 +5,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
   ClientHeight = 618
   ClientWidth = 812
   Position = poDesigned
-  ExplicitTop = -174
   ExplicitWidth = 812
   ExplicitHeight = 618
   PixelsPerInch = 96
@@ -444,6 +443,10 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     object cxTabTicket: TcxTabSheet
       Caption = 'Tickets '
       ImageIndex = 21
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGroupBox3: TcxGroupBox
         Left = 0
         Top = 0
@@ -548,6 +551,10 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     object cxTabCupones: TcxTabSheet
       Caption = 'Cupones  '
       ImageIndex = 23
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrdCupon: TcxGrid
         Left = 0
         Top = 0
@@ -626,7 +633,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 0
-        ExplicitTop = 1
         Height = 177
         Width = 783
         object cxLabel5: TcxLabel
@@ -1425,11 +1431,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
         Size = 20
       end
       item
-        Name = 'CCVENTA'
-        DataType = datString
-        Size = 20
-      end
-      item
         Name = 'CCIVA'
         DataType = datString
         Size = 20
@@ -1449,6 +1450,24 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
       item
         Name = 'IDUNIDADMEDIDA'
         DataType = datInteger
+      end
+      item
+        Name = 'INVENTARIABLE'
+        DataType = datBoolean
+      end
+      item
+        Name = 'BARRAS'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CCVENTA'
+        DataType = datBlob
+      end
+      item
+        Name = 'UNIDADMEDIDA'
+        DataType = datString
+        Size = 100
       end>
     LogChanges = False
     LogicalName = 'spProducto'
@@ -1952,7 +1971,22 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
       end
       item
         Name = 'LOGOESTACION'
-        DataType = datMemo
+        DataType = datBlob
+      end
+      item
+        Name = 'PAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXPAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXREFERENCIA'
+        DataType = datString
+        Size = 100
       end>
     LogChanges = False
     LogicalName = 'ObtenerDatosEstacion'

@@ -407,7 +407,7 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = Conceptos
+      Properties.ActivePage = cxTabSheet6
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dmImages.Imagenes2
       OnChange = pgcConceptosChange
@@ -897,6 +897,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object Conceptos: TcxTabSheet
         Caption = 'Ventas'
         ImageIndex = 61
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgConceptos: TcxGrid
           Left = 0
           Top = 0
@@ -1009,6 +1013,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet2: TcxTabSheet
         Caption = 'Creditos,Debitos o Cupones'
         ImageIndex = 58
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgCreditosDebitosCupones: TcxGrid
           Left = 0
           Top = 0
@@ -1118,6 +1126,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet1: TcxTabSheet
         Caption = 'Otros Productos'
         ImageIndex = 62
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
@@ -1220,6 +1232,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet3: TcxTabSheet
         Caption = 'Documentos'
         ImageIndex = 39
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgClientes: TcxGrid
           Left = 0
           Top = 0
@@ -1332,6 +1348,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet4: TcxTabSheet
         Caption = 'Efectivo'
         ImageIndex = 56
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgEfectivo: TcxGrid
           Left = 0
           Top = 0
@@ -1399,6 +1419,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet5: TcxTabSheet
         Caption = 'Salida de Efectivo'
         ImageIndex = 60
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgSalidaEfectivos: TcxGrid
           Left = 0
           Top = 0
@@ -1446,6 +1470,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet7: TcxTabSheet
         Caption = 'Cheques'
         ImageIndex = 65
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgCheques: TcxGrid
           Left = 0
           Top = 0
@@ -1541,6 +1569,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet8: TcxTabSheet
         Caption = 'Otros'
         ImageIndex = 68
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgOtros: TcxGrid
           Left = 0
           Top = 0
@@ -1611,6 +1643,10 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object cxTabSheet9: TcxTabSheet
         Caption = 'Diferencias'
         ImageIndex = 66
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgDiferencias: TcxGrid
           Left = 0
           Top = 0

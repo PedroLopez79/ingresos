@@ -87,6 +87,8 @@ type
     cxDBTextEdit16: TcxDBTextEdit;
     cxDBTextEdit17: TcxDBTextEdit;
     cxLabel19: TcxLabel;
+    cxLabel20: TcxLabel;
+    cxDBTextEdit18: TcxDBTextEdit;
     procedure FormCreate(Sender: TObject);
     procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
     procedure cdsCatalogoBeforePost(DataTable: TDADataTable);

@@ -777,7 +777,7 @@ end;
 procedure TFrmFacturacionDePiso.GrabarFactura;
 var
   Detalle:TDetalleFactura;
-
+  resultado: String;
 begin
   DM.DatosFactura:=TDatosFactura.Create;
   DM.DatosFactura.Factura:=TFactura.Create;
@@ -792,22 +792,73 @@ begin
   DM.DatosFactura.Factura.FormaPagoID:=cdsFactura.FieldByName('FormaPagoID').AsInteger;
   DM.DatosFactura.Factura.UsuarioID:=DM.Seguridad.idEmpleado;
   DM.DatosFactura.Factura.NumeroEstacion:= DM.NumeroEstacion;
-  DM.DatosFactura.Factura.IDCondicionPago:= cdsFactura.FieldByName('IDCONDICIONPAGO').AsInteger;
-  DM.DatosFactura.Factura.MetodoPago:= cdsFactura.FieldByName('METODOPAGO').AsString;
+  DM.DatosFactura.Factura.IDCondicionPago:= cdsFactura.FieldByName('TipoFacturaID').AsInteger;
+  DM.DatosFactura.Factura.Tickets:= mDescripcion.Text;
+
+  //DATOS DE EMISOR...........................................................//
+  //..........................................................................//
+  DM.DatosFactura.Emisor.RFC:= cdsEstacion.FieldByName('RFC').AsString;
+  DM.DatosFactura.Emisor.NOMBRE:= cdsEstacion.FieldByName('NOMBRE').AsString;
+  DM.DatosFactura.Emisor.CALLE:= cdsEstacion.FieldByName('CALLE').AsString;
+  DM.DatosFactura.Emisor.NOEXTERIOR:= cdsEstacion.FieldByName('NOEXTERIOR').AsString;
+  DM.DatosFactura.Emisor.NOINTERIOR:= cdsEstacion.FieldByName('NOINTERIOR').AsString;
+  DM.DatosFactura.Emisor.CODIGOPOSTAL:= cdsEstacion.FieldByName('CODIGOPOSTAL').AsString;
+  DM.DatosFactura.Emisor.COLONIA:= cdsEstacion.FieldByName('COLONIA').AsString;
+  DM.DatosFactura.Emisor.MUNICIPIO:= cdsEstacion.FieldByName('MUNICIPIO').AsString;
+  DM.DatosFactura.Emisor.ESTADO:= cdsEstacion.FieldByName('ESTADO').AsString;
+  DM.DatosFactura.Emisor.PAIS:= cdsEstacion.FieldByName('PAIS').AsString;
+  DM.DatosFactura.Emisor.LOCALIDAD:= cdsEstacion.FieldByName('LOCALIDAD').AsString;
+  DM.DatosFactura.Emisor.REGIMENFISCAL:= cdsEstacion.FieldByName('REGIMENFISCAL').AsString;
+  DM.DatosFactura.Emisor.METODOPAGO:= dbCbxFormaPago.Text;
+
+  //EMSIOR EXPEDIDO EN........................................................//
+  //..........................................................................//
+  DM.DatosFactura.EmisorExpedidoEn.CALLE:= cdsEstacion.FieldByName('EXCALLE').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.NOEXTERIOR:= cdsEstacion.FieldByName('EXNOEXTERIOR').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.NOINTERIOR:= cdsEstacion.FieldByName('EXNOINTERIOR').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.CODIGOPOSTAL:= cdsEstacion.FieldByName('EXCODIGOPOSTAL').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.COLONIA:= cdsEstacion.FieldByName('EXCOLONIA').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.MUNICIPIO:= cdsEstacion.FieldByName('EXMUNICIPIO').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.ESTADO:= cdsEstacion.FieldByName('EXESTADO').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.PAIS:= cdsEstacion.FieldByName('EXPAIS').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.LOCALIDAD:= cdsEstacion.FieldByName('EXLOCALIDAD').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.REFERENCIA:= cdsEstacion.FieldByName('EXREFERENCIA').AsString;
+  DM.DatosFactura.EmisorExpedidoEn.LUGARDEEXPEDICION:= cdsEstacion.FieldByName('EXLOCALIDAD').AsString;
+
+  //RECEPTOR..................................................................//
+  //..........................................................................//
+  DM.DatosFactura.Receptor.RFC:= cdsCliente.FieldByName('RFC').AsString;
+  DM.DatosFactura.Receptor.NOMBRE:= cdsCliente.FieldByName('NOMBRE').AsString;
+  DM.DatosFactura.Receptor.CALLE:= cdsCliente.FieldByName('CALLE').AsString;
+  DM.DatosFactura.Receptor.NOEXTERIOR:= cdsCliente.FieldByName('NOEXTERIOR').AsString;
+  DM.DatosFactura.Receptor.NOINTERIOR:= cdsCliente.FieldByName('NOINTERIOR').AsString;
+  DM.DatosFactura.Receptor.CODIGOPOSTAL:= cdsCliente.FieldByName('CODIGOPOSTAL').AsString;
+  DM.DatosFactura.Receptor.COLONIA:= cdsCliente.FieldByName('COLONIA').AsString;
+  DM.DatosFactura.Receptor.MUNICIPIO:= cdsCliente.FieldByName('MUNICIPIO').AsString;
+  DM.DatosFactura.Receptor.ESTADO:= cdsCliente.FieldByName('ESTADO').AsString;
+  DM.DatosFactura.Receptor.PAIS:= cdsCliente.FieldByName('PAIS').AsString;
+  DM.DatosFactura.Receptor.LOCALIDAD:= cdsCliente.FieldByName('LOCALIDAD').AsString;
+
   DM.DatosFactura.Detalles:=ATDetalleFactura.Create;
   cdsDetalleFactura.First;
   while not cdsDetalleFactura.EOF do
   begin
-    Detalle:=TDetalleFactura.Create;
-    Detalle.Cantidad:=cdsDetalleFactura.FieldByName('Cantidad').AsFloat;
-    Detalle.Precio:=cdsDetalleFactura.FieldByName('Precio').AsFloat;
-    Detalle.Importe:=cdsDetalleFactura.FieldByName('Importe').AsFloat;
-    Detalle.ProductoID:=cdsDetalleFactura.FieldByName('ProductoID').AsInteger;
+    Detalle            :=TDetalleFactura.Create;
+    Detalle.Cantidad   :=cdsDetalleFactura.FieldByName('Cantidad').AsFloat;
+    Detalle.Precio     :=cdsDetalleFactura.FieldByName('Precio').AsFloat;
+    Detalle.Importe    :=cdsDetalleFactura.FieldByName('Importe').AsFloat;
+    Detalle.ProductoID :=cdsDetalleFactura.FieldByName('ProductoID').AsInteger;
+    Detalle.Descripcion:=cdsDetalleFactura.FieldByName('Descripcion').AsString;
+    cdsProducto.Locate('IDPRODUCTO', cdsDetalleFactura.FieldByName('ProductoID').AsInteger, [loCaseInsensitive]);
+    Detalle.Unidad     :=cdsProducto.FieldByName('UNIDADMEDIDA').AsString;
     DM.DatosFactura.Detalles.Add(Detalle);
     cdsDetalleFactura.Next;
   end;
-  DM.Servidor.GuardarDatosFactura(DM.DatosFactura);
-  DM.ImprimirFactura(DM.DatosFactura.Factura.FacturaID);
+  resultado:= DM.Servidor.GuardarDatosFactura(DM.DatosFactura);
+  if resultado = 'OK' then
+      DM.ImprimirFactura(DM.DatosFactura.Factura.FacturaID, DM.NUMEROESTACION)
+  else
+      Showmessage(resultado);
 end;
 
 procedure TFrmFacturacionDePiso.BuscarCliente;
@@ -834,7 +885,6 @@ begin
     cdsDetalleFactura.FieldByName('ProductoID').AsInteger:=Datos.Clave;
     cdsDetalleFactura.FieldByName('Precio').AsFloat:=DM.Servidor.PrecioProducto(cdsDetalleFactura.FieldByName('ProductoID').AsInteger);
     cdsDetalleFactura.FieldByName('Descripcion').AsString:= Datos.Nombre;
-
     cxGridDBTableView3Cantidad.Focused:= true;
   end;
 end;

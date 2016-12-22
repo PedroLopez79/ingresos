@@ -53,4 +53,20 @@ select @HorarioIni=:HorarioIni
 select @HorarioFin=:HorarioFin
 select @NumeroEstacionIni=:NumeroEstacionIni
 select @NumeroEstacionFin=:NumeroEstacionFin
-SELECT ISNULL(MAX(IDTURNO),0) + 1 AS IDTURNO FROM INGRESOS WHERE NUMEROESTACION= @NUMEROESTACION
+SELECT     Factura.FacturaID, Factura.Serie, Factura.Folio, Estacion.Nombre AS ESNombre, Estacion.RazonSocial AS ESRazonSocial,factura.formapagoID as formadepago, 
+                      Estacion.RFC AS ESRFC, Estacion.Calle AS ESCalle, Estacion.Colonia AS ESColonia, Estacion.NoExterior AS ESNoExterior, Estacion.NoInterior AS ESNoInterior, 
+                      Estacion.CodigoPostal AS ESCodigoPostal, Estacion.Municipio AS ESMunicipio, Estacion.Localidad AS ESLocalidad, Estacion.Estado AS ESEstado, Estacion.ExCalle, 
+                      Estacion.ExColonia, Estacion.ExNoExterior, Estacion.ExNoInterior, Estacion.ExCodigoPostal, Estacion.ExMunicipio, Estacion.ExLocalidad, Estacion.ExEstado, 
+                      Cliente.idCliente,Cliente.Nombre, Cliente.RFC, Cliente.Calle, Cliente.Colonia, Cliente.NoExterior, Cliente.NoInterior, Cliente.CodigoPostal, Cliente.Ciudad AS Municipio, 
+                      Cliente.Localidad, Cliente.Estado, Factura.FechaFacturaE AS Fecha, Factura.NoCertificado, Factura.NoAprobacion, Factura.EjercicioAprobacion, 
+                      Factura.CadenaOriginal, Factura.SelloDigital, Factura.Tickets, Factura.Subtotal, Factura.Impuesto, Factura.Total, Factura.ImpuestoPorcentaje, 
+                      DetalleFactura.Cantidad, DetalleFactura.Precio, DetalleFactura.Importe, DetalleFactura.ProductoID, Producto.CODIGOPRODUCTO, 
+                      Producto.Nombre AS Producto, Estacion.IDESTACION, UNIDADESMEDIDA.DESCRIPCION, Factura.CBB, Factura.NoCertificadoSAT, Factura.UUID, Factura.Acuse, Factura.SelloSAT,
+                      Factura.CADENATIMBRE, FechaTimbrado, Cliente.CCA, Estacion.RegimenFiscal 
+FROM         Factura INNER JOIN
+                      DetalleFactura ON Factura.FacturaID = DetalleFactura.FacturaID INNER JOIN
+                      Producto ON DetalleFactura.ProductoID = Producto.IDPRODUCTO INNER JOIN
+                      CLIENTEEFECTIVO AS Cliente ON Factura.ClienteID = Cliente.IDCLIENTE INNER JOIN
+                      Estacion ON Factura.EstacionID = Estacion.IDESTACION INNER JOIN
+                      UNIDADESMEDIDA ON UNIDADESMEDIDA.IDUNIDADMEDIDA = PRODUCTO.IDUNIDADMEDIDA 
+WHERE     (Factura.EstacionID = @NUMEROESTACION) AND (Factura.FacturaID = @FACTURA)

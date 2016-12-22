@@ -6,10 +6,13 @@ inherited frmProveedor: TfrmProveedor
   TextHeight = 13
   inherited pgcCatalogo: TcxPageControl
     Width = 662
+    Properties.ActivePage = cxTabSheet2
+    ExplicitWidth = 662
     ClientRectRight = 656
     inherited cxTabSheet1: TcxTabSheet
       inherited dbgCatalogo: TcxGrid
         Width = 653
+        ExplicitWidth = 653
         inherited dbgCatalogoDBTableView1: TcxGridDBTableView
           object dbgCatalogoDBTableView1RecID: TcxGridDBColumn
             DataBinding.FieldName = 'RecID'
@@ -53,7 +56,7 @@ inherited frmProveedor: TfrmProveedor
     inherited cxTabSheet2: TcxTabSheet
       ExplicitLeft = 3
       ExplicitTop = 3
-      ExplicitWidth = 616
+      ExplicitWidth = 653
       ExplicitHeight = 416
       object Panel1: TPanel
         Left = 0
@@ -72,8 +75,7 @@ inherited frmProveedor: TfrmProveedor
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
-        TabOrder = 13
-        ExplicitWidth = 616
+        TabOrder = 12
       end
       object Panel2: TPanel
         Left = 0
@@ -84,12 +86,12 @@ inherited frmProveedor: TfrmProveedor
         BevelOuter = bvNone
         Color = clNone
         ParentBackground = False
-        TabOrder = 14
-        ExplicitWidth = 616
+        TabOrder = 13
       end
       object LblNoProducto: TcxLabel
         Left = 16
         Top = 48
+        Hint = ''
         Caption = 'ID'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -97,6 +99,7 @@ inherited frmProveedor: TfrmProveedor
       object TxtNoProducto: TcxDBTextEdit
         Left = 63
         Top = 47
+        Hint = ''
         TabStop = False
         DataBinding.DataField = 'IDPROVEEDOR'
         DataBinding.DataSource = dsCatalogo
@@ -114,6 +117,7 @@ inherited frmProveedor: TfrmProveedor
       object LblNombre: TcxLabel
         Left = 16
         Top = 76
+        Hint = ''
         Caption = 'Nombre'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -121,6 +125,7 @@ inherited frmProveedor: TfrmProveedor
       object TxtNombre: TcxDBTextEdit
         Left = 63
         Top = 74
+        Hint = ''
         DataBinding.DataField = 'NOMBRE'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -135,6 +140,7 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel1: TcxLabel
         Left = 16
         Top = 101
+        Hint = ''
         Caption = 'Calle'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -142,6 +148,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 63
         Top = 100
+        Hint = ''
         DataBinding.DataField = 'CALLE'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -156,6 +163,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit2: TcxDBTextEdit
         Left = 63
         Top = 126
+        Hint = ''
         DataBinding.DataField = 'COLONIA'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -170,6 +178,7 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel2: TcxLabel
         Left = 16
         Top = 127
+        Hint = ''
         Caption = 'Colonia'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -177,6 +186,7 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel3: TcxLabel
         Left = 16
         Top = 154
+        Hint = ''
         Caption = 'Ciudad'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -184,6 +194,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit3: TcxDBTextEdit
         Left = 63
         Top = 153
+        Hint = ''
         DataBinding.DataField = 'CIUDAD'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -198,6 +209,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit4: TcxDBTextEdit
         Left = 63
         Top = 235
+        Hint = ''
         DataBinding.DataField = 'TELEFONO'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -212,34 +224,15 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel4: TcxLabel
         Left = 16
         Top = 236
+        Hint = ''
         Caption = 'Telefono'
-        Style.BorderStyle = ebsNone
-        Transparent = True
-      end
-      object cxDBTextEdit9: TcxDBTextEdit
-        Left = 105
-        Top = 261
-        DataBinding.DataField = 'CC'
-        DataBinding.DataSource = dsCatalogo
-        Properties.CharCase = ecUpperCase
-        Style.BorderStyle = ebsUltraFlat
-        Style.LookAndFeel.NativeStyle = False
-        StyleDisabled.LookAndFeel.NativeStyle = False
-        StyleFocused.LookAndFeel.NativeStyle = False
-        StyleHot.LookAndFeel.NativeStyle = False
-        TabOrder = 8
-        Width = 166
-      end
-      object cxLabel9: TcxLabel
-        Left = 16
-        Top = 262
-        Caption = 'Cuenta Contable'
         Style.BorderStyle = ebsNone
         Transparent = True
       end
       object cxDBTextEdit5: TcxDBTextEdit
         Left = 63
         Top = 181
+        Hint = ''
         DataBinding.DataField = 'RFC'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -254,6 +247,7 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel5: TcxLabel
         Left = 15
         Top = 182
+        Hint = ''
         Caption = 'RFC'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -261,6 +255,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit6: TcxDBTextEdit
         Left = 63
         Top = 287
+        Hint = ''
         DataBinding.DataField = 'CODIGOPOSTAL'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -269,12 +264,13 @@ inherited frmProveedor: TfrmProveedor
         StyleDisabled.LookAndFeel.NativeStyle = False
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
-        TabOrder = 9
+        TabOrder = 8
         Width = 103
       end
       object cxLabel6: TcxLabel
         Left = 15
         Top = 288
+        Hint = ''
         Caption = 'C.P.'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -282,6 +278,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit7: TcxDBTextEdit
         Left = 63
         Top = 208
+        Hint = ''
         DataBinding.DataField = 'EMAIL'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -296,6 +293,7 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel7: TcxLabel
         Left = 16
         Top = 209
+        Hint = ''
         Caption = 'Email'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -303,6 +301,7 @@ inherited frmProveedor: TfrmProveedor
       object cxLabel8: TcxLabel
         Left = 391
         Top = 77
+        Hint = ''
         Caption = 'Cuenta Contable (Compra)'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -310,6 +309,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit8: TcxDBTextEdit
         Left = 518
         Top = 75
+        Hint = ''
         DataBinding.DataField = 'CCCompra'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -318,12 +318,13 @@ inherited frmProveedor: TfrmProveedor
         StyleDisabled.LookAndFeel.NativeStyle = False
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
-        TabOrder = 10
+        TabOrder = 9
         Width = 118
       end
       object cxLabel11: TcxLabel
         Left = 391
         Top = 127
+        Hint = ''
         Caption = 'Plazo Pago'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -331,6 +332,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit11: TcxDBTextEdit
         Left = 518
         Top = 126
+        Hint = ''
         DataBinding.DataField = 'PlazoPago'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -339,12 +341,13 @@ inherited frmProveedor: TfrmProveedor
         StyleDisabled.LookAndFeel.NativeStyle = False
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
-        TabOrder = 12
+        TabOrder = 11
         Width = 118
       end
       object cxLabel10: TcxLabel
         Left = 391
         Top = 101
+        Hint = ''
         Caption = 'Cuenta Contable (Pago)'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -352,6 +355,7 @@ inherited frmProveedor: TfrmProveedor
       object cxDBTextEdit10: TcxDBTextEdit
         Left = 518
         Top = 100
+        Hint = ''
         DataBinding.DataField = 'CCPago'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -360,7 +364,7 @@ inherited frmProveedor: TfrmProveedor
         StyleDisabled.LookAndFeel.NativeStyle = False
         StyleFocused.LookAndFeel.NativeStyle = False
         StyleHot.LookAndFeel.NativeStyle = False
-        TabOrder = 11
+        TabOrder = 10
         Width = 118
       end
     end
@@ -431,9 +435,9 @@ inherited frmProveedor: TfrmProveedor
         Name = 'PlazoPago'
         DataType = datInteger
       end>
+    LogicalName = 'dbo PROVEEDOR'
     RemoteDataAdapter = DM.RemoteDataAdapter
     OnNewRecord = cdsCatalogoNewRecord
-    LogicalName = 'dbo PROVEEDOR'
   end
   inherited dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset

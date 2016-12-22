@@ -16,7 +16,13 @@ uses
   cxData, cxDataStorage, cxEdit, DB, cxDBData, dxmdaset, uDAInterfaces,
   uDADataTable, uDAScriptingProvider, uDAMemDataTable, cxGridLevel, cxClasses,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGrid, cxPC, cxContainer, ExtCtrls, cxTextEdit, cxDBEdit, cxLabel;
+  cxGrid, cxPC, cxContainer, ExtCtrls, cxTextEdit, cxDBEdit, cxLabel,
+  dxSkinBlueprint, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
+  dxSkinWhiteprint, cxPCdxBarPopupMenu, cxNavigator, uDAFields, uROComponent;
 
 type
   TfrmUnidadesMedida = class(TfrmCatalogo)

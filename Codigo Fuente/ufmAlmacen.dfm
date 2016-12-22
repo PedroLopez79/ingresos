@@ -38,6 +38,7 @@ inherited frmAlmacen: TfrmAlmacen
       object LblNoProducto: TcxLabel
         Left = 16
         Top = 48
+        Hint = ''
         Caption = 'Almacen'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -45,6 +46,7 @@ inherited frmAlmacen: TfrmAlmacen
       object TxtNoProducto: TcxDBTextEdit
         Left = 173
         Top = 47
+        Hint = ''
         TabStop = False
         DataBinding.DataField = 'IDALMACEN'
         DataBinding.DataSource = dsCatalogo
@@ -62,6 +64,7 @@ inherited frmAlmacen: TfrmAlmacen
       object LblNombre: TcxLabel
         Left = 16
         Top = 76
+        Hint = ''
         Caption = 'Nombre'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -69,6 +72,7 @@ inherited frmAlmacen: TfrmAlmacen
       object TxtNombre: TcxDBTextEdit
         Left = 173
         Top = 75
+        Hint = ''
         DataBinding.DataField = 'NOMBRE'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -83,6 +87,7 @@ inherited frmAlmacen: TfrmAlmacen
       object cxLabel11: TcxLabel
         Left = 16
         Top = 104
+        Hint = ''
         Caption = 'Empresa (Estacion de Servicio)'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -90,6 +95,7 @@ inherited frmAlmacen: TfrmAlmacen
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 173
         Top = 102
+        Hint = ''
         DataBinding.DataField = 'IDEMPRESA'
         DataBinding.DataSource = dsCatalogo
         Properties.KeyFieldNames = 'NUMEROESTACION'
@@ -150,16 +156,15 @@ inherited frmAlmacen: TfrmAlmacen
         Name = 'IDEMPRESA'
         DataType = datInteger
       end>
+    LogicalName = 'dbo ALMACEN'
     RemoteDataAdapter = DM.RemoteDataAdapter
     OnNewRecord = cdsCatalogoNewRecord
-    LogicalName = 'dbo ALMACEN'
   end
   inherited dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset
     Top = 344
   end
   object cdsEmpresa: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDCONFIGURACION'
@@ -343,12 +348,13 @@ inherited frmAlmacen: TfrmAlmacen
         DataType = datString
         Size = 50
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
-    AfterPost = cdsCatalogoAfterPost
-    AfterDelete = cdsCatalogoAfterPost
     LogicalName = 'dbo CONFIGURACION'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    AfterDelete = cdsCatalogoAfterPost
+    AfterPost = cdsCatalogoAfterPost
     IndexDefs = <>
     Left = 464
     Top = 312

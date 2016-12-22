@@ -1,9 +1,16 @@
 inherited frmLinea: TfrmLinea
   Caption = 'frmLinea'
+  ExplicitTop = -15
+  ExplicitWidth = 625
+  ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCatalogo: TcxPageControl
     inherited cxTabSheet1: TcxTabSheet
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 616
+      ExplicitHeight = 416
       inherited dbgCatalogo: TcxGrid
         inherited dbgCatalogoDBTableView1: TcxGridDBTableView
           object dbgCatalogoDBTableView1RecID: TcxGridDBColumn
@@ -47,6 +54,7 @@ inherited frmLinea: TfrmLinea
       object LblNoProducto: TcxLabel
         Left = 16
         Top = 48
+        Hint = ''
         Caption = 'ID'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -54,6 +62,7 @@ inherited frmLinea: TfrmLinea
       object TxtNoProducto: TcxDBTextEdit
         Left = 82
         Top = 47
+        Hint = ''
         TabStop = False
         DataBinding.DataField = 'IDLINEA'
         DataBinding.DataSource = dsCatalogo
@@ -71,6 +80,7 @@ inherited frmLinea: TfrmLinea
       object LblNombre: TcxLabel
         Left = 16
         Top = 88
+        Hint = ''
         Caption = 'Descripcion'
         Style.BorderStyle = ebsNone
         Transparent = True
@@ -78,6 +88,7 @@ inherited frmLinea: TfrmLinea
       object TxtNombre: TcxDBTextEdit
         Left = 82
         Top = 87
+        Hint = ''
         DataBinding.DataField = 'DESCRIPCION'
         DataBinding.DataSource = dsCatalogo
         Properties.CharCase = ecUpperCase
@@ -115,9 +126,9 @@ inherited frmLinea: TfrmLinea
         DataType = datString
         Size = 50
       end>
+    LogicalName = 'dbo LINEA'
     RemoteDataAdapter = DM.RemoteDataAdapter
     OnNewRecord = cdsCatalogoNewRecord
-    LogicalName = 'dbo LINEA'
   end
   inherited dsCatalogo: TDADataSource
     DataSet = cdsCatalogo.Dataset

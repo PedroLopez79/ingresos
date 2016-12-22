@@ -122,7 +122,7 @@ type
     function Modulo10(Valor : String) : Integer;
     function Modulo66(Cad : String) : Integer;
     procedure RawPrint(Texto, Impresora: string);
-    procedure ImprimirFactura(FacturaID: Integer);
+    procedure ImprimirFactura(FacturaID, ESTACION: Integer);
     procedure AgregarOpcionCombo(Items: TcxImageComboBoxItems; Descripcion: String; Valor: Variant);
     procedure PreparaDataset(ExportaID: Integer; Exportar: Boolean = False);
     function Campo(Nombre: string; Tipo, Size: Integer; Formato: string): TField;
@@ -518,12 +518,13 @@ begin
   repReportes.Print;
 end;
 
-procedure TDM.ImprimirFactura(FacturaID: Integer);
+procedure TDM.ImprimirFactura(FacturaID, ESTACION: Integer);
 var
   Aux: LibraryIngresos_Intf.TReporteBI;
 begin
   Aux:=DM.Servidor.BuscarReporte(FormatoFactura);
   DM.Parametros.Factura:=FacturaID;
+  DM.Parametros.NumeroEstacion:=ESTACION;
   try
   DM.Imprimir(Aux.SQL1, Aux.SQL2, Aux.Template, 'IMPRIMIENDO...', Aux.CampoJoin, False)
   finally

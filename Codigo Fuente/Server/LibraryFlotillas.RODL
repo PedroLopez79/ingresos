@@ -421,6 +421,8 @@
 </Operation>
 <Operation Name="GuardarDatosFactura" UID="{EB8F71F6-E70D-479A-968F-ED84CDF9C63F}">
 <Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
 <Parameter Name="DatosFactura" DataType="TDatosFactura" Flag="In" >
 </Parameter>
 </Parameters>
@@ -576,6 +578,10 @@
 <Element Name="Importe" DataType="Double">
 </Element>
 <Element Name="ProductoID" DataType="Integer">
+</Element>
+<Element Name="Unidad" DataType="AnsiString">
+</Element>
+<Element Name="Descripcion" DataType="AnsiString">
 </Element>
 </Elements>
 </Struct>
@@ -904,6 +910,14 @@
 <Element Name="LOCALIDAD" DataType="AnsiString">
 </Element>
 <Element Name="REGIMENFISCAL" DataType="AnsiString">
+</Element>
+<Element Name="METODOPAGO" DataType="AnsiString">
+</Element>
+<Element Name="ARCHIVOCERTIFICADO" DataType="AnsiString">
+</Element>
+<Element Name="ARCHIVOLLAVEPRIVADA" DataType="AnsiString">
+</Element>
+<Element Name="CLAVELLAVEPRIVADA" DataType="AnsiString">
 </Element>
 </Elements>
 </Struct>
