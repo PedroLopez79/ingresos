@@ -25,6 +25,13 @@ var
   RemoteDataAdapter: TDARemoteDataAdapter;
   DebugSerialLog: Boolean = False;
   CaracteresCupones: TCaracteres;
+  ECODEX: String;
+  COMERCIODIGITAL: String;
+  URLPACKTIMBRE: String;
+  URLPACKCANCELAR: String;
+  CREDENCIALESPACKRFC: String;
+  CREDENCIALESPACKCLAVE: String;
+  CREDENCIALESPACK_ECODEX_DISTRIBUIDORID: String;
 
 const
   B64Table= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';  

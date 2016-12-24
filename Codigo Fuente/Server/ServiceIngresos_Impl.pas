@@ -997,6 +997,9 @@ var
   Concepto, Concepto1, Concepto2 : TFEConcepto;
   generadorCBB: TGeneradorCBB;
   CredencialesPAC: TFEPACCredenciales;
+  ReferenciaTimbre: String;
+
+  FolioFE: Integer;
 const
   _URL_ECODEX_PRUEBAS = 'https://pruebas.ecodex.com.mx:2045';
 
@@ -1005,9 +1008,11 @@ begin
   try
     Datos.Assign(DatosFactura);
     CalculaIEPS(Datos);
+
     cmdFactura:=Schema.NewCommand(Connection,'spInsertarFactura') ;
     cmdFactura.ParamByName('FacturaID').AsInteger:=Datos.Factura.FacturaID;
-    cmdFactura.ParamByName('Folio').AsInteger:=Folio('FolioFactura',Datos.Factura.Serie);
+    FolioFE:= Folio('FolioFactura',Datos.Factura.Serie);
+    cmdFactura.ParamByName('Folio').AsInteger:=FolioFE;
     cmdFactura.ParamByName('Serie').AsString:=Datos.Factura.Serie;
     cmdFactura.ParamByName('Fecha').AsDateTime:=Datos.Factura.Fecha;
     cmdFactura.ParamByName('Ejercicio').AsString:=FormatDateTime('yyyy', Datos.Factura.Fecha);
@@ -1088,8 +1093,8 @@ begin
       Receptor.Direccion.Localidad   :=Datos.Receptor.LOCALIDAD;
 
       // 4. Definimos el certificado junto con su llave privada
-      Certificado.Ruta:=ExtractFilePath(Application.ExeName) + '\' + Emisor.RFC + '.cer';
-      Certificado.LlavePrivada.Ruta:=ExtractFilePath(Application.ExeName) + '\' + Emisor.RFC + '.key';
+      Certificado.Ruta:=ExtractFilePath(Application.ExeName) + '\' + inttostr(Datos.Factura.NumeroEstacion)+ '\' + Emisor.RFC + '.cer';
+      Certificado.LlavePrivada.Ruta:=ExtractFilePath(Application.ExeName) + '\' + inttostr(Datos.Factura.NumeroEstacion)+ '\' + Emisor.RFC + '.key';
       Certificado.LlavePrivada.Clave:='12345678a';
       //Certificado.Ruta              := Datos.Emisor.ARCHIVOCERTIFICADO;
       //Certificado.LlavePrivada.Ruta := Datos.Emisor.ARCHIVOLLAVEPRIVADA;
@@ -1134,34 +1139,44 @@ begin
         CreateDir(GetDesktopFolder() + '\Prueba-CFDI');
 
       archivoFacturaXML:=GetDesktopFolder() + '\Prueba-CFDI\MiFactura.xml';
-      rutaImagenCBB := GetDesktopFolder() + '\Prueba-CFDI\MiFactura-CBB.jpg';
+      //rutaImagenCBB := GetDesktopFolder() + '\Prueba-CFDI\MiFactura-CBB.jpg';
 
       // Mandamos generar el CFD en memoria antes de timbrarlo
-      Factura.Generar(12345, fpUnaSolaExhibicion);
+      //Factura.Generar(12345, fpUnaSolaExhibicion);
+      Factura.Generar(FolioFE, Datos.Factura.Serie, fpUnaSolaExhibicion);
 
       // Ya que tenemos el comprobante, lo mandamos timbrar con el PAC de nuestra elección,
       // por cuestiones de ejemplo, usaremos al PAC "Ecodex"
 
       //ProveedorTimbrado := TPACFinkOk.Create;
-      //ProveedorTimbrado := TPACEcodex.Create(_URL_ECODEX_PRUEBAS);
-      ProveedorTimbrado := TPACComercioDigital.Create; // Si queremos usar a Comercio Digital solo des-comentamos aqui
+      if ECODEX = 'SI' then
+         ProveedorTimbrado := TPACEcodex.Create(_URL_ECODEX_PRUEBAS);
+      if COMERCIODIGITAL = 'SI' then
+         ProveedorTimbrado := TPACComercioDigital.Create; // Si queremos usar a Comercio Digital solo des-comentamos aqui
 
       try
-        CredencialesPAC.RFC   := Emisor.RFC;
-        CredencialesPAC.Clave := 'PWD';
+        CredencialesPAC.RFC   := CREDENCIALESPACKRFC;
+        CredencialesPAC.Clave := CREDENCIALESPACKCLAVE;
         CredencialesPac.Certificado:= Certificado;  // Si queremos usar a Comercio Digital solo des-comentamos aqui
 
         // Este es el "ID de Integrador" de pruebas de Ecodex
-        //CredencialesPAC.DistribuidorID := '2b3a8764-d586-4543-9b7e-82834443f219';
+        if ECODEX = 'SI' then
+           CredencialesPAC.DistribuidorID := CREDENCIALESPACK_ECODEX_DISTRIBUIDORID;
+
         // Asignamos nuestras credenciales de acceso con el PAC (en caso de Ecodex asignamos la credencial como usuario e integrador)
-        //ProveedorTimbrado.AsignarCredenciales(CredencialesPAC, CredencialesPAC);
-        ProveedorTimbrado.AsignarCredenciales(CredencialesPAC);  // Si queremos usar a Comercio Digital solo des-comentamos aqui
+        if ECODEX = 'SI' then
+           ProveedorTimbrado.AsignarCredenciales(CredencialesPAC, CredencialesPAC);
+        if COMERCIODIGITAL = 'SI' then
+           ProveedorTimbrado.AsignarCredenciales(CredencialesPAC);  // Si queremos usar a Comercio Digital solo des-comentamos aqui
+
         // Mandamos timbrar el documento al PAC
         TimbreDeFactura := ProveedorTimbrado.TimbrarDocumento(Factura.XML);
 
         // Asignamos el timbre a la factura para que sea válida
-        //WriteLn('Asignando timbre a factura para generar CFDI');
-        Factura.AsignarTimbreFiscal(TimbreDeFactura);
+        try
+          Factura.AsignarTimbreFiscal(TimbreDeFactura);
+          ReferenciaTimbre:= TimbreDeFactura.Referencia
+        except ReferenciaTimbre:= TimbreDeFactura.Referencia end;
 
         //ACTUALIZAR DATOS DE FACTURA ELECTRONICA CFDI
         cmdActualizaFacturaE:=Schema.NewCommand(Connection,'spActualizaDatosFE') ;
@@ -1177,7 +1192,7 @@ begin
         cmdActualizaFacturaE.ParamByName('FechaTimbrado').AsDateTime:= Factura.Timbre.FechaTimbrado;
         cmdActualizaFacturaE.ParamByName('NoCertificadoSAT').AsString:= Factura.Timbre.NoCertificadoSAT;
         cmdActualizaFacturaE.ParamByName('SELLOSAT').AsString:= Factura.Timbre.SelloSAT;
-        cmdActualizaFacturaE.ParamByName('CADENATIMBRE').AsString:= '||1.0|'+Factura.Timbre.UUID+'|'+datetostr(Factura.Timbre.FechaTimbrado)+
+        cmdActualizaFacturaE.ParamByName('CADENATIMBRE').AsString:= '||1.0|'+Factura.Timbre.UUID+'|'+formatdatetime('yyyy-mm-dd',Factura.Timbre.FechaTimbrado)+'T'+formatdatetime('hh:mm:ss',Factura.Timbre.FechaTimbrado)+
                                                                     '|'+Factura.Timbre.SelloSAT+'|'+Factura.Timbre.NoCertificadoSAT+
                                                                     '||';
         cmdActualizaFacturaE.ParamByName('CBB').AsString:= Format('?re=%s&rr=%s&tt=%s&id=%s',
@@ -1186,7 +1201,7 @@ begin
                                                                    FloatToStrF(Factura.Total, ffFixed, 17, 6),
                                                                    Factura.Timbre.UUID]);
 
-        cmdActualizaFacturaE.ParamByName('ACUSE').AsString:= Factura.Timbre.Referencia;
+        cmdActualizaFacturaE.ParamByName('ACUSE').AsString:= ReferenciaTimbre;
         cmdActualizaFacturaE.ParamByName('FacturaID').AsInteger:= Datos.Factura.FacturaID;
         cmdActualizaFacturaE.ParamByName('EstacionID').AsInteger:= Datos.Factura.NumeroEstacion;
         cmdActualizaFacturaE.Execute;
@@ -1196,14 +1211,14 @@ begin
         Factura.Guardar(archivoFacturaXML);
         // *********** PARA LA REPRESENTACION GRAFICA ***********
         // Generamos el CBB del CFDI
-        generadorCBB := TGeneradorCBB.Create;
+        //generadorCBB := TGeneradorCBB.Create;
         // Generamos el CBB que por default se genera de 1200x1200px para que tenga la resolucion necesaria
-        generadorCBB.GenerarImagen(Emisor,
-                                   Receptor,
-                                   Factura.Total,
-                                   TimbreDeFactura.UUID,
-                                   rutaImagenCBB);
-        generadorCBB.Free;
+        //generadorCBB.GenerarImagen(Emisor,
+        //                           Receptor,
+        //                           Factura.Total,
+        //                           TimbreDeFactura.UUID,
+        //                           rutaImagenCBB);
+        //generadorCBB.Free;
 
         // Generamos la Cadena Original del Timbre:
         //Writeln('Cadena Original del Timbre Fiscal:');

@@ -76,8 +76,8 @@ public
   /// es la primer factura, deberá iniciar con el número 1 (Art. 29 Fraccion III)</param>
   /// <param name="fpFormaDePago">Forma de pago de la factura (Una sola exhibición o parcialidades)</param>
   /// <param name="sArchivo">Nombre del archivo junto con la ruta en la que se guardará el archivo XML</param>
-  procedure GenerarYGuardar(iFolio: Integer; fpFormaDePago: TFEFormaDePago; sArchivo: String); deprecated;
-  procedure Generar(const aFolio: Integer; aFormaDePago: TFEFormaDePago);
+  procedure GenerarYGuardar(iFolio: Integer; iSerie:String; fpFormaDePago: TFEFormaDePago; sArchivo: String); deprecated;
+  procedure Generar(const aFolio: Integer; const aSerie:String; aFormaDePago: TFEFormaDePago);
   procedure Guardar(const aArchivoDestino: String);
   procedure AsignarTimbreFiscal(const aTimbre: TFETimbre); override;
 published
@@ -147,13 +147,14 @@ begin
     Result:=inherited Certificado;
 end;
 
-procedure TFacturaElectronica.Generar(const aFolio: Integer; aFormaDePago: TFEFormaDePago);
+procedure TFacturaElectronica.Generar(const aFolio: Integer; const aSerie: String; aFormaDePago: TFEFormaDePago);
 begin
   if (inherited Receptor.RFC = '') then
       Raise Exception.Create('No hay un receptor configurado');
 
    // Especificamos los campos del CFD en el orden especifico
    // ya que de lo contrario no cumplirá con los requisitios del SAT
+   inherited Serie:=aSerie;
    inherited Folio:=aFolio;
    inherited FormaDePago:=aFormaDePago;
 
@@ -175,9 +176,9 @@ begin
    inherited GuardarEnArchivo(aArchivoDestino);
 end;
 
-procedure TFacturaElectronica.GenerarYGuardar(iFolio: Integer; fpFormaDePago: TFEFormaDePago; sArchivo: String);
+procedure TFacturaElectronica.GenerarYGuardar(iFolio: Integer; iSerie:String; fpFormaDePago: TFEFormaDePago; sArchivo: String);
 begin
-     Generar(iFolio, fpFormaDePago);
+     Generar(iFolio, iSerie, fpFormaDePago);
      Guardar(sArchivo);
 end;
 

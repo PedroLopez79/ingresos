@@ -868,10 +868,14 @@ begin
 
       // 5. Extraemos las propiedades del timbre de la respuesta del WebService
       Result := AsignarTimbreDeRespuestaDeEcodex(respuestaTimbrado.ComprobanteXML);
+      Result.Referencia:= 'OK';
       respuestaTimbrado.Free;
     except
       On E:Exception do
-        ProcesarExcepcionDePAC(E);
+      Begin
+        //ProcesarExcepcionDePAC(E);
+        Result.Referencia:= E.Message;
+      End;
     end;
   finally
     fUltimoXMLEnviado := GetUltimoXMLEnviadoEcodexWsTimbrado;

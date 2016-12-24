@@ -78,7 +78,6 @@ type
     cxDBTextEdit19: TcxDBTextEdit;
     cxLabel24: TcxLabel;
     cxDBTextEdit20: TcxDBTextEdit;
-    cxLabel22: TcxLabel;
     cxLabel25: TcxLabel;
     cxDBTextEdit21: TcxDBTextEdit;
     cxLabel26: TcxLabel;
@@ -114,8 +113,6 @@ type
     cxButton2: TcxButton;
     cdsConfiguracion: TDAMemDataTable;
     dsConfiguracion: TDADataSource;
-    cxDBCheckBox1: TcxDBCheckBox;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBTextEdit14: TcxDBTextEdit;
     cxLabel17: TcxLabel;
     cxLabel18: TcxLabel;
@@ -144,7 +141,6 @@ type
     procedure DBAdvMemo1Enter(Sender: TObject);
     procedure DBAdvMemo1Exit(Sender: TObject);
     procedure cdsCatalogoNewRecord(DataTable: TDADataTable);
-    procedure cxDBCheckBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
   private
@@ -206,12 +202,6 @@ begin
   Archivo.Free;
 end;
 
-procedure TfrmConfiguracion.cxDBCheckBox1PropertiesChange(Sender: TObject);
-begin
-  inherited;
-  cxDBLookupComboBox1.Enabled:= cxDBCheckBox1.Checked;
-end;
-
 procedure TfrmConfiguracion.DBAdvMemo1Enter(Sender: TObject);
 begin
   inherited;
@@ -232,8 +222,7 @@ begin
   cdsConfiguracion.Close;
   cdsConfiguracion.Open;
 
-  if cdsConfiguracion.FieldByName('Sucursal').AsBoolean = True then
-     cxDBLookupComboBox1.Enabled:= True;
+  
 end;
 
 initialization

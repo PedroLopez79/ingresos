@@ -76,10 +76,10 @@ inherited frmConfiguracion: TfrmConfiguracion
         Properties.ActivePage = cxTabSheet3
         Properties.CustomButtons.Buttons = <>
         Properties.Images = dmImages.Imagenes2
-        ClientRectBottom = 453
-        ClientRectLeft = 4
-        ClientRectRight = 1072
-        ClientRectTop = 25
+        ClientRectBottom = 451
+        ClientRectLeft = 3
+        ClientRectRight = 1070
+        ClientRectTop = 27
         object cxTabSheet3: TcxTabSheet
           Caption = 'Datos Generales'
           ImageIndex = 50
@@ -726,16 +726,8 @@ inherited frmConfiguracion: TfrmConfiguracion
             DataBinding.DataField = 'FolioFinal'
             DataBinding.DataSource = dsCatalogo
             Properties.CharCase = ecUpperCase
-            TabOrder = 18
+            TabOrder = 17
             Width = 124
-          end
-          object cxLabel22: TcxLabel
-            Left = 279
-            Top = 8
-            Hint = ''
-            Caption = 'Sucursal de'
-            Style.BorderStyle = ebsNone
-            Transparent = True
           end
           object cxLabel25: TcxLabel
             Left = 15
@@ -864,36 +856,6 @@ inherited frmConfiguracion: TfrmConfiguracion
             FilterIndex = 0
             DialogOptions = []
             DialogKind = fdOpen
-          end
-          object cxDBCheckBox1: TcxDBCheckBox
-            Left = 515
-            Top = 28
-            Hint = ''
-            Caption = 'Sucursal ?'
-            DataBinding.DataField = 'Sucursal'
-            DataBinding.DataSource = dsCatalogo
-            Properties.OnChange = cxDBCheckBox1PropertiesChange
-            TabOrder = 19
-            Transparent = True
-            Width = 78
-          end
-          object cxDBLookupComboBox1: TcxDBLookupComboBox
-            Left = 279
-            Top = 24
-            Hint = ''
-            DataBinding.DataField = 'SucursalDE'
-            DataBinding.DataSource = dsCatalogo
-            Properties.KeyFieldNames = 'NUMEROESTACION'
-            Properties.ListColumns = <
-              item
-                FieldName = 'EMPRESA'
-              end
-              item
-                FieldName = 'NUMEROESTACION'
-              end>
-            Properties.ListSource = dsConfiguracion
-            TabOrder = 20
-            Width = 230
           end
         end
         object cxTabSheet6: TcxTabSheet

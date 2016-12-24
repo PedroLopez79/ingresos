@@ -49,6 +49,13 @@ begin
                                                                        LeerRegistro('Database','INGRESOS'),
                                                                        LeerRegistro('User','sa'),
                                                                        LeerRegistro('Password','')]);
+    ECODEX:= LeerRegistro('ECODEX','SI');
+    COMERCIODIGITAL:= LeerRegistro('COMERCIODIGITAL','NO');
+    URLPACKTIMBRE:= LeerRegistro('URLPACKTIMBRE','https://pruebas.ecodex.com.mx:2045');
+    URLPACKCANCELAR:= LeerRegistro('URLPAKCANCELAR','');
+    CREDENCIALESPACKRFC:= LeerRegistro('CREDENCIALESPACKRFC','AAA010101AAA');
+    CREDENCIALESPACKCLAVE:= LeerRegistro('CREDENCIALESPACKCLAVE','PWD');
+    CREDENCIALESPACK_ECODEX_DISTRIBUIDORID:= LeerRegistro('CREDENCIALESPACK_ECODEX_DISTRIBUIDORID','2b3a8764-d586-4543-9b7e-82834443f219');
   finally
      Server.Port := StrToInt(LeerRegistro('Puerto', '8001'));
      Server.Active := true;
