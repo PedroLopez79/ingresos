@@ -1,0 +1,289 @@
+inherited frmCardex: TfrmCardex
+  Caption = 'Cardex'
+  ClientWidth = 646
+  ExplicitWidth = 646
+  ExplicitHeight = 449
+  PixelsPerInch = 96
+  TextHeight = 13
+  object grbEncabezado: TcxGroupBox
+    Left = 0
+    Top = 0
+    Hint = ''
+    TabStop = True
+    Align = alTop
+    Style.BorderStyle = ebsUltraFlat
+    Style.LookAndFeel.NativeStyle = True
+    StyleDisabled.LookAndFeel.NativeStyle = True
+    StyleFocused.LookAndFeel.NativeStyle = True
+    StyleHot.LookAndFeel.NativeStyle = True
+    TabOrder = 0
+    ExplicitWidth = 614
+    Height = 137
+    Width = 646
+    object Label1: TLabel
+      Left = 11
+      Top = 27
+      Width = 60
+      Height = 13
+      Caption = 'Fecha Inicial'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label2: TLabel
+      Left = 176
+      Top = 27
+      Width = 55
+      Height = 13
+      Caption = 'Fecha Final'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object dbCbxAlmacen: TcxDBLookupComboBox
+      Tag = 4
+      Left = 306
+      Top = 51
+      Hint = ''
+      DataBinding.DataField = 'IDALMACEN'
+      Properties.GridMode = True
+      Properties.HideSelection = False
+      Properties.KeyFieldNames = 'IDALMACEN'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NOMBRE'
+        end>
+      Style.BorderStyle = ebsUltraFlat
+      TabOrder = 0
+      Width = 172
+    end
+    object cxLabel2: TcxLabel
+      Left = 255
+      Top = 52
+      Hint = ''
+      Caption = 'Almacen'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object cxLabel1: TcxLabel
+      Left = 31
+      Top = 52
+      Hint = ''
+      Caption = 'Estacion'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object cxEstacionDestino: TcxDBLookupComboBox
+      Left = 82
+      Top = 51
+      Hint = ''
+      DataBinding.DataField = 'IDESTACIOND'
+      Properties.GridMode = True
+      Properties.HideSelection = False
+      Properties.KeyFieldNames = 'NUMEROESTACION'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NOMBRE'
+        end>
+      TabOrder = 3
+      Width = 172
+    end
+    object dtpInicial: TcxDateEdit
+      Left = 82
+      Top = 24
+      Hint = ''
+      ParentFont = False
+      Properties.ButtonGlyph.Data = {
+        46020000424D460200000000000036000000280000000E0000000C0000000100
+        1800000000001002000000000000000000000000000000000000FF00FFFF00FF
+        8080808080808080808080808080808080808080808080808080808080808080
+        80FF00FF0000FF00FF0000000000008000000000008000008000000000008000
+        00000000000000800000808080FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00
+        FFFFFFFF000000000000000000FFFFFF000000000000000000C0C0C0FFFFFF80
+        0000808080FF00FF0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFFC0C0C0FF
+        FFFFC0C0C0000000FFFFFF800000808080FF00FF0000FF00FFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF800000808080FF00FF
+        0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFF000000000000000000C0C0C0
+        FFFFFF800000808080FF00FF0000FF00FFFFFFFF000000000000FFFFFFFFFFFF
+        000000FFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFF
+        FFFFFF000000FFFFFFFFFFFF000000000000000000000000FFFFFF8000008080
+        80FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF800000808080FF00FF0000FF00
+        FF000000000000000000000000000000000000000000000000000000000000FF
+        00FFFF00FFFF00FF0000}
+      Properties.InputKind = ikMask
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Width = 88
+    end
+    object dtpFinal: TcxDateEdit
+      Left = 239
+      Top = 24
+      Hint = ''
+      ParentFont = False
+      Properties.ButtonGlyph.Data = {
+        46020000424D460200000000000036000000280000000E0000000C0000000100
+        1800000000001002000000000000000000000000000000000000FF00FFFF00FF
+        8080808080808080808080808080808080808080808080808080808080808080
+        80FF00FF0000FF00FF0000000000008000000000008000008000000000008000
+        00000000000000800000808080FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00
+        FFFFFFFF000000000000000000FFFFFF000000000000000000C0C0C0FFFFFF80
+        0000808080FF00FF0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFFC0C0C0FF
+        FFFFC0C0C0000000FFFFFF800000808080FF00FF0000FF00FFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF800000808080FF00FF
+        0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFF000000000000000000C0C0C0
+        FFFFFF800000808080FF00FF0000FF00FFFFFFFF000000000000FFFFFFFFFFFF
+        000000FFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFF
+        FFFFFF000000FFFFFFFFFFFF000000000000000000000000FFFFFF8000008080
+        80FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF800000808080FF00FF0000FF00
+        FF000000000000000000000000000000000000000000000000000000000000FF
+        00FFFF00FFFF00FF0000}
+      Properties.InputKind = ikMask
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      Width = 88
+    end
+  end
+  object cxGroupBox6: TcxGroupBox
+    Left = 0
+    Top = 137
+    Hint = ''
+    Align = alClient
+    Style.BorderStyle = ebsUltraFlat
+    TabOrder = 1
+    ExplicitWidth = 614
+    ExplicitHeight = 266
+    Height = 312
+    Width = 646
+    object cxGrid1: TcxGrid
+      Left = 3
+      Top = 22
+      Width = 640
+      Height = 287
+      Hint = ''
+      Align = alClient
+      TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      ExplicitLeft = 2
+      ExplicitTop = -2
+      ExplicitWidth = 610
+      ExplicitHeight = 266
+      object cxGridDBTableView3: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Format = '#,#0.00'
+            Kind = skSum
+            Column = cxGridDBTableView3Cantidad
+          end
+          item
+            Format = '$#,#0.00'
+            Kind = skSum
+            Column = cxGridDBTableView3Importe
+          end>
+        DataController.Summary.SummaryGroups = <>
+        NewItemRow.Visible = True
+        OptionsBehavior.FocusCellOnTab = True
+        OptionsBehavior.FocusFirstCellOnNewRecord = True
+        OptionsBehavior.GoToNextCellOnEnter = True
+        OptionsBehavior.FocusCellOnCycle = True
+        OptionsView.Footer = True
+        OptionsView.GroupByBox = False
+        OptionsView.Indicator = True
+        object cxGridDBTableView3ProductoID: TcxGridDBColumn
+          Caption = 'Producto'
+          DataBinding.FieldName = 'IDPRODUCTO'
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.ValidateOnEnter = True
+          Width = 66
+        end
+        object cxDescripcion: TcxGridDBColumn
+          Caption = 'Descripcion'
+          DataBinding.FieldName = 'IDPRODUCTO'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'IDPRODUCTO'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Nombre'
+            end>
+          Options.Editing = False
+          Options.Focusing = False
+          Width = 256
+        end
+        object cxGridDBTableView3Cantidad: TcxGridDBColumn
+          DataBinding.FieldName = 'CANTIDAD'
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.ValidateOnEnter = True
+          Width = 87
+        end
+        object cxGridDBTableView3Costo: TcxGridDBColumn
+          DataBinding.FieldName = 'PRECIO'
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.ValidateOnEnter = True
+          Width = 83
+        end
+        object cxGridDBTableView3Importe: TcxGridDBColumn
+          DataBinding.FieldName = 'IMPORTE'
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.ValidateOnEnter = True
+          Options.Editing = False
+          Options.Focusing = False
+          Width = 126
+        end
+      end
+      object cxGridLevel3: TcxGridLevel
+        GridView = cxGridDBTableView3
+      end
+    end
+  end
+  object cxLabel3: TcxLabel
+    Left = 31
+    Top = 79
+    Hint = ''
+    Caption = 'Producto'
+    Style.BorderStyle = ebsNone
+    Transparent = True
+  end
+  object cxDBLookupComboBox1: TcxDBLookupComboBox
+    Left = 82
+    Top = 78
+    Hint = ''
+    DataBinding.DataField = 'IDESTACIOND'
+    Properties.GridMode = True
+    Properties.HideSelection = False
+    Properties.KeyFieldNames = 'NUMEROESTACION'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NOMBRE'
+      end>
+    TabOrder = 3
+    Width = 172
+  end
+end

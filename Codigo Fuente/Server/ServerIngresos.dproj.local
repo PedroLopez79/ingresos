@@ -39,8 +39,8 @@
     <Transaction>2016/12/02 12:54:11.000.967,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\ClaseCertificadoSellos.pas</Transaction>
     <Transaction>2016/12/02 12:54:12.000.367,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\LibEay32Plus.pas</Transaction>
     <Transaction>2016/12/02 12:54:12.000.228,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\FacturaReglamentacion.pas</Transaction>
-    <Transaction>2016/12/02 12:54:12.000.158,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\FacturacionHashes.pas</Transaction>
     <Transaction>2016/12/02 12:54:12.000.123,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\DocComprobanteFiscal.pas</Transaction>
+    <Transaction>2016/12/02 12:54:12.000.158,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\FacturacionHashes.pas</Transaction>
     <Transaction>2016/12/02 12:54:12.000.474,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\SelloDigital.pas</Transaction>
     <Transaction>2016/12/02 12:54:12.000.053,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\ClaseOpenSSL.pas</Transaction>
     <Transaction>2016/12/02 12:54:12.000.335,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\libeay32.pas</Transaction>
@@ -63,9 +63,9 @@
     <Transaction>2016/12/02 12:55:12.000.128,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\ComercioDigital\PACComercioDigital.pas</Transaction>
     <Transaction>2016/12/02 12:55:12.000.081,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\ComercioDigital\FECancelaComercioDigital.pas</Transaction>
     <Transaction>2016/12/02 12:55:28.000.693,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\PAC.Ecodex.ManejadorDeSesion.pas</Transaction>
-    <Transaction>2016/12/02 12:55:28.000.734,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\PACEcodex.pas</Transaction>
-    <Transaction>2016/12/02 12:55:28.000.647,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\EcodexWsTimbrado.pas</Transaction>
     <Transaction>2016/12/02 12:55:28.000.483,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\EcodexWsCancelacion.pas</Transaction>
+    <Transaction>2016/12/02 12:55:28.000.647,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\EcodexWsTimbrado.pas</Transaction>
+    <Transaction>2016/12/02 12:55:28.000.734,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\PACEcodex.pas</Transaction>
     <Transaction>2016/12/02 12:55:28.000.532,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\EcodexWsClientes.pas</Transaction>
     <Transaction>2016/12/02 12:55:28.000.577,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\EcodexWsComun.pas</Transaction>
     <Transaction>2016/12/02 12:55:28.000.613,=C:\Users\RedPacifico\Documents\GitHub\incoming\Codigo Fuente\Server\FCTELECTRONICA\PACs\Ecodex\EcodexWsSeguridad.pas</Transaction>

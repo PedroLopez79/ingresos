@@ -27,8 +27,6 @@ object frmBuscar: TfrmBuscar
     TabOrder = 0
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 18
-    ExplicitHeight = 336
     object cxGridDBTableView1: TcxGridDBTableView
       OnDblClick = cxGridDBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
@@ -172,7 +170,6 @@ object frmBuscar: TfrmBuscar
     Height = 49
     Align = alTop
     TabOrder = 3
-    ExplicitTop = 32
     object Label1: TLabel
       Left = 8
       Top = 16

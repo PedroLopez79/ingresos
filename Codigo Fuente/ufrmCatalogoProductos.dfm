@@ -1,7 +1,6 @@
 inherited frmCatalogoProducto: TfrmCatalogoProducto
   Caption = 'Catalago Productos'
   ClientWidth = 661
-  ExplicitTop = -15
   ExplicitWidth = 661
   ExplicitHeight = 449
   PixelsPerInch = 96
@@ -10,7 +9,6 @@ inherited frmCatalogoProducto: TfrmCatalogoProducto
     Top = 32
     Width = 661
     Height = 417
-    Properties.ActivePage = cxTabSheet2
     ExplicitTop = 32
     ExplicitWidth = 661
     ExplicitHeight = 417

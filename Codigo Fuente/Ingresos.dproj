@@ -345,8 +345,8 @@
         <DCCReference Include="SRV Reportes Ingresos\ufrmReportesExportar.pas">
             <Form>frmReportesExportar</Form>
         </DCCReference>
-        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesGenerales.pas">
-            <Form>frmReportesGenerales</Form>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesInventarios.pas">
+            <Form>frmReportesInventarios</Form>
         </DCCReference>
         <DCCReference Include="SRV Reportes Ingresos\ufrmReportesPago.pas">
             <Form>frmReportePago</Form>
@@ -454,6 +454,14 @@
         </DCCReference>
         <DCCReference Include="ufrmEstaciones.pas">
             <Form>FrmEstaciones</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="SRV Reportes Ingresos\ufrmReportesGenerales.pas">
+            <Form>frmReportesGenerales</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ufrmCardex.pas">
+            <Form>frmCardex</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">

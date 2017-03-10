@@ -1,5 +1,7 @@
 inherited frmAlmacen: TfrmAlmacen
   Caption = 'frmAlmacen'
+  ExplicitWidth = 625
+  ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCatalogo: TcxPageControl
@@ -24,8 +26,8 @@ inherited frmAlmacen: TfrmAlmacen
             Width = 378
           end
           object dbgCatalogoDBTableView1IDEMPRESA: TcxGridDBColumn
-            DataBinding.FieldName = 'IDEMPRESA'
-            Width = 107
+            DataBinding.FieldName = 'NUMEROESTACION'
+            Width = 121
           end
         end
       end
@@ -96,12 +98,12 @@ inherited frmAlmacen: TfrmAlmacen
         Left = 173
         Top = 102
         Hint = ''
-        DataBinding.DataField = 'IDEMPRESA'
+        DataBinding.DataField = 'NUMEROESTACION'
         DataBinding.DataSource = dsCatalogo
-        Properties.KeyFieldNames = 'NUMEROESTACION'
+        Properties.KeyFieldNames = 'IDESTACION'
         Properties.ListColumns = <
           item
-            FieldName = 'EMPRESA'
+            FieldName = 'NOMBRE'
           end>
         Properties.ListSource = dsEmpresa
         TabOrder = 2
@@ -153,7 +155,7 @@ inherited frmAlmacen: TfrmAlmacen
         Size = 70
       end
       item
-        Name = 'IDEMPRESA'
+        Name = 'NUMEROESTACION'
         DataType = datInteger
       end>
     LogicalName = 'dbo ALMACEN'
@@ -167,172 +169,25 @@ inherited frmAlmacen: TfrmAlmacen
   object cdsEmpresa: TDAMemDataTable
     Fields = <
       item
-        Name = 'IDCONFIGURACION'
+        Name = 'IDESTACION'
         DataType = datInteger
+        Required = True
+        InPrimaryKey = True
       end
       item
-        Name = 'TIPOCAMBIO'
-        DataType = datFloat
-      end
-      item
-        Name = 'EMPRESA'
+        Name = 'NOMBRE'
         DataType = datString
-        Size = 50
+        Size = 100
       end
       item
-        Name = 'LOGO'
-        DataType = datMemo
-      end
-      item
-        Name = 'DIRECCION'
+        Name = 'RAZONSOCIAL'
         DataType = datString
-        Size = 70
-      end
-      item
-        Name = 'TELEFONO'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'FORMATOCONTROL'
-        DataType = datMemo
-      end
-      item
-        Name = 'FAX'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'CUENTABANCO1'
-        DataType = datString
-        Size = 25
+        Size = 100
       end
       item
         Name = 'RFC'
         DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'NoExterior'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'Localidad'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Municipio'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Estado'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Pais'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'noAprobacion'
-        DataType = datInteger
-      end
-      item
-        Name = 'Colonia'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'CodigoPostal'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'NoCertificado'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'ArchivoClavePrivada'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'ArchivoCertificado'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'ClavePriv'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'Certificado'
-        DataType = datString
-        Size = 4000
-      end
-      item
-        Name = 'PasswordFCTElect'
-        DataType = datString
-        Size = 200
-      end
-      item
-        Name = 'Sucursal'
-        DataType = datBoolean
-      end
-      item
-        Name = 'SucursalDE'
-        DataType = datInteger
-      end
-      item
-        Name = 'Telefono1'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'Telefono2'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'AnoAprobacion'
-        DataType = datDateTime
-      end
-      item
-        Name = 'FolioInicial'
-        DataType = datInteger
-      end
-      item
-        Name = 'FolioFinal'
-        DataType = datInteger
-      end
-      item
-        Name = 'ImpuestoPorcentaje'
-        DataType = datFloat
-      end
-      item
-        Name = 'CC'
-        DataType = datString
-        Size = 20
-      end
-      item
-        Name = 'CLAVEPEMEX'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'CIUDAD'
-        DataType = datString
         Size = 30
-      end
-      item
-        Name = 'BOMBAS'
-        DataType = datInteger
       end
       item
         Name = 'HOST'
@@ -340,15 +195,165 @@ inherited frmAlmacen: TfrmAlmacen
         Size = 30
       end
       item
-        Name = 'NUMEROESTACION'
+        Name = 'CUENTACONTABLE'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IMPUESTO'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'COLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'CODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'LOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'ESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXCALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'EXCOLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXNOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXNOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXCODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXMUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXLOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOAPROBACION'
         DataType = datInteger
       end
       item
-        Name = 'EMAIL'
+        Name = 'FECHAAPROBACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOAPROBACIONES'
         DataType = datString
-        Size = 50
+        Size = 150
+      end
+      item
+        Name = 'VERSIONCFD'
+        DataType = datInteger
+      end
+      item
+        Name = 'REGIMENFISCAL'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'CODIGOFACTURA'
+        DataType = datString
+        Size = 2
+      end
+      item
+        Name = 'FORMATOFACTURAWEB'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'SERIEENLINEA'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'TELEFONO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IDESTACIONBANCARIA'
+        DataType = datInteger
+      end
+      item
+        Name = 'SERIEBANCARIA'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'LOGOESTACION'
+        DataType = datBlob
+      end
+      item
+        Name = 'PAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXPAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXREFERENCIA'
+        DataType = datString
+        Size = 100
       end>
-    LogicalName = 'dbo CONFIGURACION'
+    LogicalName = 'dbo.ESTACION'
     Params = <>
     RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []

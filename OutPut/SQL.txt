@@ -53,20 +53,27 @@ select @HorarioIni=:HorarioIni
 select @HorarioFin=:HorarioFin
 select @NumeroEstacionIni=:NumeroEstacionIni
 select @NumeroEstacionFin=:NumeroEstacionFin
-SELECT     Factura.FacturaID, Factura.Serie, Factura.Folio, Estacion.Nombre AS ESNombre, Estacion.RazonSocial AS ESRazonSocial,factura.formapagoID as formadepago, 
-                      Estacion.RFC AS ESRFC, Estacion.Calle AS ESCalle, Estacion.Colonia AS ESColonia, Estacion.NoExterior AS ESNoExterior, Estacion.NoInterior AS ESNoInterior, 
-                      Estacion.CodigoPostal AS ESCodigoPostal, Estacion.Municipio AS ESMunicipio, Estacion.Localidad AS ESLocalidad, Estacion.Estado AS ESEstado, Estacion.ExCalle, 
-                      Estacion.ExColonia, Estacion.ExNoExterior, Estacion.ExNoInterior, Estacion.ExCodigoPostal, Estacion.ExMunicipio, Estacion.ExLocalidad, Estacion.ExEstado, 
-                      Cliente.idCliente,Cliente.Nombre, Cliente.RFC, Cliente.Calle, Cliente.Colonia, Cliente.NoExterior, Cliente.NoInterior, Cliente.CodigoPostal, Cliente.Ciudad AS Municipio, 
-                      Cliente.Localidad, Cliente.Estado, Factura.FechaFacturaE AS Fecha, Factura.NoCertificado, Factura.NoAprobacion, Factura.EjercicioAprobacion, 
-                      Factura.CadenaOriginal, Factura.SelloDigital, Factura.Tickets, Factura.Subtotal, Factura.Impuesto, Factura.Total, Factura.ImpuestoPorcentaje, 
-                      DetalleFactura.Cantidad, DetalleFactura.Precio, DetalleFactura.Importe, DetalleFactura.ProductoID, Producto.CODIGOPRODUCTO, 
-                      Producto.Nombre AS Producto, Estacion.IDESTACION, UNIDADESMEDIDA.DESCRIPCION, Factura.CBB, Factura.NoCertificadoSAT, Factura.UUID, Factura.Acuse, Factura.SelloSAT,
-                      Factura.CADENATIMBRE, FechaTimbrado, Cliente.CCA, Estacion.RegimenFiscal 
-FROM         Factura INNER JOIN
-                      DetalleFactura ON Factura.FacturaID = DetalleFactura.FacturaID INNER JOIN
-                      Producto ON DetalleFactura.ProductoID = Producto.IDPRODUCTO INNER JOIN
-                      CLIENTEEFECTIVO AS Cliente ON Factura.ClienteID = Cliente.IDCLIENTE INNER JOIN
-                      Estacion ON Factura.EstacionID = Estacion.IDESTACION INNER JOIN
-                      UNIDADESMEDIDA ON UNIDADESMEDIDA.IDUNIDADMEDIDA = PRODUCTO.IDUNIDADMEDIDA 
-WHERE     (Factura.EstacionID = @NUMEROESTACION) AND (Factura.FacturaID = @FACTURA)
+Select *, @fechaini as ALaFecha from (
+SELECT     A.EstacionID, A.Estacion, A.AlmacenID, A.Almacen, A.ProductoID, A.Codigo, A.Nombre, A.Existencia, ISNULL(B.Cantidad, 0) AS EnLiquidacion, A.Existencia - ISNULL(B.Cantidad, 0) AS Total
+FROM         (SELECT     Estacion.EstacionID, Estacion.Nombre AS Estacion, Almacen2.AlmacenID, Almacen2.Nombre AS Almacen, Producto.ProductoID, 
+                                              Producto.Codigo, Producto.Nombre, SUM(DetalleMovimientoAlmacen2.Cantidad * TipoMovimientoAlmacen2.Operador) AS Existencia
+                       FROM          Almacen2 INNER JOIN
+                                              MovimientoAlmacen2 ON Almacen2.AlmacenID = MovimientoAlmacen2.AlmacenID INNER JOIN
+                                              DetalleMovimientoAlmacen2 ON 
+                                              MovimientoAlmacen2.MovimientoAlmacenID = DetalleMovimientoAlmacen2.MovimientoAlmacenID INNER JOIN
+                                              TipoMovimientoAlmacen2 ON 
+                                              MovimientoAlmacen2.TipoMovimientoAlmacenID = TipoMovimientoAlmacen2.TipoMovimientoAlmacenID INNER JOIN
+                                              Producto ON DetalleMovimientoAlmacen2.ProductoID = Producto.ProductoID INNER JOIN
+                                              Estacion ON MovimientoAlmacen2.EstacionID = Estacion.EstacionID
+                       WHERE      (Almacen2.AlmacenID = @Almacen) AND (MovimientoAlmacen2.Fecha <= @FechaINI) 
+                       GROUP BY Producto.ProductoID, Producto.Codigo, Producto.Nombre, Almacen2.AlmacenID, Almacen2.Nombre, Estacion.Nombre, Estacion.EstacionID) 
+                      A LEFT OUTER JOIN
+                          (SELECT     DetalleLiquidacion2.ProductoID, Agrupacion2.AlmacenID, SUM(DetalleLiquidacion2.Cantidad) AS Cantidad
+                            FROM          Liquidacion2 INNER JOIN
+                                                   DespachadorLiquidacion2 ON Liquidacion2.LiquidacionID = DespachadorLiquidacion2.LiquidacionID INNER JOIN
+                                                   DetalleLiquidacion2 ON
+                                                   DespachadorLiquidacion2.DespachadorLiquidacionID = DetalleLiquidacion2.DespachadorLiquidacionID INNER JOIN
+                                                   Agrupacion2 ON DespachadorLiquidacion2.AgrupacionID = Agrupacion2.AgrupacionID
+                            WHERE      (Liquidacion2.Cerrada = 0) AND (DetalleLiquidacion2.TipoValorID = 14) AND (AlmacenID = @Almacen) AND (Liquidacion2.Fecha <= @FechaINI)
+                            GROUP BY DetalleLiquidacion2.ProductoID, Agrupacion2.AlmacenID) B ON A.ProductoID = B.ProductoID) D
+order BY Nombre

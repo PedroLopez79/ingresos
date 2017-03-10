@@ -2,7 +2,6 @@ inherited frmClienteEfectivo: TfrmClienteEfectivo
   Caption = 'frmClienteEfectivo'
   ClientHeight = 478
   ClientWidth = 632
-  ExplicitTop = -15
   ExplicitWidth = 632
   ExplicitHeight = 478
   PixelsPerInch = 96
@@ -810,6 +809,29 @@ inherited frmClienteEfectivo: TfrmClienteEfectivo
         TabOrder = 45
         Width = 258
       end
+      object cxLabel21: TcxLabel
+        Left = 301
+        Top = 376
+        Hint = ''
+        Caption = 'Clave'
+        Style.BorderStyle = ebsNone
+        Transparent = True
+      end
+      object cxDBTextEdit19: TcxDBTextEdit
+        Left = 338
+        Top = 372
+        Hint = ''
+        DataBinding.DataField = 'CODIGO'
+        DataBinding.DataSource = dsCatalogo
+        Properties.CharCase = ecUpperCase
+        Style.BorderStyle = ebsUltraFlat
+        Style.LookAndFeel.NativeStyle = False
+        StyleDisabled.LookAndFeel.NativeStyle = False
+        StyleFocused.LookAndFeel.NativeStyle = False
+        StyleHot.LookAndFeel.NativeStyle = False
+        TabOrder = 47
+        Width = 258
+      end
     end
   end
   object Panel1: TPanel [1]
@@ -956,6 +978,11 @@ inherited frmClienteEfectivo: TfrmClienteEfectivo
         Name = 'REFERENCIA'
         DataType = datString
         Size = 100
+      end
+      item
+        Name = 'CLAVE'
+        DataType = datString
+        Size = 10
       end>
     LogicalName = 'dbo CLIENTE EFECTIVO'
     RemoteDataAdapter = DM.RemoteDataAdapter

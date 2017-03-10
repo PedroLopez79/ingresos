@@ -1,6 +1,5 @@
 inherited frmLinea: TfrmLinea
   Caption = 'frmLinea'
-  ExplicitTop = -15
   ExplicitWidth = 625
   ExplicitHeight = 449
   PixelsPerInch = 96
@@ -23,6 +22,7 @@ inherited frmLinea: TfrmLinea
           end
           object dbgCatalogoDBTableView1DESCRIPCION: TcxGridDBColumn
             DataBinding.FieldName = 'DESCRIPCION'
+            Width = 257
           end
         end
       end

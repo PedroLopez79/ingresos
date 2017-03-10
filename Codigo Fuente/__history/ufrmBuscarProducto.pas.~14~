@@ -1,0 +1,86 @@
+unit ufrmBuscarProducto;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufrmBuscar, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  cxDataStorage, cxEdit, DB, cxDBData, uDADataTable, uDAScriptingProvider,
+  uDACDSDataTable, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  Menus, cxLookAndFeelPainters, dxRibbon, StdCtrls, cxButtons, ExtCtrls,
+  dxStatusBar, dxRibbonStatusBar, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, dxSkinsdxRibbonPainter, uDAInterfaces, cxContainer,
+  cxGroupBox, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinSilver, dxSkinStardust, dxSkinSummer2008,
+  dxSkinValentine, dxSkinXmas2008Blue, cxLookAndFeels,
+  dxSkinDarkSide, dxSkinPumpkin, 
+  dxSkinSpringTime, dxSkinDarkRoom, dxSkinFoggy, dxSkinSeven, dxSkinSharp,
+  dxSkinBlueprint, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
+  dxSkinWhiteprint, cxNavigator, dxRibbonSkins, uDAFields, uROComponent;
+
+type
+  TfrmBuscarProducto = class(TfrmBuscar)
+    cxGridDBTableView1Codigo: TcxGridDBColumn;
+    cxGridDBTableView1Nombre: TcxGridDBColumn;
+    cxGridDBTableView1PrecioVenta: TcxGridDBColumn;
+    cxGridDBTableView1Costo: TcxGridDBColumn;
+    cxGridDBTableView1IEPS: TcxGridDBColumn;
+    procedure cdsBuscarFilterRecord(DataTable: TDADataTable;
+      var Accept: Boolean);
+    procedure cxGridDBTableView1DblClick(Sender: TObject);
+    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBuscarProducto: TfrmBuscarProducto;
+
+implementation
+
+uses uDM;
+
+{$R *.dfm}
+
+procedure TfrmBuscarProducto.cdsBuscarFilterRecord(DataTable: TDADataTable;
+  var Accept: Boolean);
+begin
+  inherited;
+  Accept:= Pos(DataTable.FieldByName('FormaCompraID').AsString + ',', CRITERIO) > 0;
+end;
+
+procedure TfrmBuscarProducto.cxGridDBTableView1DblClick(Sender: TObject);
+begin
+  Datos.Clave:=cdsBuscar.FieldByName('IDPRODUCTO').AsInteger;
+  Datos.Nombre:= cdsBuscar.FieldByName('Nombre').AsString;
+  Datos.Costo:=cdsBuscar.FieldByName('COSTO').AsFloat;
+  Datos.Precio:= cdsBuscar.FieldByName('PrecioVenta').AsFloat;
+  inherited;
+
+end;
+
+procedure TfrmBuscarProducto.cxGridDBTableView1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = VK_RETURN then
+
+    Datos.Clave:=cdsBuscar.FieldByName('IDPRODUCTO').AsInteger;
+    Datos.Nombre:= cdsBuscar.FieldByName('Nombre').AsString;
+    Datos.Costo:=cdsBuscar.FieldByName('COSTO').AsFloat;
+    Datos.Precio:= cdsBuscar.FieldByName('PrecioVenta').AsFloat;
+
+  inherited;
+end;
+
+end.

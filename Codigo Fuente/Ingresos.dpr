@@ -69,7 +69,7 @@ uses
   ufrmPantallaReportes in 'SRV Reportes Ingresos\ufrmPantallaReportes.pas' {frmPantallaReportes},
   ufrmReportesConsumo in 'SRV Reportes Ingresos\ufrmReportesConsumo.pas' {frmReposteConsumo},
   ufrmReportesExportar in 'SRV Reportes Ingresos\ufrmReportesExportar.pas' {frmReportesExportar},
-  ufrmReportesGenerales in 'SRV Reportes Ingresos\ufrmReportesGenerales.pas' {frmReportesGenerales},
+  ufrmReportesInventarios in 'SRV Reportes Ingresos\ufrmReportesInventarios.pas' {frmReportesInventarios},
   ufrmReportesPago in 'SRV Reportes Ingresos\ufrmReportesPago.pas' {frmReportePago},
   ufrmIngresoXfecha in 'ufrmIngresoXfecha.pas' {frmIngresosXfecha},
   ufrmBuscarTarjetasAditivos in 'ufrmBuscarTarjetasAditivos.pas' {frmBuscarTarjetasAdivitos},
@@ -114,7 +114,9 @@ uses
   uAgregarVenta in 'uAgregarVenta.pas' {Fo_AgregarVenta},
   uAgregarVentaEfectivo in 'uAgregarVentaEfectivo.pas' {Fo_AgregarVentaEfectivo},
   uAgregarVentaDocumentos in 'uAgregarVentaDocumentos.pas' {Fo_AgregarVentaDocumentos},
-  ufrmEstaciones in 'ufrmEstaciones.pas' {FrmEstaciones};
+  ufrmEstaciones in 'ufrmEstaciones.pas' {FrmEstaciones},
+  ufrmReportesGenerales in 'SRV Reportes Ingresos\ufrmReportesGenerales.pas' {frmReportesGenerales},
+  ufrmCardex in 'ufrmCardex.pas' {frmCardex};
 
 {$R *.res}
 
@@ -133,6 +135,7 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmImages, dmImages);
+  Application.CreateForm(TfrmReportesGenerales, frmReportesGenerales);
   //Application.CreateForm(TDMExcel, DMExcel);
   //Application.CreateForm(TDMFlotillas, DMFlotillas);
   //Application.CreateForm(TDMCistemGas, DMCistemGas);

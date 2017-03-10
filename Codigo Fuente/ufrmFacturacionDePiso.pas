@@ -549,6 +549,7 @@ begin
      begin
        cxGrid1.SetFocus;
        cxGridDBTableView3.ViewData.NewItemRow.Focused:=True;
+       cxGridDBTableView3ProductoID.Editing:= True;
      end;
 
      cdsCliente.Close;

@@ -38,8 +38,6 @@ inherited frmCatalogoUsuarios: TfrmCatalogoUsuarios
       end
     end
     inherited cxTabSheet2: TcxTabSheet
-      ExplicitLeft = 3
-      ExplicitTop = 3
       ExplicitWidth = 616
       ExplicitHeight = 416
       object cxGroupBox1: TcxGroupBox
@@ -176,7 +174,6 @@ inherited frmCatalogoUsuarios: TfrmCatalogoUsuarios
     object cxTabSheet3: TcxTabSheet
       Caption = 'Permisos'
       ImageIndex = 15
-      ExplicitLeft = 6
       object tlAccesos: TcxTreeList
         Left = 0
         Top = 0

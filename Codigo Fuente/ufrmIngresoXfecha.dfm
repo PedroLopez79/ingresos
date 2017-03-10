@@ -897,10 +897,6 @@ inherited frmIngresosXfecha: TfrmIngresosXfecha
       object Conceptos: TcxTabSheet
         Caption = 'Ventas'
         ImageIndex = 61
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object dbgConceptos: TcxGrid
           Left = 0
           Top = 0

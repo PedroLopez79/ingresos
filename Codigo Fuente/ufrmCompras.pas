@@ -106,6 +106,7 @@ type
     procedure cxGridDBTableView3EditKeyDown(Sender: TcxCustomGridTableView;
       AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
       Shift: TShiftState);
+    procedure cdsDetalleMovAlmacen2AfterDelete(DataTable: TDADataTable);
   private
     { Private declarations }
     procedure ActionNuevo(Action: TBasicAction);
@@ -274,6 +275,33 @@ begin
   dmAppActions.actBuscar.Enabled:=((cdsMovimientoAlmacen2.State=dsEdit) or (cdsMovimientoAlmacen2.State=dsInsert));
 end;
 
+procedure TFrmCompra.cdsDetalleMovAlmacen2AfterDelete(DataTable: TDADataTable);
+var
+  Total:Real;
+  Impuesto: Real;
+  Merma: Float;
+begin
+  inherited;
+  Total:=0;
+  cdsDetalleMovAlmacen2.First;
+  While not cdsDetalleMovAlmacen2.EOF do
+  begin
+     Total:=Total + Decimales(cdsDetalleMovAlmacen2.FieldByName('CANTIDAD').AsFloat *
+                    cdsDetalleMovAlmacen2.FieldByName('PRECIO').AsFloat, 2);
+     cdsDetalleMovAlmacen2.Next;
+  end;
+
+     cdsEstaciones.Locate('NUMEROESTACION', cdsMovimientoAlmacen2.FieldByName('NUMEROESTACION').AsInteger, []);
+     ImpuestoPorcentaje:=cdsEstaciones.FieldByName('IMPUESTO').AsFloat;
+
+     cdsMovimientoAlmacen2.FieldByName('IMPUESTOPORCENTAJE').AsFloat:=ImpuestoPorcentaje;
+     cdsMovimientoAlmacen2.FieldByName('SUBTOTAL').AsFloat:=Decimales(Total, 2);
+     Impuesto:= (Total*(ImpuestoPorcentaje/100));
+     cdsMovimientoAlmacen2.FieldByName('IMPUESTO').AsFloat:=Impuesto;
+     //Merma:=cdsMovimientoAlmacen2.FieldByName('BonoMerma').AsFloat;
+     cdsMovimientoAlmacen2.FieldByName('TOTAL').AsFloat:=Total + Impuesto - Merma;
+end;
+
 procedure TFrmCompra.cdsDetalleMovAlmacen2AfterPost(DataTable: TDADataTable);
 var
   Total:Real;
@@ -291,7 +319,7 @@ begin
   end;
 
      cdsEstaciones.Locate('NUMEROESTACION', cdsMovimientoAlmacen2.FieldByName('NUMEROESTACION').AsInteger, []);
-     ImpuestoPorcentaje:=cdsEstaciones.FieldByName('IMPUESTOPORCENTAJE').AsFloat;
+     ImpuestoPorcentaje:=cdsEstaciones.FieldByName('IMPUESTO').AsFloat;
 
      cdsMovimientoAlmacen2.FieldByName('IMPUESTOPORCENTAJE').AsFloat:=ImpuestoPorcentaje;
      cdsMovimientoAlmacen2.FieldByName('SUBTOTAL').AsFloat:=Decimales(Total, 2);
@@ -413,7 +441,7 @@ end;
 procedure TFrmCompra.dbCbTipoMovExit(Sender: TObject);
 begin
   inherited;
-    if (dbCbTipoMov.Text = 'SALIDA POR TRASPASO') or (dbCbTipoMov.Text = 'SALIDA POR TRASPASO') then
+    if (dbCbTipoMov.Text = 'Salida por Traspaso') or (dbCbTipoMov.Text = 'Salida por Traspaso') then
     begin
        cxEstacionDestino.Enabled:=True;
        cxAlmacenDestino.Enabled:=True;

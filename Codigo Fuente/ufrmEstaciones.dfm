@@ -65,8 +65,6 @@ inherited FrmEstaciones: TFrmEstaciones
       end
     end
     inherited cxTabSheet2: TcxTabSheet
-      ExplicitLeft = 3
-      ExplicitTop = 3
       ExplicitWidth = 779
       ExplicitHeight = 353
       object GrpBoxDatos: TcxGroupBox

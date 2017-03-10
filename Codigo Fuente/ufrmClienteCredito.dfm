@@ -15,7 +15,7 @@ inherited frmClienteCredito: TfrmClienteCredito
     Hint = ''
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = cxTabSheet3
+    Properties.ActivePage = cxTabSheet2
     Properties.CustomButtons.Buttons = <>
     Properties.Images = dmImages.Imagenes
     Properties.TabHeight = 50
@@ -497,7 +497,7 @@ inherited frmClienteCredito: TfrmClienteCredito
           Transparent = True
         end
         object Label74: TLabel
-          Left = 403
+          Left = 404
           Top = 246
           Width = 24
           Height = 13
@@ -530,6 +530,20 @@ inherited frmClienteCredito: TfrmClienteCredito
           Width = 58
           Height = 13
           Caption = '-  No Interior'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          Transparent = True
+        end
+        object Label1: TLabel
+          Left = 404
+          Top = 336
+          Width = 27
+          Height = 13
+          Caption = 'Clave'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -922,6 +936,16 @@ inherited frmClienteCredito: TfrmClienteCredito
           Properties.CharCase = ecUpperCase
           TabOrder = 24
           Width = 75
+        end
+        object cxDBTextEdit1: TcxDBTextEdit
+          Left = 512
+          Top = 333
+          Hint = ''
+          DataBinding.DataField = 'email'
+          DataBinding.DataSource = dsCatalogo
+          Properties.CharCase = ecUpperCase
+          TabOrder = 25
+          Width = 238
         end
       end
     end
@@ -1560,9 +1584,9 @@ inherited frmClienteCredito: TfrmClienteCredito
         Name = 'FechaAniversario'
         DataType = datDateTime
       end>
-    LogicalName = 'dbo Cliente'
+    LogicalName = 'dbo CLIENTE CREDITO'
     Params = <>
-    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     AfterDelete = cdsCatalogoAfterDelete

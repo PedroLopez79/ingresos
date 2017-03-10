@@ -157,6 +157,8 @@ type
     dsFormaCompra: TDADataSource;
     cxDBTextEdit22: TcxDBTextEdit;
     Label77: TLabel;
+    Label1: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
     procedure FormShow(Sender: TObject);
     procedure dbgCatalogoDBTableView1DblClick(Sender: TObject);
     procedure dbgCatalogoDBTableView1KeyPress(Sender: TObject; var Key: Char);
@@ -270,7 +272,7 @@ begin
    cdsCatalogo.FieldbyName('DiaCorteSemana').asInteger:=1;
    cdsCatalogo.FieldByName('TarjetaID').AsInteger:=1;
    cdsCatalogo.FieldByName('GasolineroID').AsInteger:=DMFlotillas.Server.GasolineroID;
-   cdsCatalogo.FieldByName('ClienteID').AsInteger:=DMFlotillas.Server.Folio('ClienteID','');
+   cdsCatalogo.FieldByName('ClienteID').AsInteger:=DMFlotillas.Server.Folio('IDCLIENTE','');
    cdsCatalogo.FieldByName('TarjetaID').AsInteger:=1;
    cdsCatalogo.FieldByName('RazonSocial').AsString:='';
    cdsCatalogo.FieldByName('Nombre').AsString:='';

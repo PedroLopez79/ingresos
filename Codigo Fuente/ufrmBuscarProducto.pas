@@ -38,6 +38,7 @@ type
     procedure cxGridDBTableView1DblClick(Sender: TObject);
     procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,7 +74,6 @@ end;
 procedure TfrmBuscarProducto.cxGridDBTableView1KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
-  inherited;
   if Key = VK_RETURN then
   begin
     Datos.Clave:=cdsBuscar.FieldByName('IDPRODUCTO').AsInteger;
@@ -81,6 +81,14 @@ begin
     Datos.Costo:=cdsBuscar.FieldByName('COSTO').AsFloat;
     Datos.Precio:= cdsBuscar.FieldByName('PrecioVenta').AsFloat;
   end;
+  inherited;
+end;
+
+procedure TfrmBuscarProducto.FormCreate(Sender: TObject);
+begin
+  Nuevo:=False;
+  Busqueda:= True;
+  inherited;
 end;
 
 end.

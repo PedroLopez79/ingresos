@@ -20,7 +20,7 @@ uses
   dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
   dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
-  dxSkinWhiteprint, Vcl.Grids, AdvObj, BaseGrid, AdvGrid;
+  dxSkinWhiteprint, Vcl.Grids, AdvObj, BaseGrid, AdvGrid, cxImage;
 
 type
   TfrmPrincipal = class(TdxCustomRibbonForm)
@@ -132,6 +132,13 @@ type
     dxBarLargeButton39: TdxBarLargeButton;
     dxBarLargeButton46: TdxBarLargeButton;
     dxBarLargeButton47: TdxBarLargeButton;
+    dxBarButton1: TdxBarButton;
+    dxBarLargeButton48: TdxBarLargeButton;
+    cxBarEditItem1: TcxBarEditItem;
+    cxBarEditItem2: TcxBarEditItem;
+    dxBarSubItem3: TdxBarSubItem;
+    dxBarManager1Bar15: TdxBar;
+    dxBarLargeButton49: TdxBarLargeButton;
     procedure FormCreate(Sender: TObject);
     procedure btnSalirClick(Sender: TObject);
     procedure btnLoginClick(Sender: TObject);
@@ -153,7 +160,7 @@ var
   frmPrincipal: TfrmPrincipal;
 
 const
-  TotalModulos = 51;
+  TotalModulos = 52;
   Modulos: Array[1..TotalModulos] of string = {1}('Blank',
                                               {2} 'Reportes',
                                               {3} 'Propiedades del Sistema',
@@ -204,7 +211,8 @@ const
                                               {48} 'Vales',
                                               {49} 'ReportesExporta',
                                               {50} 'ExportarPoliza',
-                                              {51} 'SaldosClientes');
+                                              {51} 'SaldosClientes',
+                                              {52} 'ReportesInventarios');
 
 implementation
 

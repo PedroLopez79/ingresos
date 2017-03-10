@@ -724,26 +724,14 @@ inherited frmCatalogoReportes: TfrmCatalogoReportes
     object cxTabSheet5: TcxTabSheet
       Caption = 'Calidad Alta'
       ImageIndex = 46
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object cxTabSheet6: TcxTabSheet
       Caption = 'Calidad Media'
       ImageIndex = 17
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object cxTabSheet7: TcxTabSheet
       Caption = 'Calidad Baja'
       ImageIndex = 38
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
   end
   inherited cdsCatalogo: TDAMemDataTable

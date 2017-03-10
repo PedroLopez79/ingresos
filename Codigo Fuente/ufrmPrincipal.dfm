@@ -45,7 +45,6 @@ object frmPrincipal: TfrmPrincipal
       Index = 0
     end
     object RibbonTab7: TdxRibbonTab
-      Active = True
       Caption = 'Ingresos'
       Groups = <
         item
@@ -61,6 +60,11 @@ object frmPrincipal: TfrmPrincipal
       Groups = <
         item
           ToolbarName = 'dxBarManager1Bar12'
+        end
+        item
+        end
+        item
+          ToolbarName = 'dxBarManager1Bar15'
         end>
       Index = 2
     end
@@ -139,6 +143,7 @@ object frmPrincipal: TfrmPrincipal
       Index = 9
     end
     object RibbonTab1: TdxRibbonTab
+      Active = True
       Caption = 'Configuracion'
       Groups = <
         item
@@ -501,6 +506,10 @@ object frmPrincipal: TfrmPrincipal
         item
           Visible = True
           ItemName = 'btnGenerales'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton49'
         end>
       OneOnRow = False
       Row = 0
@@ -734,7 +743,7 @@ object frmPrincipal: TfrmPrincipal
       WholeRow = False
     end
     object dxBarManager1Bar12: TdxBar
-      Caption = 'Inventario'
+      Caption = 'Movimientos'
       CaptionButtons = <>
       DockedLeft = 0
       DockedTop = 0
@@ -747,7 +756,7 @@ object frmPrincipal: TfrmPrincipal
           Visible = True
           ItemName = 'dxBarLargeButton36'
         end>
-      OneOnRow = True
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True
@@ -756,7 +765,7 @@ object frmPrincipal: TfrmPrincipal
     object dxBarManager1Bar13: TdxBar
       Caption = 'Flotillas'
       CaptionButtons = <>
-      DockedLeft = 142
+      DockedLeft = 221
       DockedTop = 0
       FloatLeft = 1269
       FloatTop = 8
@@ -792,6 +801,26 @@ object frmPrincipal: TfrmPrincipal
           ItemName = 'btnExport'
         end>
       OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManager1Bar15: TdxBar
+      Caption = 'Inventario'
+      CaptionButtons = <>
+      DockedLeft = 80
+      DockedTop = 0
+      FloatLeft = 1249
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton48'
+        end>
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True
@@ -936,7 +965,7 @@ object frmPrincipal: TfrmPrincipal
       Enabled = False
       Hint = 'Almacen'
       Visible = ivAlways
-      LargeImageIndex = 61
+      LargeImageIndex = 74
     end
     object dxBarLargeButton7: TdxBarLargeButton
       Tag = 17
@@ -1329,6 +1358,49 @@ object frmPrincipal: TfrmPrincipal
       Category = 0
       Hint = 'Saldos Clientes'
       Visible = ivAlways
+    end
+    object dxBarButton1: TdxBarButton
+      Caption = 'Cardex'
+      Category = 0
+      Hint = 'Cardex'
+      Visible = ivAlways
+      LargeImageIndex = 75
+    end
+    object dxBarLargeButton48: TdxBarLargeButton
+      Caption = 'Cardex'
+      Category = 0
+      Hint = 'Cardex'
+      Visible = ivAlways
+      LargeImageIndex = 75
+    end
+    object cxBarEditItem1: TcxBarEditItem
+      Caption = 'New Item'
+      Category = 0
+      Hint = 'New Item'
+      Visible = ivAlways
+      PropertiesClassName = 'TcxImageProperties'
+    end
+    object cxBarEditItem2: TcxBarEditItem
+      Caption = 'New Item'
+      Category = 0
+      Hint = 'New Item'
+      Visible = ivAlways
+      PropertiesClassName = 'TcxImageProperties'
+    end
+    object dxBarSubItem3: TdxBarSubItem
+      Caption = 'New SubItem'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarLargeButton49: TdxBarLargeButton
+      Tag = 52
+      Caption = 'Inventarios'
+      Category = 0
+      Enabled = False
+      Hint = 'Inventarios'
+      Visible = ivAlways
+      LargeImageIndex = 76
     end
     object btnNuevo: TdxBarLargeButton
       Action = dmAppActions.actNuevo

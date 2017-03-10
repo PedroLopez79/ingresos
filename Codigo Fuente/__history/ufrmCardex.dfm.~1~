@@ -1,0 +1,8 @@
+inherited frmCardex: TfrmCardex
+  Caption = 'Cardex'
+  ClientWidth = 646
+  ExplicitWidth = 646
+  ExplicitHeight = 449
+  PixelsPerInch = 96
+  TextHeight = 13
+end
