@@ -135,7 +135,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmImages, dmImages);
-  Application.CreateForm(TfrmReportesGenerales, frmReportesGenerales);
   //Application.CreateForm(TDMExcel, DMExcel);
   //Application.CreateForm(TDMFlotillas, DMFlotillas);
   //Application.CreateForm(TDMCistemGas, DMCistemGas);

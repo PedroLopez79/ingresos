@@ -1,23 +1,34 @@
 declare @FechaIni as DateTime
 declare @FechaFin as DateTime
-declare @Alumno as Integer
-declare @AlumnoIni as Integer
-declare @AlumnoFin as Integer
-declare @Grupo as integer
-declare @Ciclo as Integer
-declare @Maestro as Integer
-declare @MaestroIni as Integer
-declare @MaestroFin as Integer
-declare @Nivel as Integer
-declare @TipoPago as Integer
-declare @TipoCalificacion as Integer
+declare @ClienteIni as Integer
+declare @ClienteFin as Integer
+declare @Estacion as Integer
+declare @SecuenciaIni as integer
+declare @SecuenciaFin as Integer
+declare @FolioFactura as Integer
 declare @Usuario as Integer
-declare @Familia as Integer
-declare @Valor1 as Integer
-declare @Status as Integer
-declare @Serie as varchar(500)
+declare @Ejercicio as Integer
+declare @PeriodoFin as Integer
+declare @Periodo as Integer
+declare @Dia as Integer
+declare @EjercicioFin as Integer
+declare @DiaFin as Integer
+declare @Secuencia as varchar(10)
+declare @Agrupacion as Integer
+declare @Almacen as varchar(500)
+declare @SecuenciaIniLiquidacion as Integer
+declare @SecuenciaFinLiquidacion as Integer
+declare @MontoFacturado as Integer
+declare @Turno as Integer
+declare @EmpleadoIni as Integer
+declare @EmpleadoFin as Integer
+declare @EstacionIni as Integer
+declare @EstacionFin as Integer
+declare @Valor1 as varchar(50)
+declare @Status as varchar(10)
+declare @Serie as varchar(20)
 declare @Factura as Integer
-declare @FacturasCompras as Integer
+declare @FacturasDeCompras as Integer
 declare @TurnoInicio as Integer
 declare @TurnoFin as Integer
 declare @NumeroEstacion as Integer
@@ -28,24 +39,35 @@ declare @NumeroEstacionFin as Integer
 
 select @FechaIni=:FechaIni
 select @FechaFin=:FechaFin
-select @Alumno=:Alumno
-select @AlumnoIni=:AlumnoIni
-select @AlumnoFin=:AlumnoFin
-select @Grupo=:Grupo
-select @Ciclo=:Ciclo
-select @Maestro=:Maestro
-select @MaestroIni=:MaestroIni
-select @MaestroFin=:MaestroFin
-select @Nivel=:Nivel
-select @TipoPago=:TipoPago
-select @TipoCalificacion=:TipoCalificacion
+select @ClienteIni=:ClienteIni
+select @ClienteFin=:ClienteFin
+select @Estacion=:Estacion
+select @SecuenciaIni=:SecuenciaIni
+select @SecuenciaFin=:SecuenciaFin
+select @FolioFactura=:FolioFactura
 select @Usuario=:Usuario
-select @Familia=:Familia
+select @Ejercicio=:Ejercicio
+select @PeriodoFin=:PeriodoFin
+select @Periodo=:Periodo
+select @Dia=:Dia
+select @EjercicioFin=:EjercicioFin
+select @DiaFin=:DiaFin
+select @Secuencia=:Secuencia
+select @Agrupacion=:Agrupacion
+select @Almacen=:Almacen
+select @SecuenciaIniLiquidacion=:SecuenciaIniLiquidacion
+select @SecuenciaFinLiquidacion=:SecuenciaFinLiquidacion
+select @MontoFacturado=:MontoFacturado
+select @Turno=:Turno
+select @EmpleadoIni=:EmpleadoIni
+select @EmpleadoFin=:EmpleadoFin
+select @EstacionIni=:EstacionIni
+select @EstacionFin=:EstacionFin
 select @Valor1=:Valor1
 select @Status=:Status
 select @Serie=:Serie
 select @Factura=:Factura
-select @FacturasCompras=:FacturasCompras
+select @FacturasDeCompras=:FacturasCompras
 select @TurnoInicio=:TurnoInicio
 select @TurnoFin=:TurnoFin
 select @NumeroEstacion=:NumeroEstacion
@@ -53,27 +75,53 @@ select @HorarioIni=:HorarioIni
 select @HorarioFin=:HorarioFin
 select @NumeroEstacionIni=:NumeroEstacionIni
 select @NumeroEstacionFin=:NumeroEstacionFin
-Select *, @fechaini as ALaFecha from (
-SELECT     A.EstacionID, A.Estacion, A.AlmacenID, A.Almacen, A.ProductoID, A.Codigo, A.Nombre, A.Existencia, ISNULL(B.Cantidad, 0) AS EnLiquidacion, A.Existencia - ISNULL(B.Cantidad, 0) AS Total
-FROM         (SELECT     Estacion.EstacionID, Estacion.Nombre AS Estacion, Almacen2.AlmacenID, Almacen2.Nombre AS Almacen, Producto.ProductoID, 
-                                              Producto.Codigo, Producto.Nombre, SUM(DetalleMovimientoAlmacen2.Cantidad * TipoMovimientoAlmacen2.Operador) AS Existencia
-                       FROM          Almacen2 INNER JOIN
-                                              MovimientoAlmacen2 ON Almacen2.AlmacenID = MovimientoAlmacen2.AlmacenID INNER JOIN
-                                              DetalleMovimientoAlmacen2 ON 
-                                              MovimientoAlmacen2.MovimientoAlmacenID = DetalleMovimientoAlmacen2.MovimientoAlmacenID INNER JOIN
-                                              TipoMovimientoAlmacen2 ON 
-                                              MovimientoAlmacen2.TipoMovimientoAlmacenID = TipoMovimientoAlmacen2.TipoMovimientoAlmacenID INNER JOIN
-                                              Producto ON DetalleMovimientoAlmacen2.ProductoID = Producto.ProductoID INNER JOIN
-                                              Estacion ON MovimientoAlmacen2.EstacionID = Estacion.EstacionID
-                       WHERE      (Almacen2.AlmacenID = @Almacen) AND (MovimientoAlmacen2.Fecha <= @FechaINI) 
-                       GROUP BY Producto.ProductoID, Producto.Codigo, Producto.Nombre, Almacen2.AlmacenID, Almacen2.Nombre, Estacion.Nombre, Estacion.EstacionID) 
-                      A LEFT OUTER JOIN
-                          (SELECT     DetalleLiquidacion2.ProductoID, Agrupacion2.AlmacenID, SUM(DetalleLiquidacion2.Cantidad) AS Cantidad
-                            FROM          Liquidacion2 INNER JOIN
-                                                   DespachadorLiquidacion2 ON Liquidacion2.LiquidacionID = DespachadorLiquidacion2.LiquidacionID INNER JOIN
-                                                   DetalleLiquidacion2 ON
-                                                   DespachadorLiquidacion2.DespachadorLiquidacionID = DetalleLiquidacion2.DespachadorLiquidacionID INNER JOIN
-                                                   Agrupacion2 ON DespachadorLiquidacion2.AgrupacionID = Agrupacion2.AgrupacionID
-                            WHERE      (Liquidacion2.Cerrada = 0) AND (DetalleLiquidacion2.TipoValorID = 14) AND (AlmacenID = @Almacen) AND (Liquidacion2.Fecha <= @FechaINI)
-                            GROUP BY DetalleLiquidacion2.ProductoID, Agrupacion2.AlmacenID) B ON A.ProductoID = B.ProductoID) D
-order BY Nombre
+SELECT * FROM (SELECT     IDProducto, H.Nombre, Inicial, Compras, Ventas, Ajustes, Inicial + Compras - Ventas + Ajustes AS Final, Estacion.Nombre as Estacion, @Estacion as IDEstacion, @Fechaini as FechaINI, @fechafin as FechaFIN
+FROM         (SELECT     F.IDProducto, F.Nombre, F.Inicial, F.Compras, F.Ventas, ISNULL(G.Ajustes, 0) AS Ajustes
+                       FROM          (SELECT     D.IDProducto, D.Nombre, D.Inicial, D.Compras, ISNULL(E.Ventas, 0) AS Ventas
+                                               FROM          (SELECT     B.IDProducto, B.Nombre, B.Inicial, ISNULL(C.Compras, 0) AS Compras
+                                                                       FROM          (SELECT     Producto.IDProducto, Producto.Nombre, ISNULL(A.Inicial, 0) AS Inicial
+                                                                                               FROM          Producto LEFT OUTER JOIN
+                                                                                                                          (SELECT     DetalleMovimientoAlmacen.IDProducto, 
+                                                                                                                                                   SUM(DetalleMovimientoAlmacen.Cantidad * TipoMovimiento.Efecto) AS Inicial
+                                                                                                                            FROM          MovimientoAlmacen INNER JOIN
+                                                                                                                                                   DetalleMovimientoAlmacen ON 
+                                                                                                                                                   MovimientoAlmacen.IDMovimientoAlmacen = DetalleMovimientoAlmacen.IDMovimientoAlmacen INNER JOIN
+                                                                                                                                                   TipoMovimiento ON 
+                                                                                                                                                   MovimientoAlmacen.IDTipoMovimiento = TipoMovimiento.IDTipoMovimiento
+                                                                                                                            WHERE      (MovimientoAlmacen.Fecha < @FechaINI) AND (MovimientoAlmacen.NUMEROESTACION = @Estacion) AND (MovimientoAlmacen.IDAlmacen = @Almacen)       
+                                                                                                                            GROUP BY DetalleMovimientoAlmacen.IDProducto) AS A ON Producto.IDProducto = A.IDProducto
+                                                                                               WHERE      (Producto.IDProducto > -3)) AS B LEFT OUTER JOIN
+                                                                                                  (SELECT     DetalleMovimientoAlmacen_1.IDProducto, 
+                                                                                                                           SUM(DetalleMovimientoAlmacen_1.Cantidad * TipoMovimiento_1.EFECTO) AS Compras
+                                                                                                    FROM          MovimientoAlmacen AS MovimientoAlmacen_1 INNER JOIN
+                                                                                                                           DetalleMovimientoAlmacen AS DetalleMovimientoAlmacen_1 ON 
+                                                                                                                           MovimientoAlmacen_1.IDMovimientoAlmacen = DetalleMovimientoAlmacen_1.IDMovimientoAlmacen INNER JOIN
+                                                                                                                           TipoMovimiento AS TipoMovimiento_1 ON 
+                                                                                                                           MovimientoAlmacen_1.IDTipoMovimiento = TipoMovimiento_1.IDTipoMovimiento
+                                                                                                    WHERE      (MovimientoAlmacen_1.Fecha BETWEEN @FechaINI AND @FechaFIN) AND 
+                                                                                                                           (MovimientoAlmacen_1.NUMEROESTACION = @Estacion) AND (TipoMovimiento_1.IDTipoMovimiento = 1) AND (MovimientoAlmacen_1.IDAlmacen = @Almacen)
+                                                                                                    GROUP BY DetalleMovimientoAlmacen_1.IDProducto) AS C ON B.IDProducto = C.IDProducto) AS D LEFT OUTER JOIN
+                                                                          (SELECT     DetalleMovimientoAlmacen_2.IDProducto, SUM(DetalleMovimientoAlmacen_2.Cantidad) AS Ventas
+                                                                            FROM          MovimientoAlmacen AS MovimientoAlmacen_2 INNER JOIN
+                                                                                                   DetalleMovimientoAlmacen AS DetalleMovimientoAlmacen_2 ON                                
+                                                                                                   MovimientoAlmacen_2.IDMovimientoAlmacen = DetalleMovimientoAlmacen_2.IDMovimientoAlmacen INNER JOIN
+                                                                                                   TipoMovimiento AS TipoMovimiento_2 ON 
+                                                                                                   MovimientoAlmacen_2.IDTipoMovimiento = TipoMovimiento_2.IDTipoMovimiento
+                                                                            WHERE      (MovimientoAlmacen_2.Fecha BETWEEN @FechaINI AND @FechaFIN) AND (MovimientoAlmacen_2.NUMEROESTACION = @Estacion) 
+                                                                                                   AND (TipoMovimiento_2.IDTipoMovimiento = 2)  AND (MovimientoAlmacen_2.IDAlmacen = @Almacen)
+                                                                            GROUP BY DetalleMovimientoAlmacen_2.IDProducto) AS E ON D.IDProducto = E.IDProducto) AS F LEFT OUTER JOIN
+                                                  (SELECT     DetalleMovimientoAlmacen_3.IDProducto, SUM(DetalleMovimientoAlmacen_3.Cantidad * TipoMovimiento_3.EFECTO) 
+                                                                           AS Ajustes                                                                              
+                                                    FROM          MovimientoAlmacen AS MovimientoAlmacen_3 INNER JOIN                                                            
+                                                                           DetalleMovimientoAlmacen AS DetalleMovimientoAlmacen_3 ON                 
+                                                                           MovimientoAlmacen_3.IDMovimientoAlmacen = DetalleMovimientoAlmacen_3.IDMovimientoAlmacen INNER JOIN
+                                                                           TipoMovimiento AS TipoMovimiento_3 ON 
+                                                                           MovimientoAlmacen_3.IDTipoMovimiento = TipoMovimiento_3.IDTipoMovimiento
+                                                    WHERE      (MovimientoAlmacen_3.Fecha BETWEEN @FechaINI AND @FechaFIN) AND (MovimientoAlmacen_3.NUMEROESTACION = @Estacion) AND 
+                                                                           (TipoMovimiento_3.IDTipoMovimiento > 3)  AND (MovimientoAlmacen_3.IDAlmacen = @Almacen)
+                                                    GROUP BY DetalleMovimientoAlmacen_3.IDProducto) AS G ON F.IDProducto = G.IDProducto) AS H cross join Estacion
+                                                    where estacion.IDEstacion = @Estacion 
+) ff
+WHERE (NOT Inicial = 0) OR (NOT Compras =0) OR (NOT Ventas = 0) OR (NOT Ajustes = 0) OR (NOT Inicial = 0)
+
+ORDER by Nombre

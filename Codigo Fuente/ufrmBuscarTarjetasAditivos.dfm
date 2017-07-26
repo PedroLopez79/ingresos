@@ -27,13 +27,14 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
       Top = 1
       Width = 612
       Height = 311
+      Hint = ''
       Align = alClient
       TabOrder = 0
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = False
       object cxGridDBTableView1: TcxGridDBTableView
         OnDblClick = cxGridDBTableView1DblClick
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = dsBuscar
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -57,6 +58,7 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
     object cxGroupBox1: TcxGroupBox
       Left = 1
       Top = 312
+      Hint = ''
       Align = alBottom
       TabOrder = 1
       Height = 57
@@ -67,9 +69,8 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
         Width = 75
         Height = 25
         Caption = 'Aceptar'
-        TabOrder = 0
-        OnClick = cxButton1Click
-        Glyph.Data = {
+        LookAndFeel.NativeStyle = False
+        OptionsImage.Glyph.Data = {
           36050000424D3605000000000000360400002800000010000000100000000100
           0800000000000001000000000000000000000001000000000000FF00FF00004B
           0000098611000A8615000D931A000C9518000C9C19000F991C000E9D1D001392
@@ -112,7 +113,8 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
           0000000000000001010000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000}
-        LookAndFeel.NativeStyle = False
+        TabOrder = 0
+        OnClick = cxButton1Click
       end
       object cxButton2: TcxButton
         Left = 528
@@ -120,9 +122,8 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
         Width = 75
         Height = 25
         Caption = 'Cancelar'
-        TabOrder = 1
-        OnClick = cxButton2Click
-        Glyph.Data = {
+        LookAndFeel.NativeStyle = False
+        OptionsImage.Glyph.Data = {
           36030000424D3603000000000000360000002800000010000000100000000100
           18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
           FF00FFFF00FFFF00FF000288010893010B99010C99010893000389FF00FFFF00
@@ -149,7 +150,8 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
           FF00FF0001890F1DBF3E5BF36B87FE728CFF5E7BFE395BFB1231EB010FB50001
           84FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000189030AA306
           11B2050FB10107A0000188FF00FFFF00FFFF00FFFF00FFFF00FF}
-        LookAndFeel.NativeStyle = False
+        TabOrder = 1
+        OnClick = cxButton2Click
       end
     end
   end
@@ -158,6 +160,7 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
     Top = 0
     Width = 614
     Height = 24
+    Hint = ''
     BarManager = frmPrincipal.dxBarManager1
     ColorSchemeName = 'Blue'
     ShowTabHeaders = False
@@ -167,17 +170,17 @@ object frmBuscarTarjetasAdivitos: TfrmBuscarTarjetasAdivitos
     TabStop = False
   end
   object cdsBuscar: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <>
+    LogicalName = 'Reporte'
     Params = <
       item
         Name = 'ClienteID'
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = rdaTarjetasAditivos
-    LogicalName = 'Reporte'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 512
     Top = 264

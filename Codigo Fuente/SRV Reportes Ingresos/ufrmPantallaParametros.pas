@@ -24,7 +24,7 @@ uses
   dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
   dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, Vcl.ComCtrls, dxCore,
-  cxDateUtils, dxRibbonSkins, uDAFields, uROComponent;
+  cxDateUtils, dxRibbonSkins, uDAFields, uROComponent, cxDBEdit, cxLabel;
 
 type
   TfrmPantallaParametros = class(TdxcustomRibbonForm)
@@ -33,36 +33,11 @@ type
     Label40: TLabel;
     edtHoraIni: TcxTimeEdit;
     edtHoraFin: TcxTimeEdit;
-    gbAlumnos: TcxGroupBox;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label27: TLabel;
-    Label28: TLabel;
-    edtAlumnoIni: TcxCurrencyEdit;
-    edtAlumnoFin: TcxCurrencyEdit;
-    edtNombreAlumnoIni: TcxTextEdit;
-    edtNombreAlumnoFin: TcxTextEdit;
-    edtBuscaAlumnoIni: TcxButton;
-    edtBuscaAlumnoFin: TcxButton;
-    edtFormaDeCompra: TcxImageComboBox;
-    edtDiaFacturar: TcxImageComboBox;
-    gbAlumno: TcxGroupBox;
-    Label8: TLabel;
-    edtAlumno: TcxCurrencyEdit;
-    edtNombreAlumno: TcxTextEdit;
-    cxButton1: TcxButton;
     gbRangoFechas: TcxGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     dtpInicial: TcxDateEdit;
     dtpFinal: TcxDateEdit;
-    gbMaestros: TcxGroupBox;
-    Label14: TLabel;
-    Label15: TLabel;
-    edtMaestroIni: TcxCurrencyEdit;
-    edtMaestroFin: TcxCurrencyEdit;
-    edtNombreMaestroIni: TcxTextEdit;
-    edtNombreMaestroFin: TcxTextEdit;
     s: TcxButton;
     btnCancelar: TcxButton;
     cdsDiaFacturar: TDACDSDataTable;
@@ -76,8 +51,6 @@ type
     cdsEstaciones: TDACDSDataTable;
     dsEstaciones: TDADataSource;
     gbHorario: TcxGroupBox;
-    edtBuscaMaestroIni: TcxButton;
-    edtBuscaMaestroFin: TcxButton;
     gbTurno: TcxGroupBox;
     Label5: TLabel;
     edtSecuencia: TcxCurrencyEdit;
@@ -88,27 +61,116 @@ type
     gbFecha: TcxGroupBox;
     Label7: TLabel;
     dtpFecha: TcxDateEdit;
+    cxEstacion: TcxGroupBox;
+    lblEstacion: TcxLabel;
+    cxEstaciones: TcxLookupComboBox;
+    cxPeriodo: TcxGroupBox;
+    lblFechaInicial: TcxLabel;
+    cxLabel1: TcxLabel;
+    edtFechaInicial: TcxDateEdit;
+    edtFechaFinal: TcxDateEdit;
+    cxRangoPeriodos: TcxGroupBox;
+    Label11: TLabel;
+    Label13: TLabel;
+    Label20: TLabel;
+    edtEjercicio: TcxSpinEdit;
+    cbPeriodoIni: TcxImageComboBox;
+    cbPeriodoFin: TcxImageComboBox;
+    cxFactura: TcxGroupBox;
+    Label12: TLabel;
+    Label10: TLabel;
+    edtFactura: TcxCurrencyEdit;
+    edtSerie: TcxImageComboBox;
+    cxAgrupacion: TcxGroupBox;
+    CmbAgrupacion: TcxLookupComboBox;
+    cxCliente: TcxGroupBox;
+    cxLabel2: TcxLabel;
+    edtBuscaClienteIni: TcxButton;
+    txtNoCliente: TcxCurrencyEdit;
+    cxClientes: TcxGroupBox;
+    cxBtnClienteIni: TcxButton;
+    cxClienteIni: TcxCurrencyEdit;
+    cxLabel13: TcxLabel;
+    cxLabel14: TcxLabel;
+    cxClienteFin: TcxCurrencyEdit;
+    cxBtnClienteFin: TcxButton;
+    cxTurno: TcxGroupBox;
+    cxLabel15: TcxLabel;
+    cxTxtTurno: TcxTextEdit;
+    cxRangoEstacion: TcxGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    dbcEstacionIni: TcxLookupComboBox;
+    dbcEstacionFin: TcxLookupComboBox;
+    cxRangoEmpleados: TcxGroupBox;
+    Label8: TLabel;
+    Label9: TLabel;
+    dbcEmpleadoIni: TcxLookupComboBox;
+    cxSecuencia: TcxGroupBox;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
+    CmbSecuenciaIni: TcxLookupComboBox;
+    CmbSecuenciaFin: TcxLookupComboBox;
+    cxSerie: TcxGroupBox;
+    cxLabel4: TcxLabel;
+    txtSerie: TcxTextEdit;
+    cxFolioFactura: TcxGroupBox;
+    cxLabel7: TcxLabel;
+    txtFolioFactura: TcxTextEdit;
+    cxLabel16: TcxLabel;
+    TxtSerieFactura: TcxTextEdit;
+    cxSecuenciaCorteIni: TcxGroupBox;
+    cxLabel11: TcxLabel;
+    SecuenciaCorte: TcxTextEdit;
+    cxSecuenciaEstacion: TcxGroupBox;
+    cxLabel12: TcxLabel;
+    SecuenciaEstacion: TcxLookupComboBox;
+    cdsClientes: TDACDSDataTable;
+    dsClientes: TDADataSource;
+    cdsEstacion: TDACDSDataTable;
+    dsEstacion: TDADataSource;
+    cxTextClienteIni: TcxTextEdit;
+    cxTextClienteFin: TcxTextEdit;
+    cxTextCliente: TcxTextEdit;
+    dsCliente: TDADataSource;
+    cdsCliente: TDACDSDataTable;
+    gbRangoDeFacturas: TcxGroupBox;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label14: TLabel;
+    edtRangoFacturaIni: TcxCurrencyEdit;
+    edtRangoFacturaFin: TcxCurrencyEdit;
+    edtSerie3: TcxImageComboBox;
+    cdsEmpleados: TDACDSDataTable;
+    dsEmpleados: TDADataSource;
+    dbcEmpleadoFin: TcxLookupComboBox;
+    cdsAgrupacion: TDACDSDataTable;
+    dsAgrupacion: TDADataSource;
+    cxFacturaID: TcxGroupBox;
+    cxLabel17: TcxLabel;
+    edtFacturaID: TcxTextEdit;
+    cxAlmacen: TcxGroupBox;
+    cxLabel3: TcxLabel;
+    cmbAlmacen: TcxLookupComboBox;
+    cdsAlmacen: TDACDSDataTable;
+    dsAlmacen: TDADataSource;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure edtBuscaAlumnoIniClick(Sender: TObject);
     procedure sClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
-    procedure edtAlumnoIniExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure edtAlumnoExit(Sender: TObject);
-    procedure edtBuscaMaestroIniClick(Sender: TObject);
-    procedure edtBuscaMaestroFinClick(Sender: TObject);
-    procedure edtMaestroIniExit(Sender: TObject);
-    procedure edtMaestroFinExit(Sender: TObject);
-    procedure edtMaestroExit(Sender: TObject);
+    Procedure LimpiaParametros;
+    procedure cxBtnClienteIniClick(Sender: TObject);
+    procedure cxBtnClienteFinClick(Sender: TObject);
+    procedure edtBuscaClienteIniClick(Sender: TObject);
+    procedure txtNoClienteExit(Sender: TObject);
+    procedure cxClienteIniExit(Sender: TObject);
+    procedure cxClienteFinExit(Sender: TObject);
+    procedure dbcEmpleadoIniEnter(Sender: TObject);
+    procedure dbcEmpleadoFinEnter(Sender: TObject);
   private
     { Private declarations }
-    procedure DatosAlumno(Alumno: TcxCurrencyEdit; Nombre: TcxTextEdit);
-    procedure DatosMaestro(Maestro: TcxCurrencyEdit; Nombre: TcxTextEdit);
-    function ControlAlumno(Cual: Integer): TcxCurrencyEdit;
-    function ControlMaestro(Cual: Integer): TcxCurrencyEdit;
-    function ControlMaestroNombre(Cual: Integer): TcxTextEdit;
-    function ControlAlumnoNombre(Cual: Integer): TcxTextEdit;
+
   public
     { Public declarations }
     Parametros: TParametrosBI;
@@ -122,7 +184,7 @@ var
 
 implementation
 
-uses uDM, uDMFlotillas, ufrmBuscarAlumno, ufrmBuscar, UtileriasComun, ufrmBuscarMaestro;
+uses uDM, uDMFlotillas, ufrmBuscarCliente, ufrmBuscar, UtileriasComun, ufrmBuscarMaestro;
 
 {$R *.dfm}
 
@@ -144,12 +206,9 @@ end;
 procedure TfrmPantallaParametros.sClick(Sender: TObject);
 begin
   inherited;
-  Parametros.AlumnoIni:=edtAlumnoIni.EditValue;
-  Parametros.AlumnoFin:=edtAlumnoFin.EditValue;
   Parametros.FechaIni:=0;
   Parametros.FechaFin:=65000;
   Parametros.NumeroEstacion:= DM.NumeroEstacion;
-
 
   if gbHorario.Visible then
   begin
@@ -157,12 +216,6 @@ begin
     Parametros.HorarioFin:=dbcTurno.EditValue;
   end;
 
-  //Parametros.
-  if gbAlumno.Visible then
-  begin
-    Parametros.AlumnoIni:=edtAlumno.EditValue;
-    Parametros.AlumnoFin:=edtAlumno.EditValue;
-  end;
   if gbRangoFechas.Visible then
   begin
     Parametros.FechaIni:=Trunc(dtpInicial.Date);
@@ -184,7 +237,30 @@ begin
   if gbFecha.Visible then
      Parametros.FechaIni:= dtpFecha.Date;
 
+  if cxFacturaID.Visible then
+     Parametros.Factura:= strtoint(edtFacturaID.Text);
+
+  if cxEstacion.Visible then
+  begin
+     Parametros.NumeroEstacion:= cxEstaciones.EditValue;
+     Parametros.Estacion:= cxEstaciones.EditValue;
+  end;
+
+  //almacen/////////////////////////////////////////////////////////////////////
+  if cxAlmacen.Visible then
+     Parametros.Almacen:= cmbAlmacen.EditValue;
+  //////////////////////////////////////////////////////////////////////////////
+
   ModalResult:=mrOK;
+end;
+
+procedure TfrmPantallaParametros.txtNoClienteExit(Sender: TObject);
+begin
+  cdsCliente.Close;
+  cdsCliente.ParamByName('IDCliente').AsInteger:=txtNocliente.EditValue;
+  cdsCliente.Open;
+
+  cxTextCliente.Text:=  cdsCliente.FieldByName('NOMBRE').AsString;
 end;
 
 procedure TfrmPantallaParametros.btnCancelarClick(Sender: TObject);
@@ -193,172 +269,109 @@ begin
   ModalResult:=mrCancel;
 end;
 
-function TfrmPantallaParametros.ControlAlumno(Cual: Integer): TcxCurrencyEdit;
+procedure TfrmPantallaParametros.cxBtnClienteFinClick(Sender: TObject);
 begin
-  case Cual of    //
-   1: Result:=edtAlumnoIni;
-   2: Result:=edtAlumnoFin;
-   3: Result:=edtAlumno;
- else
-   Result:=nil;
- end;    // case
-end;
-
-function TfrmPantallaParametros.ControlAlumnoNombre(
-  Cual: Integer): TcxTextEdit;
-begin
-  case Cual of    //
-   1: Result:=edtNombreAlumnoIni;
-   2: Result:=edtNombreAlumnoFin;
-   3: Result:=edtNombreAlumno;
- else
-   Result:=nil;
- end;    // case
-end;
-
-function TfrmPantallaParametros.ControlMaestro(Cual: Integer): TcxCurrencyEdit;
-begin
-  case Cual of    //
-   1: Result:=edtMaestroIni;
-   2: Result:=edtMaestroFin;
-   //3: Result:=edtMaestro;
- else
-   Result:=nil;
- end;    // case
-end;
-
-function TfrmPantallaParametros.ControlMaestroNombre(
-  Cual: Integer): TcxTextEdit;
-begin
-  case Cual of    //
-   1: Result:=edtNombreMaestroIni;
-   2: Result:=edtNombreMaestroFin;
-   //3: Result:=edtNombreMaestro;
- else
-   Result:=nil;
- end;    // case
-end;
-
-procedure TfrmPantallaParametros.DatosAlumno(Alumno: TcxCurrencyEdit;
-  Nombre: TcxTextEdit);
-var
-  Aux: TDatos;
-begin
-  if (Alumno.EditValue <> null) and (Alumno.EditValue <> 0) then
+  frmBuscarCliente:=TfrmBuscarCliente.Create(Self);
+  frmBuscarCliente.ShowModal;
+  if frmBuscarCliente.Datos.OK then
   begin
-    Aux:=DM.Servidor.DatosAlumno(Alumno.EditValue);
-    if Aux <> nil then
-    begin
-      Nombre.Text:=Aux.Nombre;
-      Aux.Free;
-    end
-    else
-      Application.MessageBox('Cliente no existe.', 'Error', MB_OK+MB_ICONHAND+MB_DEFBUTTON1+MB_APPLMODAL);
-  end
-end;
-
-procedure TfrmPantallaParametros.DatosMaestro(Maestro: TcxCurrencyEdit;
-  Nombre: TcxTextEdit);
-var
-  Aux: TDatos;
-begin
-  if (Maestro.EditValue <> null) and (Maestro.EditValue <> 0) then
-  begin
-    Aux:=DM.Servidor.DatosMaestro(Maestro.EditValue);
-    if Aux <> nil then
-    begin
-      Nombre.Text:=Aux.Nombre;
-      Aux.Free;
-    end
-    else
-      Application.MessageBox('Maestro no existe.', 'Error', MB_OK+MB_ICONHAND+MB_DEFBUTTON1+MB_APPLMODAL);
-  end
-end;
-
-procedure TfrmPantallaParametros.edtBuscaAlumnoIniClick(Sender: TObject);
-var
-  Datos : TDatosBusqueda;
-begin
-  inherited;
-  Datos:= PantallaBusqueda(TfrmBuscarAlumno,'');
-  if Datos.OK then
-  begin
-    ControlAlumno((Sender As TControl).Tag).Value:=Datos.Clave;
-    DatosAlumno(ControlAlumno((Sender As TControl).Tag), ControlAlumnoNombre((Sender As TControl).Tag));
+      cxClienteFin.Text:=inttostr(frmBuscarCliente.Datos.Clave);
+      cxTextClienteFin.Text:=frmBuscarCliente.Datos.Nombre;
   end;
 end;
 
-procedure TfrmPantallaParametros.edtBuscaMaestroFinClick(Sender: TObject);
-var
-  Datos : TDatosBusqueda;
+procedure TfrmPantallaParametros.cxBtnClienteIniClick(Sender: TObject);
 begin
-  inherited;
-  Datos:= PantallaBusqueda(TfrmBuscarMaestro,'');
-  if Datos.OK then
+  frmBuscarCliente:=TfrmBuscarCliente.Create(Self);
+  frmBuscarCliente.ShowModal;
+  if frmBuscarCliente.Datos.OK then
   begin
-    ControlMaestro((Sender As TControl).Tag).Value:=Datos.Clave;
-    DatosMaestro(ControlMaestro((Sender As TControl).Tag), ControlMaestroNombre((Sender As TControl).Tag));
+      cxClienteIni.Text:=inttostr(frmBuscarCliente.Datos.Clave);
+      cxTextClienteIni.Text:=frmBuscarCliente.Datos.Nombre;
   end;
 end;
 
-procedure TfrmPantallaParametros.edtBuscaMaestroIniClick(Sender: TObject);
-var
-  Datos : TDatosBusqueda;
+procedure TfrmPantallaParametros.cxClienteFinExit(Sender: TObject);
 begin
-  inherited;
-  Datos:= PantallaBusqueda(TfrmBuscarMaestro,'');
-  if Datos.OK then
+  cdsCliente.Close;
+  cdsCliente.ParamByName('IDCliente').AsInteger:= strtoint(cxClienteFin.Text);
+  cdsCliente.Open;
+
+  cxTextClienteFin.Text:=  cdsCliente.FieldByName('NOMBRE').AsString;
+end;
+
+procedure TfrmPantallaParametros.cxClienteIniExit(Sender: TObject);
+begin
+  cdsCliente.Close;
+  cdsCliente.ParamByName('IDCliente').AsInteger:= strtoint(cxClienteIni.Text);
+  cdsCliente.Open;
+
+  cxTextClienteIni.Text:=  cdsCliente.FieldByName('NOMBRE').AsString;
+end;
+
+procedure TfrmPantallaParametros.dbcEmpleadoFinEnter(Sender: TObject);
+begin
+  cdsEmpleados.Close;
+  cdsEmpleados.ParamByName('EstacionID').AsInteger:= DM.NumeroEstacion;
+  cdsEmpleados.Open;
+end;
+
+procedure TfrmPantallaParametros.dbcEmpleadoIniEnter(Sender: TObject);
+begin
+  cdsEmpleados.Close;
+  cdsEmpleados.ParamByName('EstacionID').AsInteger:= DM.NumeroEstacion;
+  cdsEmpleados.Open;
+end;
+
+procedure TfrmPantallaParametros.edtBuscaClienteIniClick(Sender: TObject);
+begin
+  frmBuscarCliente:=TfrmBuscarCliente.Create(Self);
+  frmBuscarCliente.ShowModal;
+  if frmBuscarCliente.Datos.OK then
   begin
-    ControlMaestro((Sender As TControl).Tag).Value:=Datos.Clave;
-    DatosMaestro(ControlMaestro((Sender As TControl).Tag), ControlMaestroNombre((Sender As TControl).Tag));
+    txtNoCliente.Text:=inttostr(frmBuscarCliente.Datos.Clave);
+    cxTextCliente.Text:= frmBuscarCliente.Datos.Nombre;
   end;
-end;
-
-procedure TfrmPantallaParametros.edtMaestroExit(Sender: TObject);
-begin
-  DatosMaestro(ControlMaestro((Sender As TControl).Tag), ControlMaestroNombre((Sender As TControl).Tag));
-end;
-
-procedure TfrmPantallaParametros.edtMaestroFinExit(Sender: TObject);
-begin
-  DatosMaestro(ControlMaestro((Sender As TControl).Tag), ControlMaestroNombre((Sender As TControl).Tag));
-end;
-
-procedure TfrmPantallaParametros.edtMaestroIniExit(Sender: TObject);
-begin
-  DatosMaestro(ControlMaestro((Sender As TControl).Tag), ControlMaestroNombre((Sender As TControl).Tag));
-end;
-
-procedure TfrmPantallaParametros.edtAlumnoExit(Sender: TObject);
-begin
-  DatosAlumno(ControlAlumno((Sender As TControl).Tag), ControlAlumnoNombre((Sender As TControl).Tag));
-end;
-
-procedure TfrmPantallaParametros.edtAlumnoIniExit(Sender: TObject);
-begin
-  inherited;
-  DatosAlumno(ControlAlumno((Sender As TControl).Tag), ControlalumnoNombre((Sender As TControl).Tag));
 end;
 
 procedure TfrmPantallaParametros.FormCreate(Sender: TObject);
+var cad: String;
 begin
   inherited;
   dxRibbon1.ColorSchemeName:=RibbonSchema[ColorRibbonSchema];
   Parametros:=TParametrosBI.Create;
 
-
   dtpInicial.Date:=Trunc(Now);
   dtpFinal.Date:=Trunc(Now);
-
 
   //cdsGrupo.Open;
   //cdsTurno.Close;
   //cdsTurno.Open;
-  {cdsEstaciones.Open;
-  cxEstacionIni.EditValue:=cdsEstaciones.FieldByName('EstacionID').AsInteger;
+  cdsEstaciones.Close;
+  cdsEstaciones.Open;
+  dbcEstacionIni.EditValue:=cdsEstaciones.FieldByName('IDESTACION').AsInteger;
   cdsEstaciones.Last;
-  cxEstacionFin.EditValue:=cdsEstaciones.FieldByName('EstacionID').AsInteger;}
+  dbcEstacionFin.EditValue:=cdsEstaciones.FieldByName('IDESTACION').AsInteger;
 
+  cdsAgrupacion.Close;
+  cdsAgrupacion.ParamByName('EstacionID').AsInteger:= DM.NumeroEstacion;
+  cdsAgrupacion.Open;
+
+  cdsSerie.Open;
+  while not cdsSerie.EOF do
+  begin
+    DM.AgregarSerieCombo(edtSerie3.Properties.Items, cdsSerie.FieldByName('Serie').AsString, cdsSerie.FieldByName('Serie').AsString);
+    DM.AgregarSerieCombo(edtSerie.Properties.Items, cdsSerie.FieldByName('Serie').AsString, cdsSerie.FieldByName('Serie').AsString);
+    cdsSerie.Next;
+  end;
+  cdsSerie.Close;
+
+  cdsAlmacen.Close;
+  cad:= 'NUMEROESTACION = '''+ inttostr(DM.NumeroEstacion) +'''';
+  cdsAlmacen.Filtered:=False;
+  cdsAlmacen.Filter:=cad;
+  cdsAlmacen.Filtered:=True;
+  cdsAlmacen.Open;
 end;
 
 procedure TfrmPantallaParametros.FormKeyPress(Sender: TObject; var Key: Char);
@@ -375,6 +388,41 @@ procedure TfrmPantallaParametros.FormShow(Sender: TObject);
 begin
   Width:=630;
   Height:=530;
+end;
+
+procedure TfrmPantallaParametros.LimpiaParametros;
+begin
+  Parametros.FechaIni:= Trunc(now);
+  Parametros.FechaFin:= Trunc(now);
+
+  Parametros.ClienteIni:= 0;
+  Parametros.ClienteFin:= 999999;
+  Parametros.Estacion:=   DM.NumeroEstacion;
+  Parametros.SecuenciaIni:= 0;
+  Parametros.SecuenciaFin:= 9999;
+  Parametros.Factura := 0;
+  Parametros.FolioFactura := 0;
+  Parametros.Serie := '';
+  Parametros.Ejercicio := 0;
+  Parametros.PeriodoFin := 0;
+  Parametros.Periodo := 0;
+  Parametros.Dia := 0;
+  Parametros.EjercicioFin := 0;
+  Parametros.PeriodoFin := 0;
+  Parametros.DiaFin := 0;
+  Parametros.Secuencia := '';
+  Parametros.Status := '';
+  Parametros.Agrupacion := 0;
+  Parametros.Almacen := 0;
+  Parametros.SecuenciaIniLiquidacion := 0;
+  Parametros.SecuenciaFinLiquidacion := 0;
+  Parametros.FacturasCompras := 0;
+  Parametros.MontoFacturado := 0;
+  Parametros.Turno := 0;
+  Parametros.EmpleadoIni := 0;
+  Parametros.EmpleadoFin := 9999;
+  Parametros.EstacionIni := 0;
+  Parametros.EstacionFin := 9999;
 end;
 
 procedure TfrmPantallaParametros.PrenderParametros(Cad: String);
@@ -397,12 +445,24 @@ begin
   J:=48;
   PrenderControl(gbRangoFechas, Pos('B', Cad) > 0);
   PrenderControl(gbHora, Pos('C', Cad) > 0);
-  PrenderControl(gbAlumno, Pos('D', Cad) > 0);
-  PrenderControl(gbAlumnos, Pos('E', Cad) > 0);
-  PrenderControl(gbHorario, Pos('F', Cad) > 0);
-  PrenderControl(gbMaestros, Pos('G', Cad) > 0);
-  PrenderControl(gbTurno, Pos('S', Cad) > 0);
+  PrenderControl(cxClientes, Pos('D', Cad) > 0);
+  PrenderControl(cxEstacion, Pos('E', Cad) > 0);
+  PrenderControl(cxSecuenciaEstacion, Pos('F', Cad) > 0);
+  PrenderControl(cxFacturaID, Pos('G', Cad) > 0);
+  PrenderControl(cxFactura, Pos('H', Cad) > 0);
+  PrenderControl(cxSerie, Pos('I', Cad) > 0);
+  //PrenderControl(cxPeriodoEjercicioDia, Pos('J', Cad) > 0);
+  //PrenderControl(cxStatusFactura, Pos('K', Cad) > 0);
+  PrenderControl(cxAgrupacion, Pos('L', Cad) > 0);
+  PrenderControl(cxAlmacen, Pos('M', Cad) > 0);
+  PrenderControl(cxTurno, Pos('N', Cad) > 0);
   PrenderControl(gbFecha, Pos('O', Cad) > 0);
+  //PrenderControl(cxMontoFacturado, Pos('P', Cad) > 0);
+  PrenderControl(cxSecuenciaCorteIni, Pos('Q', Cad) > 0);
+  PrenderControl(cxSecuenciaEstacion, Pos('R', Cad) > 0);
+  PrenderControl(cxTurno, Pos('S', Cad) > 0);
+  PrenderControl(cxRangoEstacion, Pos('T', Cad) > 0);
+  PrenderControl(cxRangoEmpleados, Pos('U', Cad) > 0);
 end;
 
 end.

@@ -8,6 +8,7 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
   object cxGroupBox4: TcxGroupBox
     Left = 0
     Top = 0
+    Hint = ''
     Align = alTop
     Caption = '  Parametros para facturar  '
     Style.BorderStyle = ebsThick
@@ -94,9 +95,8 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
       Width = 95
       Height = 25
       Caption = 'Preeliminar'
-      TabOrder = 0
-      OnClick = btnPreeliminarClick
-      Glyph.Data = {
+      LookAndFeel.Kind = lfOffice11
+      OptionsImage.Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000000000000000000000000000000000000FF00FF004A66
         7C00BE959600FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
@@ -131,23 +131,27 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
         B700EFDFB200E7CEAC00B8908600B8908600FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00BA96
         8A00BB988C00B7918800FF00FF00FF00FF00FF00FF00FF00FF00}
-      LookAndFeel.Kind = lfOffice11
+      TabOrder = 0
+      OnClick = btnPreeliminarClick
     end
     object cxDateEdit1: TcxDateEdit
       Left = 86
       Top = 27
+      Hint = ''
       TabOrder = 1
       Width = 121
     end
     object cxDateEdit2: TcxDateEdit
       Left = 253
       Top = 27
+      Hint = ''
       TabOrder = 2
       Width = 121
     end
     object edtNombre: TcxTextEdit
       Left = 211
       Top = 54
+      Hint = ''
       Enabled = False
       Properties.ReadOnly = True
       Style.TextColor = clNavy
@@ -159,14 +163,13 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
       Top = 54
       Width = 25
       Height = 21
-      TabOrder = 5
-      OnClick = btnBuscaClienteClick
       Colors.Default = clWhite
       Colors.Normal = clWhite
       Colors.Hot = clWhite
       Colors.Pressed = clWhite
       Colors.Disabled = clWhite
-      Glyph.Data = {
+      LookAndFeel.NativeStyle = False
+      OptionsImage.Glyph.Data = {
         36050000424D3605000000000000360400002800000010000000100000000100
         08000000000000010000120B0000120B0000000100000000000000000000FFFF
         FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
@@ -209,11 +212,13 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
         2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
         0202020202020202020202020202020202020202020202020202020202020202
         0202020202020202020202020202020202020202020202020202}
-      LookAndFeel.NativeStyle = False
+      TabOrder = 5
+      OnClick = btnBuscaClienteClick
     end
     object edtCliente: TcxCurrencyEdit
       Left = 86
       Top = 54
+      Hint = ''
       Properties.DecimalPlaces = 0
       Properties.DisplayFormat = '#####'
       TabOrder = 3
@@ -223,6 +228,7 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
     object edtSerie: TcxTextEdit
       Left = 86
       Top = 81
+      Hint = ''
       TabOrder = 6
       Width = 48
     end
@@ -232,10 +238,11 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
     Top = 110
     Width = 762
     Height = 322
+    Hint = ''
     Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DataSource1
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
@@ -334,7 +341,6 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
     Top = 232
   end
   object cdsConfiguracion: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDCONFIGURACION'
@@ -569,10 +575,11 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
         DataType = datString
         Size = 50
       end>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = DM.RemoteDataAdapter
     LogicalName = 'dbo CONFIGURACION'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 688
     Top = 247
@@ -613,12 +620,12 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
     Top = 168
   end
   object cdsFacturas: TDAMemDataTable
-    RemoteUpdatesOptions = []
     Fields = <>
-    Params = <>
-    StreamingOptions = [soDisableEventsWhileStreaming]
-    RemoteDataAdapter = rdaFacturas
     LogicalName = 'Reporte'
+    Params = <>
+    RemoteDataAdapter = rdaFacturas
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 16
     Top = 200
@@ -630,7 +637,6 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
     Top = 280
   end
   object cdsCliente: TDACDSDataTable
-    RemoteUpdatesOptions = []
     Fields = <
       item
         Name = 'IDCLIENTE'
@@ -650,15 +656,16 @@ inherited frmReenviaCorreoSATEfectivos: TfrmReenviaCorreoSATEfectivos
         DataType = datString
         Size = 20
       end>
+    LogicalName = 'BuscaCliente'
     Params = <
       item
         Name = 'Cliente'
         Value = '1'
         ParamType = daptInput
       end>
-    StreamingOptions = [soDisableEventsWhileStreaming]
     RemoteDataAdapter = DM.RemoteDataAdapter
-    LogicalName = 'BuscaCliente'
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
     Left = 640
     Top = 248

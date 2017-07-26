@@ -443,10 +443,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     object cxTabTicket: TcxTabSheet
       Caption = 'Tickets '
       ImageIndex = 21
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGroupBox3: TcxGroupBox
         Left = 0
         Top = 0
@@ -551,10 +547,6 @@ inherited FrmFacturacionDePiso: TFrmFacturacionDePiso
     object cxTabCupones: TcxTabSheet
       Caption = 'Cupones  '
       ImageIndex = 23
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrdCupon: TcxGrid
         Left = 0
         Top = 0

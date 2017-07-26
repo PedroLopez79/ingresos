@@ -92,6 +92,9 @@ type
     function Exporta(const ExportarID: Integer): TExporta;
     function ObtenTurnosdeFecha(const Fecha: DateTime; const Estacion: Integer): ATTurnoxFecha;
     function CierraLiquidacion(const LiquidacionID: Integer): AnsiString;
+    function comboestacion(const estacionid: AnsiString): AnsiString;
+    function comboscompras(const estacionid: AnsiString): AnsiString;
+    function IANcomprasGuarda(const MovimientoAlmacenMaestro: AnsiString; const MovimientoAlmacenDetalle: AnsiString): AnsiString;
   end;
 
 implementation
@@ -140,21 +143,32 @@ begin
   Aux.Free;
   AgregaParametro('FechaIni', datDateTime);
   AgregaParametro('FechaFin', datDateTime);
-  AgregaParametro('Alumno', datInteger);
-  AgregaParametro('AlumnoIni', datInteger);
-  AgregaParametro('AlumnoFin', datInteger);
-  AgregaParametro('Grupo', datInteger);
-  AgregaParametro('Ciclo', datInteger);
-  AgregaParametro('Maestro', datInteger);
-  AgregaParametro('MaestroIni', datInteger);
-  AgregaParametro('MaestroFin', datInteger);
-  AgregaParametro('Nivel', datInteger);
-  AgregaParametro('TipoPago', datInteger);
-  AgregaParametro('TipoCalificacion', datInteger);
+  AgregaParametro('ClienteIni', datInteger);
+  AgregaParametro('ClienteFin', datInteger);
+  AgregaParametro('Estacion', datInteger);
+  AgregaParametro('SecuenciaIni', datInteger);
+  AgregaParametro('SecuenciaFin', datInteger);
+  AgregaParametro('FolioFactura', datInteger);
   AgregaParametro('Usuario', datInteger);
-  AgregaParametro('Familia', datInteger);
+  AgregaParametro('Ejercicio', datInteger);
+  AgregaParametro('PeriodoFin', datInteger);
+  AgregaParametro('Periodo', datInteger);
+  AgregaParametro('Dia', datInteger);
+  AgregaParametro('EjercicioFin', datInteger);
+  AgregaParametro('DiaFin', datInteger);
+  AgregaParametro('Secuencia', datString);
+  AgregaParametro('Agrupacion', datInteger);
+  AgregaParametro('Almacen', datInteger);
+  AgregaParametro('SecuenciaIniLiquidacion', datInteger);
+  AgregaParametro('SecuenciaFinLiquidacion', datInteger);
+  AgregaParametro('MontoFacturado', datInteger);
+  AgregaParametro('Turno', datInteger);
+  AgregaParametro('EmpleadoIni', datInteger);
+  AgregaParametro('EmpleadoFin', datInteger);
+  AgregaParametro('EstacionIni', datInteger);
+  AgregaParametro('EstacionFin', datInteger);
   AgregaParametro('Valor1', datString);
-  AgregaParametro('Status', datInteger);
+  AgregaParametro('Status', datString);
   AgregaParametro('Serie', datString);
   AgregaParametro('Factura', datInteger);
   AgregaParametro('FacturasCompras', datInteger);
@@ -167,24 +181,36 @@ begin
   AgregaParametro('NumeroEstacionFin', datInteger);
 
   //DataSet.ParamByName('ProcesaTabla').AsInteger:=Byte(Pos('#CONSUMOS', UpperCase(SQL)) > 0);
-
   DataSet.ParamByName('FechaIni').AsDateTime:=Parametros.FechaIni;
   DataSet.ParamByName('FechaFin').AsDateTime:=Parametros.FechaFin;
-  DataSet.ParamByName('Alumno').AsInteger:=Parametros.Alumno;
-  DataSet.ParamByName('AlumnoIni').AsInteger:=Parametros.AlumnoIni;
-  DataSet.ParamByName('AlumnoFin').AsInteger:=Parametros.AlumnoFin;
-  DataSet.ParamByName('Grupo').AsInteger:=Parametros.Grupo;
-  DataSet.ParamByName('Ciclo').AsInteger:=Parametros.Ciclo;
-  DataSet.ParamByName('Maestro').AsInteger:=Parametros.Maestro;
-  DataSet.ParamByName('MaestroIni').AsInteger:=Parametros.MaestroIni;
-  DataSet.ParamByName('MaestroFin').AsInteger:=Parametros.MaestroFin;
-  DataSet.ParamByName('Nivel').AsInteger:=Parametros.Nivel;
-  DataSet.ParamByName('TipoPago').AsInteger:=Parametros.TipoPago;
-  DataSet.ParamByName('TipoCalificacion').AsInteger:=Parametros.TipoCalificacion;
+  DataSet.ParamByName('ClienteIni').AsInteger:=Parametros.ClienteIni;
+  DataSet.ParamByName('ClienteFin').AsInteger:=Parametros.ClienteFin;
+  DataSet.ParamByName('Estacion').AsInteger:=Parametros.Estacion;
+  DataSet.ParamByName('SecuenciaIni').AsInteger:=Parametros.SecuenciaIni;
+  DataSet.ParamByName('SecuenciaFin').AsInteger:=Parametros.SecuenciaFin;
+  DataSet.ParamByName('FolioFactura').AsInteger:=Parametros.FolioFactura;
+  DataSet.ParamByName('Ejercicio').AsInteger:=Parametros.Ejercicio;
+  DataSet.ParamByName('PeriodoFin').AsInteger:=Parametros.PeriodoFin;
+  DataSet.ParamByName('Periodo').AsInteger:=Parametros.Periodo;
+  DataSet.ParamByName('Dia').AsInteger:=Parametros.Dia;
+  DataSet.ParamByName('EjercicioFin').AsInteger:=Parametros.EjercicioFin;
+  DataSet.ParamByName('Dia').AsInteger:=Parametros.Dia;
+  DataSet.ParamByName('EjercicioFin').AsInteger:=Parametros.EjercicioFin;
+  DataSet.ParamByName('DiaFin').AsInteger:=Parametros.DiaFin;
+  DataSet.ParamByName('Secuencia').AsString:=Parametros.Secuencia;
+  DataSet.ParamByName('Agrupacion').AsInteger:=Parametros.Agrupacion;
+  DataSet.ParamByName('Almacen').AsInteger:=Parametros.Almacen;
+  DataSet.ParamByName('SecuenciaIniLiquidacion').AsInteger:=Parametros.SecuenciaIniLiquidacion;
+  DataSet.ParamByName('SecuenciaFinLiquidacion').AsInteger:=Parametros.SecuenciaFinLiquidacion;
+  DataSet.ParamByName('MontoFacturado').AsInteger:=Parametros.MontoFacturado;
+  DataSet.ParamByName('Turno').AsInteger:=Parametros.Turno;
+  DataSet.ParamByName('EmpleadoIni').AsInteger:=Parametros.EmpleadoIni;
+  DataSet.ParamByName('EmpleadoFin').AsInteger:=Parametros.EmpleadoFin;
+  DataSet.ParamByName('EstacionIni').AsInteger:=Parametros.EstacionIni;
+  DataSet.ParamByName('EstacionFin').AsInteger:=Parametros.EstacionFin;
   DataSet.ParamByName('Usuario').AsInteger:=Parametros.Usuario;
-  DataSet.ParamByName('Familia').AsInteger:=Parametros.Familia;
   DataSet.ParamByName('Valor1').AsInteger:=Parametros.Valor1;
-  DataSet.ParamByName('Status').AsInteger:=Parametros.Status;
+  DataSet.ParamByName('Status').AsString:=Parametros.Status;
   DataSet.ParamByName('Serie').AsString:=Parametros.Serie;
   DataSet.ParamByName('Factura').AsInteger:= Parametros.Factura;
   DataSet.ParamByName('FacturasCompras').AsInteger:= Parametros.FacturasCompras;
@@ -444,6 +470,145 @@ begin
     Result.NombreEmpleado:='';
   end;
   DataSet.Close;
+end;
+
+function TServiceIngresos.comboestacion(const estacionid: AnsiString): AnsiString;
+var
+  DataSet, Permisos: IDADataSet;
+begin
+  Result:='';
+  DataSet:=Schema.NewDataset(Connection, 'spObtenAlmacenEstacion');
+  DataSet.ParamByName('EstacionID').AsString:=estacionid;
+  DataSet.Open;
+  if not DataSet.IsEmpty then
+  begin
+    Result:= DataSet.FieldByName('Resultado').AsString;
+  end
+  else
+  begin
+    Result:= '-1';
+  end;
+
+  DataSet.Close;
+end;
+
+function TServiceIngresos.comboscompras(
+  const estacionid: AnsiString): AnsiString;
+var
+  DataSet, Permisos: IDADataSet;
+begin
+  Result:='';
+  DataSet:=Schema.NewDataset(Connection, 'spObtenCombosCompras');
+  DataSet.ParamByName('EstacionID').AsString:=estacionid;
+  DataSet.Open;
+  if not DataSet.IsEmpty then
+  begin
+    Result:= DataSet.FieldByName('Resultado').AsString;
+  end
+  else
+  begin
+    Result:= '-1';
+  end;
+
+  DataSet.Close;
+end;
+
+function TServiceIngresos.IANcomprasGuarda(const MovimientoAlmacenMaestro,
+  MovimientoAlmacenDetalle: AnsiString): AnsiString;
+var
+  ds, dsprecio: IDADataset;
+  cmdmaestro: IDASQLCommand;
+  cmddetalle: IDASQLCommand;
+  cmdupdatemaestro: IDASQLCommand;
+
+  m,d, mcmd, det, idcmarray, fecha: TArray<String>;
+  cm, cd, idcm, detalles: String;
+
+  movimientoalmacenid, detallemovimientoalmacenid: integer;
+  costo, subtotal, total, totimpuesto: double;
+begin
+  cm:= MovimientoAlmacenMaestro;
+  cd:= MovimientoAlmacenDetalle;
+
+  m:= cm.Split(['|']);
+  d:= cd.Split(['#']);
+
+  dsprecio:=Schema.NewDataset(Connection, 'spCostoProducto');
+  ds:=Schema.NewDataset(Connection, 'spObtenIDSComboCompras');
+  ds.ParamByName('P1').AsString:= m[7];
+  ds.ParamByName('P2').AsString:= m[4];
+  ds.ParamByName('P3').AsString:= m[3];
+  ds.ParamByName('P4').AsString:= m[5];
+  ds.ParamByName('P5').AsString:= m[8];
+  ds.ParamByName('P6').AsInteger:= strtoint(m[0]);
+  ds.Open;
+
+  if not (ds.EOF) then
+  idcm:= ds.FieldByName('IDS').AsString;
+
+  idcmarray:= idcm.Split(['|']);
+  fecha:= m[1].Split(['-']);
+  movimientoalmacenid:= Folio('IDMOVIMIENTOALMACEN','');
+
+  //REALIZAR GUARDADO EN MAESTRO MOVIMIENTOALMACEN
+  cmddetalle:=Schema.NewCommand(Connection, 'Insert_dbo DetalleMovimientoAlmacen2');
+  cmdmaestro:=Schema.NewCommand(Connection, 'Insert_dbo MovimientoAlmacen2');
+  cmdmaestro.ParamByName('MOVIMIENTOALMACENID').AsInteger:= movimientoalmacenid;
+  cmdmaestro.ParamByName('FOLIO').AsInteger:= strtoint(m[2]);
+  cmdmaestro.ParamByName('FECHA').AsDateTime:=strtodate(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
+  cmdmaestro.ParamByName('DIA').AsInteger:= strtoint(fecha[0]);
+  cmdmaestro.ParamByName('EJERCICIO').AsInteger:= strtoint(fecha[2]);
+  cmdmaestro.ParamByName('PERIODO').AsInteger:= strtoint(fecha[1]);
+  cmdmaestro.ParamByName('TOTAL').AsFloat:= 0;
+  cmdmaestro.ParamByName('SUBTOTAL').AsFloat:= 0;
+  cmdmaestro.ParamByName('IMPUESTO').AsFloat:= 0;
+  cmdmaestro.ParamByName('IMPUESTOPORCENTAJE').AsFloat:= 0;
+  //FALTAN LOS ID QUE LLEVA LA TABLA MOVIMIENTOALMACEN
+  cmdmaestro.ParamByName('ESTACIONID').AsInteger:= strtoint(m[0]);
+  cmdmaestro.ParamByName('ESTACIONDESTINOID').AsInteger:= strtoint(idcmarray[0]);
+  cmdmaestro.ParamByName('ALMACENDESTINOID').AsInteger:= strtoint(idcmarray[1]);
+  cmdmaestro.ParamByName('PROVEEDORID').AsInteger:= strtoint(idcmarray[3]);
+  cmdmaestro.ParamByName('ALMACENID').AsInteger:= strtoint(idcmarray[4]);
+  cmdmaestro.ParamByName('TIPOMOVIMIENTOALMACENID').AsInteger:= strtoint(idcmarray[2]);
+  cmdmaestro.Execute;
+
+  subtotal:=0; total:=0; totimpuesto:=0; costo:=0;
+  if (length(m) > 0)then
+  begin
+    for detalles in d do
+    begin
+        det:= detalles.Split(['|']);
+
+        dsprecio.Close;
+        dsprecio.ParamByName('IDPRODUCTO').AsInteger:= strtoint(det[0]);
+        dsprecio.Open;
+        costo:= dsprecio.FieldByName('costo').AsFloat;
+
+        //REALIZAR GUARDADO DE MOVIMIENTOALMACEN DETALLES
+        subtotal   := subtotal + (costo * strtofloat(det[1]));
+        totimpuesto:= totimpuesto + (Impuesto(costo * strtofloat(det[1]),strtofloat(idcmarray[5])));
+
+        detallemovimientoalmacenid:= Folio('IDDETALLEMOVIMIENTOALMACEN','');
+        cmddetalle.ParamByName('DETALLEMOVIMIENTOALMACENID').AsInteger:= detallemovimientoalmacenid;
+        cmddetalle.ParamByName('MOVIMIENTOALMACENID').AsInteger:= movimientoalmacenid;
+        cmddetalle.ParamByName('Cantidad').AsFloat:= strtofloat(det[1]);
+        cmddetalle.ParamByName('Precio').AsFloat:= costo;
+        cmddetalle.ParamByName('Importe').AsFloat:= costo * strtofloat(det[1]);
+        cmddetalle.ParamByName('ProductoID').AsInteger:= strtoint(det[0]);
+        cmddetalle.Execute;
+    end;
+    Total:= Total + (SubTotal + TotImpuesto);
+  end;
+
+  //REALIZAR UN UPDATE PARA ACTUALIZAR LA TABLA MOVIMIENTOALMACEN
+  cmdupdatemaestro:= Schema.NewCommand(Connection, 'Update_MovimientoAlmacen');
+  cmdupdatemaestro.ParamByName('IDMOVIMIENTOALMACEN').AsInteger:= movimientoalmacenid;
+  cmdupdatemaestro.ParamByName('TOTAL').AsFloat:= Total;
+  cmdupdatemaestro.ParamByName('SUBTOTAL').AsFloat:= Subtotal;
+  cmdupdatemaestro.ParamByName('IMPUESTO').AsFloat:= totimpuesto;
+  cmdupdatemaestro.ParamByName('IMPUESTOPORCENTAJE').AsFloat:= strtofloat(idcmarray[5]);
+  cmdupdatemaestro.Execute;
+
 end;
 
 function TServiceIngresos.IEPS(ProductoID: Integer): Real;

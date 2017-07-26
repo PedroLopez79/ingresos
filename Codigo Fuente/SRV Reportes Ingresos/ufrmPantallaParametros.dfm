@@ -3,8 +3,8 @@ object frmPantallaParametros: TfrmPantallaParametros
   Top = 0
   BorderStyle = bsDialog
   Caption = 'frmPantallaParametros'
-  ClientHeight = 719
-  ClientWidth = 677
+  ClientHeight = 991
+  ClientWidth = 1197
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -33,7 +33,7 @@ object frmPantallaParametros: TfrmPantallaParametros
     Height = 65
     Width = 577
     object Label39: TLabel
-      Left = 59
+      Left = 26
       Top = 28
       Width = 53
       Height = 13
@@ -47,7 +47,7 @@ object frmPantallaParametros: TfrmPantallaParametros
       Transparent = True
     end
     object Label40: TLabel
-      Left = 267
+      Left = 312
       Top = 28
       Width = 48
       Height = 13
@@ -61,7 +61,7 @@ object frmPantallaParametros: TfrmPantallaParametros
       Transparent = True
     end
     object edtHoraIni: TcxTimeEdit
-      Left = 128
+      Left = 95
       Top = 24
       Hint = ''
       EditValue = 0d
@@ -70,435 +70,13 @@ object frmPantallaParametros: TfrmPantallaParametros
       Width = 73
     end
     object edtHoraFin: TcxTimeEdit
-      Left = 330
+      Left = 375
       Top = 24
       Hint = ''
       EditValue = 0.999988425925926d
       Style.TextColor = clNavy
       TabOrder = 1
       Width = 72
-    end
-  end
-  object gbAlumnos: TcxGroupBox
-    Tag = 100
-    Left = 25
-    Top = 439
-    Hint = ''
-    Caption = '  Alumnos'
-    Style.LookAndFeel.NativeStyle = False
-    StyleDisabled.LookAndFeel.NativeStyle = False
-    StyleFocused.LookAndFeel.NativeStyle = False
-    StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 1
-    Height = 109
-    Width = 577
-    object Label3: TLabel
-      Left = 3
-      Top = 35
-      Width = 65
-      Height = 13
-      Caption = 'Alumno Inicial'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object Label4: TLabel
-      Left = 3
-      Top = 75
-      Width = 60
-      Height = 13
-      Caption = 'Alumno Final'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object Label27: TLabel
-      Left = 449
-      Top = 16
-      Width = 83
-      Height = 13
-      Caption = 'Forma de Compra'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object Label28: TLabel
-      Left = 449
-      Top = 56
-      Width = 69
-      Height = 13
-      Caption = 'D'#237'a a Facturar'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object edtAlumnoIni: TcxCurrencyEdit
-      Tag = 1
-      Left = 89
-      Top = 32
-      Hint = ''
-      EditValue = '0'
-      ParentFont = False
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
-      Style.BorderStyle = ebsOffice11
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.TextColor = clNavy
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 0
-      OnExit = edtAlumnoIniExit
-      Width = 57
-    end
-    object edtAlumnoFin: TcxCurrencyEdit
-      Tag = 2
-      Left = 88
-      Top = 72
-      Hint = ''
-      EditValue = '9999'
-      ParentFont = False
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
-      Style.BorderStyle = ebsOffice11
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.TextColor = clNavy
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
-      OnExit = edtAlumnoIniExit
-      Width = 57
-    end
-    object edtNombreAlumnoIni: TcxTextEdit
-      Left = 152
-      Top = 32
-      Hint = ''
-      TabStop = False
-      ParentFont = False
-      Properties.CharCase = ecUpperCase
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      TabOrder = 3
-      Width = 225
-    end
-    object edtNombreAlumnoFin: TcxTextEdit
-      Left = 152
-      Top = 72
-      Hint = ''
-      TabStop = False
-      ParentFont = False
-      Properties.CharCase = ecUpperCase
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      TabOrder = 2
-      Width = 225
-    end
-    object edtBuscaAlumnoIni: TcxButton
-      Tag = 1
-      Left = 380
-      Top = 29
-      Width = 66
-      Height = 25
-      Caption = 'Buscar'
-      Colors.Default = clWhite
-      Colors.Normal = clWhite
-      Colors.Hot = clWhite
-      Colors.Pressed = clWhite
-      Colors.Disabled = clWhite
-      LookAndFeel.NativeStyle = False
-      OptionsImage.Glyph.Data = {
-        36050000424D3605000000000000360400002800000010000000100000000100
-        08000000000000010000120B0000120B0000000100000000000000000000FFFF
-        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
-        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
-        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
-        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
-        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
-        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
-        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
-        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
-        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
-        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
-        9E00046099000454860000518800002A470000243D0002558E0002416A000351
-        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
-        2300000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        02505853020202020202020202020202572205184B0202020202020202020257
-        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
-        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
-        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
-        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        0202020202020202020202020202020202020202020202020202}
-      TabOrder = 4
-      TabStop = False
-      OnClick = edtBuscaAlumnoIniClick
-    end
-    object edtBuscaAlumnoFin: TcxButton
-      Tag = 2
-      Left = 380
-      Top = 70
-      Width = 66
-      Height = 25
-      Caption = 'Buscar'
-      Colors.Default = clWhite
-      Colors.Normal = clWhite
-      Colors.Hot = clWhite
-      Colors.Pressed = clWhite
-      Colors.Disabled = clWhite
-      LookAndFeel.NativeStyle = False
-      OptionsImage.Glyph.Data = {
-        36050000424D3605000000000000360400002800000010000000100000000100
-        08000000000000010000120B0000120B0000000100000000000000000000FFFF
-        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
-        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
-        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
-        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
-        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
-        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
-        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
-        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
-        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
-        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
-        9E00046099000454860000518800002A470000243D0002558E0002416A000351
-        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
-        2300000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        02505853020202020202020202020202572205184B0202020202020202020257
-        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
-        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
-        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
-        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        0202020202020202020202020202020202020202020202020202}
-      TabOrder = 5
-      TabStop = False
-      OnClick = edtBuscaAlumnoIniClick
-    end
-    object edtFormaDeCompra: TcxImageComboBox
-      Left = 448
-      Top = 32
-      Hint = ''
-      TabStop = False
-      Properties.Items = <>
-      TabOrder = 6
-      Width = 121
-    end
-    object edtDiaFacturar: TcxImageComboBox
-      Left = 448
-      Top = 72
-      Hint = ''
-      TabStop = False
-      Properties.Items = <>
-      TabOrder = 7
-      Width = 121
-    end
-  end
-  object gbAlumno: TcxGroupBox
-    Tag = 100
-    Left = 24
-    Top = 368
-    Hint = ''
-    Caption = '  Alumno'
-    Style.LookAndFeel.NativeStyle = False
-    StyleDisabled.LookAndFeel.NativeStyle = False
-    StyleFocused.LookAndFeel.NativeStyle = False
-    StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 2
-    Height = 65
-    Width = 577
-    object Label8: TLabel
-      Left = 27
-      Top = 30
-      Width = 35
-      Height = 13
-      Caption = 'Alumno'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object edtAlumno: TcxCurrencyEdit
-      Tag = 3
-      Left = 72
-      Top = 27
-      Hint = ''
-      EditValue = '0'
-      ParentFont = False
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
-      Style.BorderStyle = ebsOffice11
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.TextColor = clNavy
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 0
-      OnExit = edtAlumnoExit
-      Width = 57
-    end
-    object edtNombreAlumno: TcxTextEdit
-      Left = 136
-      Top = 27
-      Hint = ''
-      TabStop = False
-      ParentFont = False
-      Properties.CharCase = ecUpperCase
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
-      Width = 257
-    end
-    object cxButton1: TcxButton
-      Tag = 3
-      Left = 399
-      Top = 24
-      Width = 66
-      Height = 25
-      Caption = 'Buscar'
-      Colors.Default = clWhite
-      Colors.Normal = clWhite
-      Colors.Hot = clWhite
-      Colors.Pressed = clWhite
-      Colors.Disabled = clWhite
-      LookAndFeel.NativeStyle = False
-      OptionsImage.Glyph.Data = {
-        36050000424D3605000000000000360400002800000010000000100000000100
-        08000000000000010000120B0000120B0000000100000000000000000000FFFF
-        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
-        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
-        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
-        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
-        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
-        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
-        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
-        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
-        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
-        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
-        9E00046099000454860000518800002A470000243D0002558E0002416A000351
-        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
-        2300000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        02505853020202020202020202020202572205184B0202020202020202020257
-        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
-        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
-        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
-        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        0202020202020202020202020202020202020202020202020202}
-      TabOrder = 2
-      OnClick = edtBuscaAlumnoIniClick
     end
   end
   object gbRangoFechas: TcxGroupBox
@@ -511,11 +89,11 @@ object frmPantallaParametros: TfrmPantallaParametros
     StyleDisabled.LookAndFeel.NativeStyle = False
     StyleFocused.LookAndFeel.NativeStyle = False
     StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 3
+    TabOrder = 1
     Height = 57
     Width = 577
     object Label1: TLabel
-      Left = 43
+      Left = 26
       Top = 25
       Width = 60
       Height = 13
@@ -543,7 +121,7 @@ object frmPantallaParametros: TfrmPantallaParametros
       Transparent = True
     end
     object dtpInicial: TcxDateEdit
-      Left = 114
+      Left = 97
       Top = 22
       Hint = ''
       ParentFont = False
@@ -615,255 +193,9 @@ object frmPantallaParametros: TfrmPantallaParametros
       Width = 88
     end
   end
-  object gbMaestros: TcxGroupBox
-    Tag = 100
-    Left = 24
-    Top = 264
-    Hint = ''
-    Caption = '  Maestros'
-    Style.LookAndFeel.NativeStyle = False
-    StyleDisabled.LookAndFeel.NativeStyle = False
-    StyleFocused.LookAndFeel.NativeStyle = False
-    StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 4
-    Height = 89
-    Width = 577
-    object Label14: TLabel
-      Left = 27
-      Top = 28
-      Width = 67
-      Height = 13
-      Caption = 'Maestro inicial'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object Label15: TLabel
-      Left = 27
-      Top = 60
-      Width = 63
-      Height = 13
-      Caption = 'Maestro Final'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      Transparent = True
-    end
-    object edtMaestroIni: TcxCurrencyEdit
-      Tag = 1
-      Left = 128
-      Top = 24
-      Hint = ''
-      EditValue = 0
-      ParentFont = False
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
-      Properties.Nullable = False
-      Style.BorderStyle = ebsOffice11
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.TextColor = clNavy
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 0
-      OnExit = edtMaestroIniExit
-      Width = 57
-    end
-    object edtMaestroFin: TcxCurrencyEdit
-      Tag = 2
-      Left = 128
-      Top = 56
-      Hint = ''
-      EditValue = '99999999'
-      ParentFont = False
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = '0000'
-      Properties.Nullable = False
-      Style.BorderStyle = ebsOffice11
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.TextColor = clNavy
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
-      OnExit = edtMaestroFinExit
-      Width = 57
-    end
-    object edtNombreMaestroIni: TcxTextEdit
-      Left = 192
-      Top = 24
-      Hint = ''
-      TabStop = False
-      ParentFont = False
-      Properties.CharCase = ecUpperCase
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      TabOrder = 2
-      Width = 225
-    end
-    object edtNombreMaestroFin: TcxTextEdit
-      Left = 192
-      Top = 56
-      Hint = ''
-      TabStop = False
-      ParentFont = False
-      Properties.CharCase = ecUpperCase
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clNavy
-      Style.Font.Height = -11
-      Style.Font.Name = 'MS Sans Serif'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      TabOrder = 3
-      Width = 225
-    end
-    object edtBuscaMaestroIni: TcxButton
-      Tag = 1
-      Left = 423
-      Top = 23
-      Width = 66
-      Height = 25
-      Caption = 'Buscar'
-      Colors.Default = clWhite
-      Colors.Normal = clWhite
-      Colors.Hot = clWhite
-      Colors.Pressed = clWhite
-      Colors.Disabled = clWhite
-      LookAndFeel.NativeStyle = False
-      OptionsImage.Glyph.Data = {
-        36050000424D3605000000000000360400002800000010000000100000000100
-        08000000000000010000120B0000120B0000000100000000000000000000FFFF
-        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
-        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
-        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
-        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
-        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
-        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
-        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
-        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
-        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
-        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
-        9E00046099000454860000518800002A470000243D0002558E0002416A000351
-        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
-        2300000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        02505853020202020202020202020202572205184B0202020202020202020257
-        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
-        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
-        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
-        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        0202020202020202020202020202020202020202020202020202}
-      TabOrder = 4
-      TabStop = False
-      OnClick = edtBuscaMaestroIniClick
-    end
-    object edtBuscaMaestroFin: TcxButton
-      Tag = 2
-      Left = 423
-      Top = 54
-      Width = 66
-      Height = 25
-      Caption = 'Buscar'
-      Colors.Default = clWhite
-      Colors.Normal = clWhite
-      Colors.Hot = clWhite
-      Colors.Pressed = clWhite
-      Colors.Disabled = clWhite
-      LookAndFeel.NativeStyle = False
-      OptionsImage.Glyph.Data = {
-        36050000424D3605000000000000360400002800000010000000100000000100
-        08000000000000010000120B0000120B0000000100000000000000000000FFFF
-        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
-        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
-        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
-        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
-        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
-        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
-        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
-        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
-        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
-        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
-        9E00046099000454860000518800002A470000243D0002558E0002416A000351
-        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
-        2300000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        02505853020202020202020202020202572205184B0202020202020202020257
-        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
-        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
-        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
-        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
-        0202020202020202020202020202020202020202020202020202020202020202
-        0202020202020202020202020202020202020202020202020202}
-      TabOrder = 5
-      TabStop = False
-      OnClick = edtBuscaMaestroFinClick
-    end
-  end
   object s: TcxButton
-    Left = 216
-    Top = 464
+    Left = 222
+    Top = 338
     Width = 82
     Height = 25
     Caption = 'Aceptar'
@@ -916,12 +248,12 @@ object frmPantallaParametros: TfrmPantallaParametros
       0000000000000001010000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
-    TabOrder = 5
+    TabOrder = 2
     OnClick = sClick
   end
   object btnCancelar: TcxButton
-    Left = 304
-    Top = 464
+    Left = 310
+    Top = 338
     Width = 82
     Height = 25
     Caption = 'Cancelar'
@@ -958,13 +290,13 @@ object frmPantallaParametros: TfrmPantallaParametros
       FF00FF0001890F1DBF3E5BF36B87FE728CFF5E7BFE395BFB1231EB010FB50001
       84FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000189030AA306
       11B2050FB10107A0000188FF00FFFF00FFFF00FFFF00FFFF00FF}
-    TabOrder = 6
+    TabOrder = 3
     OnClick = btnCancelarClick
   end
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
-    Width = 677
+    Width = 1197
     Height = 24
     Hint = ''
     BarManager = frmPrincipal.dxBarManager1
@@ -972,7 +304,7 @@ object frmPantallaParametros: TfrmPantallaParametros
     ShowTabHeaders = False
     SupportNonClientDrawing = True
     Contexts = <>
-    TabOrder = 7
+    TabOrder = 4
     TabStop = False
     object dxRibbon1Tab1: TdxRibbonTab
       Caption = 'dxRibbon1Tab1'
@@ -991,7 +323,8 @@ object frmPantallaParametros: TfrmPantallaParametros
     StyleDisabled.LookAndFeel.NativeStyle = False
     StyleFocused.LookAndFeel.NativeStyle = False
     StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 8
+    TabOrder = 5
+    Visible = False
     Height = 65
     Width = 577
     object Label6: TLabel
@@ -1024,7 +357,7 @@ object frmPantallaParametros: TfrmPantallaParametros
   end
   object gbTurno: TcxGroupBox
     Tag = 100
-    Left = 24
+    Left = 25
     Top = 554
     Hint = ''
     Caption = ' Turno'
@@ -1032,11 +365,12 @@ object frmPantallaParametros: TfrmPantallaParametros
     StyleDisabled.LookAndFeel.NativeStyle = False
     StyleFocused.LookAndFeel.NativeStyle = False
     StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 9
+    TabOrder = 6
+    Visible = False
     Height = 63
     Width = 577
     object Label5: TLabel
-      Left = 27
+      Left = 26
       Top = 30
       Width = 80
       Height = 13
@@ -1071,7 +405,6 @@ object frmPantallaParametros: TfrmPantallaParametros
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 0
-      OnExit = edtAlumnoExit
       Width = 57
     end
   end
@@ -1085,12 +418,13 @@ object frmPantallaParametros: TfrmPantallaParametros
     StyleDisabled.LookAndFeel.NativeStyle = False
     StyleFocused.LookAndFeel.NativeStyle = False
     StyleHot.LookAndFeel.NativeStyle = False
-    TabOrder = 10
-    Height = 65
+    TabOrder = 7
+    Visible = False
+    Height = 62
     Width = 577
     object Label7: TLabel
       Left = 27
-      Top = 30
+      Top = 28
       Width = 30
       Height = 13
       Caption = 'Fecha'
@@ -1104,7 +438,7 @@ object frmPantallaParametros: TfrmPantallaParametros
     end
     object dtpFecha: TcxDateEdit
       Left = 83
-      Top = 27
+      Top = 25
       Hint = ''
       ParentFont = False
       Properties.ButtonGlyph.Data = {
@@ -1139,6 +473,1240 @@ object frmPantallaParametros: TfrmPantallaParametros
       Width = 88
     end
   end
+  object cxEstacion: TcxGroupBox
+    Tag = 100
+    Left = 608
+    Top = 40
+    Hint = ''
+    Caption = ' Estaci'#243'n '
+    TabOrder = 8
+    Height = 57
+    Width = 583
+    object lblEstacion: TcxLabel
+      Left = 31
+      Top = 25
+      Hint = ''
+      Caption = 'Estaci'#243'n:'
+      Style.BorderStyle = ebsNone
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      Transparent = True
+    end
+    object cxEstaciones: TcxLookupComboBox
+      Left = 85
+      Top = 24
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDESTACION'
+      Properties.ListColumns = <
+        item
+          FieldName = 'IDESTACION'
+        end
+        item
+          FieldName = 'Nombre'
+        end>
+      Properties.ListSource = dsEstaciones
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 1
+      Width = 404
+    end
+  end
+  object cxPeriodo: TcxGroupBox
+    Tag = 100
+    Left = 608
+    Top = 112
+    Hint = ''
+    Caption = ' Periodo '
+    TabOrder = 9
+    Visible = False
+    Height = 66
+    Width = 583
+    object lblFechaInicial: TcxLabel
+      Left = 31
+      Top = 34
+      Hint = ''
+      Caption = 'Fecha Inicial:'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object cxLabel1: TcxLabel
+      Left = 292
+      Top = 34
+      Hint = ''
+      Caption = 'Fecha Final:'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object edtFechaInicial: TcxDateEdit
+      Left = 104
+      Top = 33
+      Hint = ''
+      ParentFont = False
+      Properties.ButtonGlyph.Data = {
+        46020000424D460200000000000036000000280000000E0000000C0000000100
+        1800000000001002000000000000000000000000000000000000FF00FFFF00FF
+        8080808080808080808080808080808080808080808080808080808080808080
+        80FF00FF0000FF00FF0000000000008000000000008000008000000000008000
+        00000000000000800000808080FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00
+        FFFFFFFF000000000000000000FFFFFF000000000000000000C0C0C0FFFFFF80
+        0000808080FF00FF0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFFC0C0C0FF
+        FFFFC0C0C0000000FFFFFF800000808080FF00FF0000FF00FFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF800000808080FF00FF
+        0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFF000000000000000000C0C0C0
+        FFFFFF800000808080FF00FF0000FF00FFFFFFFF000000000000FFFFFFFFFFFF
+        000000FFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFF
+        FFFFFF000000FFFFFFFFFFFF000000000000000000000000FFFFFF8000008080
+        80FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF800000808080FF00FF0000FF00
+        FF000000000000000000000000000000000000000000000000000000000000FF
+        00FFFF00FFFF00FF0000}
+      Properties.InputKind = ikMask
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      TabOrder = 2
+      Width = 89
+    end
+    object edtFechaFinal: TcxDateEdit
+      Left = 360
+      Top = 33
+      Hint = ''
+      ParentFont = False
+      Properties.ButtonGlyph.Data = {
+        46020000424D460200000000000036000000280000000E0000000C0000000100
+        1800000000001002000000000000000000000000000000000000FF00FFFF00FF
+        8080808080808080808080808080808080808080808080808080808080808080
+        80FF00FF0000FF00FF0000000000008000000000008000008000000000008000
+        00000000000000800000808080FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00
+        FFFFFFFF000000000000000000FFFFFF000000000000000000C0C0C0FFFFFF80
+        0000808080FF00FF0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFFC0C0C0FF
+        FFFFC0C0C0000000FFFFFF800000808080FF00FF0000FF00FFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF800000808080FF00FF
+        0000FF00FFFFFFFFFFFFFF000000FFFFFFFFFFFF000000000000000000C0C0C0
+        FFFFFF800000808080FF00FF0000FF00FFFFFFFF000000000000FFFFFFFFFFFF
+        000000FFFFFFFFFFFFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFF
+        FFFFFF000000FFFFFFFFFFFF000000000000000000000000FFFFFF8000008080
+        80FF00FF0000FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF800000808080FF00FF0000FF00FFFFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF800000808080FF00FF0000FF00
+        FF000000000000000000000000000000000000000000000000000000000000FF
+        00FFFF00FFFF00FF0000}
+      Properties.InputKind = ikMask
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      TabOrder = 3
+      Width = 103
+    end
+  end
+  object cxRangoPeriodos: TcxGroupBox
+    Left = 607
+    Top = 264
+    Hint = ''
+    Caption = '  Rango de Periodos '
+    Style.LookAndFeel.NativeStyle = False
+    StyleDisabled.LookAndFeel.NativeStyle = False
+    StyleFocused.LookAndFeel.NativeStyle = False
+    StyleHot.LookAndFeel.NativeStyle = False
+    TabOrder = 10
+    Visible = False
+    Height = 63
+    Width = 579
+    object Label11: TLabel
+      Left = 8
+      Top = 30
+      Width = 40
+      Height = 13
+      Caption = 'Ejercicio'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label13: TLabel
+      Left = 125
+      Top = 30
+      Width = 66
+      Height = 13
+      Caption = 'Periodo Inicial'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label20: TLabel
+      Left = 358
+      Top = 30
+      Width = 61
+      Height = 13
+      Caption = 'Periodo Final'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object edtEjercicio: TcxSpinEdit
+      Left = 54
+      Top = 26
+      Hint = ''
+      Properties.MaxValue = 2006.000000000000000000
+      Properties.MinValue = 2006.000000000000000000
+      TabOrder = 0
+      Value = 2006
+      Width = 57
+    end
+    object cbPeriodoIni: TcxImageComboBox
+      Left = 197
+      Top = 26
+      Hint = ''
+      Properties.Items = <
+        item
+          Description = 'ENERO'
+          ImageIndex = 0
+          Value = 1
+        end
+        item
+          Description = 'FEBRERO'
+          Value = 2
+        end
+        item
+          Description = 'MARZO'
+          Value = 3
+        end
+        item
+          Description = 'ABRIL'
+          Value = 4
+        end
+        item
+          Description = 'MAYO'
+          Value = 5
+        end
+        item
+          Description = 'JUNIO'
+          Value = 6
+        end
+        item
+          Description = 'JULIO'
+          Value = 7
+        end
+        item
+          Description = 'AGOSTO'
+          Value = 8
+        end
+        item
+          Description = 'SEPTIEMBRE'
+          Value = 9
+        end
+        item
+          Description = 'OCTUBRE'
+          Value = 10
+        end
+        item
+          Description = 'NOVIEMBRE'
+          Value = 11
+        end
+        item
+          Description = 'DICIEMBRE'
+          Value = 12
+        end>
+      TabOrder = 1
+      Width = 145
+    end
+    object cbPeriodoFin: TcxImageComboBox
+      Left = 425
+      Top = 26
+      Hint = ''
+      Properties.Items = <
+        item
+          Description = 'ENERO'
+          ImageIndex = 0
+          Value = 1
+        end
+        item
+          Description = 'FEBRERO'
+          Value = 2
+        end
+        item
+          Description = 'MARZO'
+          Value = 3
+        end
+        item
+          Description = 'ABRIL'
+          Value = 4
+        end
+        item
+          Description = 'MAYO'
+          Value = 5
+        end
+        item
+          Description = 'JUNIO'
+          Value = 6
+        end
+        item
+          Description = 'JULIO'
+          Value = 7
+        end
+        item
+          Description = 'AGOSTO'
+          Value = 8
+        end
+        item
+          Description = 'SEPTIEMBRE'
+          Value = 9
+        end
+        item
+          Description = 'OCTUBRE'
+          Value = 10
+        end
+        item
+          Description = 'NOVIEMBRE'
+          Value = 11
+        end
+        item
+          Description = 'DICIEMBRE'
+          Value = 12
+        end>
+      TabOrder = 2
+      Width = 145
+    end
+  end
+  object cxFactura: TcxGroupBox
+    Tag = 100
+    Left = 607
+    Top = 193
+    Hint = ''
+    Caption = '  Factura  '
+    Style.LookAndFeel.NativeStyle = False
+    StyleDisabled.LookAndFeel.NativeStyle = False
+    StyleFocused.LookAndFeel.NativeStyle = False
+    StyleHot.LookAndFeel.NativeStyle = False
+    TabOrder = 11
+    Visible = False
+    Height = 65
+    Width = 577
+    object Label12: TLabel
+      Left = 251
+      Top = 28
+      Width = 88
+      Height = 13
+      Caption = 'N'#250'mero de factura'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label10: TLabel
+      Left = 131
+      Top = 28
+      Width = 24
+      Height = 13
+      Caption = 'Serie'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object edtFactura: TcxCurrencyEdit
+      Left = 344
+      Top = 24
+      Hint = ''
+      EditValue = '1'
+      ParentFont = False
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '#'
+      Style.BorderStyle = ebsOffice11
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = True
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      TabOrder = 0
+      Width = 65
+    end
+    object edtSerie: TcxImageComboBox
+      Left = 160
+      Top = 24
+      Hint = ''
+      TabStop = False
+      Properties.Items = <>
+      TabOrder = 1
+      Width = 57
+    end
+  end
+  object cxAgrupacion: TcxGroupBox
+    Tag = 100
+    Left = 608
+    Top = 368
+    Hint = ''
+    Caption = ' Agrupacion '
+    TabOrder = 12
+    Visible = False
+    Height = 65
+    Width = 583
+    object CmbAgrupacion: TcxLookupComboBox
+      Left = 104
+      Top = 23
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDAGRUPACION'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Nombre'
+        end>
+      Properties.ListSource = dsAgrupacion
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 0
+      Width = 201
+    end
+  end
+  object cxCliente: TcxGroupBox
+    Tag = 100
+    Left = 608
+    Top = 439
+    Hint = ''
+    Caption = ' Cliente '
+    TabOrder = 13
+    Visible = False
+    Height = 68
+    Width = 583
+    object cxLabel2: TcxLabel
+      Left = 31
+      Top = 29
+      Hint = ''
+      Caption = 'Cliente'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object edtBuscaClienteIni: TcxButton
+      Tag = 1
+      Left = 452
+      Top = 26
+      Width = 66
+      Height = 25
+      Caption = 'Buscar'
+      Colors.Default = clWhite
+      Colors.Normal = clWhite
+      Colors.Hot = clWhite
+      Colors.Pressed = clWhite
+      Colors.Disabled = clWhite
+      LookAndFeel.NativeStyle = False
+      OptionsImage.Glyph.Data = {
+        36050000424D3605000000000000360400002800000010000000100000000100
+        08000000000000010000120B0000120B0000000100000000000000000000FFFF
+        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
+        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
+        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
+        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
+        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
+        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
+        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
+        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
+        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
+        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
+        9E00046099000454860000518800002A470000243D0002558E0002416A000351
+        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
+        2300000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        02505853020202020202020202020202572205184B0202020202020202020257
+        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
+        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
+        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
+        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        0202020202020202020202020202020202020202020202020202}
+      TabOrder = 1
+      TabStop = False
+      OnClick = edtBuscaClienteIniClick
+    end
+    object txtNoCliente: TcxCurrencyEdit
+      Left = 87
+      Top = 28
+      Hint = ''
+      EditValue = '0'
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '0000'
+      TabOrder = 2
+      OnExit = txtNoClienteExit
+      Width = 89
+    end
+    object cxTextCliente: TcxTextEdit
+      Left = 182
+      Top = 28
+      Hint = ''
+      Enabled = False
+      TabOrder = 3
+      Width = 264
+    end
+  end
+  object cxClientes: TcxGroupBox
+    Left = 608
+    Top = 513
+    Hint = ''
+    Caption = 'Clientes'
+    TabOrder = 14
+    Visible = False
+    Height = 104
+    Width = 585
+    object cxBtnClienteIni: TcxButton
+      Tag = 1
+      Left = 452
+      Top = 27
+      Width = 66
+      Height = 23
+      Caption = 'Buscar'
+      Colors.Default = clWhite
+      Colors.Normal = clWhite
+      Colors.Hot = clWhite
+      Colors.Pressed = clWhite
+      Colors.Disabled = clWhite
+      LookAndFeel.NativeStyle = False
+      OptionsImage.Glyph.Data = {
+        36050000424D3605000000000000360400002800000010000000100000000100
+        08000000000000010000120B0000120B0000000100000000000000000000FFFF
+        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
+        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
+        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
+        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
+        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
+        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
+        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
+        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
+        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
+        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
+        9E00046099000454860000518800002A470000243D0002558E0002416A000351
+        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
+        2300000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        02505853020202020202020202020202572205184B0202020202020202020257
+        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
+        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
+        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
+        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        0202020202020202020202020202020202020202020202020202}
+      TabOrder = 0
+      TabStop = False
+      OnClick = cxBtnClienteIniClick
+    end
+    object cxClienteIni: TcxCurrencyEdit
+      Left = 87
+      Top = 28
+      Hint = ''
+      EditValue = '0'
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '0000'
+      TabOrder = 1
+      OnExit = cxClienteIniExit
+      Width = 89
+    end
+    object cxLabel13: TcxLabel
+      Left = 14
+      Top = 29
+      Hint = ''
+      Caption = 'Cliente Inicial'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object cxLabel14: TcxLabel
+      Left = 14
+      Top = 65
+      Hint = ''
+      Caption = 'Cliente Final'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object cxClienteFin: TcxCurrencyEdit
+      Left = 87
+      Top = 64
+      Hint = ''
+      EditValue = '99999'
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '0000'
+      TabOrder = 4
+      OnExit = cxClienteFinExit
+      Width = 89
+    end
+    object cxBtnClienteFin: TcxButton
+      Tag = 1
+      Left = 452
+      Top = 63
+      Width = 66
+      Height = 23
+      Caption = 'Buscar'
+      Colors.Default = clWhite
+      Colors.Normal = clWhite
+      Colors.Hot = clWhite
+      Colors.Pressed = clWhite
+      Colors.Disabled = clWhite
+      LookAndFeel.NativeStyle = False
+      OptionsImage.Glyph.Data = {
+        36050000424D3605000000000000360400002800000010000000100000000100
+        08000000000000010000120B0000120B0000000100000000000000000000FFFF
+        FF00FF00FF00623C230062442D005339240072503300CB925E00DAA97600836E
+        5800695A4600FFCF8900C2AC8600D4D0C9000A0A0900EDFFFF00F8FFFF0064A5
+        AD003692AD0051D4FF00EEFBFF000089BC0039CAFF005CD3FF00091114000493
+        C9000C96CF000FA1DC001CBFFF001EC1FF0021BCFB0021BAFA002BC2FE0031C2
+        FF002882A50057D0FF005DBAE0008CDDFF00C1EDFF00D0F2FF000075AA00027F
+        B600129DDD0017A1E0001CB1F2001BADEB001AA5E0001FB7F8001FB4F4001EAF
+        ED003FC5FE0045ABD7004AADD7004093B8007ACEF40072BBDD008AC5DE009DCC
+        E200D0EBF700006FA5000173AA000774AC00087AB5000B84C0001498D700148A
+        C5001697D50018445B0044ABDE0041A0D00099D3EF00AAD0E300BFE5F7000474
+        AF00056BA5000B5B88000C4B6D001680B8002182B60000578A00035A91000464
+        9E00046099000454860000518800002A470000243D0002558E0002416A000351
+        8800033E640006609A000E6096000D24330000447600013B650000386C00161D
+        2300000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        02505853020202020202020202020202572205184B0202020202020202020257
+        1C120B045D0260600202020202572D4232240807615C60605A02020257201345
+        460F0D094344340A0E5F524D1725263A3539374E1A212E0C0356595748101427
+        3329283B192F1D11065557475738362316313F3C151B1E2A4C5E025757574140
+        2C1F302B3D4F5B02020202020202024A513E4954020202020202020202020202
+        0202020202020202020202020202020202020202020202020202020202020202
+        0202020202020202020202020202020202020202020202020202}
+      TabOrder = 5
+      TabStop = False
+      OnClick = cxBtnClienteFinClick
+    end
+    object cxTextClienteIni: TcxTextEdit
+      Left = 182
+      Top = 28
+      Hint = ''
+      Enabled = False
+      TabOrder = 6
+      Width = 264
+    end
+    object cxTextClienteFin: TcxTextEdit
+      Left = 182
+      Top = 64
+      Hint = ''
+      Enabled = False
+      TabOrder = 7
+      Width = 264
+    end
+  end
+  object cxTurno: TcxGroupBox
+    Tag = 100
+    Left = 607
+    Top = 626
+    Hint = ''
+    Caption = ' Turno '
+    TabOrder = 15
+    Visible = False
+    Height = 62
+    Width = 585
+    object cxLabel15: TcxLabel
+      Left = 31
+      Top = 26
+      Hint = ''
+      Caption = 'Turno'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object cxTxtTurno: TcxTextEdit
+      Left = 104
+      Top = 25
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      TabOrder = 1
+      Width = 89
+    end
+  end
+  object cxRangoEstacion: TcxGroupBox
+    Tag = 100
+    Left = 24
+    Top = 264
+    Hint = ''
+    Caption = 'Rango Estacion'
+    TabOrder = 16
+    Visible = False
+    Height = 63
+    Width = 577
+    object Label3: TLabel
+      Left = 27
+      Top = 14
+      Width = 70
+      Height = 13
+      Caption = 'Estacion Inicial'
+      Transparent = True
+    end
+    object Label4: TLabel
+      Left = 299
+      Top = 14
+      Width = 65
+      Height = 13
+      Caption = 'Estacion Final'
+      Transparent = True
+    end
+    object dbcEstacionIni: TcxLookupComboBox
+      Left = 27
+      Top = 30
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDEstacion'
+      Properties.ListColumns = <
+        item
+          FieldName = 'IDEstacion'
+        end
+        item
+          FieldName = 'Nombre'
+        end>
+      Properties.ListSource = dsEstaciones
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 0
+      Width = 233
+    end
+    object dbcEstacionFin: TcxLookupComboBox
+      Left = 299
+      Top = 30
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDESTACION'
+      Properties.ListColumns = <
+        item
+          FieldName = 'IDESTACION'
+        end
+        item
+          FieldName = 'Nombre'
+        end>
+      Properties.ListSource = dsEstaciones
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 1
+      Width = 225
+    end
+  end
+  object cxRangoEmpleados: TcxGroupBox
+    Tag = 100
+    Left = 24
+    Top = 368
+    Hint = ''
+    Caption = 'Rango Empleados'
+    TabOrder = 17
+    Visible = False
+    Height = 65
+    Width = 578
+    object Label8: TLabel
+      Left = 27
+      Top = 19
+      Width = 76
+      Height = 13
+      Caption = 'Empleado Inicial'
+      Transparent = True
+    end
+    object Label9: TLabel
+      Left = 279
+      Top = 16
+      Width = 71
+      Height = 13
+      Caption = 'Empleado Final'
+      Transparent = True
+    end
+    object dbcEmpleadoIni: TcxLookupComboBox
+      Left = 27
+      Top = 33
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDEMPLEADO'
+      Properties.ListColumns = <
+        item
+          FieldName = 'IDEMPLEADO'
+        end
+        item
+          FieldName = 'NOMBRE'
+        end>
+      Properties.ListSource = dsEmpleados
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 0
+      OnEnter = dbcEmpleadoIniEnter
+      Width = 233
+    end
+    object dbcEmpleadoFin: TcxLookupComboBox
+      Left = 279
+      Top = 33
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDEMPLEADO'
+      Properties.ListColumns = <
+        item
+          FieldName = 'IDEMPLEADO'
+        end
+        item
+          FieldName = 'NOMBRE'
+        end>
+      Properties.ListSource = dsEmpleados
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 1
+      OnEnter = dbcEmpleadoFinEnter
+      Width = 233
+    end
+  end
+  object cxSecuencia: TcxGroupBox
+    Tag = 100
+    Left = 25
+    Top = 439
+    Hint = ''
+    Caption = 'Secuencia del Corte'
+    TabOrder = 18
+    Visible = False
+    Height = 68
+    Width = 577
+    object cxLabel9: TcxLabel
+      Left = 26
+      Top = 29
+      Hint = ''
+      Caption = 'Secuencia Inicial:'
+      Style.BorderStyle = ebsNone
+      Style.TransparentBorder = True
+      Transparent = True
+    end
+    object cxLabel10: TcxLabel
+      Left = 245
+      Top = 29
+      Hint = ''
+      Caption = 'Secuencia Final:'
+      Style.BorderStyle = ebsNone
+      Style.TransparentBorder = True
+      Transparent = True
+    end
+    object CmbSecuenciaIni: TcxLookupComboBox
+      Left = 116
+      Top = 28
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'Secuencia'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Secuencia'
+        end>
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 2
+      Width = 89
+    end
+    object CmbSecuenciaFin: TcxLookupComboBox
+      Left = 328
+      Top = 28
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'Secuencia'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Secuencia'
+        end>
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 3
+      Width = 89
+    end
+  end
+  object cxSerie: TcxGroupBox
+    Tag = 100
+    Left = 24
+    Top = 697
+    Hint = ''
+    Caption = ' Serie de Factura '
+    TabOrder = 19
+    Visible = False
+    Height = 57
+    Width = 577
+    object cxLabel4: TcxLabel
+      Left = 27
+      Top = 21
+      Hint = ''
+      Caption = 'Serie'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object txtSerie: TcxTextEdit
+      Left = 83
+      Top = 20
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      TabOrder = 1
+      Width = 89
+    end
+  end
+  object cxFolioFactura: TcxGroupBox
+    Left = 607
+    Top = 697
+    Hint = ''
+    Caption = ' Factura'
+    TabOrder = 20
+    Height = 58
+    Width = 583
+    object cxLabel7: TcxLabel
+      Left = 188
+      Top = 21
+      Hint = ''
+      Caption = 'Folio'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object txtFolioFactura: TcxTextEdit
+      Left = 222
+      Top = 20
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      TabOrder = 1
+      Width = 89
+    end
+    object cxLabel16: TcxLabel
+      Left = 71
+      Top = 21
+      Hint = ''
+      Caption = 'Serie'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object TxtSerieFactura: TcxTextEdit
+      Left = 105
+      Top = 20
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      TabOrder = 3
+      Width = 58
+    end
+  end
+  object cxSecuenciaCorteIni: TcxGroupBox
+    Tag = 100
+    Left = 25
+    Top = 760
+    Hint = ''
+    Caption = 'Secuencia del Corte'
+    TabOrder = 21
+    Visible = False
+    Height = 69
+    Width = 576
+    object cxLabel11: TcxLabel
+      Left = 26
+      Top = 29
+      Hint = ''
+      Caption = 'Secuencia de Corte'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object SecuenciaCorte: TcxTextEdit
+      Left = 130
+      Top = 28
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      TabOrder = 1
+      Width = 89
+    end
+  end
+  object cxSecuenciaEstacion: TcxGroupBox
+    Tag = 100
+    Left = 607
+    Top = 761
+    Hint = ''
+    Caption = 'Secuencia Estacion'
+    TabOrder = 22
+    Visible = False
+    Height = 68
+    Width = 583
+    object cxLabel12: TcxLabel
+      Left = 48
+      Top = 28
+      Hint = ''
+      Caption = 'Secuencia'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object SecuenciaEstacion: TcxLookupComboBox
+      Left = 117
+      Top = 27
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'Secuencia'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Secuencia'
+        end>
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 1
+      Width = 89
+    end
+  end
+  object gbRangoDeFacturas: TcxGroupBox
+    Tag = 100
+    Left = 24
+    Top = 835
+    Hint = ''
+    Caption = '  Rango de Facturas  '
+    Style.LookAndFeel.NativeStyle = False
+    StyleDisabled.LookAndFeel.NativeStyle = False
+    StyleFocused.LookAndFeel.NativeStyle = False
+    StyleHot.LookAndFeel.NativeStyle = False
+    TabOrder = 23
+    Visible = False
+    Height = 61
+    Width = 577
+    object Label41: TLabel
+      Left = 131
+      Top = 27
+      Width = 66
+      Height = 13
+      Caption = 'Factura Inicial'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label42: TLabel
+      Left = 299
+      Top = 27
+      Width = 61
+      Height = 13
+      Caption = 'Factura Final'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label14: TLabel
+      Left = 27
+      Top = 27
+      Width = 21
+      Height = 13
+      Caption = 'Seie'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object edtRangoFacturaIni: TcxCurrencyEdit
+      Left = 216
+      Top = 24
+      Hint = ''
+      EditValue = 0
+      ParentFont = False
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '#0'
+      Style.BorderStyle = ebsOffice11
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = False
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      Width = 65
+    end
+    object edtRangoFacturaFin: TcxCurrencyEdit
+      Left = 384
+      Top = 24
+      Hint = ''
+      EditValue = '0'
+      ParentFont = False
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = '#0'
+      Style.BorderStyle = ebsOffice11
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.LookAndFeel.NativeStyle = False
+      Style.TextColor = clNavy
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 1
+      Width = 65
+    end
+    object edtSerie3: TcxImageComboBox
+      Left = 60
+      Top = 24
+      Hint = ''
+      Properties.Items = <>
+      TabOrder = 2
+      Width = 57
+    end
+  end
+  object cxFacturaID: TcxGroupBox
+    Tag = 100
+    Left = 607
+    Top = 835
+    Hint = ''
+    Caption = ' Identificador de Factura '
+    TabOrder = 24
+    Height = 61
+    Width = 583
+    object cxLabel17: TcxLabel
+      Left = 31
+      Top = 23
+      Hint = ''
+      Caption = 'FacturaID'
+      Style.BorderStyle = ebsNone
+      Transparent = True
+    end
+    object edtFacturaID: TcxTextEdit
+      Left = 89
+      Top = 22
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      TabOrder = 1
+      Width = 89
+    end
+  end
+  object cxAlmacen: TcxGroupBox
+    Tag = 100
+    Left = 25
+    Top = 902
+    Hint = ''
+    Caption = 'Almacen'
+    TabOrder = 25
+    Height = 57
+    Width = 576
+    object cxLabel3: TcxLabel
+      Left = 31
+      Top = 25
+      Hint = ''
+      Caption = 'Almacen:'
+      Style.BorderStyle = ebsNone
+      Style.LookAndFeel.NativeStyle = True
+      StyleDisabled.LookAndFeel.NativeStyle = True
+      StyleFocused.LookAndFeel.NativeStyle = True
+      StyleHot.LookAndFeel.NativeStyle = True
+      Transparent = True
+    end
+    object cmbAlmacen: TcxLookupComboBox
+      Left = 85
+      Top = 24
+      Hint = ''
+      Properties.CharCase = ecUpperCase
+      Properties.KeyFieldNames = 'IDALMACEN'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NOMBRE'
+        end>
+      Properties.ListSource = dsAlmacen
+      Properties.MaxLength = 0
+      Properties.ReadOnly = False
+      TabOrder = 1
+      Width = 404
+    end
+  end
   object cdsDiaFacturar: TDACDSDataTable
     Fields = <
       item
@@ -1160,8 +1728,8 @@ object frmPantallaParametros: TfrmPantallaParametros
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 328
-    Top = 232
+    Left = 1040
+    Top = 48
   end
   object cdsGrupo: TDACDSDataTable
     Fields = <
@@ -1177,14 +1745,14 @@ object frmPantallaParametros: TfrmPantallaParametros
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 296
-    Top = 232
+    Left = 1008
+    Top = 48
   end
   object dsGrupo: TDADataSource
     DataSet = cdsGrupo.Dataset
     DataTable = cdsGrupo
-    Left = 296
-    Top = 264
+    Left = 1008
+    Top = 80
   end
   object cdsTipoTarjeta: TDACDSDataTable
     Fields = <
@@ -1204,8 +1772,8 @@ object frmPantallaParametros: TfrmPantallaParametros
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 360
-    Top = 232
+    Left = 1072
+    Top = 48
   end
   object cdsSerie: TDACDSDataTable
     Fields = <
@@ -1220,93 +1788,216 @@ object frmPantallaParametros: TfrmPantallaParametros
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 552
-    Top = 160
+    Left = 24
+    Top = 344
   end
   object dsSerie: TDADataSource
     DataSet = cdsSerie.Dataset
     DataTable = cdsSerie
-    Left = 552
-    Top = 192
+    Left = 72
+    Top = 344
   end
   object cdsEstaciones: TDACDSDataTable
     Fields = <
       item
-        Name = 'EstacionID'
+        Name = 'IDESTACION'
         DataType = datInteger
         Required = True
         InPrimaryKey = True
       end
       item
-        Name = 'Nombre'
+        Name = 'NOMBRE'
         DataType = datString
-        Size = 30
-        Required = True
+        Size = 100
       end
       item
-        Name = 'RazonSocial'
+        Name = 'RAZONSOCIAL'
         DataType = datString
-        Size = 70
+        Size = 100
       end
       item
         Name = 'RFC'
         DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'HOST'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CUENTACONTABLE'
+        DataType = datString
         Size = 20
       end
       item
-        Name = 'ClavePemex'
-        DataType = datString
-        Size = 15
-      end
-      item
-        Name = 'Estatus'
-        DataType = datString
-        Size = 1
-        Required = True
-      end
-      item
-        Name = 'CuentaContable'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'CuentaIVANoCobrado'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'CuentaIVACobrado'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'CuentaVentas'
-        DataType = datString
-        Size = 50
-      end
-      item
-        Name = 'IVA'
+        Name = 'IMPUESTO'
         DataType = datFloat
       end
       item
-        Name = 'GasolineroID'
+        Name = 'CALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'COLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'CODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'LOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'ESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXCALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'EXCOLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXNOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXNOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXCODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXMUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXLOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOAPROBACION'
         DataType = datInteger
-        Required = True
+      end
+      item
+        Name = 'FECHAAPROBACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOAPROBACIONES'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'VERSIONCFD'
+        DataType = datInteger
+      end
+      item
+        Name = 'REGIMENFISCAL'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'CODIGOFACTURA'
+        DataType = datString
+        Size = 2
+      end
+      item
+        Name = 'FORMATOFACTURAWEB'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'SERIEENLINEA'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'TELEFONO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IDESTACIONBANCARIA'
+        DataType = datInteger
+      end
+      item
+        Name = 'SERIEBANCARIA'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'LOGOESTACION'
+        DataType = datBlob
+      end
+      item
+        Name = 'PAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXPAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXREFERENCIA'
+        DataType = datString
+        Size = 100
       end>
-    LogicalName = 'dbo Estacion'
+    LogicalName = 'dbo.ESTACION'
     Params = <>
-    RemoteDataAdapter = DMFlotillas.RemoteDataAdapter
+    RemoteDataAdapter = DM.RemoteDataAdapter
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 520
-    Top = 496
+    Left = 560
+    Top = 272
   end
   object dsEstaciones: TDADataSource
     DataSet = cdsEstaciones.Dataset
     DataTable = cdsEstaciones
-    Left = 552
-    Top = 496
+    Left = 560
+    Top = 320
   end
   object cdsTurno: TDACDSDataTable
     Fields = <
@@ -1335,13 +2026,494 @@ object frmPantallaParametros: TfrmPantallaParametros
     RemoteUpdatesOptions = []
     StreamingOptions = [soDisableEventsWhileStreaming]
     IndexDefs = <>
-    Left = 552
-    Top = 224
+    Left = 1136
+    Top = 304
   end
   object dsTurno: TDADataSource
     DataSet = cdsTurno.Dataset
     DataTable = cdsTurno
+    Left = 1136
+    Top = 336
+  end
+  object cdsClientes: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDCliente'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 80
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'Calle'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'Colonia'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'Ciudad'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CodigoPostal'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'Telefono'
+        DataType = datString
+        Size = 20
+      end>
+    LogicalName = 'DatosCliente'
+    Params = <
+      item
+        Name = 'IDCliente'
+        DataType = datInteger
+        Value = '1'
+        ParamType = daptInput
+      end
+      item
+        Name = 'Referencia'
+        DataType = datString
+        Value = '1'
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 1152
+    Top = 520
+  end
+  object dsClientes: TDADataSource
+    DataSet = cdsClientes.Dataset
+    DataTable = cdsClientes
+    Left = 1152
+    Top = 568
+  end
+  object cdsEstacion: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDESTACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'RAZONSOCIAL'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'HOST'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CUENTACONTABLE'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IMPUESTO'
+        DataType = datFloat
+      end
+      item
+        Name = 'CALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'COLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'NOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'CODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'LOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'ESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXCALLE'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'EXCOLONIA'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXNOEXTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXNOINTERIOR'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXCODIGOPOSTAL'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'EXMUNICIPIO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXLOCALIDAD'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'EXESTADO'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'NOAPROBACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'FECHAAPROBACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'NOAPROBACIONES'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'VERSIONCFD'
+        DataType = datInteger
+      end
+      item
+        Name = 'REGIMENFISCAL'
+        DataType = datString
+        Size = 150
+      end
+      item
+        Name = 'CODIGOFACTURA'
+        DataType = datString
+        Size = 2
+      end
+      item
+        Name = 'FORMATOFACTURAWEB'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'SERIEENLINEA'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'TELEFONO'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IDESTACIONBANCARIA'
+        DataType = datInteger
+      end
+      item
+        Name = 'SERIEBANCARIA'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'LOGOESTACION'
+        DataType = datBlob
+      end
+      item
+        Name = 'PAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXPAIS'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'EXREFERENCIA'
+        DataType = datString
+        Size = 100
+      end>
+    LogicalName = 'ObtenerDatosEstacion'
+    Params = <
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+        Value = '1'
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 32
+    Top = 32
+  end
+  object dsEstacion: TDADataSource
+    DataSet = cdsEstacion.Dataset
+    DataTable = cdsEstacion
+    Left = 88
+    Top = 32
+  end
+  object dsCliente: TDADataSource
+    DataSet = cdsCliente.Dataset
+    DataTable = cdsCliente
+    Left = 1152
+    Top = 464
+  end
+  object cdsCliente: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDCliente'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 80
+      end
+      item
+        Name = 'RFC'
+        DataType = datString
+        Size = 15
+      end
+      item
+        Name = 'Calle'
+        DataType = datString
+        Size = 60
+      end
+      item
+        Name = 'Colonia'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'Ciudad'
+        DataType = datString
+        Size = 30
+      end
+      item
+        Name = 'CodigoPostal'
+        DataType = datString
+        Size = 5
+      end
+      item
+        Name = 'Telefono'
+        DataType = datString
+        Size = 20
+      end>
+    LogicalName = 'DatosCliente'
+    Params = <
+      item
+        Name = 'IDCliente'
+        DataType = datInteger
+        Value = '1'
+        ParamType = daptInput
+      end
+      item
+        Name = 'Referencia'
+        DataType = datString
+        Value = '1'
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 1152
+    Top = 440
+  end
+  object cdsEmpleados: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDEMPLEADO'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 50
+      end
+      item
+        Name = 'CODIGOEMPLEADO'
+        DataType = datString
+        Size = 10
+      end
+      item
+        Name = 'Domicilio'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'Ciudad'
+        DataType = datString
+        Size = 100
+      end
+      item
+        Name = 'Telefono'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'Status'
+        DataType = datBoolean
+      end
+      item
+        Name = 'FechaAlta'
+        DataType = datDateTime
+      end
+      item
+        Name = 'CuentaContable'
+        DataType = datString
+        Size = 20
+      end
+      item
+        Name = 'IDESTACION'
+        DataType = datInteger
+      end>
+    LogicalName = 'dbo DespachadorPorEstacion'
+    Params = <
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+        Value = '1'
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 480
+    Top = 416
+  end
+  object dsEmpleados: TDADataSource
+    DataSet = cdsEmpleados.Dataset
+    DataTable = cdsEmpleados
     Left = 552
-    Top = 256
+    Top = 416
+  end
+  object cdsAgrupacion: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDAGRUPACION'
+        DataType = datInteger
+      end
+      item
+        Name = 'Nombre'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'IDESTACION'
+        DataType = datInteger
+      end>
+    LogicalName = 'LIQAgrupacion2'
+    MasterParamsMappings.Strings = (
+      'EstacionID=EstacionID')
+    Params = <
+      item
+        Name = 'EstacionID'
+        DataType = datInteger
+        Value = ''
+        ParamType = daptInput
+      end>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 968
+    Top = 389
+  end
+  object dsAgrupacion: TDADataSource
+    DataSet = cdsAgrupacion.Dataset
+    DataTable = cdsAgrupacion
+    Left = 1046
+    Top = 388
+  end
+  object cdsAlmacen: TDACDSDataTable
+    Fields = <
+      item
+        Name = 'IDALMACEN'
+        DataType = datInteger
+        Required = True
+        InPrimaryKey = True
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = datString
+        Size = 70
+      end
+      item
+        Name = 'NUMEROESTACION'
+        DataType = datInteger
+      end>
+    LogicalName = 'dbo ALMACEN'
+    Params = <>
+    RemoteDataAdapter = DM.RemoteDataAdapter
+    RemoteUpdatesOptions = []
+    StreamingOptions = [soDisableEventsWhileStreaming]
+    IndexDefs = <>
+    Left = 496
+    Top = 904
+  end
+  object dsAlmacen: TDADataSource
+    DataSet = cdsAlmacen.Dataset
+    DataTable = cdsAlmacen
+    Left = 560
+    Top = 904
   end
 end

@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 372
   Top = 277
   Caption = 'Ingresos 1.0'
-  ClientHeight = 393
-  ClientWidth = 1235
+  ClientHeight = 459
+  ClientWidth = 970
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,7 +23,7 @@ object frmPrincipal: TfrmPrincipal
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 1229
+    Width = 964
     Height = 158
     Hint = ''
     ApplicationButton.Visible = False
@@ -45,6 +45,7 @@ object frmPrincipal: TfrmPrincipal
       Index = 0
     end
     object RibbonTab7: TdxRibbonTab
+      Active = True
       Caption = 'Ingresos'
       Groups = <
         item
@@ -143,7 +144,6 @@ object frmPrincipal: TfrmPrincipal
       Index = 9
     end
     object RibbonTab1: TdxRibbonTab
-      Active = True
       Caption = 'Configuracion'
       Groups = <
         item
@@ -159,13 +159,13 @@ object frmPrincipal: TfrmPrincipal
     Align = alClient
     PanelStyle.Active = True
     TabOrder = 5
-    Height = 206
-    Width = 1235
+    Height = 272
+    Width = 970
   end
   object StatusBar: TdxRibbonStatusBar
     Left = 0
-    Top = 370
-    Width = 1235
+    Top = 436
+    Width = 970
     Height = 23
     Hint = ''
     Images = dmImages.Imagenes

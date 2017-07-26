@@ -150,51 +150,75 @@ inherited frmCatalogoReportes: TfrmCatalogoReportes
             end
             item
               Tag = 68
-              Text = 'Alumno'
+              Text = 'Clientes Efectivo'
             end
             item
               Tag = 69
-              Text = 'Alumnos'
+              Text = 'Estacion'
             end
             item
               Tag = 70
-              Text = 'Turno'
+              Text = 'Secuencia de Corte'
             end
             item
               Tag = 71
-              Text = 'Maestros'
+              Text = 'FacturaID'
             end
             item
               Tag = 72
-              Text = 'Ciclo'
+              Text = 'Serie y Folio Factura'
             end
             item
               Tag = 73
-              Text = 'Grupo'
+              Text = 'Serie Factura'
             end
             item
               Tag = 74
-              Text = 'Nivel'
+              Text = 'Ejercicio, Periodo y Dia'
             end
             item
               Tag = 75
-              Text = 'TipoPago'
+              Text = 'Status Factura'
             end
             item
               Tag = 76
-              Text = 'TipoCalificacion'
+              Text = 'Agrupaci'#243'n'
             end
             item
               Tag = 77
-              Text = 'Familia'
+              Text = 'Almacen'
             end
             item
               Tag = 78
-              Text = 'Status'
+              Text = 'Secuencia de La Liquidacion'
             end
             item
               Tag = 79
-              Text = 'Serie'
+              Text = 'Facturas De Compras'
+            end
+            item
+              Tag = 80
+              Text = 'Monto Facturado'
+            end
+            item
+              Tag = 81
+              Text = 'Secuencia Corte'
+            end
+            item
+              Tag = 82
+              Text = 'Secuencia Estacion'
+            end
+            item
+              Tag = 83
+              Text = 'Turno'
+            end
+            item
+              Tag = 84
+              Text = 'Rango Estaciones'
+            end
+            item
+              Tag = 85
+              Text = 'Rango Empleados'
             end>
           Style.LookAndFeel.Kind = lfOffice11
           StyleDisabled.LookAndFeel.Kind = lfOffice11

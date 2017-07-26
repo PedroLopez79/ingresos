@@ -131,6 +131,7 @@ type
     function GetMACAdress: string;
     Function GetPrimaryNicMacAddress: String;
     Function ValidaRFC(Const Cad:String):Boolean;
+    procedure AgregarSerieCombo(Items: TcxImageComboBoxItems; Descripcion: String; Valor: Variant);
   end;
 
 var
@@ -267,6 +268,16 @@ begin
   Aux.Value:=Valor;
 end;
 
+procedure TDM.AgregarSerieCombo(Items: TcxImageComboBoxItems;
+  Descripcion: String; Valor: Variant);
+var
+  Aux1: TcxImageComboBoxItem;
+begin
+  Aux1:=TcxImageComboBoxItem(Items.Add);
+  Aux1.Description:=Descripcion;
+  Aux1.Value:=Valor;
+end;
+
 procedure TDM.AsignaPermisos;
 var
   I: Integer;
@@ -336,9 +347,6 @@ begin
   repReportes.Language:= lgSpanishMexico;
   Ejercicio:=StrToInt(FormatDateTime('yyyy', Now));
   Periodo:=StrToInt(FormatDateTime('m', Now));
-
-  cdsConfiguracion.Close;
-  cdsConfiguracion.Open;
 end;
 
 procedure TDM.Exporta(Nombre: String);
@@ -561,6 +569,8 @@ begin
       if Svr = '' then Svr := '0';
       DM.NumeroEstacion:= strtoint(Svr);
 
+      cdsConfiguracion.Close;
+      cdsConfiguracion.Open;
       cdsConfiguracion.Locate('NumeroEstacion', DM.NumeroEstacion, []);
       SerieFacturaDebito:= cdsConfiguracion.FieldByName('SerieFacturaDebito').AsString;
       SerieFacturaCredito:= cdsConfiguracion.FieldByName('SerieFacturaCredito').AsString;
@@ -903,12 +913,12 @@ begin
   case Cual of    //
     0: Result:=DM.Parametros.FechaIni;
     1: Result:=DM.Parametros.FechaFin;
-    2: Result:=DM.Parametros.AlumnoIni;
-    3: Result:=DM.Parametros.AlumnoFin;
-    4: Result:=DM.Parametros.Maestro;
-    5: Result:=DM.Parametros.MaestroIni;
-    6:Result:=DM.Parametros.MaestroFin;
-    7: Result:=DM.Parametros.Grupo;
+    //2: Result:=DM.Parametros.AlumnoIni;
+    //3: Result:=DM.Parametros.AlumnoFin;
+    //4: Result:=DM.Parametros.Maestro;
+    //5: Result:=DM.Parametros.MaestroIni;
+    //6:Result:=DM.Parametros.MaestroFin;
+    //7: Result:=DM.Parametros.Grupo;
   end;    // case
 end;
 

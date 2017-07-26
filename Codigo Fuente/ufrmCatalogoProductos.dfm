@@ -9,6 +9,7 @@ inherited frmCatalogoProducto: TfrmCatalogoProducto
     Top = 32
     Width = 661
     Height = 417
+    Properties.ActivePage = cxTabSheet2
     ExplicitTop = 32
     ExplicitWidth = 661
     ExplicitHeight = 417
@@ -288,7 +289,7 @@ inherited frmCatalogoProducto: TfrmCatalogoProducto
         Width = 74
       end
       object cxLabel1: TcxLabel
-        Left = 187
+        Left = 218
         Top = 50
         Hint = ''
         Caption = 'Clave'
@@ -296,7 +297,7 @@ inherited frmCatalogoProducto: TfrmCatalogoProducto
         Transparent = True
       end
       object cxDBTextEdit4: TcxDBTextEdit
-        Left = 224
+        Left = 255
         Top = 49
         Hint = ''
         DataBinding.DataField = 'CLAVEPEMEX'
@@ -442,6 +443,29 @@ inherited frmCatalogoProducto: TfrmCatalogoProducto
         Style.BorderStyle = ebsNone
         Transparent = True
       end
+      object cxLabel9: TcxLabel
+        Left = 215
+        Top = 104
+        Hint = ''
+        Caption = 'Cantidad'
+        Style.BorderStyle = ebsNone
+        Transparent = True
+      end
+      object cxDBTextEdit8: TcxDBTextEdit
+        Left = 265
+        Top = 103
+        Hint = ''
+        DataBinding.DataField = 'CANTIDAD'
+        DataBinding.DataSource = dsCatalogo
+        Properties.CharCase = ecUpperCase
+        Style.BorderStyle = ebsUltraFlat
+        Style.LookAndFeel.NativeStyle = False
+        StyleDisabled.LookAndFeel.NativeStyle = False
+        StyleFocused.LookAndFeel.NativeStyle = False
+        StyleHot.LookAndFeel.NativeStyle = False
+        TabOrder = 27
+        Width = 87
+      end
     end
   end
   object Panel1: TPanel [1]
@@ -535,6 +559,10 @@ inherited frmCatalogoProducto: TfrmCatalogoProducto
       end
       item
         Name = 'IDUNIDADMEDIDA'
+        DataType = datInteger
+      end
+      item
+        Name = 'CANTIDAD'
         DataType = datInteger
       end>
     LogicalName = 'dbo Producto'

@@ -475,6 +475,32 @@
 </Parameter>
 </Parameters>
 </Operation>
+<Operation Name="comboestacion" UID="{7D1DEA1A-6F36-4CC1-9E8F-F5FE304EFB54}">
+<Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
+<Parameter Name="estacionid" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="comboscompras" UID="{6641D10D-F858-4866-9714-5433278C099D}">
+<Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
+<Parameter Name="estacionid" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
+<Operation Name="IANcomprasGuarda" UID="{92BCC253-E58B-4177-9AC5-EE4C464EAA88}">
+<Parameters>
+<Parameter Name="Result" DataType="AnsiString" Flag="Result">
+</Parameter>
+<Parameter Name="MovimientoAlmacenMaestro" DataType="AnsiString" Flag="In" >
+</Parameter>
+<Parameter Name="MovimientoAlmacenDetalle" DataType="AnsiString" Flag="In" >
+</Parameter>
+</Parameters>
+</Operation>
 </Operations>
 </Interface>
 </Interfaces>
@@ -591,35 +617,11 @@
 </Element>
 <Element Name="FechaFin" DataType="DateTime">
 </Element>
-<Element Name="Alumno" DataType="Integer">
-</Element>
-<Element Name="AlumnoIni" DataType="Integer">
-</Element>
-<Element Name="AlumnoFin" DataType="Integer">
-</Element>
-<Element Name="Grupo" DataType="Integer">
-</Element>
-<Element Name="Ciclo" DataType="Integer">
-</Element>
-<Element Name="Maestro" DataType="Integer">
-</Element>
-<Element Name="MaestroIni" DataType="Integer">
-</Element>
-<Element Name="MaestroFin" DataType="Integer">
-</Element>
-<Element Name="Nivel" DataType="Integer">
-</Element>
-<Element Name="TipoPago" DataType="Integer">
-</Element>
-<Element Name="TipoCalificacion" DataType="Integer">
-</Element>
 <Element Name="Usuario" DataType="Integer">
-</Element>
-<Element Name="Familia" DataType="Integer">
 </Element>
 <Element Name="Valor1" DataType="Integer">
 </Element>
-<Element Name="Status" DataType="Integer">
+<Element Name="Status" DataType="AnsiString">
 </Element>
 <Element Name="Serie" DataType="AnsiString">
 </Element>
@@ -642,6 +644,52 @@
 <Element Name="NumeroEstacionIni" DataType="Integer">
 </Element>
 <Element Name="NumeroEstacionFin" DataType="Integer">
+</Element>
+<Element Name="ClienteIni" DataType="Integer">
+</Element>
+<Element Name="ClienteFin" DataType="Integer">
+</Element>
+<Element Name="Estacion" DataType="Integer">
+</Element>
+<Element Name="SecuenciaIni" DataType="Integer">
+</Element>
+<Element Name="SecuenciaFin" DataType="Integer">
+</Element>
+<Element Name="FolioFactura" DataType="Integer">
+</Element>
+<Element Name="Ejercicio" DataType="Integer">
+</Element>
+<Element Name="PeriodoFin" DataType="Integer">
+</Element>
+<Element Name="Periodo" DataType="Integer">
+</Element>
+<Element Name="Dia" DataType="Integer">
+</Element>
+<Element Name="EjercicioFin" DataType="Integer">
+</Element>
+<Element Name="DiaFin" DataType="Integer">
+</Element>
+<Element Name="Secuencia" DataType="AnsiString">
+</Element>
+<Element Name="Agrupacion" DataType="Integer">
+</Element>
+<Element Name="Almacen" DataType="Integer">
+</Element>
+<Element Name="SecuenciaIniLiquidacion" DataType="Integer">
+</Element>
+<Element Name="SecuenciaFinLiquidacion" DataType="Integer">
+</Element>
+<Element Name="MontoFacturado" DataType="Integer">
+</Element>
+<Element Name="Turno" DataType="Integer">
+</Element>
+<Element Name="EmpleadoIni" DataType="Integer">
+</Element>
+<Element Name="EmpleadoFin" DataType="Integer">
+</Element>
+<Element Name="EstacionIni" DataType="Integer">
+</Element>
+<Element Name="EstacionFin" DataType="Integer">
 </Element>
 </Elements>
 </Struct>

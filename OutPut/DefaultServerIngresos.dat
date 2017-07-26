@@ -1,23 +1,34 @@
 declare @FechaIni as DateTime
 declare @FechaFin as DateTime
-declare @Alumno as Integer
-declare @AlumnoIni as Integer
-declare @AlumnoFin as Integer
-declare @Grupo as integer
-declare @Ciclo as Integer
-declare @Maestro as Integer
-declare @MaestroIni as Integer
-declare @MaestroFin as Integer
-declare @Nivel as Integer
-declare @TipoPago as Integer
-declare @TipoCalificacion as Integer
+declare @ClienteIni as Integer
+declare @ClienteFin as Integer
+declare @Estacion as Integer
+declare @SecuenciaIni as integer
+declare @SecuenciaFin as Integer
+declare @FolioFactura as Integer
 declare @Usuario as Integer
-declare @Familia as Integer
-declare @Valor1 as Integer
-declare @Status as Integer
-declare @Serie as varchar(500)
+declare @Ejercicio as Integer
+declare @PeriodoFin as Integer
+declare @Periodo as Integer
+declare @Dia as Integer
+declare @EjercicioFin as Integer
+declare @DiaFin as Integer
+declare @Secuencia as varchar(10)
+declare @Agrupacion as Integer
+declare @Almacen as varchar(500)
+declare @SecuenciaIniLiquidacion as Integer
+declare @SecuenciaFinLiquidacion as Integer
+declare @MontoFacturado as Integer
+declare @Turno as Integer
+declare @EmpleadoIni as Integer
+declare @EmpleadoFin as Integer
+declare @EstacionIni as Integer
+declare @EstacionFin as Integer
+declare @Valor1 as varchar(50)
+declare @Status as varchar(10)
+declare @Serie as varchar(20)
 declare @Factura as Integer
-declare @FacturasCompras as Integer
+declare @FacturasDeCompras as Integer
 declare @TurnoInicio as Integer
 declare @TurnoFin as Integer
 declare @NumeroEstacion as Integer
@@ -28,24 +39,35 @@ declare @NumeroEstacionFin as Integer
 
 select @FechaIni=:FechaIni
 select @FechaFin=:FechaFin
-select @Alumno=:Alumno
-select @AlumnoIni=:AlumnoIni
-select @AlumnoFin=:AlumnoFin
-select @Grupo=:Grupo
-select @Ciclo=:Ciclo
-select @Maestro=:Maestro
-select @MaestroIni=:MaestroIni
-select @MaestroFin=:MaestroFin
-select @Nivel=:Nivel
-select @TipoPago=:TipoPago
-select @TipoCalificacion=:TipoCalificacion
+select @ClienteIni=:ClienteIni
+select @ClienteFin=:ClienteFin
+select @Estacion=:Estacion
+select @SecuenciaIni=:SecuenciaIni
+select @SecuenciaFin=:SecuenciaFin
+select @FolioFactura=:FolioFactura
 select @Usuario=:Usuario
-select @Familia=:Familia
+select @Ejercicio=:Ejercicio
+select @PeriodoFin=:PeriodoFin
+select @Periodo=:Periodo
+select @Dia=:Dia
+select @EjercicioFin=:EjercicioFin
+select @DiaFin=:DiaFin
+select @Secuencia=:Secuencia
+select @Agrupacion=:Agrupacion
+select @Almacen=:Almacen
+select @SecuenciaIniLiquidacion=:SecuenciaIniLiquidacion
+select @SecuenciaFinLiquidacion=:SecuenciaFinLiquidacion
+select @MontoFacturado=:MontoFacturado
+select @Turno=:Turno
+select @EmpleadoIni=:EmpleadoIni
+select @EmpleadoFin=:EmpleadoFin
+select @EstacionIni=:EstacionIni
+select @EstacionFin=:EstacionFin
 select @Valor1=:Valor1
 select @Status=:Status
 select @Serie=:Serie
 select @Factura=:Factura
-select @FacturasCompras=:FacturasCompras
+select @FacturasDeCompras=:FacturasCompras
 select @TurnoInicio=:TurnoInicio
 select @TurnoFin=:TurnoFin
 select @NumeroEstacion=:NumeroEstacion

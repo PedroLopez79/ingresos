@@ -20,7 +20,13 @@ uses
   uDAInterfaces, uDADataTable, dxmdaset, uDAScriptingProvider, uDACDSDataTable,
   ExtDlgs, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, LibraryIngresos_Intf,
   uDAMemDataTable, uDARemoteDataAdapter, cxButtonEdit, cxCurrencyEdit, ufrmBuscar,
-  ComCtrls;
+  ComCtrls, dxSkinBlueprint, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinHighContrast, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  dxSkinSevenClassic, dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010,
+  dxSkinWhiteprint, dxCore, cxDateUtils, cxNavigator, uDADataAdapter,
+  uROComponent, uDAFields;
 
 type
   TfrmReenviaCorreoSATEfectivos = class(TfrmCustomModule)
@@ -138,7 +144,7 @@ begin
   P:=TParametrosBI.Create;
   try
     cdsFacturas.Close;
-    P.Alumno:= edtCliente.EditValue;
+    P.ClienteIni:= edtCliente.EditValue;
     P.FechaIni:= cxDateEdit1.Date;
     P.FechaFin:= cxDateEdit2.Date;
     P.Serie:= edtSerie.EditValue;
