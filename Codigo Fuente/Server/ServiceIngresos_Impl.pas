@@ -609,6 +609,8 @@ begin
   cmdupdatemaestro.ParamByName('IMPUESTOPORCENTAJE').AsFloat:= strtofloat(idcmarray[5]);
   cmdupdatemaestro.Execute;
 
+  Result:= 'Registro Realizado';
+
 end;
 
 function TServiceIngresos.IEPS(ProductoID: Integer): Real;

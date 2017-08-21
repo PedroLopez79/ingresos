@@ -10,7 +10,7 @@ uses
   uDAADODriver, uROIndyTCPServer, Registry, uDASDACDriver,
   uROSOAPMessage, Forms, uROBaseHTTPServer, uDADataDictionary,
   uDAStreamableComponent, uDAConnectionManager, uROMessage, uROComponent,
-  uROBaseConnection, uROCustomHTTPServer;
+  uROBaseConnection, uROCustomHTTPServer, uROJSONMessage;
 
 type
   TServerDataModule = class(TDataModule)
@@ -21,6 +21,7 @@ type
     SessionManager: TROInMemorySessionManager;
     ROSOAP: TROSOAPMessage;
     DataDictionary: TDADataDictionary;
+    ROJSON: TROJSONMessage;
     
     procedure DataModuleCreate(Sender: TObject);
   private

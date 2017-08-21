@@ -16,6 +16,12 @@ object ServerDataModule: TServerDataModule
         Message = ROSOAP
         Enabled = True
         PathInfo = 'SOAP'
+      end
+      item
+        Name = 'ROJSON'
+        Message = ROJSON
+        Enabled = True
+        PathInfo = 'JSON'
       end>
     SendClientAccessPolicyXml = captAllowAll
     IndyServer.Bindings = <>
@@ -66,5 +72,11 @@ object ServerDataModule: TServerDataModule
     SerializationOptions = [xsoSendUntyped, xsoStrictStructureFieldOrder, xsoDocument, xsoSplitServiceWsdls]
     Left = 32
     Top = 104
+  end
+  object ROJSON: TROJSONMessage
+    Envelopes = <>
+    ExtendedExceptionClass = 'ROJSONException'
+    Left = 136
+    Top = 160
   end
 end
